@@ -1,0 +1,51 @@
+columns:
+    id:
+        label: id
+        type: number
+        searchable: true
+        sortable: true
+    name:
+        label: name
+        type: text
+        searchable: true
+        sortable: true
+    info:
+        label: info
+        type: text
+        searchable: true
+        sortable: true
+    description:
+        label: description
+        type: text
+        searchable: true
+        sortable: true
+    slug:
+        label: slug
+        type: text
+        searchable: true
+        sortable: true
+    type:
+        label: type
+        type: text
+        searchable: true
+        sortable: true
+    region:
+        label: region
+        type: text
+        searchable: true
+        sortable: true
+    intprop_name:
+        label: intprop_name
+        type: text
+        searchable: true
+        sortable: true
+    featured:
+        label: featured
+        type: text
+        searchable: true
+        sortable: true
+    disabled:
+        label: Disabled
+        type: switch
+        searchable: true
+        sortable: true

@@ -1,0 +1,10 @@
+name: RmproductsController
+form: $/offshorelicense/storage/models/rmproducts/fields.yaml
+modelClass: Offshorelicense\Storage\Models\Rmproducts
+defaultRedirect: offshorelicense/storage/rmproductscontroller
+create:
+    redirect: 'offshorelicense/storage/rmproductscontroller/update/:id'
+    redirectClose: offshorelicense/storage/rmproductscontroller
+update:
+    redirect: offshorelicense/storage/rmproductscontroller
+    redirectClose: offshorelicense/storage/rmproductscontroller

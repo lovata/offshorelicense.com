@@ -1,0 +1,10 @@
+name: Banks
+form: $/offshorelicense/offers/models/banks/fields.yaml
+modelClass: Offshorelicense\Offers\Models\Banks
+defaultRedirect: offshorelicense/offers/banks
+create:
+    redirect: 'offshorelicense/offers/banks/update/:id'
+    redirectClose: offshorelicense/offers/banks
+update:
+    redirect: offshorelicense/offers/banks
+    redirectClose: offshorelicense/offers/banks

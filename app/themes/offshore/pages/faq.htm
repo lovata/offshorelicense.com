@@ -1,0 +1,142 @@
+title = "FAQ"
+url = "/faq"
+layout = "base"
+meta_title = "Frequently Asked Questions - FAQ - Offshorelicense"
+meta_description = "Offshorelicense Frequently Asked Questions"
+is_hidden = 0
+seo_keywords = "Offshorelicense, FAQ"
+robot_index = "index"
+robot_follow = "follow"
+contentType = "html"
+
+[SeoCmsPage]
+==
+<?php
+function onStart()
+{
+    $array = array();
+     $groups = DB::table('offshorelicense_offers_faq')
+            ->select('group')
+            ->groupBy('group')
+            ->get();
+     
+     foreach ($groups as $group){
+          $array[$group->group] = Db::table('offshorelicense_offers_faq')->where('group',$group->group)->orderby('order_id')->get();
+     }
+     
+     $this->page["faq"] =$array;
+     
+
+     $this->page['breadscrumbs'] = array('Home'=>$this->page['site_link'],'FAQ'=>"");
+
+}
+?>
+==
+<div class="page">
+		<div class="page-top" style="height: 180px;">javascript:;
+	<div class="content mainPage-list" style="padding-top: 0;">
+		<div class="text center">
+			<h1>F.A.Q.</h1>
+		</div>
+	</div>
+</div>
+
+
+
+
+{% if this.page["breadscrumbs"] %}
+ <div class="content">
+    <ul class='breadscrumbs'>
+        {%for item,url in this.page["breadscrumbs"]%}
+        <li>
+            {% if url!="" %}
+                <a href="{{url}}">{{item}}</a>
+            {% else %}
+                {{item}}
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+
+
+<div class="faq-list content">
+		
+		
+		
+{%for group,faq in this.page["faq"]%}
+<section>
+   <label onclick="openTab($(this))" id="{{ group|replace({' ':''}) }}">
+   <h2>{{group}}</h2></label>
+   <div class="pad">
+      <div class="scrollbar scroll-pane">
+         <div class="wrp">
+            <div>
+               {%for item in faq%}
+               <section>
+                  <content class="border">
+                     <table cellpadding="0" cellspacing="0" class="data-table table-header" width="100%">
+                        <tr>
+                           <th>
+                              <h3>{{item.title}}</h3>
+                           </th>
+                        </tr>
+                        <tr>
+                           <td>
+                              <div>
+                                 {{item.body | raw}}
+                              </div>
+                              <br/>
+                           </td>
+                        </tr>
+                     </table>
+                     <div class="faq-rating">
+                        <span class="bx-rating bx-rating-disabled" id="bx-rating-IBLOCK_ELEMENT-333-1490652320" title="Only the authorized users are allowed to vote.">
+                        <span class="bx-rating-absolute">
+                        </span>
+                        </span>
+                     </div>
+                  </content>
+               </section>
+               {% endfor %}
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+{% endfor %}
+		
+		
+		
+		
+	<!--	<div class="customServiceCont">
+		<script>
+			 b24form({"id":"4","lang":"en","sec":"dlzltv","type":"button","click":""});
+		</script><a class="b24-web-form-popup-btn-4">APPLY NOW!</a><span>Haven't found your question above? Leave your question online! We will get back to you with an answer.</span>
+	</div>-->
+</div>
+
+<script type="text/javascript">
+function openTab(th) {
+		if($(th).parent('section').hasClass('act')) {
+			$(th).parent('section').removeClass('act');
+			$(th).parent('section').find('.pad').hide();
+		} else {
+			$('.faq-list section').removeClass('act');
+			$('.faq-list section').find('.pad').hide();
+			$(th).parent('section').addClass('act');
+			$(th).parent('section').find('.pad').show()
+			$(th).parent('section').find('.scroll-pane').height($(th).parent('section').find('.wrp').height()+60).jScrollPane();
+		}
+}
+
+$(function(){
+    openTab($(window.location.hash));
+    var y = $(window).scrollTop();
+    $(window).scrollTop(y-200);
+})
+</script>
+
+</div><!-- // .body -->

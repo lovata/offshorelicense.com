@@ -1,0 +1,11 @@
+title: Contactform
+modelClass: Offshorelicense\Storage\Models\Contactform
+list: $/offshorelicense/storage/models/contactform/columns.yaml
+recordUrl: 'offshorelicense/storage/contactform/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

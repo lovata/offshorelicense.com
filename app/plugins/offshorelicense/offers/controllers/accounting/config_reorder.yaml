@@ -1,0 +1,4 @@
+title: Accounting
+modelClass: Offshorelicense\Offers\Models\Accounting
+toolbar:
+    buttons: reorder_toolbar

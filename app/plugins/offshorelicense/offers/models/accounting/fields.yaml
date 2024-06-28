@@ -1,0 +1,129 @@
+fields:
+    name:
+        label: Name
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    slug:
+        label: Url
+        oc.commentPosition: ''
+        span: auto
+        preset:
+            field: name
+            type: slug
+        type: text
+    title:
+        label: Title
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    logo:
+        label: Logo
+        oc.commentPosition: ''
+        mode: file
+        span: auto
+        type: mediafinder
+    region:
+        label: Region
+        oc.commentPosition: ''
+        options:
+            Europe: Europe
+            Africa: Africa
+            Asia: Asia
+            'Pacific Islands': 'Pacific Islands'
+        span: auto
+        type: dropdown
+    country:
+        label: Country
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    type:
+        label: 'Accounting / Audit'
+        oc.commentPosition: ''
+        options:
+            accounting: Accounting
+            audit: Audit
+        span: auto
+        type: dropdown
+    info:
+        label: Information
+        span: full
+        size: small
+        oc.commentPosition: ''
+        type: textarea
+    description:
+        label: Description
+        size: huge
+        oc.commentPosition: ''
+        span: full
+        type: richeditor
+    price:
+        label: Price
+        oc.commentPosition: ''
+        span: left
+        type: number
+    featured:
+        label: Featured
+        span: right
+        type: switch
+    discount:
+        label: Discount
+        oc.commentPosition: ''
+        span: left
+        type: number
+    order_id:
+        label: 'Order Id'
+        oc.commentPosition: ''
+        span: right
+        type: number
+    disabled:
+        label: Disabled
+        span: auto
+        type: switch
+    tabs_title:
+        label: 'Tabs Title'
+        oc.commentPosition: ''
+        span: left
+        type: text
+    meta_title:
+        label: 'Meta Title'
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: textarea
+    meta_description:
+        label: 'Meta Description'
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: textarea
+    meta_keywords:
+        label: 'Meta Keywords'
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: textarea
+tabs:
+    fields:
+        tab_rates:
+            label: 'Rich editor'
+            span: full
+            size: giant
+            oc.commentPosition: ''
+            type: richeditor
+            tab: Rates
+        tab_services:
+            label: Services
+            size: giant
+            oc.commentPosition: ''
+            span: full
+            type: richeditor
+            tab: Services
+        tab_requirements:
+            label: Requirements
+            size: giant
+            oc.commentPosition: ''
+            span: full
+            type: richeditor
+            tab: Requirements

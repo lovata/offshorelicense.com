@@ -1,0 +1,153 @@
+div.bx-auth-reg input.bx-auth-input {vertical-align:middle;}
+div.bx-auth-reg span.bx-auth-secure {background-color:#FFFAE3; border:1px solid #DEDBC8; padding:2px; display:inline-block; vertical-align:middle;}
+div.bx-auth-reg div.bx-auth-secure-icon {background-image:url(images/sec.png); background-repeat:no-repeat; background-position:center; width:19px; height:18px;}
+div.bx-auth-reg div.bx-auth-secure-unlock {background-image:url(images/sec-unlocked.png);}
+
+.bx-auth-reg {
+    width: 910px;
+    background: #fff;
+    position: relative;
+    margin: 0px auto;
+    margin-top: 75px;
+    box-shadow: 0px 0px 5px 0px rgba(26, 26, 30, .1);
+    text-align: center;
+    padding: 60px 13px;
+    margin-bottom: 200px;
+    border-radius: 3px;
+}
+.bx-auth-reg p .errortext {
+    text-align: left;
+    display: block;
+    margin-left: 85px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+h1.auth-reg {
+    text-align: center;
+    font-size: 24px;
+    color: #374d5c;
+    font-weight: 500;
+    margin-top: 40px;
+}
+
+.bx-auth-reg table {
+    margin-left: 65px;
+    width: 470px;
+    position: relative;
+    float: left;
+}
+.bx-auth-reg table td {
+    padding-bottom: 10px;
+    color: #4d5e6b;
+    text-align: left;
+    font-weight: 300 ;
+    min-width: 200px;
+}
+.bx-auth-reg table td b {
+    font-weight: 300 ;
+}
+.bx-auth-reg table td:last-child {
+    width: 270px;
+}
+.bx-auth-reg table td input[type="text"],
+.bx-auth-reg table td input[type="password"] {
+    height: 35px;
+    line-height: 35px;
+    border: solid 1px #bfbfbf;
+    border-radius: 3px;
+    width: 300px;
+    background-color: #fff;
+    color: #4d5e6b;
+    font-family: "Lato",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+}
+.bx-auth-reg table td img {
+    width: 300px;
+    height: 35px;
+    border: solid 1px #bfbfbf;
+    border-radius: 3px;
+}
+.bx-auth-reg table td.errorImp input,
+.bx-auth-reg table td.errorImp .bx-slst .dropdown-block {
+    border: solid 1px red;
+}
+.bx-auth-reg table td input[type="submit"],
+.bx-auth-reg table td button {
+    border: medium none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 500;
+    height: 45px;
+    width: 268px;
+    text-transform: uppercase;
+    background: #8aa203;
+    margin-top: 30px;
+    font-family: "Lato",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+}
+.bx-auth-reg table tbody tr:last-child td {
+    padding-bottom: 30px;
+}
+.bx-auth-reg table tfoot {
+    border-top: solid 1px #bbbbbb;
+}
+.bx-auth-reg table tfoot tr td {
+    vertical-align: top;
+}
+.bx-auth-reg table tfoot tr td:first-child {
+    padding-top: 15px;
+}
+.bx-auth-reg table td a {
+    color: #6f8fa5;
+    text-decoration: underline;
+}
+.bx-auth-reg table td em.error {
+    display: block;
+    color: red;
+}
+.socServCont {
+    position: relative;
+    float: right;
+    width: 260px;
+    border-left: solid 1px #bbbbbb;
+    height: 480px;
+    padding-left: 47px;
+}
+.socServCont .linkToLogin {
+    top: 0px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+.socServCont .linkToLogin strong {
+    font-weight: 700;
+}
+.socServCont .linkToLogin a {
+    color: #4d5e6b;
+    text-decoration: underline;
+    font-weight: 300;
+}
+#bx_auth_secure {
+    display: none !important;
+}
+.successMessage strong {
+    font-size: 21px;
+    font-weight: 500;
+    padding-left: 50px;
+    margin-bottom: 25px;
+    display: inline-block;
+}
+.successMessage strong:before {
+    background: rgba(0, 0, 0, 0) url("../img/popupHeadIco.png") no-repeat scroll left top;
+    content: "";
+    height: 27px;
+    margin-left: -50px;
+    position: absolute;
+    width: 27px;
+}
+.successMessage a {
+    color: #8aa203;
+}
+.successMessage.fail strong:before {
+    background: rgba(0, 0, 0, 0) url("../img/orderFail.png") no-repeat scroll left top;
+}

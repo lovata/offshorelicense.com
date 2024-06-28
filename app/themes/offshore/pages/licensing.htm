@@ -1,0 +1,168 @@
+title = "Licensing"
+url = "/licensing"
+layout = "base"
+meta_title = "Financial Services Licensing - Licensing - Offshorelicense"
+meta_description = "Assistance with Forex, Gambling and Binaries Licensing in various jurisdictions."
+is_hidden = 0
+seo_keywords = "Forex license, Offshore Forex license, Electronic money issuer, banking license, asset management license, electronic money licenses, forex licenses, gambling licenses, ICO and Crypto setups, Payment intermediary and bank licenses, Token Licenses"
+robot_index = "index"
+robot_follow = "follow"
+contentType = "html"
+
+[SeoCmsPage]
+==
+<?php
+function onStart()
+{
+    $types = DB::table('offshorelicense_offers_licensing')
+            ->select('type')
+            ->where('disabled','<>','Yes')
+            ->groupBy('type')
+            ->get();
+     
+     foreach ($types as $type){
+          $array[$type->type] = Db::table('offshorelicense_offers_licensing')->where('type',$type->type)->where('disabled','<>','1')->orderby('name')->get();
+     }
+     
+     //noob sorting:)
+     /*if(isset ($array["Forex Licenses"]))  $array2["Forex Licenses"] = $array["Forex Licenses"];
+     if(isset ($array["Gambling Licenses"])) $array2["Gambling Licenses"] = $array["Gambling Licenses"];
+     if(isset ($array["Payment Intermediary Licenses"])) $array2["Payment Intermediary Licenses"] = $array["Payment Intermediary Licenses"];*/
+
+     
+     $this->page["List"] =$array;
+     
+     $featured = array();
+     $featured = Db::table('offshorelicense_offers_licensing')->where('featured','1')->where('disabled','<>','1')->orderby('featured_order_id')->take(4)->get();
+     $this->page["Featured"] =$featured;   
+     
+     $this->page['breadscrumbs'] = array('Home'=>$this->page['site_link'],'Licensing'=>"");
+}
+?>
+==
+<div class="page licensing">
+		
+<div class="page-top" style="height: 460px;">
+	<div class="content mainPage-list">
+		<div class="text center">
+			<h1>Financial Services Licensing</h1>
+			<h2>Top 2024 Financial Services Licenses</h2>
+		</div>
+		<div id="companies_recomended">
+			<div class="inline-warp">
+				<div class="inline-2 inline-2left bank">
+					<ul class="transparent-background">
+					
+						<div id="bxdynamic_GBEzmQ_start" style="display:none"></div>
+								
+			
+						{%for item in this.page["Featured"]%}
+						
+						
+
+
+						
+                        <li class="float-left margin-left">
+                           <a href="{{'license'|page({'slug':item.slug})}}">
+                              <div style="background-image: url('{{item.logo|media}}');"><br></div>
+                              <span><h3>{{item.name}}</h3> 
+                              <span>
+						    {{item.license_name}}     
+                              </span></span>
+
+                    				<div class="cost">
+                    				</div>
+
+                           </a>
+                        </li>
+							
+							
+						{% endfor %}
+			
+<div id="bxdynamic_GBEzmQ_end" style="display:none"></div>								<div class="clear"></div>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+{% if this.page["breadscrumbs"] %}
+ <div class="content">
+    <ul class='breadscrumbs'>
+        {%for item,url in this.page["breadscrumbs"]%}
+        <li>
+            {% if url!="" %}
+                <a href="{{url}}">{{item}}</a>
+            {% else %}
+                {{item}}
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+
+
+<div class="page-content BrowseCompaniesByRegion">
+	<div class="content">
+		<div class="text center">
+			<h3>Browse Licenses by Type</h3>
+		</div>
+		
+		
+		<style>
+		.compare-licenses-btn{
+		    position:absolute;
+		    left:910px;
+		    top:40px;
+		    margin:0px;
+		    padding:0px;
+		    white-space:nowrap;
+		    box-shadow: #00000030 0px 0px 20px;
+		}
+		</style>
+		
+	
+		<ul>
+			{%for type_name,type in this.page["List"]%}
+
+			
+				<li id="accordion_{{type_name|replace({' ':''}) }}" style="position:relative;">
+					<label onclick="$(this).parent('li').toggleClass('act')">  
+						<div class="logo"><br></div>
+						<span><label>{{type_name}}</label>
+						<span>{{type|length}} licenses available</span></span>
+					</label>
+					{% if type_name == 'Forex & Securities Dealers Licenses'%}
+					    <div class="row compare-licenses-btn"><a type="button" target=_blank href="https://www.offshorelicense.com/compare-forex" class="btn btn-primary crm-webform-submit-button" style="box-shadow: #00000040 0px 0px 15px;" value="Compare licenses">Compare products </a></div>
+					{% elseif type_name == 'Gambling Licenses'%}
+					    <div class="row compare-licenses-btn"><a type="button" target=_blank href="https://www.offshorelicense.com/compare-gambling" class="btn btn-primary crm-webform-submit-button" style="box-shadow: #00000040 0px 0px 15px;" value="Compare licenses">Compare products </a></div>
+					{% endif %}
+                    <ul>
+    					{%for item in type%}
+    						<li><a href="{{'license'|page({'slug':item.slug})}}"><div class="logo" style="background-image: url('{{item.logo|media}}');"><br></div></a>
+    							<span><a href="{{'license'|page({'slug':item.slug})}}"><label>{{item.name}}</label></a> <span>{{item.info}}</span></span>
+    							<a class="button" href="{{'license'|page({'slug':item.slug})}}">Learn more</a>
+    						</li>					
+    					{% endfor %}
+				    </ul>
+				</li>
+					
+	        {% endfor %}
+		
+		</ul>
+		
+		
+		
+                {{partial('licensing-contact-form')}}
+	</div>
+</div>
+
+
+</div>

@@ -1,0 +1,74 @@
+fields:
+    title:
+        label: Title
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    slug:
+        label: Slug
+        oc.commentPosition: ''
+        span: auto
+        preset:
+            field: title
+            type: slug
+        type: text
+    excerpt:
+        label: 'Small description for list'
+        size: small
+        oc.commentPosition: ''
+        span: full
+        type: richeditor
+    body:
+        label: Body
+        size: large
+        oc.commentPosition: ''
+        span: full
+        type: richeditor
+    published:
+        label: Published
+        span: auto
+        type: checkbox
+    image1:
+        label: 'List image'
+        oc.commentPosition: ''
+        mode: file
+        span: auto
+        type: mediafinder
+    published_datetime:
+        label: 'Publish Datetime'
+        oc.commentPosition: ''
+        mode: datetime
+        span: left
+        type: datepicker
+    image2:
+        label: 'Internal page image'
+        oc.commentPosition: ''
+        mode: file
+        span: right
+        type: mediafinder
+    tags:
+        label: Tags
+        oc.commentPosition: ''
+        span: full
+        type: text
+tabs:
+    fields:
+        meta_title:
+            label: 'Meta Title'
+            oc.commentPosition: ''
+            span: full
+            type: text
+            tab: Meta
+        meta_description:
+            label: 'Meta Description'
+            size: small
+            oc.commentPosition: ''
+            span: full
+            type: textarea
+            tab: Meta
+        meta_keywords:
+            label: 'Meta Keywords'
+            oc.commentPosition: ''
+            span: full
+            type: text
+            tab: Meta

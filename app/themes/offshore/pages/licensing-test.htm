@@ -1,0 +1,216 @@
+title = "Licensing-test"
+url = "/licensing-test"
+layout = "base"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+contentType = "html"
+
+[SeoCmsPage]
+==
+<?php
+function onStart()
+{
+    $types = DB::table('offshorelicense_offers_licensing')
+            ->select('type')
+            ->where('disabled','<>','Yes')
+            ->groupBy('type')
+            ->get();
+     
+     foreach ($types as $type){
+          $array[$type->type] = Db::table('offshorelicense_offers_licensing')->where('type',$type->type)->where('disabled','<>','Yes')->orderby('name')->get();
+     }
+     
+     //noob sorting:)
+     /*if(isset ($array["Forex Licenses"]))  $array2["Forex Licenses"] = $array["Forex Licenses"];
+     if(isset ($array["Gambling Licenses"])) $array2["Gambling Licenses"] = $array["Gambling Licenses"];
+     if(isset ($array["Payment Intermediary Licenses"])) $array2["Payment Intermediary Licenses"] = $array["Payment Intermediary Licenses"];*/
+
+     
+     $this->page["List"] =$array;
+     
+     $featured = array();
+     $featured = Db::table('offshorelicense_offers_licensing')->where('featured','1')->where('disabled','<>','Yes')->orderby('featured_order_id')->take(4)->get();
+     $this->page["Featured"] =$featured;   
+     
+     $this->page['breadscrumbs'] = array('Home'=>$this->page['site_link'],'Licensing'=>"");
+}
+?>
+==
+<div class="page licensing">
+		
+<div class="page-top" style="height: 460px;">
+	<div class="content mainPage-list">
+		<div class="text center">
+		    <div style="width:100%;position:absolute;"><a style="position:relative;float:right;margin-right:110px;margin-top:30px;" href=#><img class="table-icon" style="width:80px" src="{{'table-icon.png' | media}}"></a></div>
+			<h1>Financial Services Licensing</h1>
+			<h2>Top 2018 Financial Services Licenses</h2>
+		</div>
+		<div id="companies_recomended">
+			<div class="inline-warp">
+				<div class="inline-2 inline-2left bank">
+					<ul class="transparent-background">
+					
+						<div id="bxdynamic_GBEzmQ_start" style="display:none"></div>
+								
+			
+						{%for item in this.page["Featured"]%}
+						
+						
+
+
+						
+                        <li class="float-left margin-left">
+                           <a href="{{'license'|page({'slug':item.slug})}}">
+                              <div style="background-image: url('{{item.logo|media}}');"><br></div>
+                              <span><h3>{{item.name}}</h3> 
+                              <span>
+						    {{item.license_name}}     
+                              </span></span>
+
+                    				<div class="cost">
+                    				</div>
+
+                           </a>
+                        </li>
+							
+							
+						{% endfor %}
+			
+<div id="bxdynamic_GBEzmQ_end" style="display:none"></div>								<div class="clear"></div>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+{% if this.page["breadscrumbs"] %}
+ <div class="content">
+    <ul class='breadscrumbs'>
+        {%for item,url in this.page["breadscrumbs"]%}
+        <li>
+            {% if url!="" %}
+                <a href="{{url}}">{{item}}</a>
+            {% else %}
+                {{item}}
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+
+
+<div class="page-content BrowseCompaniesByRegion">
+	<div class="content">
+		<div class="text center">
+		    <a href=#><img class="table-icon" style="width:80px;" src="{{'table-icon.png' | media}}"></a>
+		</div>
+		<div class="text center">
+			<h3>Browse Licenses by Type</h3>
+		</div>
+		
+		
+		
+		
+					
+		<ul>
+			{%for type_name,type in this.page["List"]%}
+			
+			
+				<li id="accordion_{{type_name|replace({' ':''}) }}">
+					<label onclick="$(this).parent('li').toggleClass('act')">  
+						<div class="logo"><br></div>
+						<span><label>{{type_name}}</label>
+						<span>{{type|length}} licenses available</span></span>
+					</label>
+                    <ul>
+    					{%for item in type%}
+    						<li><a href="{{'license'|page({'slug':item.slug})}}"><div class="logo" style="background-image: url('{{item.logo|media}}');"><br></div></a>
+    							<span><a href="{{'license'|page({'slug':item.slug})}}"><label>{{item.name}}</label></a> <span>{{item.info}}</span></span>
+    							<a class="button" href="{{'license'|page({'slug':item.slug})}}">Learn more</a>
+    						</li>					
+    					{% endfor %}
+				    </ul>
+				</li>
+					
+	        {% endfor %}
+		
+		</ul>
+		
+		
+		
+                {{partial('licensing-contact-form')}}
+	</div>
+</div>
+
+
+</div>
+
+
+
+
+<style>
+#table-icon-dialog{
+    padding:0px !important;
+}
+.table-dialog.ui-dialog{
+    padding: 26px 25px 5px 25px;
+}
+.table-dialog .ui-dialog-title{
+    display:none;
+}
+.table-dialog .ui-dialog-titlebar{
+    padding-bottom: 0px;
+}
+</style>
+
+
+<div id="table-icon-dialog" title="" style="padding-left:50px;">
+    <img style="width:100%;" src="{{'table.png' | media}}">
+</div>
+
+
+
+<script>
+    $( function() {
+         $('#table-icon-dialog').dialog({
+             autoOpen: false,
+             height: 'auto',
+             width: "596px",
+             position: ["50%", "50%"],
+             modal:true,
+             dialogClass:"table-dialog",
+             create: function (event) {
+                var h = window.innerHeight;
+                var posH;
+                posH = 1;
+               /* if (h>700) posH = 5;
+                if (h>800) posH = 10;
+                if (h>900) posH = 20;*/
+               $(event.target).parent().css({ 'position': 'absolute', "left": "50%", "top": posH+"%", "margin-left": "-350px" });
+             },
+             open: function()
+            {
+                var dialog = this;
+                $('.ui-widget-overlay').on('click', function()
+                {
+                    $(dialog).dialog('close');
+                });
+            },
+            close: function(){
+
+            }
+         });
+          
+         $(".table-icon").click(function(){
+             $('#table-icon-dialog').dialog('open');   
+         })
+      } );
+</script>

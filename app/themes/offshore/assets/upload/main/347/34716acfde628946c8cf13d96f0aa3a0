@@ -1,0 +1,289 @@
+<code> 	Defines programming code
+<kbd> 	Defines keyboard input 
+<samp> 	Defines computer output
+<var> 	Defines a variable
+<pre> 	Defines preformatted text
+
+<abbr> 	Defines an abbreviation or acronym
+<address> 	Defines contact information for the author/owner of a document
+<bdo> 	Defines the text direction
+<blockquote> 	Defines a section that is quoted from another source
+<cite> 	Defines the title of a work
+<q> 	Defines a short inline quotation
+
+
+_blank - Opens the linked document in a new window or tab
+_self - Opens the linked document in the same window/tab as it was clicked (this is default)
+_parent - Opens the linked document in the parent frame
+_top - Opens the linked document in the full body of the window
+framename - Opens the linked document in a named frame
+
+We have added "border:0" to prevent IE9 (and earlier) from displaying a border around the image.
+border:0; is added to prevent IE9 (and earlier) from displaying a border around the image (when the image is a link).
+ 
+<img> 	Defines an image
+<map> 	Defines an image-map
+<area> 	Defines a clickable area inside an image-map
+
+border-collapse: collapse; - If you want the borders to collapse into one border, add the CSS border-collapse property
+colspan
+rowspan
+The <caption> tag must be inserted immediately after the <table> tag.
+
+<table> 	Defines a table
+<th> 	Defines a header cell in a table
+<tr> 	Defines a row in a table
+<td> 	Defines a cell in a table
+<caption> 	Defines a table caption
+<colgroup> 	Specifies a group of one or more columns in a table for formatting
+<col> 	Specifies column properties for each column within a <colgroup> element
+<thead> 	Groups the header content in a table
+<tbody> 	Groups the body content in a table
+<tfoot> 	Groups the footer content in a table
+
+ list-style-type:
+ disc 	Sets the list item marker to a bullet (default)
+circle 	Sets the list item marker to a circle
+square 	Sets the list item marker to a square
+none 	The list items will not be marked
+
+Type 	Description
+type="1" 	The list items will be numbered with numbers (default)
+type="A" 	The list items will be numbered with uppercase letters
+type="a" 	The list items will be numbered with lowercase letters
+type="I" 	The list items will be numbered with uppercase roman numbers
+type="i" 	The list items will be numbered with lowercase roman numbers
+
+The <dl> tag defines the description list, the <dt> tag defines the term (name), and the <dd> tag describes each term: 
+<ul> 	Defines an unordered list
+<ol> 	Defines an ordered list
+<li> 	Defines a list item
+<dl> 	Defines a description list
+<dt> 	Defines the term in a description list
+<dd> 	Defines the description in a description list
+
+An iframe can be used as the target frame for a link.
+The target attribute of the link must refer to the name attribute of the iframe:
+
+document.getElementById("demo").style.fontSize = "25px";
+document.getElementById("demo").style.color = "red";
+
+<script>
+function light(sw) {
+    var pic;
+    if (sw == 0) {
+        pic = "pic_bulboff.gif"
+    } else {
+        pic = "pic_bulbon.gif"
+    }
+    document.getElementById('myImage').src = pic;
+}
+</script>
+
+<img id="myImage" src="pic_bulboff.gif" width="100" height="180">
+
+<p>
+<button type="button" onclick="light(1)">Light On</button>
+<button type="button" onclick="light(0)">Light Off</button>
+</p>
+
+document.getElementById("demo").innerHTML - write in to demo
+ document.getElementById("demo").style.fontSize - fontsize change
+document.getElementById("demo").style.color - color change 
+
+<meta http-equiv="refresh" content="30">
+The <base> element specifies the base URL and base target for all relative URLs in a page:
+
+<head> 	Defines information about the document
+<title> 	Defines the title of a document
+<base> 	Defines a default address or a default target for all links on a page
+<link> 	Defines the relationship between a document and an external resource
+<meta> 	Defines metadata about an HTML document
+<script> 	Defines a client-side script
+<style> 	Defines style information for a document
+
+HTML Layout Elements
+<header> - Defines a header for a document or a section
+<nav> - Defines a container for navigation links
+<section> - Defines a section in a document
+<article> - Defines an independent self-contained article
+<aside> - Defines content aside from the content (like a sidebar)
+<footer> - Defines a footer for a document or a section
+<details> - Defines additional details
+<summary> - Defines a heading for the <details> element
+
+Result 	Description 	Entity Name 	Entity Number
+	non-breaking space 	&nbsp; 	&#160;
+< 	less than 	&lt; 	&#60;
+> 	greater than 	&gt; 	&#62;
+& 	ampersand 	&amp; 	&#38;
+" 	double quotation mark 	&quot; 	&#34;
+' 	single quotation mark (apostrophe) 	&apos; 	&#39;
+¢ 	cent 	&cent; 	&#162;
+£ 	pound 	&pound; 	&#163;
+¥ 	yen 	&yen; 	&#165;
+€ 	euro 	&euro; 	&#8364;
+© 	copyright 	&copy; 	&#169;
+® 	registered trademark 	&reg; 	&#174;
+Mark 	Character 	Construct 	Result
+ ̀ 	a 	a&#768; 	à
+ ́ 	a 	a&#769; 	á
+̂ 	a 	a&#770; 	â
+ ̃ 	a 	a&#771; 	ã
+ ̀ 	O 	O&#768; 	Ò
+ ́ 	O 	O&#769; 	Ó
+̂ 	O 	O&#770; 	Ô
+ ̃ 	O 	O&#771; 	Õ
+ Char 	Number 	Entity 	Description
+∀ 	&#8704; 	&forall; 	FOR ALL
+∂ 	&#8706; 	&part; 	PARTIAL DIFFERENTIAL
+∃ 	&#8707; 	&exist; 	THERE EXISTS
+∅ 	&#8709; 	&empty; 	EMPTY SETS
+∇ 	&#8711; 	&nabla; 	NABLA
+∈ 	&#8712; 	&isin; 	ELEMENT OF
+∉ 	&#8713; 	&notin; 	NOT AN ELEMENT OF
+∋ 	&#8715; 	&ni; 	CONTAINS AS MEMBER
+∏ 	&#8719; 	&prod; 	N-ARY PRODUCT
+∑ 	&#8721; 	&sum; 	N-ARY SUMMATION
+Char 	Number 	Entity 	Description
+Α 	&#913; 	&Alpha; 	GREEK CAPITAL LETTER ALPHA
+Β 	&#914; 	&Beta; 	GREEK CAPITAL LETTER BETA
+Γ 	&#915; 	&Gamma; 	GREEK CAPITAL LETTER GAMMA
+Δ 	&#916; 	&Delta; 	GREEK CAPITAL LETTER DELTA
+Ε 	&#917; 	&Epsilon; 	GREEK CAPITAL LETTER EPSILON
+Ζ 	&#918; 	&Zeta; 	GREEK CAPITAL LETTER ZETA
+Char 	Number 	Entity 	Description
+© 	&#169; 	&copy; 	COPYRIGHT SIGN
+® 	&#174; 	&reg; 	REGISTERED SIGN
+€ 	&#8364; 	&euro; 	EURO SIGN
+™ 	&#8482; 	&trade; 	TRADEMARK
+← 	&#8592; 	&larr; 	LEFTWARDS ARROW
+↑ 	&#8593; 	&uarr; 	UPWARDS ARROW
+→ 	&#8594; 	&rarr; 	RIGHTWARDS ARROW
+↓ 	&#8595; 	&darr; 	DOWNWARDS ARROW
+♠ 	&#9824; 	&spades; 	BLACK SPADE SUIT
+♣ 	&#9827; 	&clubs; 	BLACK CLUB SUIT
+♥ 	&#9829; 	&hearts; 	BLACK HEART SUIT
+♦ 	&#9830; 	&diams; 	BLACK DIAMOND SUIT
+
+For HTML4:
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+For HTML5:
+<meta charset="UTF-8"> 
+
+The Most Important Differences from HTML:
+Document Structure
+
+    XHTML DOCTYPE is mandatory
+    The xmlns attribute in <html> is mandatory
+    <html>, <head>, <title>, and <body> are mandatory
+
+XHTML Elements
+
+    XHTML elements must be properly nested
+    XHTML elements must always be closed
+    XHTML elements must be in lowercase
+    XHTML documents must have one root element
+
+XHTML Attributes
+
+    Attribute names must be in lower case
+    Attribute values must be quoted
+    Attribute minimization is forbidden
+
+How to Convert from HTML to XHTML
+
+    Add an XHTML <!DOCTYPE> to the first line of every page
+    Add an xmlns attribute to the html element of every page
+    Change all element names to lowercase
+    Close all empty elements
+    Change all attribute names to lowercase
+    Quote all attribute values
+
+  <input type="radio" name="gender" value="male" checked> Male<br>
+  <input type="radio" name="gender" value="female"> Female<br>
+  <input type="radio" name="gender" value="other"> Other 
+  
+  Here is the list of <form> attributes:
+Attribute 	Description
+accept-charset 	Specifies the charset used in the submitted form (default: the page charset).
+action 	Specifies an address (url) where to submit the form (default: the submitting page).
+autocomplete 	Specifies if the browser should autocomplete the form (default: on).
+enctype 	Specifies the encoding of the submitted data (default: is url-encoded).
+method 	Specifies the HTTP method used when submitting the form (default: GET).
+name 	Specifies a name used to identify the form (for DOM usage: document.forms.name).
+novalidate 	Specifies that the browser should not validate the form.
+target 	Specifies the target of the address in the action attribute (default: _self).
+ <button type="button" onclick="alert('Hello World!')">Click Me!</button>
+
+Tag 	Description
+<form> 	Defines an HTML form for user input
+<input> 	Defines an input control
+<textarea> 	Defines a multiline input control (text area)
+<label> 	Defines a label for an <input> element
+<fieldset> 	Groups related elements in a form
+<legend> 	Defines a caption for a <fieldset> element
+<select> 	Defines a drop-down list
+<optgroup> 	Defines a group of related options in a drop-down list
+<option> 	Defines an option in a drop-down list
+<button> 	Defines a clickable button
+<datalist> 	Specifies a list of pre-defined options for input controls
+<keygen> 	Defines a key-pair generator field (for forms)
+<output> 	Defines the result of a calculation
+HTML5 added the following attributes for <input>:
+
+    autocomplete
+    autofocus
+    form
+    formaction
+    formenctype
+    formmethod
+    formnovalidate
+    formtarget
+    height and width
+    list
+    min and max
+    multiple
+    pattern (regexp)
+    placeholder
+    required
+    step
+
+and the following attributes for <form>:
+
+    autocomplete
+    novalidate
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My First Google Map</h1>
+
+<div id="map" style="width:400px;height:400px;background:yellow"></div>
+
+<script>
+function myMap() {
+    var mapOptions = {
+        center: new google.maps.LatLng(51.5, -0.12),
+        zoom: 10,
+        mapTypeId: google.maps.MapTypeId.HYBRID
+    }
+var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+
+</body>
+</html>
+
+The getCurrentPosition() Method - Return Data
+Property 	Returns
+coords.latitude 	The latitude as a decimal number (always returned)
+coords.longitude 	The longitude as a decimal number (always returned)
+coords.accuracy 	The accuracy of position (always returned)
+coords.altitude 	The altitude in meters above the mean sea level (returned if available)
+coords.altitudeAccuracy 	The altitude accuracy of position (returned if available)
+coords.heading 	The heading as degrees clockwise from North (returned if available)
+coords.speed 	The speed in meters per second (returned if available)
+timestamp 	The date/time of the response (returned if available)

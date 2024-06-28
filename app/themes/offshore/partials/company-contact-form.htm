@@ -1,0 +1,144 @@
+[viewBag]
+==
+<div class="customServiceCont">
+		<a id="dialog-company-form-btn" class="web-form-popup-btn-8" data-title="Request Merchant Pre-Check Process">APPLY NOW!</a><span>Not sure what Company to choose? Leave your application online! We will get back to you with a free 15 minutes consultation.</span>
+	</div>
+
+
+<div id="dialog-company" title="Having trouble finding something?" style="padding-left:50px;">
+  <p style="color:#334D5C;font-weight:300;font-family: 'Lato', sans-serif;margin-bottom:30px;">
+  Do not hesitate to submit the form below and our team will contact you shortly!
+  </p>
+
+<form
+    data-request="onSendUniversalForm"
+    data-request-success="$('#dialog-company').dialog('close');$('#dialog-thankyou').dialog('open')"
+    data-request-update="'ajax-response': '.thankyou-dialog .ui-dialog-title'"
+    data-request-validate
+    data-request-flash
+    class="form-horizontal"
+    >
+
+    <input type="hidden" name='url' value="{{ ''| page }}">
+    <input type="hidden" name='product_type' value="67">
+    <input type="hidden" name='product_name' value="{{ record.name }}">
+    
+    <div class="form-group row crm-webform-group">
+        <div class="">
+            <input class="form-control crm-webform-input" name="firstname" placeholder="Name*"/>
+            <span data-validate-for="firstname" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+
+    <div class="form-group row crm-webform-group">
+        <div class="">
+            <input class="form-control crm-webform-input" name="lastname" placeholder="Lastname*" />
+            <span data-validate-for="lastname" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+    <div class="form-group row crm-webform-group">
+        <div class="">
+            <input class="form-control crm-webform-input" name="email" placeholder="E-mail*"/>
+            <span data-validate-for="email" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+    <div class="form-group row crm-webform-group" style="width:50%;margin:0px;float:left;">
+        <div class="" style="width:95%">
+            <input class="form-control crm-webform-input" name="skype" placeholder="Skype name"/>
+            <span data-validate-for="skype" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+    <div class="form-group row crm-webform-group" style="width:50%;margin:0px;float:right;">
+        <div class="" style="width:95%;float:right">
+            <input class="form-control crm-webform-input" name="phone" placeholder="Phone*"/>
+            <span data-validate-for="phone" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+    <div class="form-group row crm-webform-group">
+        <div class="">
+            <textarea class="form-control crm-webform-input" name="message" placeholder="Your comment..." ></textarea>
+            <span data-validate-for="message" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+<div class="crm-webform-label-content">
+	<div>
+	<label class="crm-webform-checkbox-container crm-webform-checkbox-checkbox">
+    	<input class="crm-webform-checkbox crm-webform-input-checkbox crm-webform-input" type="checkbox" name="LEAD_UF_CRM_1528724976" id="LEAD_UF_CRM_1528724976" value="Y"> 
+    	<i></i>
+    	<span class="crm-webform-checkbox-name highlight-when-not-checked">I agree to receive emails about Offshorelicense products and services (You can unsubscribe at any time)</span>
+	</label>
+	</div>
+</div>
+
+    <div class="row">
+    
+        <button type=button  onclick="processform2()" class="btn btn-primary crm-webform-submit-button">
+            Submit a question
+        </button>
+        
+        <button style="display:none;" id="dialog-submit"  class="btn btn-primary crm-webform-submit-button" type=submit data-attach-loading>
+            Request a contact
+        </button>
+    </div>
+<br/>
+</form>
+
+</div>
+
+
+<script>
+    function processform2(){
+        if ($(".highlight-when-not-checked").hasClass("highlighted-when-not-checked"))
+            {
+             $("#dialog-submit").click();
+             return
+            }
+        if ($("#LEAD_UF_CRM_1528724976:checked").val()==undefined)
+         $(".highlight-when-not-checked").addClass("highlighted-when-not-checked");
+         else
+         $("#dialog-submit").click();
+    }
+</script>
+
+<script>
+    $( function() {
+         $('#dialog-company').dialog({
+             autoOpen: false,
+             height: 'auto',
+             width: "500px",
+             position: ["50%", "50%"],
+             modal:true,
+             dialogClass:"contact-us-dialog",
+             create: function (event) {
+                var h = window.innerHeight;
+                var posH;
+                posH = 1;
+                if (h>700) posH = 5;
+                if (h>800) posH = 10;
+                if (h>900) posH = 20;
+               $(event.target).parent().css({ 'position': 'fixed', "left": "50%", "top": posH+"%", "margin-left": "-250px" });
+             },
+             open: function()
+            {
+                var dialog = this;
+                $('.ui-widget-overlay').on('click', function()
+                {
+                    $(dialog).dialog('close');
+                });
+            },
+            close: function(){
+
+            }
+         });
+          
+         $("#dialog-company-form-btn").click(function(){
+             $('#dialog-company').dialog('open');   
+         })
+      } );
+</script>

@@ -1,0 +1,4 @@
+title: BanksController
+modelClass: Offshorelicense\Storage\Models\Banks
+toolbar:
+    buttons: reorder_toolbar

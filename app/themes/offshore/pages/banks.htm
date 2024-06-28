@@ -1,0 +1,384 @@
+title = "Banks"
+url = "/banks"
+layout = "base"
+meta_title = "Corporate and Personal Offshore Bank Account Opening - Banks - Offshorelicense"
+meta_description = "Corporate and personal bank account opening for various business needs"
+is_hidden = 0
+seo_keywords = "Bank account opening, individual bank account, corporate bank account, personal bank account, offshore bank account, foreign bank account, bank accounts for Forex, bank account for FX, bank accounts for Crypto, bank accounts for Binaries, tax heaven,"
+robot_index = "index"
+robot_follow = "follow"
+contentType = "html"
+
+[SeoCmsPage]
+==
+<?php
+function onStart()
+{
+    $array = $array2 = array();
+    
+    $regions = DB::table('offshorelicense_offers_banks')
+            ->select('region')
+            ->where('type','personal')
+            ->where('disabled','<>','Yes')
+            ->groupBy('region')
+            ->get();
+     
+     foreach ($regions as $region){
+          $array[$region->region] = Db::table('offshorelicense_offers_banks')->where('region',$region->region)->where('type','personal')->where('disabled','<>','1')->orderby('name')->get();
+     }
+     
+     //noob sorting:)
+     /*if(isset ($array["Eastern Europe"]))  $array2["Eastern Europe"] = $array["Eastern Europe"];
+     if(isset ($array["Western Europe"])) $array2["Western Europe"] = $array["Western Europe"];
+     if(isset ($array["Asia"])) $array2["Asia"] = $array["Asia"];
+     if(isset ($array["Africa"])) $array2["Africa"] = $array["Africa"];
+     if(isset ($array["Pacific"])) $array2["Pacific"] = $array["Pacific"];
+     if(isset ($array["Caribbean Region"])) $array2["Caribbean Region"] = $array["Caribbean Region"];*/
+     
+     $this->page["List"] =$array;
+     
+     
+     $array = $array2 = array();
+     
+    $regions = DB::table('offshorelicense_offers_banks')
+            ->select('region')
+            ->where('type','corporate')
+            ->where('disabled','<>','Yes')
+            ->groupBy('region')
+            ->get();
+     
+     foreach ($regions as $region){
+          $array[$region->region] = Db::table('offshorelicense_offers_banks')->where('region',$region->region)->where('type','corporate')->where('disabled','<>','1')->orderby('name')->get();
+     }
+     
+     //noob sorting:)
+     /*if(isset ($array["Eastern Europe"]))  $array2["Eastern Europe"] = $array["Eastern Europe"];
+     if(isset ($array["Western Europe"])) $array2["Western Europe"] = $array["Western Europe"];
+     if(isset ($array["Asia"])) $array2["Asia"] = $array["Asia"];
+     if(isset ($array["Africa"])) $array2["Africa"] = $array["Africa"];
+     if(isset ($array["Pacific"])) $array2["Pacific"] = $array["Pacific"];
+     if(isset ($array["Caribbean Region"])) $array2["Caribbean Region"] = $array["Caribbean Region"];*/
+     
+     $this->page["List2"] =$array;     
+     
+     
+     
+     $featuredPersonal = array();
+     $featuredPersonal = Db::table('offshorelicense_offers_banks')->where('type','personal')->where('featured','1')->where('disabled','<>','1')->orderby('featured_order_id')->take(2)->get();
+     $this->page["FeaturedPersonal"] =$featuredPersonal;
+     
+          
+     $featuredCorporate = array();
+     $featuredCorporate = Db::table('offshorelicense_offers_banks')->where('type','corporate')->where('featured','1')->where('disabled','<>','1')->orderby('featured_order_id')->take(2)->get();
+     $this->page["FeaturedCorporate"] =$featuredCorporate;    
+     
+     
+     $this->page['breadscrumbs'] = array('Home'=>$this->page['site_link'],'Banks'=>"");
+
+     
+     
+}
+?>
+==
+<div class="page">
+		
+<div class="page-top" style="height: 460px;">
+    <div class="content mainPage-list" style="padding-bottom: 0;">
+        <div class="text center">
+            <h1>Open Offshore Bank Account</h1>
+            <div class="inline-warp" style="margin-top: 15px;">
+                <div class="inline-2" style="width: 38%">
+                    <h2>Best Corporate Bank Accounts</h2>
+                </div>
+                <div class="inline-2">
+                    <h2>Best Personal Bank Accounts</h2>
+                </div>
+            </div>
+        </div>
+        <div id="companies_recomended">
+            <div class="inline-warp">
+                <div class="inline-2 inline-2left bank">
+                    <ul style="background-color: transparent;">
+                        <div id="bxdynamic_9POZg9_start" style="display:none"></div>
+                        
+                        
+                  {%for item in this.page["FeaturedCorporate"]%}
+                  <li class="margin-left" style="">
+                     <a href="{{'bank'|page({'type':item.type, 'slug':item.slug})}}">
+                        <div class="logo" style="background-image: url('{{item.logo|media}}');"></div>
+                        <span>
+                        <h3>{{item.name}}</h3>
+                        <span>{{item.country}}</span>
+                        </span>
+                        <div class="cost">
+        					<span>Starting from</span>
+                           <h5>€{{item.price| number_format(0, '.', ',') }}</h5>
+                        </div>
+                     </a>
+                  </li>
+                  {% endfor %}
+	
+	
+	
+	
+<div id="bxdynamic_9POZg9_end" style="display:none"></div>                    </ul>
+<!--                </div>
+            </div>
+            <div class="inline-warp">
+                <div class="inline-2 bank">-->
+                    <ul style="background-color: transparent;">
+                        <div id="bxdynamic_HPJQZ6_start" style="display:none"></div>
+                        
+                        
+                        
+                {%for item in this.page["FeaturedPersonal"]%}
+                  <li class="margin-left" style="">
+                     <a href="{{'bank'|page({'type':item.type, 'slug':item.slug})}}">
+                        <div class="logo" style="background-image: url('{{item.logo|media}}');"></div>
+                        <span>
+                        <h3>{{item.name}}</h3>
+                        <span>{{item.country}}</span>
+                        </span>
+                        <div class="cost">
+        					<span>Starting from</span>
+                           <h5>€{{item.price| number_format(0, '.', ',') }}</h5>
+                        </div>
+                     </a>
+                  </li>
+                  {% endfor %}
+                  
+                  
+<div id="bxdynamic_HPJQZ6_end" style="display:none"></div>                    </ul>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-------------------------------------------------->
+<!-----------END Recommended companies-------------->
+<!-------------------------------------------------->
+
+
+
+
+{% if this.page["breadscrumbs"] %}
+ <div class="content">
+    <ul class='breadscrumbs'>
+        {%for item,url in this.page["breadscrumbs"]%}
+        <li>
+            {% if url!="" %}
+                <a href="{{url}}">{{item}}</a>
+            {% else %}
+                {{item}}
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+
+
+ <div class="page-content BrowseBanksByRegion">
+    <div class="content">
+        <div class="text center">
+            <h3>Browse Banks by Region</h3>
+        </div>
+        <tab class="smallBanks init">
+            <section id="tab_corporate" class="act" data-icon="companySmall" data-id="1"><a>Corporate bank account</a></section>
+            <section id="tab_personal" data-icon="userSmall" data-id="2"><a>Personal bank account</a></section>
+        </tab>
+        <tabcontent>
+            <section class="act" data-id="1">
+                <div class="content">
+                    <div class="BrowseCompaniesByRegion">
+	<div class="content">
+	
+	
+	
+	
+	<ul>
+			{%for region_name,region in this.page["List2"]%}
+			
+			
+				<li id="accordion_corporate{{region_name|replace({' ':''}) }}">
+					<label onclick="$(this).parent('li').toggleClass('act')">  
+						<div class="logo"><br></div>
+						<span><label>{{region_name}}</label> <span>{{region|length}} banks available</span></span>
+					</label>
+                    <ul>
+    					{%for item in region%}
+    						<li><a href="{{'bank'|page({'type':item.type, 'slug':item.slug})}}"><div class="logo" style="background-image: url('{{item.logo|media}}');"><br></div></a>
+    							<span><a href="{{'bank'|page({'type':item.type, 'slug':item.slug})}}"><label>{{item.name}}</label></a> <span>{{item.country}}</span></span>
+    							<a class="button" href="{{'bank'|page({'type':item.type, 'slug':item.slug})}}">Learn more</a>
+        						<div class="cost">
+        						<span>Starting from</span><br>
+        						    <h5>€{{item.price| number_format(0, '.', ',') }}</h5>
+        						</div>
+    						</li>					
+    					{% endfor %}
+				    </ul>
+				</li>
+					
+	        {% endfor %}
+	</ul>
+	
+	
+	
+	</div>
+</div>
+                </div>
+            </section>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <section data-id="2">
+                <div class="content">
+                    <div class="BrowseCompaniesByRegion">
+	<div class="content">
+	
+	
+	
+	
+	<ul>
+			{%for region_name,region in this.page["List"]%}
+			
+			
+				<li id="accordion_personal{{region_name|replace({' ':''}) }}">
+					<label onclick="$(this).parent('li').toggleClass('act')">  
+						<div class="logo"><br></div>
+						<span><label>{{region_name}}</label> <span>{{region|length}} banks available</span></span>
+					</label>
+                    <ul>
+    					{%for item in region%}
+    						<li><a href="{{'bank'|page({'type':item.type, 'slug':item.slug})}}"><div class="logo" style="background-image: url('{{item.logo|media}}');"><br></div></a>
+    							<span><a href="{{'bank'|page({'type':item.type, 'slug':item.slug})}}"><label>{{item.name}}</label></a> <span>{{item.country}}</span></span>
+    							<a class="button" href="{{'bank'|page({'type':item.type, 'slug':item.slug})}}">Learn more</a>
+        						<div class="cost">
+        						<span>Starting from</span><br>
+        						    <h5>€{{item.price| number_format(0, '.', ',') }}</h5>
+        						</div>
+    						</li>					
+    					{% endfor %}
+				    </ul>
+				</li>
+					
+	        {% endfor %}
+	</ul>
+	
+	</div>
+</div>
+                </div>
+            </section>
+        </tabcontent>
+    </div>
+</div>
+
+ <div class="page-content EverythingYouNeedToKnow">
+    <div class="content banks">
+        <div class="text center">
+            <h3>Everything you need to know about bank account opening</h3>
+        </div>
+        <tab class="init">
+            <section data-icon="service" data-id="1" class="act"><a>Why?</a></section>
+            <section data-icon="document" data-id="2"><a>How?</a></section>
+            <section data-icon="profile" data-id="3"><a>Where?</a></section>
+                    </tab>
+        <tabcontent>
+            <section data-id="1" class="text act"><p>
+	 Offshorelicense has built up strong association with international banks in over 50 different jurisdictions. We believe that Offshorelicense offers the best combination of service, pricing and quality, with no hidden costs.
+</p>
+<h5>Bank accounts opening procedure includes:</h5>
+<ul>
+	<li>Verifying personal &amp; corporate documentation.</li>
+	<li>Completion of the bank forms which will be forwarded to you for signing with relevant instructions.</li>
+	<li>Sending the full package to the bank for final approval.</li>
+	<li>Monitoring the account opening process until account allocation and banking package is received.</li>
+</ul>
+<h5>Please Note</h5>
+<p>
+	The prices listed on our website for assistance of bank account opening include professional fees only and do not cover any bank charges and commissions for account maintenance or transactions.
+</p>
+<p>
+	Our professional fees are stated for companies, which business activities do not require professional licensing and regulation (e.g. trading, holding, service or real estate companies, etc.). If you own a financial company dealing with third-party funds (e.g. Forex brokerage) or any other company licensed and regulated by the recognized government authority, please contact us for a quote.
+</p>
+<p>
+	If you are looking to open a bank account in a particular bank or country, please contact us by submitting one of our online contact forms or sending an e-mail to <a href="mailto:info@offshorelicense.com">info@offshorelicense.com</a> or simply by calling us at <b>+44 (2038) 07 15 07</b>.
+</p>
+<p>
+	Banks are entitled at their sole discretion to accept or reject applications to open an account, as such we will introduce you to the bank and guide through all account opening process, however we cannot guarantee that your account will be approved by the bank and successfully opened.
+</p></section>
+            <section data-id="2" class="text"><p><b>REQUIREMENTS FOR OPENING AN INDIVIDUAL BANK ACCOUNT</b></p>
+<hr>
+<h5>Please provide the following documents for all Authorized Signatories:</h5>
+<ul>
+	<li>Notarized copy of valid passport</li>
+	<li>Original or Certified copy of utility bill / bank statement (must not be older than 3 months).</li>
+	<li>Original or certified copy of Banker’s reference letter (must not be older than 3 months).</li>
+	<li>An Application Form</li>
+	<li>Personal CV</li>
+</ul>
+<h5>Please Note</h5>
+<ul>
+	<li>Documents that are not in English must be accompanied by a certified translation.</li>
+	<li>Once all documentation is available please email electronic copies to our representative for review; incomplete or unexecuted forms can create delays in the account opening process.</li>
+</ul>
+</section>
+            <section data-id="3" class="text"><p><b>REQUIREMENTS FOR OPENING A CORPORATE BANK ACCOUNT</b></p>
+<hr>
+<h5>For the Company:</h5>
+<h5>A set of legalized company documents consisting of:</h5>
+<ul>
+	<li>Certificate of Incorporation</li>
+	<li>Memorandum and Articles of Associations, documents confirming the appointment of company directors and secretary (if any), a document confirming the location of the registered office, Share Certificate(s), Certificate of Good Standing if the company is more than 12 months old.</li>
+	<li>Copy of the Corporate Structure, identifying the ultimate beneficial owner(s)</li>
+	<li>Valid License (if applicable)</li>
+</ul>
+
+<h5>For each director, shareholder, secretary, authorised signatory and ultimate beneficial owner:</h5>
+<ul>
+	<li>Notarized copy of valid passport</li>
+	<li>The passport must be signed and signature must match the signature in the application form.</li>
+	<li>The photograph must be clear and of good quality.</li>
+	<li>Original or notarized copy of utility bill / bank statement dated within 3 months as verification of residential address.</li>
+	<li>Original or notarized copy of Banker's reference letter, dated within 3 months</li>
+	<li>Power of Attorney (where applicable)</li>
+	<li>Personal CV</li>
+</ul>
+
+<h5>For each corporate officer (Where the company directors or shareholders are legal entities), please provide:</h5>
+<h5>A set of legalized company documents consisting of:</h5>
+<ul>
+	<li>Copy of constitutional documents (Certificate of Incorporation, Articles, etc.).</li>
+	<li>Copy of Corporate Register (which shall include Register of Shareholders, Directors and Secretary).</li>
+	<li>Copy of the Corporate Structure.</li>
+	<li>Certificate of Good Standing</li>
+</ul>
+
+<h5>Please Note</h5>
+<ul>
+	<li>Documents that are not in English must be accompanied by a certified translation.</li>
+	<li>Once all documentation is available please email electronic copies to our representative for review; incomplete or unexecuted forms can create delays in the account opening process.</li>
+</ul>
+</section>
+                    </tabcontent>
+    </div>
+</div>
+
+</div>

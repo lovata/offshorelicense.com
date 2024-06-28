@@ -1,0 +1,4 @@
+title: Additional
+modelClass: Offshorelicense\Offers\Models\Additional
+toolbar:
+    buttons: reorder_toolbar

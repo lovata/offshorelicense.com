@@ -1,0 +1,11 @@
+name: Companies
+modelClass: Offshorelicense\Offers\Models\Companies
+form: $/offshorelicense/offers/models/companies/fields.yaml
+defaultRedirect: offshorelicense/offers/companies
+create:
+    redirect: 'offshorelicense/offers/companies/update/:id'
+    redirectClose: offshorelicense/offers/companies
+update:
+    redirect: offshorelicense/offers/companies
+    redirectClose: offshorelicense/offers/companies
+preview: {  }

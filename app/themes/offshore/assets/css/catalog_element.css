@@ -1,0 +1,293 @@
+#page .page .page-top#companyDetailTop {
+	height: 300px;
+}
+
+#page .page #companyDetailInfo {
+	background: #fff;
+}
+
+#page .page #companyDetailInfo div.cont {
+	width: 885px;
+	margin: 0px auto;
+	padding: 32px 0px;
+	min-height: 65px;
+}
+
+#page .page #companyDetailInfo div.cont logo {
+	width: 110px;
+	display: table-cell;
+	padding-right:15px;
+	background: url('../img/menuCompanyBigGrean.png') no-repeat center center;
+	height: 62px;
+}
+
+#page .page #companyDetailInfo div.cont span {
+	display: table-cell;
+	font-size: 16px;
+	color: #1e2b34;
+	font-weight: 300;
+}
+
+#companyDetailTop .content.mainPage-list {
+	padding-top: 80px;
+}
+
+#page .page .page-top#companyDetailTop .content .text {
+	top: 80px;
+}
+
+#page .page .page-top#companyDetailTop div.companyInfo {
+    display: block;
+	margin: 0px auto;
+    margin-bottom: 10px;
+    background-color: rgba(255,255,255, 0.8);
+    padding: 15px 52px 15px 12px;
+    font-size: 0;
+	width: 821px;
+}
+
+#page .page .page-top#companyDetailTop div.companyInfo logo {
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    margin: 3px 25px 3px 10px;
+    border: 1px solid #d0d0d0;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    vertical-align: top;
+    background-repeat: no-repeat;
+}
+
+#page .page .page-top#companyDetailTop div.companyInfo > span {
+    display: inline-block;
+    font-size: 16px;
+    vertical-align: top;
+    height: 68px;
+    width: 586px;
+    padding: 0 10px 0 25px;
+    border-left: 3px solid #adbe4f;
+}
+
+#page .page .page-top#companyDetailTop div.companyInfo > span label {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e2b34;
+    display: flex;
+    line-height: 22px;
+    padding-bottom: 8px;
+}
+
+#page .page .page-top#companyDetailTop div.companyInfo > span span {
+    font-size: 16px;
+    color: #374d5c;
+    font-weight: 300;
+    line-height: 19px;
+    display: flex;
+	height:38px;
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align: left;
+}
+
+#page .page .page-top#companyDetailTop div.companyInfo .cost {
+    float: right;
+    display: block;
+    width: 90px;
+    height: 46px;
+    vertical-align: middle;
+    text-align: right;
+    padding: 11px 0;
+}
+
+#page .page .page-top#companyDetailTop div.companyInfo .cost h5 {
+    font-size: 30px;
+    color: #1e2b34;
+    font-weight: 700;
+    display: block;
+	line-height:46px;
+}
+
+#companyDetailBody {
+	padding-top: 50px;
+	width: 885px;
+	margin: 0px auto;
+	margin-bottom: 100px;
+}
+#companyDetailBody table {
+	width: 100%;
+	border-collapse: collapse;
+}
+#companyDetailBody table tr.moreBlock td,
+#companyDetailBody table tr.moreBlock td * {
+	display: none;
+}
+#companyDetailBody table thead > tr > th {
+	border-bottom: solid 2px #374d5c; 
+	color: #fff;
+	height: 50px;
+	line-height: 50px;
+}
+#companyDetailBody table thead > tr > th:first-child {
+	text-align: left;
+}
+#companyDetailBody table thead > tr > th a {
+	color: #374d5c;
+	font-size: 16px;
+	font-weight: 700;
+	background: url('../img/fullArrowLeftDarkBlue.png') no-repeat center left;
+	padding-left: 28px;
+    transition: all 0.5s ease 0s;
+}
+#companyDetailBody table thead > tr > th a:hover {
+	background-position: 8px center;
+}
+#companyDetailBody table thead > tr > th.bronze {
+	background-color: #965a38;
+	width: 145px;
+}
+#companyDetailBody table thead > tr > th.silver {
+	background-color: #a8a8a8;
+	width: 145px;
+}
+#companyDetailBody table thead > tr > th.gold {
+	background-color: #d9a441;
+	width: 145px;
+}
+#companyDetailBody table tr > td {
+	border: solid 1px #c8c8c8;
+	min-height: 35px;
+	line-height: 53px;
+	background-color: #fff;
+	text-align: center;
+}
+#companyDetailBody table tr > td:first-child {
+	border-left: none;
+	padding-left: 30px;
+	text-align: left;
+}
+#companyDetailBody table tr > td:last-child {
+	border-right: none;
+}
+#companyDetailBody table tr > td div.more {
+	display: inline-block;
+	float: right;
+	vertical-align: middle;
+	width: 22px;
+	height: 22px;
+	margin-top: 16px;
+	margin-right: 35px;
+	cursor: pointer;
+}
+#companyDetailBody table tr > td div.more img {
+	position:absolute;
+	-webkit-transition: opacity 1s ease-in-out;
+	-moz-transition: opacity 1s ease-in-out;
+	-o-transition: opacity 1s ease-in-out;
+	transition: opacity 1s ease-in-out;
+	opacity:1;
+}
+#companyDetailBody table tr > td div.more img.plus {
+	z-index: 8;
+}
+#companyDetailBody table tr > td div.more img.transparent {
+	opacity:0;
+}
+#companyDetailBody table tr.moreBlock td {
+	padding: 25px;
+}
+#companyDetailBody table tr.moreBlock td > ul {
+	margin-left: 16px;
+}
+#companyDetailBody table tr.moreBlock td > ul > li {
+	list-style: none;
+	line-height: 33px;
+	padding-left: 16px;
+	font-weight: 300;
+}
+#companyDetailBody table tr.moreBlock td > ul > li:before {
+	content: "";
+	width: 6px;
+	height: 6px;
+	background-color: #adbe4f;
+	position: absolute;
+	margin-top: 13px;
+	margin-left: -16px;
+}
+#companyDetailBody table tfoot > tr > td {
+	border: none;
+	border-top: solid 2px #c8c8c8;
+}
+#companyDetailBody table tfoot > tr > td {
+	font-weight: 700;
+}
+#companyDetailBody table tfoot > tr > td:first-child {
+	text-align: right;
+}
+#companyDetailBody table tfoot > tr > td.addToCart {
+	border-top: none;
+}
+#companyDetailBody table tfoot > tr > td.addToCart button {
+	height: 45px;
+	background: #8aa203 url('../img/buttonCart.png') no-repeat 43px center;
+	border-radius: 4px;
+/* 	padding: 0px 45px 0px 80px; */
+	padding-left: 40px;
+	text-align: center;
+	min-width: 220px;
+	border: none;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 700;
+	cursor: pointer;
+	margin-right: 30px;
+	margin-bottom: 27px;
+}
+#companyDetailBody table tfoot > tr > td.price{
+	line-height: normal;
+	padding: 14px 0 15px;
+}
+#companyDetailBody table tfoot > tr > td > label.disc {
+	color: #dd2c00;
+	line-height: 18px;
+}
+#companyDetailBody table tfoot > tr > td > span {
+	color: #1e2b34;
+	display: block;
+	float: right;
+	font-size: 15px;
+	font-weight: 300;
+	line-height: 18px;
+	padding-bottom: 3px;
+	padding-top: 3px;
+	text-align: left;
+	text-decoration: line-through;
+	width: calc(100% - 61px);
+}
+#companyDetailBody table tfoot > tr > td > input {
+	vertical-align: text-top;
+}
+#companyDetailBody div.customServiceCont {
+	background-color: #63869e;
+	padding: 35px;
+	padding-right: 30px;
+}
+#companyDetailBody div.customServiceCont span {
+	color: #fff;
+}
+#companyDetailBody div.customServiceCont a {
+	background-color: #fff;
+	border-radius: 5px;
+	color: #374d5c;
+	display: inline-block;
+	float: right;
+	font-size: 14px;
+	font-weight: 700;
+	height: 45px;
+	line-height: 45px;
+	margin-left: 50px;
+	text-align: center;
+	vertical-align: middle;
+	width: 220px;
+}

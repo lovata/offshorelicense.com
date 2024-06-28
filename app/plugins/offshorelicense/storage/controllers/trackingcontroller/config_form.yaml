@@ -1,0 +1,10 @@
+name: TrackingController
+modelClass: Offshorelicense\Storage\Models\Trackingvisits
+form: $/offshorelicense/storage/models/tracking_visits/fields.yaml
+defaultRedirect: offshorelicense/storage/trackingcontroller
+create:
+    redirect: 'offshorelicense/storage/trackingcontroller/update/:id'
+    redirectClose: offshorelicense/storage/trackingcontroller
+update:
+    redirect: offshorelicense/storage/trackingcontroller
+    redirectClose: offshorelicense/storage/trackingcontroller

@@ -1,0 +1,68 @@
+fields:
+    firstname:
+        label: Firstname
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    lastname:
+        label: Lastname
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    phone:
+        label: Phone
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    email:
+        label: Email
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    skype:
+        label: 'Skype Name'
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    url:
+        label: Url
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    message:
+        label: Message
+        size: large
+        oc.commentPosition: ''
+        span: full
+        type: textarea
+    created_at:
+        label: Created
+        oc.commentPosition: ''
+        mode: datetime
+        span: auto
+        type: datepicker
+    ip:
+        label: 'Ip address'
+        span: auto
+        oc.commentPosition: ''
+        type: text
+    product_type:
+        label: 'Product type'
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    product_name:
+        label: 'Product Name'
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    promocode:
+        label: Promocode
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    pid:
+        label: Pid
+        oc.commentPosition: ''
+        span: auto
+        type: text

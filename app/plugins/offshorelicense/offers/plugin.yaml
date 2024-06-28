@@ -1,0 +1,46 @@
+plugin:
+    name: 'offshorelicense.offers::lang.plugin.name'
+    description: 'offshorelicense.offers::lang.plugin.description'
+    author: offshorelicense
+    icon: oc-icon-trophy
+    homepage: ''
+permissions:
+    manage_offers:
+        tab: 'Manage offers'
+        label: 'Manage Offers'
+navigation:
+    Companies:
+        label: 'offshorelicense.offers::lang.plugin.name'
+        url: offshorelicense/offers/companies
+        icon: icon-star-o
+        permissions:
+            - manage_offers
+        sideMenu:
+            Companies:
+                label: Companies
+                url: offshorelicense/offers/companies
+                icon: icon-building
+            Banks:
+                label: Banks
+                url: offshorelicense/offers/banks
+                icon: icon-bank
+            Licensing:
+                label: Licensing
+                url: offshorelicense/offers/licensing
+                icon: icon-file-text-o
+            Accounting:
+                label: Accounting
+                url: offshorelicense/offers/accounting
+                icon: icon-calculator
+            'Intellectual Property':
+                label: 'Intellectual Property'
+                url: offshorelicense/offers/intellectualproperty
+                icon: icon-graduation-cap
+            Additional:
+                label: Additional
+                url: offshorelicense/offers/additional
+                icon: icon-plus-square
+            side-menu-item:
+                label: Faq
+                url: offshorelicense/offers/faq
+                icon: icon-question-circle

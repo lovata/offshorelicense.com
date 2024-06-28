@@ -1,0 +1,10 @@
+name: Accounting
+form: $/offshorelicense/offers/models/accounting/fields.yaml
+modelClass: Offshorelicense\Offers\Models\Accounting
+defaultRedirect: offshorelicense/offers/accounting
+create:
+    redirect: 'offshorelicense/offers/accounting/update/:id'
+    redirectClose: offshorelicense/offers/accounting
+update:
+    redirect: offshorelicense/offers/accounting
+    redirectClose: offshorelicense/offers/accounting

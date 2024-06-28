@@ -1,0 +1,167 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table offshorelicense_offers_companies'
+    - builder_table_create_offshorelicense_offers_companies.php
+1.0.3:
+    - 'Created table offshorelicense_offers_'
+    - builder_table_create_offshorelicense_offers_.php
+1.0.4:
+    - 'Updated table offshorelicense_offers_companies'
+    - builder_table_update_offshorelicense_offers_companies.php
+1.0.5:
+    - 'Drop table offshorelicense_offers_'
+    - builder_table_delete_offshorelicense_offers_.php
+1.0.6:
+    - 'Updated table offshorelicense_offers_companies'
+    - builder_table_update_offshorelicense_offers_companies_2.php
+1.0.7:
+    - 'Updated table offshorelicense_offers_companies'
+    - builder_table_update_offshorelicense_offers_companies_3.php
+1.0.8:
+    - 'Updated table offshorelicense_offers_companies'
+    - builder_table_update_offshorelicense_offers_companies_4.php
+1.0.9:
+    - 'Updated table offshorelicense_offers_companies'
+    - builder_table_update_offshorelicense_offers_companies_5.php
+1.0.10:
+    - 'Created table offshorelicense_offers_banks'
+    - builder_table_create_offshorelicense_offers_banks.php
+1.0.11:
+    - 'Updated table offshorelicense_offers_banks'
+    - builder_table_update_offshorelicense_offers_banks.php
+1.0.12:
+    - 'Updated table offshorelicense_offers_banks'
+    - builder_table_update_offshorelicense_offers_banks_2.php
+1.0.13:
+    - 'Created table offshorelicense_offers_licensing'
+    - builder_table_create_offshorelicense_offers_licensing.php
+1.0.14:
+    - 'Updated table offshorelicense_offers_licensing'
+    - builder_table_update_offshorelicense_offers_licensing.php
+1.0.15:
+    - 'Updated table offshorelicense_offers_licensing'
+    - builder_table_update_offshorelicense_offers_licensing_2.php
+1.0.16:
+    - 'Created table offshorelicense_offers_additional'
+    - builder_table_create_offshorelicense_offers_additional.php
+1.0.17:
+    - 'Updated table offshorelicense_offers_additional'
+    - builder_table_update_offshorelicense_offers_additional.php
+1.0.18:
+    - 'Created table offshorelicense_offers_accounting'
+    - builder_table_create_offshorelicense_offers_accounting.php
+1.0.19:
+    - 'Updated table offshorelicense_offers_accounting'
+    - builder_table_update_offshorelicense_offers_accounting.php
+1.0.20:
+    - 'Updated table offshorelicense_offers_additional'
+    - builder_table_update_offshorelicense_offers_additional_2.php
+1.0.21:
+    - 'Updated table offshorelicense_offers_accounting'
+    - builder_table_update_offshorelicense_offers_accounting_2.php
+1.0.22:
+    - 'Updated table offshorelicense_offers_accounting'
+    - builder_table_update_offshorelicense_offers_accounting_3.php
+1.0.23:
+    - 'Updated table offshorelicense_offers_licensing'
+    - builder_table_update_offshorelicense_offers_licensing_3.php
+1.0.24:
+    - 'Updated table offshorelicense_offers_licensing'
+    - builder_table_update_offshorelicense_offers_licensing_4.php
+1.0.25:
+    - 'Updated table offshorelicense_offers_licensing'
+    - builder_table_update_offshorelicense_offers_licensing_5.php
+1.0.26:
+    - 'Updated table offshorelicense_offers_accounting'
+    - builder_table_update_offshorelicense_offers_accounting_4.php
+1.0.27:
+    - 'Updated table offshorelicense_offers_accounting'
+    - builder_table_update_offshorelicense_offers_accounting_5.php
+1.0.28:
+    - 'Created table offshorelicense_offers_faq'
+    - builder_table_create_offshorelicense_offers_faq.php
+1.0.29:
+    - 'Updated table offshorelicense_offers_faq'
+    - builder_table_update_offshorelicense_offers_faq.php
+1.0.30:
+    - 'Updated table offshorelicense_offers_banks'
+    - builder_table_update_offshorelicense_offers_banks_3.php
+1.0.31:
+    - 'Updated table offshorelicense_offers_companies'
+    - builder_table_update_offshorelicense_offers_companies_6.php
+1.0.32:
+    - 'Updated table offshorelicense_offers_licensing'
+    - builder_table_update_offshorelicense_offers_licensing_6.php
+1.0.33:
+    - 'Created table offshorelicense_offers_intprop'
+    - builder_table_create_offshorelicense_offers_intprop.php
+1.0.34:
+    - 'Updated table offshorelicense_offers_intprop'
+    - builder_table_update_offshorelicense_offers_intprop.php
+1.0.35:
+    - 'Updated table offshorelicense_offers_accounting'
+    - builder_table_update_offshorelicense_offers_accounting_6.php
+1.0.36:
+    - 'Updated table offshorelicense_offers_banks'
+    - builder_table_update_offshorelicense_offers_banks_4.php
+1.0.37:
+    - 'Updated table offshorelicense_offers_companies'
+    - builder_table_update_offshorelicense_offers_companies_7.php
+1.0.38:
+    - 'Updated table offshorelicense_offers_intprop'
+    - builder_table_update_offshorelicense_offers_intprop_2.php
+1.0.39:
+    - 'Updated table offshorelicense_offers_licensing'
+    - builder_table_update_offshorelicense_offers_licensing_7.php
+1.0.40:
+    - 'Updated table offshorelicense_offers_companies'
+    - builder_table_update_offshorelicense_offers_companies_8.php
+1.0.41:
+    - 'Updated table offshorelicense_offers_companies'
+    - builder_table_update_offshorelicense_offers_companies_9.php
+1.0.42:
+    - 'Updated table offshorelicense_offers_banks'
+    - builder_table_update_offshorelicense_offers_banks_5.php
+1.0.43:
+    - 'Updated table offshorelicense_offers_licensing'
+    - builder_table_update_offshorelicense_offers_licensing_8.php
+1.0.44:
+    - 'Updated table offshorelicense_offers_accounting'
+    - builder_table_update_offshorelicense_offers_accounting_7.php
+1.0.45:
+    - 'Updated table offshorelicense_offers_companies'
+    - builder_table_update_offshorelicense_offers_companies_10.php
+1.0.46:
+    - 'Updated table offshorelicense_offers_banks'
+    - builder_table_update_offshorelicense_offers_banks_6.php
+1.0.47:
+    - 'Updated table offshorelicense_offers_licensing'
+    - builder_table_update_offshorelicense_offers_licensing_9.php
+1.0.48:
+    - 'Updated table offshorelicense_offers_accounting'
+    - builder_table_update_offshorelicense_offers_accounting_8.php
+1.0.49:
+    - 'Updated table offshorelicense_offers_intprop'
+    - builder_table_update_offshorelicense_offers_intprop_3.php
+1.0.50:
+    - 'Updated table offshorelicense_offers_intprop'
+    - builder_table_update_offshorelicense_offers_intprop_4.php
+1.0.51:
+    - 'Updated table offshorelicense_offers_companies'
+    - builder_table_update_offshorelicense_offers_companies_11.php
+1.0.52:
+    - 'Updated table offshorelicense_offers_banks'
+    - builder_table_update_offshorelicense_offers_banks_7.php
+1.0.53:
+    - 'Updated table offshorelicense_offers_accounting'
+    - builder_table_update_offshorelicense_offers_accounting_9.php
+1.0.54:
+    - 'Updated table offshorelicense_offers_licensing'
+    - builder_table_update_offshorelicense_offers_licensing_10.php
+1.0.55:
+    - 'Updated table offshorelicense_offers_intprop'
+    - builder_table_update_offshorelicense_offers_intprop_5.php
+1.0.56:
+    - 'Updated table offshorelicense_offers_intprop'
+    - builder_table_update_offshorelicense_offers_intprop_6.php

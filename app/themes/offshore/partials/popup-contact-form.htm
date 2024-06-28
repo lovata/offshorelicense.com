@@ -1,0 +1,123 @@
+[viewBag]
+==
+<div id="dialog-contactus2" title="Having trouble finding something?" style="padding-left:50px;">
+  <p style="color:#334D5C;font-weight:300;font-family: 'Lato', sans-serif;margin-bottom:30px;">
+  Do not hesitate to submit the form below and our team will contact you shortly!
+  </p>
+  
+
+<form
+    data-request="onSendUniversalForm"
+    data-request-success="$('#dialog-contactus2').dialog('close');$('#dialog-thankyou').dialog('open')"
+    data-request-update="'ajax-response': '.thankyou-dialog .ui-dialog-title'"
+    data-request-validate
+    data-request-flash
+    class="form-horizontal"
+    >
+    
+    <input type="hidden" name='url' value="{{ ''| page }}">
+    <input type="hidden" name='product_type' value="73">
+    <input type="hidden" name='product_name' value="">    
+    
+    <div class="form-group row crm-webform-group">
+        <div class="">
+            <input class="form-control crm-webform-input" name="firstname" placeholder="Name*"/>
+            <span data-validate-for="firstname" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+
+    <div class="form-group row crm-webform-group">
+        <div class="">
+            <input class="form-control crm-webform-input" name="lastname" placeholder="Lastname*" />
+            <span data-validate-for="lastname" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+    <div class="form-group row crm-webform-group">
+        <div class="">
+            <input class="form-control crm-webform-input" name="email" placeholder="E-mail*"/>
+            <span data-validate-for="email" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+    <div class="form-group row crm-webform-group" style="width:50%;margin:0px;float:left;">
+        <div class="" style="width:95%">
+            <input class="form-control crm-webform-input" name="skype" placeholder="Skype name"/>
+            <span data-validate-for="skype" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+    <div class="form-group row crm-webform-group" style="width:50%;margin:0px;float:right;">
+        <div class="" style="width:95%;float:right">
+            <input class="form-control crm-webform-input" name="phone" placeholder="Phone*"/>
+            <span data-validate-for="phone" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+    <div class="form-group row crm-webform-group">
+        <div class="">
+            <textarea class="form-control crm-webform-input" name="message" placeholder="Your comment..." ></textarea>
+            <span data-validate-for="message" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+<div class="crm-webform-label-content">
+	<div>
+	<label class="crm-webform-checkbox-container crm-webform-checkbox-checkbox">
+    	<input class="crm-webform-checkbox crm-webform-input-checkbox crm-webform-input" type="checkbox" name="LEAD_UF_CRM_1528724976" id="LEAD_UF_CRM_1528724976" value="Y"> 
+    	<i></i>
+    	<span class="crm-webform-checkbox-name">I agree to receive emails about Offshorelicense products and services (You can unsubscribe at any time)</span>
+	</label>
+	</div>
+</div>
+
+    <div class="row" style="margin-bottom:20px;">
+        <button class="btn btn-primary crm-webform-submit-button" type=submit data-attach-loading>
+            Request a contact
+        </button>
+    </div>
+<br/>
+</form>
+
+</div>
+
+
+
+
+
+<script>
+    $( function() {
+         $('#dialog-contactus2').dialog({
+             autoOpen: false,
+             height: 'auto',
+             width: "500px",
+             position: ["50%", "50%"],
+             modal:true,
+             dialogClass:"contact-us-dialog",
+             create: function (event) {
+               $(event.target).parent().css({ 'position': 'fixed', "left": "50%", "top": "10%", "margin-left": "-250px" });
+             },
+             open: function()
+            {
+                var dialog = this;
+                $('.ui-widget-overlay').on('click', function()
+                {
+                    $(dialog).dialog('close');
+                });
+            },
+            close: function(){
+                document.cookie = "popup_closed=1";
+                console.log('closed');
+                window.google_trackConversion({
+                    google_conversion_id: 855148396,
+                    google_conversion_label: "ZyLDCObDsXwQ7I7ilwM",
+                    google_remarketing_only: false
+                 });
+            }
+         });
+          
+      } );
+
+
+</script>

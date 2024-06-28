@@ -1,0 +1,10 @@
+name: LicensingController
+form: $/offshorelicense/storage/models/licensing/fields.yaml
+modelClass: Offshorelicense\Storage\Models\Licensing
+defaultRedirect: offshorelicense/storage/licensingcontroller
+create:
+    redirect: 'offshorelicense/storage/licensingcontroller/update/:id'
+    redirectClose: offshorelicense/storage/licensingcontroller
+update:
+    redirect: offshorelicense/storage/licensingcontroller
+    redirectClose: offshorelicense/storage/licensingcontroller

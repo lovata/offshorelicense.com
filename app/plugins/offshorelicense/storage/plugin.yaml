@@ -1,0 +1,40 @@
+plugin:
+    name: 'offshorelicense.storage::lang.plugin.name'
+    description: 'offshorelicense.storage::lang.plugin.description'
+    author: offshorelicense
+    icon: oc-icon-database
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: 'Contact forms'
+        url: offshorelicense/storage/contactform
+        icon: icon-users
+        sideMenu:
+            side-menu-item:
+                label: 'Contact forms'
+                url: offshorelicense/storage/contactform
+                icon: icon-book
+            side-menu-item2:
+                label: Companies
+                url: offshorelicense/storage/companiescontroller
+                icon: icon-building
+            side-menu-item3:
+                label: Banks
+                url: offshorelicense/storage/bankscontroller
+                icon: icon-bank
+            side-menu-item4:
+                label: Licensing
+                url: offshorelicense/storage/licensingcontroller
+                icon: icon-file-text-o
+            side-menu-item5:
+                label: Additional
+                url: offshorelicense/storage/additionalcontroller
+                icon: icon-plus-circle
+    main-menu-item2:
+        label: Tracking
+        url: offshorelicense/storage/trackingcontroller
+        icon: icon-list
+    main-menu-item3:
+        label: 'Ready-Made Products'
+        url: offshorelicense/storage/rmproductscontroller
+        icon: icon-dropbox

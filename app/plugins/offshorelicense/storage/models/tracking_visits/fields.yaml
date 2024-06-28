@@ -1,0 +1,31 @@
+fields:
+    datetime:
+        label: Datetime
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    detected_device:
+        label: Device
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    url:
+        label: Url
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    url_ref:
+        label: 'Url ref'
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    kw:
+        label: Keyword
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    ip:
+        label: Ip
+        oc.commentPosition: ''
+        span: auto
+        type: text

@@ -1,0 +1,343 @@
+title = "Companies"
+url = "/companies"
+layout = "base"
+meta_title = "Offshore and Onshore Company Incorporation by Region and Jurisdiction - Companies - Offshorelicense"
+meta_description = "Professional company incorporation services in more than twenty jurisdictions."
+is_hidden = 0
+seo_keywords = "Company incorporation, Open company in, open company, company formation, company set up, company establishment, company formation agents, local corporate agents"
+robot_index = "index"
+robot_follow = "follow"
+contentType = "html"
+
+[SeoCmsPage]
+==
+<?php
+function onStart()
+{
+    $regions = DB::table('offshorelicense_offers_companies')
+            ->select('region')
+            ->where('disabled','<>','Yes')
+            ->orderby('region')
+            ->groupBy('region')
+            ->get();
+     
+     foreach ($regions as $region){
+          $array[$region->region] = Db::table('offshorelicense_offers_companies')->where('region',$region->region)->where('disabled','<>','1')->orderby('name')->get();
+     }
+     
+     //noob sorting:)
+    /* if(isset ($array["Europe"]))  $array2["Europe"] = $array["Europe"];
+     if(isset ($array["North & South America"])) $array2["North & South America"] = $array["North & South America"];
+     if(isset ($array["Asia"])) $array2["Asia"] = $array["Asia"];
+     if(isset ($array["Africa"])) $array2["Africa"] = $array["Africa"];
+     if(isset ($array["Caribbean Region"])) $array2["Caribbean Region"] = $array["Caribbean Region"];
+     if(isset ($array["Oceania & Pacific Islands"])) $array2["Oceania & Pacific Islands"] = $array["Oceania & Pacific Islands"];*/
+     
+     $this->page["List"] =$array;
+     
+     $featured = array();
+     $featured = Db::table('offshorelicense_offers_companies')->where('featured','1')->where('disabled','<>','Yes')->orderby('featured_order_id')->take(4)->get();
+     $this->page["Featured"] =$featured;    
+     
+     $this->page['breadscrumbs'] = array('Home'=>$this->page['site_link'],'Companies'=>"");
+}
+?>
+==
+<div class="page">
+	<!-------------------------------------------------->
+	<!----------START Recommended companies------------->
+	<!-------------------------------------------------->
+	<div class="page-top" style="height: 460px;">
+		<div class="content mainPage-list" style="padding-bottom: 0;">
+			<div class="text center">
+
+				<h1>Offshore Company Formation</h1>
+
+				<h2>Best Companies for Incorporation</h2>
+			</div>
+			<div id="companies_recomended">
+				<div class="inline-warp">
+					<div class="inline-2 company inline-over">
+
+						<ul style="background-color: transparent;">
+						{%for item in this.page["Featured"]%}
+						
+                        <li class="float-left margin-left">
+                           <a href="{{'company'|page({'slug':item.slug})}}">
+                              <div style="background-image: url('{{item.logo|media}}');"><br></div>
+                              <span><h3>{{item.name}}</h3> 
+                              <span>{{item.info}}</span></span>
+                    
+                    			    {% if item.bronze_discount > 0 %}
+                    			    <div class="cost discount">
+                    				    <h6>€{{ item.bronze_price | number_format(0, '.', ',') }}</h6>
+                    				    <h5>€{{ item.bronze_discount | number_format(0, '.', ',') }}</h5>
+                    				</div>
+                    				{% else %}
+                    				<div class="cost">
+                    				    <h5>€{{item.bronze_price| number_format(0, '.', ',') }}</h5>
+                    				</div>
+                    				{% endif %}
+                    
+                           </a>
+                        </li>
+							
+							
+						{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-------------------------------------------------->
+	<!-----------END Recommended companies-------------->
+	<!-------------------------------------------------->
+	
+
+    
+    {% if this.page["breadscrumbs"] %}
+     <div class="content">
+        <ul class='breadscrumbs'>
+            {%for item,url in this.page["breadscrumbs"]%}
+            <li>
+                {% if url!="" %}
+                    <a href="{{url}}">{{item}}</a>
+                {% else %}
+                    {{item}}
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    
+
+
+
+	<div class="page-content BrowseCompaniesByRegion">
+		<div class="content">
+			<div class="text center">
+
+				<h3>Browse Companies by Region</h3>
+			</div>
+
+			<ul>
+			
+			
+			{%for region_name,region in this.page["List"]%}
+			
+			
+				<li id="accordion_{{region_name|replace({' ':'','&':''}) }}">
+					<label onclick="$(this).parent('li').toggleClass('act')">  
+						<div class="logo"><br></div>
+						<span><label>{{region_name}}</label> <span>{{region|length}} companies available</span></span>
+					</label>
+                    <ul>
+    					{%for item in region%}
+    						<li><a href="{{'company'|page({'slug':item.slug})}}"><div class="logo" style="background-image: url('{{item.logo|media}}');"><br></div></a>
+    							<span><a href="{{'company'|page({'slug':item.slug})}}"><label>{{item.name}}</label></a> <span>{{item.info}}</span></span>
+    							<a class="button" href="{{'company'|page({'slug':item.slug})}}">Learn more</a>
+        					    
+        					    {% if item.bronze_discount > 0 %}
+        					    <div class="cost discount">
+        						    <h6>€{{ item.bronze_price | number_format(0, '.', ',') }}</h6>
+        						    <h5>€{{ item.bronze_discount | number_format(0, '.', ',') }}</h5>
+        						</div>
+        						{% elseif item.bronze_price > 0 %}
+        						<div class="cost">
+        						    <h5>€{{item.bronze_price| number_format(0, '.', ',') }}</h5>
+        						</div>|
+        						{% else %}
+        						<div class="cost">
+        						    <h5>On request</h5>
+        						</div>|
+        						{% endif %}
+        						
+        						
+    						</li>					
+    					{% endfor %}
+				    </ul>
+				</li>
+					
+	        {% endfor %}
+
+					
+					
+		</div>
+	</div>
+	<!-------------------------------------------------->
+	<!----------START Recommended companies------------->
+	<!-------------------------------------------------->
+	<div class="page-content EverythingYouNeedToKnow">
+		<div class="content companies">
+			<div class="text center">
+
+				<h3>Everything You Need to Know About Company Incorporation</h3>
+			</div>
+			<tab class="init">     
+				<section class="act" data-icon="service" data-id="1"><a>Why?</a></section>     
+				<section data-icon="document" data-id="2"><a>How?</a></section>     
+				<section data-icon="profile" data-id="3"><a>Where?</a></section></tab>
+			<tabcontent>     
+				<section class="text act" data-id="1">
+
+					<h4>It is legal</h4>
+
+					<ul>
+						<li>The word “offshore” just indicates that something is based in a foreign country.</li>
+						<li>It is not illegal to relocate, incorporate or to operate a company offshore. It is the purpose of incorporation and committed actions that may make it illegal.</li>
+					</ul>
+					<hr>
+
+					<h4>It is a smart decision</h4>
+
+					<ul>
+						<li>Even such globally known companies as Apple, General Electric, Microsoft, IBM, PEPSI and Coca-Cola are only few of many companies that have chosen to base some of their assets offshore to protect them and enhance growth opportunities.</li>
+					</ul>
+					<hr>
+
+					<h5>It provides a number of advantages</h5>
+
+					<p><strong>Main purposes and benefits for going offshore:</strong></p>
+
+					<ul>
+						<li>Assets – enhance and protect (against lawsuits, divorce, unfair creditors etc.)</li>
+						<li>Business risk – reduce and diversify (legal, inflation, political, regulatory, corruption, exchange risk)</li>
+						<li>Capital requirements – lower or non-existing</li>
+						<li>Company operation – more simple</li>
+						<li>Company structure – more favourable requirements</li>
+						<li>Confidentiality – withhold information about beneficial owners, shareholders, directors to public</li>
+						<li>Corporate legislation –more favourable and flexible</li>
+						<li>Estates – acquire new estates that is otherwise impossible to do in home country</li>
+						<li>Financial privacy – hard and even in some cases impossible to find out asset owners</li>
+						<li>Incorporation – easier and cheaper</li>
+						<li>Legal restrictions – fewer</li>
+						<li>New Markets – increased access</li>
+						<li>Operation and maintenance – lower costs</li>
+						<li>Reporting obligations – more convenient</li>
+						<li>Taxes – reduce burden and liability</li>
+					</ul>
+
+					<p><strong><em>N.B.</em></strong></p>
+
+					<ul>
+						<li><em>These benefits may vary from one jurisdiction to another.</em></li>
+						<li><em>Many of these principles may cease to apply partially or completely in event of criminal activities but if used for legitimate purposes then there should not be any concerns.</em></li>
+					</ul>
+					<hr>
+
+					<h4><em>Please note</em></h4>
+
+					<p><strong>Compliance with law</strong></p>
+
+					<ul>
+						<li>Before going offshore, it should be considered whether such step is in accordance with your local legislation.</li>
+					</ul>
+
+					<p><strong>Taxation practices</strong></p>
+
+					<ul>
+						<li>Tax planning – is legal, is practice where tax liability is reduced by using various strategies and methods within the law in order to reduce amount of owed taxes.</li>
+						<li>Tax evasion – is illegal, is practice when financial data is amended or not reported in order to not pay owed taxes.</li>
+					</ul>
+				</section>     
+				<section class="text" data-id="2">
+
+					<h4>Perform these steps</h4>
+
+					<p><strong>1. You should decide on the following steps:</strong></p>
+
+					<ul>
+						<li>Purpose – what is purpose for going offshore</li>
+						<li>Activities – what activities company will carry out</li>
+						<li>Company structure – what persons will be beneficial owners, shareholders, directors</li>
+						<li>Area – what is desired business operation area</li>
+						<li>Confidentiality – what are the expectations</li>
+						<li>Jurisdiction – only if you have specific wishes on particular jurisdiction</li>
+						<li>Visit – whether shareholders can or are willing to visit responsible authority or bank in particular country if required</li>
+					</ul>
+
+					<p><strong>2. Inform us, and then based on your requirements and needs we will notify you about:</strong></p>
+
+					<ul>
+						<li>Best possible jurisdiction</li>
+						<li>Company structure requirements</li>
+						<li>Necessary licenses</li>
+						<li>Required documents</li>
+						<li>Government and our professional fees</li>
+						<li>Bank options (if requested)</li>
+					</ul>
+
+					<p><strong>3. After initial agreement of the Client to use our services, we will proceed with incorporation during which such essential points will be observed:</strong></p>
+
+					<ul>
+						<li>Collaboration – to form a company that will suit your best needs and requirements</li>
+						<li>Communication – regular communication and notification about accomplished significant steps</li>
+						<li>Consultation – advising through the process of incorporation</li>
+					</ul>
+
+					<p><strong>N.B.</strong></p>
+
+					<ul>
+						<li><em>We will immediately inform you in case of any additional documents are required, since each responsible authority may request specific information based on already submitted documents.</em></li>
+					</ul>
+					<hr>
+
+					<h4><em>Please note</em></h4>
+
+					<p><strong>Time frame</strong></p>
+
+					<ul>
+						<li>The time of incorporation depends on the correctness and full submission of all required documents to us, and time for incorporation process varies in each country and depends on each country’s legal framework, bureaucracy, operational efficiency of responsible authorities. For incorporation time of any particular country please search it on our webpage or contact us.</li>
+					</ul>
+				</section>     
+				<section class="text" data-id="3">
+
+					<h4>Which country</h4>
+
+					<p><strong>Do your research</strong></p>
+
+					<ul>
+						<li>There are various jurisdictions to choose from and all of them provide various benefits, but based on your business activities some jurisdictions may be less favorable and disadvantageous. For this reason, it is highly recommended to do an in-depth research.</li>
+					</ul>
+
+					<p><strong>Or simply ask us</strong></p>
+
+					<ul>
+						<li>If you cannot choose from all available jurisdictions on our webpage or want to receive any suggestions, then we will be able to assist and recommend the best possible solution that will fit all your needs and requirements.</li>
+					</ul>
+					<hr>
+
+					<h5>Do it from home</h5>
+
+					<ul>
+						<li>For most jurisdictions it is possible to relocate or set up a company without even leaving your home or office, but there are some jurisdictions where authorities or banks may request the visit of shareholders.</li>
+					</ul>
+					<hr>
+
+					<h4><em>Please note</em></h4>
+
+					<p><strong>Due to our corporate values, beliefs and ethical norms we will not provide our services if operation of company will correspond to the following points:</strong></p>
+
+					<ul>
+						<li>Criminal– black listed persons, any criminal or illegal activities</li>
+						<li>Unethical – any commonly recognized unethical activities</li>
+						<li>Fraud – any activities that are deliberately committed to defraud</li>
+						<li>Human rights – that may violate or abuse internationally recognised basic human rights</li>
+						<li>Animals – abuse of animals or use for scientific purposes</li>
+					</ul>
+
+					<p><strong>N.B.</strong></p>
+
+					<ul>
+						<li>These conditions also apply for actions that intends to contribute or support any unacceptable activities.</li>
+						<li>We will not also offer our services to any other activities which we will consider to be contrary to our corporate guidelines.</li>
+					</ul>
+				</section></tabcontent>
+		</div>
+	</div>
+	<!-------------------------------------------------->
+	<!-----------END Recommended companies-------------->
+	<!-------------------------------------------------->
+</div>

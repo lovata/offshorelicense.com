@@ -1,0 +1,102 @@
+fields:
+    name:
+        label: Name
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    slug:
+        label: Url
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    title:
+        label: Title
+        span: auto
+        oc.commentPosition: ''
+        type: text
+    logo:
+        label: Logo
+        oc.commentPosition: ''
+        mode: file
+        span: auto
+        type: mediafinder
+    type:
+        label: type
+        oc.commentPosition: ''
+        options:
+            'Trademark System': 'Trademark System'
+            'Patent System': 'Patent System'
+            'Design System': 'Design System'
+        span: auto
+        type: dropdown
+    info:
+        label: Info
+        size: small
+        oc.commentPosition: ''
+        span: full
+        type: textarea
+    description:
+        label: Description
+        size: giant
+        oc.commentPosition: ''
+        span: full
+        type: richeditor
+    featured:
+        label: Recommended
+        span: right
+        type: switch
+    featured_order_id:
+        label: 'Recommended order'
+        oc.commentPosition: ''
+        span: right
+        type: number
+    disabled:
+        label: Disabled
+        span: auto
+        type: switch
+    tabs_title:
+        label: 'Tabs Title'
+        oc.commentPosition: ''
+        span: left
+        type: text
+    meta_title:
+        label: 'Meta Title'
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: textarea
+    meta_description:
+        label: 'Meta Description'
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: textarea
+    meta_keywords:
+        label: 'Meta Keywords'
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: textarea
+tabs:
+    fields:
+        tab_features:
+            label: 'First tab'
+            size: giant
+            oc.commentPosition: ''
+            span: full
+            type: richeditor
+            tab: 'Tab 1'
+        tab_procedure:
+            label: 'Second tab'
+            size: giant
+            oc.commentPosition: ''
+            span: full
+            type: richeditor
+            tab: 'Tab 2'
+        tab_documents:
+            label: 'Third tab'
+            span: full
+            size: giant
+            oc.commentPosition: ''
+            type: richeditor
+            tab: 'Tab 3'

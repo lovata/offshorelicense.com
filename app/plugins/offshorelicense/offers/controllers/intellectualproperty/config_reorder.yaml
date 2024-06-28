@@ -1,0 +1,4 @@
+title: IntellectualProperty
+modelClass: Offshorelicense\Offers\Models\IntellectualProperty
+toolbar:
+    buttons: reorder_toolbar

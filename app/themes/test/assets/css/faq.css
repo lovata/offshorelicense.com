@@ -1,0 +1,273 @@
+.faq-list.content {
+    padding: 60px 0 90px;
+	width: 888px;
+}
+
+.faq-list section {
+    position: relative;
+	margin-bottom: 10px;
+}
+
+.faq-list section label {
+    background: #fff;
+    display: block;
+    position: relative;
+    padding: 20px 10px 20px 90px;
+    font-size: 18px;
+	font-weight: 700;
+	text-transform: uppercase;
+    cursor: pointer;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    line-height: 30px;
+    min-height: 30px;
+}
+
+.faq-list section label span {
+	color: #374d5c;
+}
+
+.faq-list section.act label span {
+	color: #fff;
+}
+
+.faq-list section label:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 20px;
+    background: url('../img/arrowBottomGrean.png') center no-repeat;
+    width: 20px;
+    height: 12px;
+    margin: auto 0;
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+}
+
+.faq-list section label:before {
+    content: '?';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    font-size: 26px;
+    display: block;
+    width: 40px;
+    height: 40px;
+    font-weight: 900;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    background-color: #374d5c;
+    border-radius: 50%;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.faq-list section.act label {
+    background: #374d5c;
+    color: #fff;
+}
+
+.faq-list section.act label:before {
+    background: #fff;
+    color: #374d5c;
+}
+
+.faq-list section.act label:after {
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+    filter: brightness(100);
+    -webkit-filter: brightness(100);
+    -moz-filter: brightness(100);
+    -o-filter: brightness(100);
+    -ms-filter: brightness(100);
+}
+
+.faq-list.content section .pad .scrollbar.scroll-pane {
+    font-size: 16px;
+/*     padding: 0 20px; */
+    display: block;
+    margin-bottom: 10px;
+    background-color: #fff;
+    /*border-left: 1px solid #c8c8c8;*/
+    /*border-right: 1px solid #c8c8c8;*/
+    overflow: hidden;
+    position: relative;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+	width: 874px;
+}
+
+.faq-list section .pad {
+	padding: 30px 0px;
+	background: #fff;
+	display: none;
+	border-bottom: 3px solid #374d5c;
+	width: 888px;
+}
+.faq-list section .wrp {
+	padding: 0px 40px;
+}
+
+.scroll-pane:after {
+    /*border-bottom: 3px solid #374d5c;*/
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+content.border:after {
+    border-bottom: 1px solid #c8c8c8;
+	content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.faq-list section section:last-child content.border:after {
+    border-bottom: none;
+}
+
+.faq-list section.act .scroll-pane {
+    max-height: 500px;
+/*     padding: 20px 20px 30px; */
+}
+
+.faq-list section.act .scroll-pane h2 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    font-weight: 700;
+    float: left;
+}
+
+.faq-list section.act .scroll-pane h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    font-weight: 700;
+    float: left;
+}
+
+.faq-list section.act .scroll-pane div {
+	font-weight: 300;
+	color: #374d5c;
+}
+
+.faq-list section.act .scroll-pane div p {
+	margin: 15px 0;
+}
+
+.faq-list section .scroll-pane .toTop {
+    position: absolute;
+    display: none;
+}
+
+.faq-list section .scroll-pane .faq-rating {
+    position: absolute;
+    bottom: 20px;
+    display: none;
+}
+
+.faq-list section.act .scroll-pane .faq-rating {
+    display: inline-block;
+    position: relative;
+	margin-top: 10px;
+}
+
+.faq-list section .scroll-pane .faq-rating .bx-rating-absolute {
+    color: #ccc;
+}
+
+.faq-list section .scroll-pane .faq-rating .bx-rating-absolute .bx-rating-no-active a,
+.faq-list section .scroll-pane .faq-rating .bx-rating-absolute .bx-rating-yes-active a {
+    font-weight: 400;
+}
+
+.faq-list section .scroll-pane .faq-rating .bx-rating-absolute .bx-rating-no a,
+.faq-list section .scroll-pane .faq-rating .bx-rating-absolute .bx-rating-yes a {
+    color: #ccc;
+}
+
+.faq-list section .scroll-pane .faq-rating .bx-rating-absolute .bx-rating-no,
+.faq-list section .scroll-pane .faq-rating .bx-rating-absolute .bx-rating-yes {
+    margin: 0 5px;
+}
+
+.faq-list section .scroll-pane .faq-rating .bx-rating-separator {
+    display: none;
+}
+
+.faq-list section .scroll-pane .faq-rating .bx-rating-absolute .bx-rating-question {
+    margin-right: 25px;
+}
+/*-------------------------------------------------->
+<!-------------------Scrollbars--------------------->
+<!-------------------------------------------------*/
+.scrollbar::-webkit-scrollbar{
+    width: 20px;
+    background-color: #F5F5F5;
+}
+.scrollbar::-webkit-scrollbar-button{
+}
+.scrollbar::-webkit-scrollbar-track{
+    background-color: #FFF;
+}
+.scrollbar::-webkit-scrollbar-track-piece{
+}
+.scrollbar::-webkit-scrollbar-thumb{
+    background-color: #cacaca;
+    border: 6px solid #FFF;
+}
+.scrollbar::-webkit-scrollbar-corner{
+}
+.scrollbar::-webkit-resizer{
+}
+.faq-list.content div.customServiceCont {
+	background-color: #63869e;
+	padding: 35px;
+}
+.faq-list.content div.customServiceCont span {
+	color: #fff;
+}
+.faq-list.content div.customServiceCont a {
+	background-color: #fff;
+	border-radius: 5px;
+	color: #374d5c;
+	display: inline-block;
+	float: right;
+	font-size: 14px;
+	font-weight: 700;
+	height: 48px;
+	line-height: 48px;
+	margin-left: 50px;
+	text-align: center;
+	vertical-align: middle;
+	width: 180px;
+}
+.scroll-pane
+{
+	width: 100%;
+	overflow: auto;
+}
+.scroll-pane .jspVerticalBar {
+	background: none;
+	width: 5px;
+}
+.scroll-pane .jspTrack {
+	width: 2px;
+	background-color: #dedede;
+}
+.scroll-pane .jspDrag {
+	width: 6px;
+	margin: 0 -5px;
+	background: #697883;
+	left: 3px;
+}

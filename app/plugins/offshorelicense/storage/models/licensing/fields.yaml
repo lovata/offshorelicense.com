@@ -1,0 +1,17 @@
+fields:
+    firstname:
+        label: Firstname
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    lastname:
+        label: Lastname
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    message:
+        label: Message
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: textarea

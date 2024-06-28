@@ -1,0 +1,89 @@
+columns:
+    id:
+        label: id
+        type: number
+        sortable: true
+    datetime:
+        label: datetime
+        type: text
+        sortable: true
+    url_ref:
+        label: url_ref
+        type: text
+        searchable: false
+        invisible: true
+        sortable: true
+    url:
+        label: url
+        type: text
+        searchable: true
+        sortable: true
+    promo:
+        label: promo
+        type: text
+    kw_ref:
+        label: kw_ref
+        type: text
+    kw:
+        label: kw
+        type: text
+    gclid:
+        label: gclid
+        type: text
+        sortable: true
+    result:
+        label: result
+        type: text
+    ip:
+        label: ip
+        type: text
+    device:
+        label: device
+        type: text
+    user_agent:
+        label: user_agent
+        type: text
+    pid:
+        label: pid
+        type: text
+        searchable: true
+        sortable: true
+    phone:
+        label: phone
+        type: text
+    path:
+        label: path
+        type: text
+    address_id:
+        label: address_id
+        type: text
+    mt:
+        label: mt
+        type: text
+    ad:
+        label: ad
+        type: text
+    adgroup_id:
+        label: adgroup_id
+        type: text
+    adposition:
+        label: adposition
+        type: text
+    g_device:
+        label: g_device
+        type: text
+    devicemodel:
+        label: devicemodel
+        type: text
+    loc_interest_ms:
+        label: loc_interest_ms
+        type: text
+    loc_physical_ms:
+        label: loc_physical_ms
+        type: text
+    created_at:
+        label: created_at
+        type: datetime
+    updated_at:
+        label: updated_at
+        type: datetime

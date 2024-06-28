@@ -1,0 +1,11 @@
+title: Applyform
+modelClass: Offshorelicense\Storage\Models\Applyform
+list: $/offshorelicense/storage/models/applyform/columns.yaml
+recordUrl: 'offshorelicense/storage/applyform/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

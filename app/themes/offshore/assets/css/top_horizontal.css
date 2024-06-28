@@ -1,0 +1,32 @@
+
+.info-menu{
+    padding:10px 0 10px;
+    margin:0 auto;
+    height: 15px;
+    width:1200px;
+    background-color: #2d404c;
+    display: block;
+}
+.info-menu ul{
+margin-right: 70px;
+}
+.info-menu ul li{
+    display:inline-block;
+    margin-right:32px;
+    float: right;
+}
+.info-menu ul li:first-child{
+    display:inline-block;
+    margin-right:14px;
+    word-spacing:2px
+}
+.info-menu ul li a{
+    font-size:13px;
+    text-decoration:none;
+    color: white;
+}
+.info-menu ul li.current a:hover,
+.info-menu ul li a:hover{
+    text-decoration:none;
+    color: #b7bcd0;
+}

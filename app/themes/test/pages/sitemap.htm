@@ -1,0 +1,242 @@
+title = "sitemap"
+url = "/sitemap.xml"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+contentType = "xml"
+==
+<?php
+function onStart() {
+
+
+$sitename="https://offshorelicense.com";
+$date = "2018-02-16";
+    
+    $rows = array();
+
+    $new = array(
+        "lastmod" => $date,
+        "changefreq" => "monthly",
+        "priority" => "1.0",
+        "url" => $sitename
+        );
+    $rows[] = $new;
+
+    $new = array(
+        "lastmod" => $date,
+        "changefreq" => "monthly",
+        "priority" => "0.8",
+        "url" => $sitename."/companies/"
+        );
+    $rows[] = $new;
+
+    $new = array(
+        "lastmod" => $date,
+        "changefreq" => "monthly",
+        "priority" => "0.8",
+        "url" => $sitename."/banks/"
+        );
+    $rows[] = $new;
+
+    $new = array(
+        "lastmod" => $date,
+        "changefreq" => "monthly",
+        "priority" => "0.8",
+        "url" => $sitename."/licensing/"
+        );
+    $rows[] = $new;
+
+    $new = array(
+        "lastmod" => $date,
+        "changefreq" => "monthly",
+        "priority" => "0.8",
+        "url" => $sitename."/accounting/"
+        );
+    $rows[] = $new;
+
+    $new = array(
+        "lastmod" => $date,
+        "changefreq" => "monthly",
+        "priority" => "0.8",
+        "url" => $sitename."/intellectualproperty/"
+        );
+    $rows[] = $new;
+
+    $new = array(
+        "lastmod" => $date,
+        "changefreq" => "monthly",
+        "priority" => "0.8",
+        "url" => $sitename."/additional/"
+        );
+    $rows[] = $new;
+
+
+    $new = array(
+        "lastmod" => $date,
+        "changefreq" => "monthly",
+        "priority" => "0.7",
+        "url" => $sitename."/faq/"
+        );
+    $rows[] = $new;
+
+
+    $new = array(
+        "lastmod" => $date,
+        "changefreq" => "monthly",
+        "priority" => "0.7",
+        "url" => $sitename."/about/"
+        );
+    $rows[] = $new;
+
+    $new = array(
+        "lastmod" => $date,
+        "changefreq" => "monthly",
+        "priority" => "0.7",
+        "url" => $sitename."/blog/1"
+        );
+    $rows[] = $new;
+
+    $new = array(
+        "lastmod" => $date,
+        "changefreq" => "monthly",
+        "priority" => "0.7",
+        "url" => $sitename."/search/index.php"
+        );
+    $rows[] = $new;
+
+
+    $new = array(
+        "lastmod" => $date,
+        "changefreq" => "monthly",
+        "priority" => "0.7",
+        "url" => $sitename."/terms/privacy"
+        );
+    $rows[] = $new;
+
+
+    $new = array(
+        "lastmod" => $date,
+        "changefreq" => "monthly",
+        "priority" => "0.7",
+        "url" => $sitename."/terms/use"
+        );
+    $rows[] = $new;
+
+
+
+
+    $data = Db::table('offshorelicense_offers_companies')
+   ->get();
+    
+    foreach ($data as $row){
+        $new = array();
+        //$new["lastmod"] = $row->updated_at;
+        $new["lastmod"] = $date;
+        $new["changefreq"] = "monthly";
+        $new["priority"] = "0.5";
+        $new["url"] = $sitename."/companies/".$row->slug;
+        $rows[] = $new;
+    }
+    
+    
+
+
+   $data = Db::table('offshorelicense_offers_banks')
+   ->get();
+    
+    foreach ($data as $row){
+        $new = array();
+        $new["lastmod"] = $date;
+        $new["changefreq"] = "monthly";
+        $new["priority"] = "0.5";
+        $new["url"] = $sitename."/banks/".$row->type."/".$row->slug;
+        $rows[] = $new;
+    }
+    
+    
+    
+
+     $data = Db::table('offshorelicense_offers_licensing')
+   ->get();
+    
+    foreach ($data as $row){
+        $new = array();
+        $new["lastmod"] = $date;
+        $new["changefreq"] = "monthly";
+        $new["priority"] = "0.5";
+        $new["url"] = $sitename."/licensing/".$row->slug;
+        $rows[] = $new;
+    }
+    
+    
+    $data = Db::table('offshorelicense_offers_accounting')
+   ->get();
+    foreach ($data as $row){
+        $new = array();
+        $new["lastmod"] = $date;
+        $new["changefreq"] = "monthly";
+        $new["priority"] = "0.5";
+        $new["url"] = $sitename."/accounting/".$row->type."/".$row->slug;
+        $rows[] = $new;
+    }
+    
+
+    $data = Db::table('offshorelicense_offers_intprop')
+   ->get();
+    foreach ($data as $row){
+        $new = array();
+        $new["lastmod"] = $date;
+        $new["changefreq"] = "monthly";
+        $new["priority"] = "0.5";
+        $new["url"] = $sitename."/intellectualproperty/".$row->slug;
+        $rows[] = $new;
+    }
+    
+
+
+    $data = Db::table('offshorelicense_offers_intprop')
+   ->get();
+    foreach ($data as $row){
+        $new = array();
+        $new["lastmod"] = $date;
+        $new["changefreq"] = "monthly";
+        $new["priority"] = "0.5";
+        $new["url"] = $sitename."/intellectualproperty/".$row->slug;
+        $rows[] = $new;
+    }
+    
+
+    $data = Db::table('rainlab_blog_posts')
+   ->get();
+    
+    foreach ($data as $row){
+        $new = array();
+        $phpdate = strtotime($row->published_at);
+        $new["lastmod"] = date( 'Y-m-d', $phpdate );
+        $new["changefreq"] = "monthly";
+        $new["priority"] = "0.5";        
+        $new["url"] = $sitename."/blog/detail/".$row->slug;
+        $rows[] = $new;
+    }
+    
+    
+    $this["searchResults"] = $rows;
+    
+    
+}
+?>
+==
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+{% for searchResult in searchResults %}
+<url>
+  <loc>{{searchResult.url}}</loc>
+  <lastmod>{{searchResult.lastmod}}</lastmod>
+  <changefreq>{{searchResult.changefreq}}</changefreq>
+  <priority>{{searchResult.priority}}</priority>
+</url>
+
+{% endfor %}
+
+</urlset>

@@ -1,0 +1,11 @@
+list: $/offshorelicense/storage/models/licensing/columns.yaml
+modelClass: Offshorelicense\Storage\Models\Licensing
+title: LicensingController
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'offshorelicense/storage/licensingcontroller/update/:id'

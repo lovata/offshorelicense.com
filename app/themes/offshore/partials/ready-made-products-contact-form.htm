@@ -1,0 +1,156 @@
+[viewBag]
+==
+<style>
+.greenbutton{
+    background: #8aa203 none repeat scroll 0 0;
+    border-radius: 8px;
+    padding: 15px;
+    color: #ffffff;
+    width: 40%;
+    margin-top: 10px;
+    text-transform: none;
+    border: 0;
+    cursor:pointer;
+}
+</style>
+        <div style="text-align:center;margin:20px 0px 50px 0px;">
+        <button id="dialog-ready-made-oriducts-form-btn" type="button" onclick="" class="btn btn-primary crm-webform-submit-button greenbutton">
+            Request a Quote
+        </button>
+        </div>
+
+
+
+
+<div id="dialog-ready-made-oriducts" title="READY-MADE PRODUCTS AND LICENSES FOR SALE" style="padding-left:50px;">
+   <p style="color:#334D5C;font-weight:300;font-family: 'Lato', sans-serif;margin-bottom:30px;">
+  Please submit the form below to send a direct letter to our team!
+  </p>
+  
+
+<form
+    data-request="onSendUniversalForm"
+    data-request-success="$('#dialog-contactus').dialog('close');$('#dialog-thankyou').dialog('open')"
+    data-request-update="'ajax-response': '.thankyou-dialog .ui-dialog-title'"
+    data-request-validate
+    data-request-flash
+    class="form-horizontal"
+    >
+    
+    <input type="hidden" name='url' value="{{ ''| page }}">
+    <input type="hidden" name='product_type' value="73">
+    <input type="hidden" name='product_name' value="{{ record.name }}">    
+    
+    <div class="form-group row crm-webform-group">
+        <div class="">
+            <input class="form-control crm-webform-input" name="firstname" placeholder="Name*"/>
+            <span data-validate-for="firstname" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+
+    <div class="form-group row crm-webform-group">
+        <div class="">
+            <input class="form-control crm-webform-input" name="lastname" placeholder="Lastname*" />
+            <span data-validate-for="lastname" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+    <div class="form-group row crm-webform-group">
+        <div class="">
+            <input class="form-control crm-webform-input" name="email" placeholder="E-mail*"/>
+            <span data-validate-for="email" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+    <div class="form-group row crm-webform-group" style="width:50%;margin:0px;float:left;">
+        <div class="" style="width:95%">
+            <input class="form-control crm-webform-input" name="skype" placeholder="Skype name"/>
+            <span data-validate-for="skype" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+    <div class="form-group row crm-webform-group" style="width:50%;margin:0px;float:right;">
+        <div class="" style="width:95%;float:right">
+            <input class="form-control crm-webform-input" name="phone" placeholder="Phone*"/>
+            <span data-validate-for="phone" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+    <div class="form-group row crm-webform-group">
+        <div class="">
+            <textarea class="form-control crm-webform-input" name="message" placeholder="Your comment..." ></textarea>
+            <span data-validate-for="message" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+
+    <div class="row" style="margin-bottom:20px;">
+
+        <button type=button  onclick="processform()" class="btn btn-primary crm-webform-submit-button">
+            Submit
+        </button>
+
+
+        
+        <button style="display:none;" id="dialog-contactus-submit" class="btn btn-primary crm-webform-submit-button" type=submit data-attach-loading>
+            Submit
+        </button>
+    </div>
+
+</form>
+
+</div>
+
+
+<script>
+    function processform2(){
+        if ($(".highlight-when-not-checked").hasClass("highlighted-when-not-checked"))
+            {
+             $("#dialog-submit").click();
+             return
+            }
+        if ($("#LEAD_UF_CRM_1528724976:checked").val()==undefined)
+         $(".highlight-when-not-checked").addClass("highlighted-when-not-checked");
+         else
+         $("#dialog-submit").click();
+    }
+</script>
+
+
+<script>
+    $( function() {
+         $('#dialog-ready-made-oriducts').dialog({
+             autoOpen: false,
+             height: 'auto',
+             width: "500px",
+             position: ["50%", "50%"],
+             modal:true,
+             dialogClass:"contact-us-dialog",
+             create: function (event) {
+                var h = window.innerHeight;
+                var posH;
+                posH = 1;
+                if (h>700) posH = 5;
+                if (h>800) posH = 10;
+                if (h>900) posH = 20;
+               $(event.target).parent().css({ 'position': 'fixed', "left": "50%", "top": posH+"%", "margin-left": "-250px" });
+             },
+             open: function()
+            {
+                var dialog = this;
+                $('.ui-widget-overlay').on('click', function()
+                {
+                    $(dialog).dialog('close');
+                });
+            },
+            close: function(){
+
+            }
+         });
+          
+         $("#dialog-ready-made-oriducts-form-btn").click(function(){
+             $('#dialog-ready-made-oriducts').dialog('open');   
+         })
+      } );
+</script>

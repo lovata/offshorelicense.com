@@ -1,0 +1,4 @@
+title: Contactform
+modelClass: Offshorelicense\Storage\Models\Contactform
+toolbar:
+    buttons: reorder_toolbar

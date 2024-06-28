@@ -1,0 +1,162 @@
+[viewBag]
+==
+<div id="dialog-winterpromo" title="Please fill in the form to get your unique code for the discount." style="padding-left:50px;display:none;">
+
+  
+
+<form
+    data-request="onSendUniversalForm"
+    data-request-success="$('#dialog-winterpromo').dialog('close');$('#dialog-winterpromo-thankyou').dialog('open')"
+    data-request-update="'ajax-response': '.thankyou-dialog .ui-dialog-title'"
+    data-request-validate
+    data-request-flash
+    class="form-horizontal"
+    >
+    
+    <input type="hidden" name='url' value="{{ ''| page }}">
+    <input type="hidden" name='product_type' value="73">
+    <input type="hidden" name='product_name' value="winterpromo">    
+    <input type="hidden" name='promocode' value="OLWP17362">   
+    
+    <div class="form-group row crm-webform-group">
+        <div class="">
+            <input class="form-control crm-webform-input" name="firstname" placeholder="Name*"/>
+            <span data-validate-for="firstname" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+
+    <div class="form-group row crm-webform-group">
+        <div class="">
+            <input class="form-control crm-webform-input" name="lastname" placeholder="Lastname*" />
+            <span data-validate-for="lastname" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+    <div class="form-group row crm-webform-group">
+        <div class="">
+            <input class="form-control crm-webform-input" name="email" placeholder="E-mail*"/>
+            <span data-validate-for="email" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+    <div class="form-group row crm-webform-group" style="width:50%;margin:0px;float:left;">
+        <div class="" style="width:95%">
+            <input class="form-control crm-webform-input" name="skype" placeholder="Skype name"/>
+            <span data-validate-for="skype" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+    <div class="form-group row crm-webform-group" style="width:50%;margin:0px;float:right;">
+        <div class="" style="width:95%;float:right">
+            <input class="form-control crm-webform-input" name="phone" placeholder="Phone"/>
+            <span data-validate-for="phone" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+    <div class="form-group row crm-webform-group">
+        <div class="">
+            <textarea class="form-control crm-webform-input" name="message" placeholder="Your comment..." ></textarea>
+            <span data-validate-for="message" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+
+    <div class="row" style="margin-bottom:20px;">
+        <button class="btn btn-primary crm-webform-submit-button" type=submit data-attach-loading>
+            Submit
+        </button>
+    </div>
+
+</form>
+
+</div>
+
+
+
+
+<div id="dialog-winterpromo-thankyou" title="Thank you!" style="padding-left:50px;display:none;">
+    <p>
+    Your discount code: <b>OLWP17362</b>
+    </p>
+    <br/>
+    <div class="row" style="text-align:center;margin-top:30px;">
+        <button class="btn btn-primary crm-webform-submit-button" onclick = "$('#dialog-winterpromo-thankyou').dialog('close');" style="margin-top:-10px;margin-bottom:15px;width:150px;margin-left:-20px;">Close</button>
+    </div>
+</div>
+
+
+
+<script>
+ function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+    $( function() {
+         $('#dialog-winterpromo').dialog({
+             autoOpen: false,
+             height: 'auto',
+             width: "500px",
+             position: ["50%", "50%"],
+             modal:true,
+             dialogClass:"contact-us-dialog",
+             create: function (event) {
+               $(event.target).parent().css({ 'position': 'fixed', "left": "50%", "top": "10%", "margin-left": "-250px" });
+             },
+             open: function()
+            {
+                var dialog = this;
+                $('.ui-widget-overlay').on('click', function()
+                {
+                    $(dialog).dialog('close');
+                });
+            },
+            close: function(){
+                document.cookie = "popup_closed_winterpromo=1";
+            }
+         });
+          
+           var popup_closed_winterpromo = getCookie("popup_closed_winterpromo");
+           if (popup_closed_winterpromo!=="1")
+               $('#dialog-winterpromo').dialog('open');
+           
+      } );
+
+
+
+
+    
+    $(function(){
+     $('#dialog-winterpromo-thankyou').dialog({
+         autoOpen: false,
+         height: 'auto',
+         width: "500px",
+         position: ["50%", "50%"],
+         modal:true,
+         dialogClass:"contact-us-dialog",
+         create: function (event) {
+           $(event.target).parent().css({ 'position': 'fixed', 'left': '50%', "top": "20%", "margin-left": "-250px" });
+         },
+         open: function(){
+               //$(".thankyou-dialog .ui-dialog-title").html("");
+         },
+         close: function(){
+
+            document.cookie = "popup_closed_winterpromo=1";
+         }              
+     });
+    });
+
+</script>

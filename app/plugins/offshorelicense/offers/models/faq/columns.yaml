@@ -1,0 +1,26 @@
+columns:
+    id:
+        label: id
+        type: number
+        searchable: true
+        sortable: true
+    title:
+        label: title
+        type: text
+        searchable: true
+        sortable: true
+    body:
+        label: body
+        type: text
+        searchable: true
+        sortable: true
+    order_id:
+        label: order_id
+        type: number
+        searchable: true
+        sortable: true
+    group:
+        label: group
+        type: text
+        searchable: true
+        sortable: true

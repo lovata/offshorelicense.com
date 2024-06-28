@@ -1,0 +1,73 @@
+[viewBag]
+==
+<div id="dialog-ifexpo" style="padding:0px;display:none;margin:0px;">
+
+    <button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close" title="Close" onclick=$('#dialog-ifexpo').dialog('close');>
+    <span class="ui-button-icon ui-icon ui-icon-closethick"></span>
+    <span class="ui-button-icon-space"> 
+    </span>Close</button>
+    
+    <img src="https://www.offshorelicense.com/themes/offshore/assets/images/OL_IFNEXPO.PNG" style="width:100%">
+</div>
+
+
+
+
+
+<script>
+ function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+    $( function() {
+         $('#dialog-ifexpo').dialog({
+             autoOpen: false,
+             height: 'auto',
+             width: "40%",
+             position: ["50%", "50%"],
+             modal:true,
+             dialogClass:"smallframe-dialog",
+             create: function (event) {
+               $(event.target).parent().css({ 'position': 'fixed', "left": "50%", "top": "10%", "margin-left": "-23%" });
+             },
+             open: function()
+            {
+                var dialog = this;
+                $('.ui-widget-overlay').on('click', function()
+                {
+                    $(dialog).dialog('close');
+                });
+            },
+            close: function(){
+                  var now = new Date();
+                  var time = now.getTime();
+                  var expireTime = time + 100*36000;
+                  now.setTime(expireTime);
+                  document.cookie = 'popup_closed_ifexpopromo=1;expires='+now.toGMTString()+';path=/';
+                
+            }
+         });
+          
+           var popup_closed_winterpromo = getCookie("popup_closed_ifexpopromo");
+           if (popup_closed_winterpromo!=="1")
+               $('#dialog-ifexpo').dialog('open');
+           
+      } );
+
+
+
+
+
+</script>

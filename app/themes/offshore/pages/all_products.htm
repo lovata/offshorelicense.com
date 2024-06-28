@@ -1,0 +1,107 @@
+title = "all_products"
+url = "/all_products"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+==
+<?php
+function onStart() {
+
+    
+    $rows = array();
+    
+
+    $data = Db::table('offshorelicense_offers_companies')
+   ->get();
+    
+    foreach ($data as $row){
+        $new = array();
+        $new["name"] = $row->name;
+        $new["category"] = "Companies";
+        $new["url"] = "/companies/".$row->slug;
+        $rows[] = $new;
+    }
+    
+    
+
+
+   $data = Db::table('offshorelicense_offers_banks')
+   ->get();
+    
+    foreach ($data as $row){
+        $new = array();
+        $new["name"] = $row->name;
+        $new["category"] = "Banks";
+        $new["url"] = "/banks/".$row->type."/".$row->slug;
+        $rows[] = $new;
+    }
+    
+    
+    
+
+     $data = Db::table('offshorelicense_offers_licensing')
+   ->get();
+    
+    foreach ($data as $row){
+        $new = array();
+        $new["name"] = $row->name;
+        $new["category"] = "Licensing";
+        $new["url"] = "/licensing/".$row->slug;
+        $rows[] = $new;
+    }
+    
+    
+    $data = Db::table('offshorelicense_offers_accounting')
+   ->get();
+    foreach ($data as $row){
+        $new = array();
+        $new["name"] = $row->name;
+        $new["category"] = "Accounting";
+        $new["url"] = "/accounting/".$row->type."/".$row->slug;
+        $rows[] = $new;
+    }
+    
+
+
+    
+    $this["searchResults"] = $rows;
+    
+    
+}
+?>
+==
+<div class="page searchpage">
+		
+<div class="page-top default">
+	<div style="padding-bottom: 0;" class="content mainPage-list">
+		<div class="text center">
+			<h2>All products</h2>
+		</div>
+	</div>
+</div>
+
+<div class="search-page">
+
+<table cellpadding="10" cellspacing="0" border="1">
+<tr>
+<th>
+    name
+</th>
+<th>
+    category
+</th>
+<th>
+    url
+</th>
+</tr>
+{% for searchResult in searchResults %}
+<tr>
+    <td><a href="{{searchResult.url}}">{{ searchResult.name |raw }}</a></td>
+    <td>{{searchResult.category}}</td>
+    <td>https://offshorelicense.com{{searchResult.url}}</td>
+</tr>
+{% endfor %}
+</table>
+
+</div>
+</div>

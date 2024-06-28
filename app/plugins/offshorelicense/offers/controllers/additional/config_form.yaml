@@ -1,0 +1,10 @@
+name: Additional
+form: $/offshorelicense/offers/models/additional/fields.yaml
+modelClass: Offshorelicense\Offers\Models\Additional
+defaultRedirect: offshorelicense/offers/additional
+create:
+    redirect: 'offshorelicense/offers/additional/update/:id'
+    redirectClose: offshorelicense/offers/additional
+update:
+    redirect: offshorelicense/offers/additional
+    redirectClose: offshorelicense/offers/additional

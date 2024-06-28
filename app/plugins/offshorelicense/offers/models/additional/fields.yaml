@@ -1,0 +1,17 @@
+fields:
+    title:
+        label: Title
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    order_id:
+        label: Order
+        span: auto
+        oc.commentPosition: ''
+        type: number
+    body:
+        label: Body
+        size: giant
+        oc.commentPosition: ''
+        span: full
+        type: richeditor

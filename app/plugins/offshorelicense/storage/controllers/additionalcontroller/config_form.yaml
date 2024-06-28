@@ -1,0 +1,11 @@
+name: AdditionalController
+modelClass: Offshorelicense\Storage\Models\Additional2
+form: $/offshorelicense/storage/models/additional2/fields.yaml
+defaultRedirect: offshorelicense/storage/additionalcontroller
+create:
+    redirect: 'offshorelicense/storage/additionalcontroller/update/:id'
+    redirectClose: offshorelicense/storage/additionalcontroller
+update:
+    redirect: offshorelicense/storage/additionalcontroller
+    redirectClose: offshorelicense/storage/additionalcontroller
+preview: {  }

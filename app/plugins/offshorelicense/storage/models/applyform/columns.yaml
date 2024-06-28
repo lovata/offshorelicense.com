@@ -1,0 +1,37 @@
+columns:
+    id:
+        label: id
+        type: number
+    type:
+        label: type
+        type: text
+    firstname:
+        label: firstname
+        type: text
+    lastname:
+        label: lastname
+        type: text
+    email:
+        label: email
+        type: text
+    skype:
+        label: skype
+        type: text
+    phone:
+        label: phone
+        type: text
+    can_attend_meeting:
+        label: can_attend_meeting
+        type: switch
+    require_license:
+        label: require_license
+        type: switch
+    ip:
+        label: ip
+        type: text
+    created_at:
+        label: created_at
+        type: datetime
+    page:
+        label: page
+        type: text

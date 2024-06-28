@@ -1,0 +1,144 @@
+title = "Ready-Made Products and Licenses for Sale"
+url = "/ready-made-products-and-licenses-for-sale/:post"
+layout = "base"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+contentType = "html"
+==
+<?php
+function onStart(){     
+     
+     
+     $this["record"] = Db::table('offshorelicense_storage_rmproducts')->where('slug',$this->param('post'))->first();
+     //$record->tags = 
+     $this["record"]->tags = explode(",",$this["record"]->tags);
+     $this["relatedPosts"] = Db::table('offshorelicense_storage_rmproducts')->get();
+     if (! $this["record"])
+        return Redirect::to('/404');
+     $this->page['breadscrumbs'] = array(
+     'Home'=>$this->page['site_link'],
+     'Ready-Made Products and Licenses for Sale'=>"/ready-made-products-and-licenses-for-sale",
+     $this["record"]->title=>"");
+     
+     
+}
+
+
+function onEnd() {
+
+    //if (!$this["blogPost"]->post)
+    //    return Redirect::to('/404');    
+    //$this->SeoCmsPage->seo_title = $this["blogPost"]->post->seo_title;
+    //$this->SeoCmsPage->seo_description = $this["blogPost"]->post->seo_description;
+    //$this->SeoCmsPage->seo_keywords = $this["blogPost"]->post->seo_keywords;
+
+    
+    
+    
+    //$this->SeoCmsPage->seo_title = $this["SeoBlogPost"]->title;
+    //$this->page['breadscrumbs'] = array(
+    //    'Home'=>$this->page['site_link'],
+    //    'Blog'=>"/blog/detail", 
+    //    $this["blogPost"]->post->title=>"",
+    //);    
+    
+    
+
+}
+?>
+==
+<div class="page">
+
+<!-------------------------------------------------->
+<!-------------------START Blog--------------------->
+<!-------------------------------------------------->
+
+<div class="page-top" style="height: 180px;">
+    <div class="content mainPage-list" style="padding-top: 0;">
+        <div class="text center" style="padding-top: 20px;">
+            <h2 style="    font-size: 36px;
+            font-weight: 400;
+            color: #fff;
+            text-transform: uppercase;
+            line-height: 60px;
+            margin-bottom: 20px;
+            margin-top: 10px;">Ready-Made Products and Licenses for Sale</h2>
+        </div>
+    </div>
+</div>
+ 
+<!-------------------------------------------------->
+<!--------------------END Blog---------------------->
+<!-------------------------------------------------->
+
+
+
+
+{% if this.page["breadscrumbs"] %}
+ <div class="white-bg">
+ <div class="content">
+    <ul class='breadscrumbs'>
+        {%for item,url in this.page["breadscrumbs"]%}
+        <li>
+            {% if url!="" %}
+                <a href="{{url}}">{{item}}</a>
+            {% else %}
+                {{item}}
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+</div>
+{% endif %}
+
+
+
+{% set post = record %}
+{% component 'SeoBlogPost' data=post%}
+
+<div class="whiteBackground">
+    <div class="news-detail content">
+    
+    	<h1 style="    font-size: 26px;
+    line-height: 30px;
+    margin-bottom: 10px;
+    font-weight: 700;">{{ post.title }}</h1>
+    	<span class="news-date-time">{{ post.published_datetime|date('M d, Y') }}</span>
+    	<div class="news-detail-text">
+        <img src="{{ post.image2 | media }}" style="display:none;"/>
+    	{{ post.body|raw }}
+    	</div>
+    
+    
+{% partial 'ready-made-products-contact-form' %}
+    
+        <div class="news-tags"><label>Tags:</label>
+            {% for tag in post.tags %}
+                <a href="/search/{{tag}}">{{tag}}</a>
+            {% endfor %}
+        </div>
+    		
+    	<a href="{{ 'ready-made-products'|page }}" class="news-back-link">Back to list</a>
+    
+    
+    
+        {% if  relatedPosts %}
+            <div class="news-related-articles">
+                <h3>Related Articles</h3>
+                    {% for Post in relatedPosts %}
+                        <a href="{{'ready-made-products'|page}}/{{Post.slug}}">{{ Post.published_datetime|date('M d, Y') }}:&nbsp;{{ Post.title }}</a>
+                    {% endfor %}
+    		</div>
+        {% endif %}
+    
+    
+    
+    
+    
+    </div>
+</div>
+
+
+</div>

@@ -1,0 +1,36 @@
+columns:
+    id:
+        label: id
+        type: number
+    title:
+        label: title
+        type: text
+        searchable: true
+    published:
+        label: published
+        type: text
+    slug:
+        label: slug
+        type: text
+        searchable: true
+    image1:
+        label: image1
+        type: text
+    image2:
+        label: image2
+        type: text
+    published_datetime:
+        label: published_datetime
+        type: text
+    tags:
+        label: tags
+        type: text
+    category:
+        label: category
+        type: text
+    created_at:
+        label: created_at
+        type: datetime
+    updated_at:
+        label: updated_at
+        type: datetime

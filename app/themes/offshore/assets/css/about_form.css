@@ -1,0 +1,134 @@
+
+/*--------------------------ABOUT form----------------------------------------*/
+form[name="SIMPLE_FORM_1"] {
+	 width: 820px;
+	 text-align: center;
+	 margin: 0px auto;
+}
+form[name="SIMPLE_FORM_1"] p[align="right"] {
+	color: #4d5e6b;
+	font-weight: 300;
+}
+table.about-form-table{
+    margin-top: 60px;
+	margin-bottom: 20px;
+    width: 820px;
+    position: relative;
+}
+.about-form-class{
+    padding: 0px 15px;
+    width: 360px;
+    line-height: 34px;
+    border-radius: 3px;
+    border: 1px solid #cccccc;
+    height: 34px;
+	box-shadow: inset 1px 3px 3px 0px #efefef;
+	font-family: "Lato",Helvetica,Arial,sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+	color: #4d5e6b;
+	margin-bottom: 20px;
+}
+.about-form-class.error,
+.about-form-comment-class.error {
+	border: 1px solid red;
+}
+.about-form-class[name="form_text_4"]{
+	width: 390px;
+	height: 36px;
+	line-height: 36px;
+}
+.about-form-comment-class{
+    margin: 0px;
+    width: 370px;
+    border-radius: 3px;
+    border: 1px solid #cccccc;
+    height: 95px;
+    padding: 10px;
+	box-shadow: inset 1px 3px 3px 0px #efefef;
+	font-family: "Lato",Helvetica,Arial,sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+	color: #4d5e6b;
+	resize:none;
+}
+.about-button{
+    position: relative;
+    width: 260px;
+    line-height: 45px;
+	height: 45px;
+    background-color: #8aa203;
+    border-radius:5px;
+	border: none;
+    margin-top: 20px;
+    margin-bottom: 110px;
+    color: #fff;
+	font-family: "Lato",Helvetica,Arial,sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+	vertical-align: middle;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+.about-form-table  tr td {
+	vertical-align: top;
+	color: #374d5c;
+	font-size: 16px;
+	font-family: "Lato",Helvetica,Arial,sans-serif;
+	font-weight: 300;
+}
+.about-form-table  tr td p {
+	text-align: left;
+}
+.about-form-table  tr td p .errortext{
+	margin-bottom: 20px;
+	display: inline-block;
+}
+.about-form-table  tr td:last-child {
+	text-align: right;
+}
+.about-form-table  tr td table {
+	margin-top: 29px;
+}
+.about-form-table  tr td table tr td {
+	vertical-align: bottom;
+}
+.about-form-table  tr td div.form-header{
+    text-align: center;
+    font-weight: 700;
+    margin: 10px;
+	color: #1e2b34;
+	font-size: 18px;
+}
+.about-form-table  tr td div.form-desc{
+    text-align: center;
+    margin-bottom: 40px;
+}
+.about-form-table img{
+    width: 170px;
+    height: 34px;
+    border: 1px solid #cccccc;
+    float: left;
+	margin-top: 5px;
+	margin-right: 20px;
+}
+.about-form-table input.inputtext{
+    width: 190px;
+    margin: 0px;
+    float: left;
+    line-height: 34px;
+    border: 1px solid #cccccc;
+    border-radius:4px;
+    padding-left: 8px;
+	height: 34px;
+}
+.about-form-table input.inputtext.error,
+.about-form-table .errorWrap input.inputtext {
+	border: 1px solid red;
+}
+#warning {
+	color: red;
+}
+#warning label {
+	display: block;
+}

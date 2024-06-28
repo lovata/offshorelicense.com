@@ -1,0 +1,4 @@
+title: LicensingController
+modelClass: Offshorelicense\Storage\Models\Licensing
+toolbar:
+    buttons: reorder_toolbar

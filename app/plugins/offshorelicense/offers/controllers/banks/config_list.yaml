@@ -1,0 +1,11 @@
+title: Banks
+modelClass: Offshorelicense\Offers\Models\Banks
+list: $/offshorelicense/offers/models/banks/columns.yaml
+recordUrl: 'offshorelicense/offers/banks/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

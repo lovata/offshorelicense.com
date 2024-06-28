@@ -1,0 +1,4 @@
+title: Companies
+modelClass: Offshorelicense\Offers\Models\Companies
+toolbar:
+    buttons: reorder_toolbar

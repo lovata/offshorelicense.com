@@ -1,0 +1,4 @@
+title: CompaniesController
+modelClass: Offshorelicense\Storage\Models\Companies
+toolbar:
+    buttons: reorder_toolbar

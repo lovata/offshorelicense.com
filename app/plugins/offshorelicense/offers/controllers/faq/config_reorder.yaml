@@ -1,0 +1,4 @@
+title: Faq
+modelClass: Offshorelicense\Offers\Models\Faq
+toolbar:
+    buttons: reorder_toolbar

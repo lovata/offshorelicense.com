@@ -1,0 +1,137 @@
+title = "Additional"
+url = "/additional"
+layout = "base"
+meta_title = "Merchant Accounts, Legal Consultations and Technical Solutions - Additional - Offshorelicense"
+meta_description = "Accounting, Finance and Business advisory, Trademark registration and Legal services"
+is_hidden = 0
+seo_keywords = "Accounting, Finance and Business advisory, Trademark registration and Legal services"
+robot_index = "index"
+robot_follow = "follow"
+contentType = "html"
+
+[builderList]
+modelClass = "Offshorelicense\Offers\Models\Additional"
+scope = "-"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+sortColumn = "order_id"
+sortDirection = "asc"
+
+[SeoCmsPage]
+==
+<?php
+function onStart(){
+     $this->page['breadscrumbs'] = array('Home'=>$this->page['site_link'],'Additional'=>"");
+}
+?>
+==
+{% set records = builderList.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsPage = builderList.detailsPage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+
+
+
+
+
+<div class="page additional">
+<div class="page-top about-us-title">
+   <div class="content mainPage-list">
+      <div class="text center">
+         <h1>Additional services</h1>
+      </div>
+   </div>
+</div>
+
+
+
+
+{% if this.page["breadscrumbs"] %}
+ <div class="content">
+    <ul class='breadscrumbs'>
+        {%for item,url in this.page["breadscrumbs"]%}
+        <li>
+            {% if url!="" %}
+                <a href="{{url}}">{{item}}</a>
+            {% else %}
+                {{item}}
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+
+
+
+<div class="page-content BrowseBanksByRegion">
+<div class="content">
+   <div class="text center">
+      <h2>Merchant Accounts, Legal Consultations and Technical Solutions</h2>
+   </div>
+   <div class="content">
+      <div class="list-of-el">
+         <ul>
+         
+         
+
+    {% for record in records %}
+        <li class="list-el">
+               <label onclick="openTab($(this))" id="{{ attribute(record, "title")|replace({' ':''}) }}">
+               <h3> {{ attribute(record, "title") }}</h3>
+               </label>
+               
+               
+                <div class="pad">
+                    <div class="user_text scroll-pane jspScrollable">
+                         <div class="wrp">
+                             {{ attribute(record, "body") | raw }}
+                         </div>
+                    </div>
+                </div>
+                
+                
+        </li>
+    {% endfor %}
+
+         
+            
+         </ul>
+         </div>
+         <script type="text/javascript">
+            function openTab(th) {
+            		if($(th).parent('li').hasClass('act')) {
+            			$(th).parent('li').removeClass('act');
+            			$(th).parent('li').find('.pad').hide();
+            		} else {
+            			$('.list-of-el li').removeClass('act');
+            			$('.list-of-el li').find('.pad').hide();
+            			$(th).parent('li').addClass('act');
+            			$(th).parent('li').find('.pad').show()
+            			$(th).parent('li').find('.scroll-pane').height($(th).parent('li').find('.wrp').height()+60).jScrollPane();
+            		}
+            }
+            
+            
+            $(function(){
+                openTab($(window.location.hash));
+                var y = $(window).scrollTop();
+                $(window).scrollTop(y-200);
+            })
+            
+            
+         </script>		</div>
+         
+         {% partial 'additional-contact-form' %}
+         
+         
+         
+      </div>
+   </div>
+</div>

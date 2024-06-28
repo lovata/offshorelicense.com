@@ -1,0 +1,11 @@
+title: AdditionalController
+modelClass: Offshorelicense\Storage\Models\Additional2
+list: $/offshorelicense/storage/models/additional2/columns.yaml
+recordUrl: 'offshorelicense/storage/additionalcontroller/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

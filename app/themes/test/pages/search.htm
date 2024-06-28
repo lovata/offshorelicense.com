@@ -1,0 +1,314 @@
+title = "Search"
+url = "/search/:search"
+layout = "base"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+contentType = "html"
+
+[searchInput]
+useAutoComplete = 1
+autoCompleteResultCount = 5
+showProviderBadge = 1
+
+[SeoCmsPage]
+==
+<?php
+function get_string_around($string, $start){
+    $string = ' ' . $string;
+    $ini = max(stripos($string, $start)-250,0);
+    $pre = $post = "";
+    if ($ini > 0) $pre = "...";
+    if ($ini+400 <= strlen($string)) $post = "...";
+    return $pre.substr($string, $ini, 400).$post;
+}
+
+
+function onStart() {
+    
+    $q = trim(Request::get('q'));
+    if (!$q)
+        $q = $this->param('search');
+        
+    $this["q"] = $q;
+
+if (strlen($q)<3){
+    $this["searchResults"] = array();
+    return;
+}
+    
+    $rows = array();
+    
+
+
+
+
+
+    $data = Db::table('rainlab_blog_posts')
+    ->where('title', 'like', '%'.$q.'%')
+    ->orWhere('content', 'like', '%'.$q.'%')
+   ->get();
+    
+    foreach ($data as $row){
+        $new = array();
+        $new["name"] = $row->title;
+        $new["info"] = $row->content;
+        $new["description"] = "";
+        $phpdate = strtotime($row->published_at);
+        $new["updated_at"] = date( 'd/m/Y', $phpdate );
+        $new["category"] = "Blog";
+        $new["url"] = "/blog/detail/".$row->slug;
+        $rows[] = $new;
+    }
+    
+
+    
+    
+    
+    $data = Db::table('offshorelicense_offers_companies')
+    ->where('info', 'like', '%'.$q.'%')
+   ->orWhere('name', 'like', '%'.$q.'%')
+   ->orWhere('description', 'like', '%'.$q.'%')
+   ->orWhere('tab_company', 'like', '%'.$q.'%')
+   ->orWhere('tab_services', 'like', '%'.$q.'%')
+   ->orWhere('tab_requirements', 'like', '%'.$q.'%')
+   ->get();
+    
+    foreach ($data as $row){
+        if ($row->disabled=='1') continue;        
+        $new = array();
+        $new["name"] = $row->name;
+        $new["info"] = $row->info;
+        $new["description"] = $row->description.$row->tab_company.$row->tab_services.$row->tab_requirements;
+        $new["updated_at"] = "02/28/2017";
+        $new["category"] = "Companies";
+        $new["url"] = "/companies/".$row->slug;
+        $rows[] = $new;
+    }
+    
+    
+
+
+   $data = Db::table('offshorelicense_offers_banks')
+   ->where('info', 'like', '%'.$q.'%')
+   ->orWhere('name', 'like', '%'.$q.'%')
+   ->orWhere('description', 'like', '%'.$q.'%')
+   ->orWhere('tab_rates', 'like', '%'.$q.'%')
+   ->orWhere('tab_services', 'like', '%'.$q.'%')
+   ->orWhere('tab_requirements', 'like', '%'.$q.'%')
+   ->get();
+    
+    foreach ($data as $row){
+        if ($row->disabled=='1') continue;        
+        $new = array();
+        $new["name"] = $row->name;
+        $new["info"] = $row->info;
+        $new["description"] = $row->description.$row->tab_rates.$row->tab_services.$row->tab_requirements;
+        //if (!isset($row.updated_at))
+            $new["updated_at"] = "02/28/2017";
+        //else
+        //    $new["updated_at"] = $row["updated_at"];
+        $new["category"] = "Banks";
+        $new["url"] = "/banks/".$row->type."/".$row->slug;
+        $rows[] = $new;
+    }
+    
+    
+    
+
+     $data = Db::table('offshorelicense_offers_licensing')
+     ->where('info', 'like', '%'.$q.'%')
+   ->orWhere('name', 'like', '%'.$q.'%')
+   ->orWhere('description', 'like', '%'.$q.'%')
+   ->orWhere('tab_features', 'like', '%'.$q.'%')
+   ->orWhere('tab_procedure', 'like', '%'.$q.'%')
+   ->orWhere('tab_documents', 'like', '%'.$q.'%')
+   ->get();
+    
+    foreach ($data as $row){
+        if ($row->disabled=='1') continue;        
+        $new = array();
+        $new["name"] = $row->name;
+        $new["info"] = $row->info;
+        $new["description"] = $row->description.$row->tab_features.$row->tab_procedure.$row->tab_documents;
+        $new["updated_at"] = "02/28/2017";
+        $new["category"] = "Licensing";
+        $new["url"] = "/licensing/".$row->slug;
+        $rows[] = $new;
+    }
+    
+    
+
+     $data = Db::table('offshorelicense_offers_intprop')
+     ->where('info', 'like', '%'.$q.'%')
+   ->orWhere('name', 'like', '%'.$q.'%')
+   ->orWhere('description', 'like', '%'.$q.'%')
+   ->orWhere('tab_features', 'like', '%'.$q.'%')
+   ->orWhere('tab_procedure', 'like', '%'.$q.'%')
+   ->orWhere('tab_documents', 'like', '%'.$q.'%')
+   ->get();
+    
+    foreach ($data as $row){
+        $new = array();
+        $new["name"] = $row->name;
+        $new["info"] = $row->info;
+        $new["description"] = $row->description.$row->tab_features.$row->tab_procedure.$row->tab_documents;
+        $new["updated_at"] = "02/28/2017";
+        $new["category"] = "Licensing";
+        $new["url"] = "/licensing/".$row->slug;
+        $rows[] = $new;
+    }
+    
+    
+     $data = Db::table('offshorelicense_offers_accounting')
+     ->where('info', 'like', '%'.$q.'%')
+   ->orWhere('name', 'like', '%'.$q.'%')
+   ->orWhere('description', 'like', '%'.$q.'%')
+   ->orWhere('tab_rates', 'like', '%'.$q.'%')
+   ->orWhere('tab_services', 'like', '%'.$q.'%')
+   ->orWhere('tab_requirements', 'like', '%'.$q.'%')
+   ->get();
+    
+    foreach ($data as $row){
+        if ($row->disabled=='1') continue;        
+        $new = array();
+        $new["name"] = $row->name;
+        $new["info"] = $row->info;
+        $new["description"] = $row->description.$row->tab_rates.$row->tab_services.$row->tab_requirements;
+        $new["updated_at"] = "02/28/2017";
+        $new["category"] = "Accounting";
+        $new["url"] = "/accounting/".$row->type."/".$row->slug;
+        $rows[] = $new;
+    }
+    
+    
+    
+    
+    
+    
+    $row = Db::table('offshorelicense_offers_additional')
+   ->Where('title', 'like', '%'.$q.'%')
+   ->orWhere('body', 'like', '%'.$q.'%')
+   ->first();
+    
+    if ($row){
+        $new = array();
+        $new["name"] = $row->title;
+        $new["info"] = $row->body;
+        $new["description"] = "";
+        $new["updated_at"] = "02/28/2017";
+        $new["category"] = "Additional";
+        $new["url"] = "/additional";
+        $rows[] = $new;
+    }
+    
+    
+ 
+ 
+    foreach ($rows as &$row){
+        $row["relevance"] = 0;
+        
+        if (stripos($row["name"],$q) !== false)
+            $row["relevance"]+=3;
+        if (stripos($row["info"],$q) !== false)
+            $row["relevance"]+=2;
+        if (stripos($row["description"],$q) !== false)
+            $row["relevance"]+=1;
+        
+        $row["info"] = $this->get_string_around( strip_tags($row["info"].$row["description"]),$q);
+
+        $row["name"] = str_ireplace($q,"<b>".$q."</b>",$row["name"]);
+        $row["info"] = str_ireplace($q,"<b>".$q."</b>",$row["info"]);
+    }
+    
+
+
+    usort($rows,  function ($a, $b) {
+        return $b['relevance'] - $a['relevance'];
+    });
+    
+    
+    $this["searchResults"] = $rows;
+    
+    
+}
+?>
+==
+<div class="page searchpage">
+		
+<div class="page-top default">
+	<div style="padding-bottom: 0;" class="content mainPage-list">
+		<div class="text center">
+			<h2>Search</h2>
+		</div>
+	</div>
+</div>
+
+<div class="search-page">
+
+
+<!--
+<form action="" method="get">
+	<input type="text" name="q" value="{{this.param.search}}" size="40">
+	&nbsp;<input type="submit" value="Search">
+	<input type="hidden" name="how" value="r">
+</form>
+-->
+
+
+
+
+
+<form action="{{ searchInput.searchPage | page }}?q={{ query | url_encode(true) }}" method="get">
+    <div class="ss-search-form">
+        <div class="ss-search-form__input">
+            <input name="q" value="{{q}}" type="text" placeholder="What are you looking for?" style="width:290px">
+            <input class="ss-search-form__submit" type="submit" value="Search">
+        </div>
+    </div>
+</form>
+
+
+{% for searchResult in searchResults %}
+        <hr/>
+        <a href="{{searchResult.url}}">{{ searchResult.name |raw }}</a>
+        <p>{{ searchResult.info |raw}}</p>
+        <small>Path:&nbsp;<a href="{{searchResult.url}}">{{searchResult.category}}</a></small>
+        
+{% endfor %}
+
+
+{% if searchResults|length == 0 %}
+    <p>Unfortunately, your search did not match any documents.</p>
+{% endif %}
+
+<!--
+		<hr>
+			<a href="/blog/detail/xi_jinping_s_vision_of_new_era_includes_forex_industry_to_focus_on_china?sphrase_id=16511">Xi Jinping’s vision of “New Era” includes <b>Forex</b> Industry to focus on China</a>
+		<p> ... world. The “New Era” includes building country determinately governed by the party, being open to the rest of the world and being proudly Chinese. 
+
+Due to the enormous trading volumes, currently, China stands out as the forthcoming homeland for 
+<b>retail</b> <b>Forex</b>
+. Introducing brokers operate the vast managed accounts, therefore, a very definitive format now is conduction of business between Western service and brokerage providers on one side and the key introducing partners and brokers in China on the other ... </p>
+				<small>Modified: 10/26/2017</small><br>			<small>Path:&nbsp;<a href="/blog/">Blog</a></small><hr>
+				-->
+				
+				
+				<!--
+			<font class="line-navigation">
+			<span class="first">&lt;&lt;</span>
+		<span class="back">&lt;</span>
+								<b>1</b>
+					
+						<span class="next">&gt;</span>
+		<span class="last">&gt;&gt;</span>
+	
+
+
+</font>	<br>
+	<p>
+			<b>Sorted by relevance</b>&nbsp;|&nbsp;<a href="/search/?q=Retail+Forex&amp;where=&amp;how=d">Sort by date</a>
+		</p
+		>-->
+</div>
+</div>

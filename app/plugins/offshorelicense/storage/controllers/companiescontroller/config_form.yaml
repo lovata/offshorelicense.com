@@ -1,0 +1,10 @@
+name: CompaniesController
+form: $/offshorelicense/storage/models/companies/fields.yaml
+modelClass: Offshorelicense\Storage\Models\Companies
+defaultRedirect: offshorelicense/storage/companiescontroller
+create:
+    redirect: 'offshorelicense/storage/companiescontroller/update/:id'
+    redirectClose: offshorelicense/storage/companiescontroller
+update:
+    redirect: offshorelicense/storage/companiescontroller
+    redirectClose: offshorelicense/storage/companiescontroller

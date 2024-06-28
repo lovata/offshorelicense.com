@@ -1,0 +1,117 @@
+fields:
+    name:
+        label: Name
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    slug:
+        label: Url
+        oc.commentPosition: ''
+        span: auto
+        preset:
+            field: name
+            type: slug
+        type: text
+    title:
+        label: Title
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    logo:
+        label: Logo
+        oc.commentPosition: ''
+        mode: file
+        span: auto
+        type: mediafinder
+    type:
+        label: Type
+        oc.commentPosition: ''
+        options:
+            'Forex & Securities Dealers Licenses': 'Forex & Securities Dealers Licenses'
+            'Securities Dealers Licenses': 'Securities Dealers Licenses'
+            'Asset Management Licenses': 'Asset Management Licenses'
+            'Electronic Money Licenses': 'Electronic Money Licenses'
+            'Token Licenses': 'Token Licenses'
+            'ICO and Crypto Setups': 'ICO and Crypto Setups'
+            'Investment Funds Licenses': 'Investment Funds Licenses'
+            'Gambling Licenses': 'Gambling Licenses'
+            'Payment Intermediary and Bank Licenses': 'Payment Intermediary and Bank Licenses'
+        span: auto
+        type: dropdown
+    license_name:
+        label: 'License name'
+        span: auto
+        oc.commentPosition: ''
+        type: text
+    info:
+        label: Info
+        size: small
+        oc.commentPosition: ''
+        span: full
+        type: textarea
+    description:
+        label: Description
+        size: giant
+        oc.commentPosition: ''
+        span: full
+        type: richeditor
+    featured:
+        label: Recommended
+        span: right
+        type: switch
+    featured_order_id:
+        label: 'Recommended order'
+        oc.commentPosition: ''
+        span: right
+        type: number
+    tabs_title:
+        label: 'Tabs Title'
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    meta_title:
+        label: 'Meta Title'
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: textarea
+    meta_description:
+        label: 'Meta Description'
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: textarea
+    meta_keywords:
+        label: 'Meta Keywords'
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: textarea
+tabs:
+    fields:
+        tab_features:
+            label: 'Notable features'
+            size: giant
+            oc.commentPosition: ''
+            span: full
+            type: richeditor
+            tab: 'Notable features'
+        disabled:
+            label: Disabled
+            span: auto
+            type: switch
+            tab: 'Notable features'
+        tab_procedure:
+            label: 'Rich editor'
+            size: giant
+            oc.commentPosition: ''
+            span: full
+            type: richeditor
+            tab: Procedure
+        tab_documents:
+            label: 'Rich editor'
+            size: giant
+            oc.commentPosition: ''
+            span: full
+            type: richeditor
+            tab: 'Documents Required'

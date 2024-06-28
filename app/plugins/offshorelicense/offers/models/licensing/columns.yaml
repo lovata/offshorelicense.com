@@ -1,0 +1,36 @@
+columns:
+    name:
+        label: Name
+        type: text
+        searchable: true
+        sortable: true
+    info:
+        label: Info
+        type: text
+        searchable: true
+        sortable: true
+    license_name:
+        label: License
+        type: text
+        searchable: true
+        sortable: true
+    slug:
+        label: Url
+        type: text
+        searchable: true
+        sortable: true
+    logo:
+        label: Logo
+        type: text
+        searchable: true
+        sortable: true
+    featured:
+        label: Recommended
+        type: switch
+        searchable: true
+        sortable: true
+    disabled:
+        label: Disabled
+        type: switch
+        searchable: true
+        sortable: true

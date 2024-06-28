@@ -1,0 +1,58 @@
+fields:
+    type:
+        label: 'Corporate / Personal'
+        oc.commentPosition: ''
+        options:
+            Corporate: Corporate
+            Personal: Personal
+        span: auto
+        type: dropdown
+    page:
+        label: Source
+        span: auto
+        oc.commentPosition: ''
+        options:
+            Companies: Companies
+            Banks: Banks
+            Licensing: Licensing
+        emptyOption: Undefined
+        type: dropdown
+    firstname:
+        label: Firstname
+        oc.commentPosition: ''
+        span: left
+        type: text
+    lastname:
+        label: Lastname
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    email:
+        label: Email
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    phone:
+        label: Phone
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    skype:
+        label: Skype
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    message:
+        label: Message
+        size: small
+        oc.commentPosition: ''
+        span: full
+        type: textarea
+    can_attend_meeting:
+        label: 'Can attend a bank meeting in person'
+        span: left
+        type: switch
+    require_license:
+        label: 'Require a license for business activity'
+        span: left
+        type: switch

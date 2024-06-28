@@ -1,0 +1,11 @@
+name: Applyform
+modelClass: Offshorelicense\Storage\Models\Applyform
+form: $/offshorelicense/storage/models/applyform/fields.yaml
+defaultRedirect: offshorelicense/storage/applyform
+create:
+    redirect: 'offshorelicense/storage/applyform/update/:id'
+    redirectClose: offshorelicense/storage/applyform
+update:
+    redirect: offshorelicense/storage/applyform
+    redirectClose: offshorelicense/storage/applyform
+preview: {  }

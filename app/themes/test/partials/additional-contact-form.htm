@@ -1,0 +1,182 @@
+[viewBag]
+==
+<div class="customServiceCont">
+		<a id="dialog-additional-form-btn" class="web-form-popup-btn-8" data-title="Request additional service">APPLY NOW!</a><span>Require additional service which is not listed above? Leave your application online! We will get back to you with the most suitable solution for your needs.</span>
+	</div>
+
+
+
+
+<div id="dialog-additional" title="Have a question regarding this product or service?" style="padding-left:50px;">
+  <p style="color:#334D5C;font-weight:300;font-family: 'Lato', sans-serif;margin-bottom:30px;">
+  Please submit the form below and our team will contact you shortly!
+  </p>
+  
+
+
+<form
+    data-request="onSendUniversalForm"
+    data-request-success="$('#dialog-additional').dialog('close');$('#dialog-thankyou').dialog('open')"
+    data-request-update="'ajax-response': '.thankyou-dialog .ui-dialog-title'"
+    data-request-validate
+    data-request-flash
+    class="form-horizontal"
+    >
+
+    <input type="hidden" name='url' value="{{ ''| page }}">
+    <input type="hidden" name='product_type' value="72">
+    <input type="hidden" name='product_name' value="">        
+<!--<div class="crm-webform-group" style="margin-bottom:20px;">
+    <div class="crm-webform-label-content">
+        <label class="crm-webform-checkbox-container crm-webform-checkbox-radio">
+            <input class="crm-webform-checkbox crm-webform-input-radio crm-webform-input" onclick="$('.CompanyName').show()" type="radio" name="LEAD_UF_CRM_1472199402" id="LEAD_UF_CRM_1472199402_0" value="31">
+                <i></i>
+            <span class="crm-webform-checkbox-name">Corporate</span>
+        </label>
+        <label class="crm-webform-checkbox-container crm-webform-checkbox-radio">
+            <input class="crm-webform-checkbox crm-webform-input-radio crm-webform-input" onclick="$('.CompanyName').hide()" type="radio" name="LEAD_UF_CRM_1472199402" id="LEAD_UF_CRM_1472199402_1" value="32">
+                <i></i>
+            <span class="crm-webform-checkbox-name">Personal</span>
+        </label>
+        <span data-validate-for="LEAD_UF_CRM_1472199402" class="crm-tooltip" style="margin-top: -30px;float: left;margin-left: 20px;">This option is required</span>
+    </div>
+    
+</div>
+
+
+
+
+    <div class="form-group row crm-webform-group">
+        <div class="">
+            <select class="crm-webform-input" name="LEAD_UF_CRM_1472202272" id="LEAD_UF_CRM_1472202272"><option value="">Not selected</option><option value="33">ACCOUNTING AND TAX</option><option value="34">CORPORATE FINANCE AND BUSINESS ADVISORY</option><option value="35">REGISTERED ADDRESS AND VIRTUAL OFFICE</option><option value="36">RESIDENTSHIPS AND CITIZENSHIPS</option><option value="63">AGREEMENTS AND LEGAL OPINIONS</option><option value="64">TRADEMARKS</option><option value="65">LEGALIZATION</option><option value="66">TRANSLATION</option><option value="115">TECHNICAL SOLUTIONS</option></select>
+            <span data-validate-for="LEAD_UF_CRM_1472202272" class="crm-tooltip"></span>
+        </div>
+    </div>-->
+
+
+    <div class="form-group row crm-webform-group">
+        <div class="">
+            <input class="form-control crm-webform-input" name="firstname" placeholder="Name*"/>
+            <span data-validate-for="firstname" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+
+    <div class="form-group row crm-webform-group">
+        <div class="">
+            <input class="form-control crm-webform-input" name="lastname" placeholder="Lastname*" />
+            <span data-validate-for="lastname" class="crm-tooltip"></span>
+        </div>
+    </div>
+    
+    <div class="form-group row crm-webform-group CompanyName" style="display:none;">
+        <div class="">
+            <input class="form-control crm-webform-input" name="company" placeholder="Company*" />
+            <span data-validate-for="company" class="crm-tooltip">The company field is required</span>
+        </div>
+    </div>
+
+    <div class="form-group row crm-webform-group">
+        <div class="">
+            <input class="form-control crm-webform-input" name="email" placeholder="E-mail*"/>
+            <span data-validate-for="email" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+    <div class="form-group row crm-webform-group" style="width:50%;margin:0px;float:left;">
+        <div class="" style="width:95%">
+            <input class="form-control crm-webform-input" name="skype" placeholder="Skype name"/>
+            <span data-validate-for="skype" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+    <div class="form-group row crm-webform-group" style="width:50%;margin:0px;float:right;">
+        <div class="" style="width:95%;float:right">
+            <input class="form-control crm-webform-input" name="phone" placeholder="Phone*"/>
+            <span data-validate-for="phone" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+    <div class="form-group row crm-webform-group">
+        <div class="">
+            <textarea class="form-control crm-webform-input" name="message" placeholder="Your comment..." ></textarea>
+            <span data-validate-for="message" class="crm-tooltip"></span>
+        </div>
+    </div>
+
+<div class="crm-webform-label-content">
+	<div>
+	<label class="crm-webform-checkbox-container crm-webform-checkbox-checkbox">
+    	<input class="crm-webform-checkbox crm-webform-input-checkbox crm-webform-input" type="checkbox" name="LEAD_UF_CRM_1528724976" id="LEAD_UF_CRM_1528724976" value="Y"> 
+    	<i></i>
+    	<span class="crm-webform-checkbox-name highlight-when-not-checked">I agree to receive emails about Offshorelicense products and services (You can unsubscribe at any time)</span>
+	</label>
+	</div>
+</div>
+
+    <div class="row">
+        <button type=button  onclick="processform2()" class="btn btn-primary crm-webform-submit-button">
+            REQUEST A CALLBACK
+        </button>       
+        <button style="display:none;" id="dialog-submit" class="btn btn-primary crm-webform-submit-button" type=submit data-attach-loading>
+            REQUEST A CALLBACK
+        </button>
+    </div>
+
+</form>
+<br/>
+</div>
+
+
+
+<script>
+    function processform2(){
+        if ($(".highlight-when-not-checked").hasClass("highlighted-when-not-checked"))
+            {
+             $("#dialog-submit").click();
+             return
+            }
+        if ($("#LEAD_UF_CRM_1528724976:checked").val()==undefined)
+         $(".highlight-when-not-checked").addClass("highlighted-when-not-checked");
+         else
+         $("#dialog-submit").click();
+    }
+</script>
+
+
+<script>
+    $( function() {
+         $('#dialog-additional').dialog({
+             autoOpen: false,
+             height: 'auto',
+             width: "500px",
+             position: ["50%", "50%"],
+             modal:true,
+             dialogClass:"contact-us-dialog",
+             create: function (event) {
+                var h = window.innerHeight;
+                var posH;
+                posH = 1;
+                if (h>700) posH = 5;
+                if (h>800) posH = 10;
+                if (h>900) posH = 20;
+               $(event.target).parent().css({ 'position': 'fixed', "left": "50%", "top": posH+"%", "margin-left": "-250px" });
+             },
+             open: function()
+            {
+                var dialog = this;
+                $('.ui-widget-overlay').on('click', function()
+                {
+                    $(dialog).dialog('close');
+                });
+            },
+            close: function(){
+
+            }
+         });
+          
+         $("#dialog-additional-form-btn").click(function(){
+             $('#dialog-additional').dialog('open');   
+         })
+      } );
+</script>

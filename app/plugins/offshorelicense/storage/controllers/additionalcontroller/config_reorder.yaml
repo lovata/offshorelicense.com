@@ -1,0 +1,4 @@
+title: AdditionalController
+modelClass: Offshorelicense\Storage\Models\Additional
+toolbar:
+    buttons: reorder_toolbar

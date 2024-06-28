@@ -1,0 +1,20 @@
+title = "Test"
+url = "/test"
+layout = "test"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+contentType = "html"
+==
+<?php
+function onStart()
+{
+    
+
+    
+    //Log::warning("test warning");
+    $this["aaa"] = "aa";
+}
+?>
+==
+{% partial "promo-ifexpo" %}

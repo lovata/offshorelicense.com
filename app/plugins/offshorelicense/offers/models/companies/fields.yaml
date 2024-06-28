@@ -1,0 +1,165 @@
+fields:
+    name:
+        label: Name
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    slug:
+        label: Url
+        span: auto
+        placeholder: 'company_name (last url parameter http://offshorelicense.com/companies/hong_kong_limited_liability_company_ltd)'
+        oc.commentPosition: ''
+        preset:
+            field: name
+            type: slug
+        type: text
+    title:
+        label: Title
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    logo:
+        label: Logo
+        oc.commentPosition: ''
+        mode: file
+        span: auto
+        type: mediafinder
+    region:
+        label: Region
+        oc.commentPosition: ''
+        options:
+            Europe: Europe
+            'North & South America': 'North & South America'
+            Asia: Asia
+            Africa: Africa
+            'Caribbean Region': 'Caribbean Region'
+            'Oceania & Pacific Islands': 'Oceania & Pacific Islands'
+        span: auto
+        type: dropdown
+    info:
+        label: Info
+        span: full
+        size: small
+        oc.commentPosition: ''
+        type: textarea
+    description:
+        label: Description
+        size: giant
+        oc.commentPosition: ''
+        span: full
+        type: richeditor
+    company_incorporation:
+        label: 'Company incorporation'
+        size: small
+        oc.commentPosition: ''
+        span: auto
+        type: richeditor
+    apostilled_documents:
+        label: 'Apostilled documents'
+        size: small
+        oc.commentPosition: ''
+        span: auto
+        type: richeditor
+    nominee_director_and_shareholder:
+        label: 'Nominee director and shareholder'
+        size: large
+        oc.commentPosition: ''
+        span: auto
+        type: richeditor
+    checks:
+        label: 'Bronze / Silver / Gold'
+        size: large
+        oc.commentPosition: ''
+        span: auto
+        placeholder: '1 = checkbox, 0 = empty space. example: 111 100 001'
+        default: ''
+        type: textarea
+    bronze_price:
+        label: 'Bronze Price'
+        oc.commentPosition: ''
+        span: left
+        cssClass: ''
+        type: number
+    bronze_discount:
+        label: 'Bronze Discount'
+        span: left
+        type: number
+    silver_price:
+        label: 'Silver Price'
+        oc.commentPosition: ''
+        span: left
+        type: number
+    silver_discount:
+        label: 'Silver Discount'
+        oc.commentPosition: ''
+        span: left
+        type: number
+    gold_price:
+        label: 'Gold Price'
+        oc.commentPosition: ''
+        span: left
+        type: number
+    featured:
+        label: Recommended
+        span: auto
+        type: switch
+    gold_discount:
+        label: 'Gold Discount'
+        oc.commentPosition: ''
+        span: left
+        type: number
+    featured_order_id:
+        label: 'Recommended order'
+        oc.commentPosition: ''
+        span: right
+        type: number
+    disabled:
+        label: Disabled
+        span: auto
+        type: switch
+    tabs_title:
+        label: 'Tabs Title'
+        oc.commentPosition: ''
+        span: left
+        type: text
+    meta_title:
+        label: 'Meta Title'
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: textarea
+    meta_description:
+        label: 'Meta Description'
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: textarea
+    meta_keywords:
+        label: 'Meta Keywords'
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: textarea
+tabs:
+    fields:
+        tab_company:
+            label: Company
+            size: huge
+            oc.commentPosition: ''
+            span: full
+            type: richeditor
+            tab: Company
+        tab_services:
+            label: Services
+            size: huge
+            oc.commentPosition: ''
+            span: full
+            type: richeditor
+            tab: Services
+        tab_requirements:
+            label: Requirements
+            size: huge
+            oc.commentPosition: ''
+            span: full
+            type: richeditor
+            tab: Requirements

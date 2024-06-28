@@ -1,0 +1,63 @@
+columns:
+    firstname:
+        label: Name
+        type: text
+        searchable: true
+        sortable: true
+    email:
+        label: Email
+        type: text
+        searchable: true
+        sortable: true
+    skype:
+        label: Skype
+        type: text
+        searchable: true
+        sortable: true
+    phone:
+        label: Phone
+        type: text
+        searchable: true
+        sortable: true
+    message:
+        label: Message
+        type: text
+        searchable: true
+        sortable: true
+    created_at:
+        label: Created
+        type: datetime
+        searchable: true
+        sortable: true
+    ip:
+        label: 'Ip address'
+        type: text
+        searchable: true
+        sortable: true
+    url:
+        label: Url
+        type: text
+        searchable: true
+        sortable: true
+    product_type:
+        label: 'Product Type'
+        type: text
+        searchable: true
+    product_name:
+        label: 'Product name'
+        type: text
+        searchable: true
+    promocode:
+        label: Promocode
+        type: text
+        searchable: true
+    email_subscribtion:
+        label: Subscribed
+        type: text
+        searchable: true
+        sortable: true
+    pid:
+        label: Pid
+        type: text
+        searchable: true
+        sortable: true

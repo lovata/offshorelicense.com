@@ -1,0 +1,10 @@
+name: Faq
+form: $/offshorelicense/offers/models/faq/fields.yaml
+modelClass: Offshorelicense\Offers\Models\Faq
+defaultRedirect: offshorelicense/offers/faq
+create:
+    redirect: 'offshorelicense/offers/faq/update/:id'
+    redirectClose: offshorelicense/offers/faq
+update:
+    redirect: offshorelicense/offers/faq
+    redirectClose: offshorelicense/offers/faq

@@ -1,0 +1,11 @@
+name: Contactform
+modelClass: Offshorelicense\Storage\Models\Contactform
+form: $/offshorelicense/storage/models/contactform/fields.yaml
+defaultRedirect: offshorelicense/storage/contactform
+create:
+    redirect: 'offshorelicense/storage/contactform/update/:id'
+    redirectClose: offshorelicense/storage/contactform
+update:
+    redirect: offshorelicense/storage/contactform
+    redirectClose: offshorelicense/storage/contactform
+preview: {  }

@@ -1,0 +1,4 @@
+title: Applyform
+modelClass: Offshorelicense\Storage\Models\Applyform
+toolbar:
+    buttons: reorder_toolbar

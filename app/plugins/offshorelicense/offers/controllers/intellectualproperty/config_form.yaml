@@ -1,0 +1,10 @@
+name: IntellectualProperty
+form: $/offshorelicense/offers/models/intellectualproperty/fields.yaml
+modelClass: Offshorelicense\Offers\Models\IntellectualProperty
+defaultRedirect: offshorelicense/offers/intellectualproperty
+create:
+    redirect: 'offshorelicense/offers/intellectualproperty/update/:id'
+    redirectClose: offshorelicense/offers/intellectualproperty
+update:
+    redirect: offshorelicense/offers/intellectualproperty
+    redirectClose: offshorelicense/offers/intellectualproperty

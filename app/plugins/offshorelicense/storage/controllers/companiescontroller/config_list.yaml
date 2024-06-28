@@ -1,0 +1,11 @@
+list: $/offshorelicense/storage/models/companies/columns.yaml
+modelClass: Offshorelicense\Storage\Models\Companies
+title: CompaniesController
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'offshorelicense/storage/companiescontroller/update/:id'

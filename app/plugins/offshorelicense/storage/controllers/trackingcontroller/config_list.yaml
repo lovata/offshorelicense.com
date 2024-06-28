@@ -1,0 +1,13 @@
+title: TrackingController
+modelClass: Offshorelicense\Storage\Models\Trackingvisits
+list: $/offshorelicense/storage/models/tracking_visits/columns.yaml
+recordUrl: 'offshorelicense/storage/trackingcontroller/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+recordsPerPage: '100'
+showSetup: true
+showCheckboxes: true
+showSorting: 1
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

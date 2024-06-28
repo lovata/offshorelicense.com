@@ -1,0 +1,41 @@
+columns:
+    name:
+        label: Name
+        type: text
+        searchable: true
+        sortable: true
+    info:
+        label: Info
+        type: text
+        searchable: true
+        sortable: true
+    slug:
+        label: Url
+        type: text
+        searchable: true
+        sortable: true
+    region:
+        label: Region
+        type: text
+        searchable: true
+        sortable: true
+    bronze_price:
+        label: 'Bronze P'
+        type: number
+        searchable: true
+        sortable: true
+    bronze_discount:
+        label: 'Bronze D'
+        type: number
+        searchable: true
+        sortable: true
+    featured:
+        label: Recommended
+        type: switch
+        searchable: true
+        sortable: true
+    disabled:
+        label: Disabled
+        type: switch
+        searchable: true
+        sortable: true

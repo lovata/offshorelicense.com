@@ -1,0 +1,90 @@
+name: 'Main menu'
+items:
+    -
+        title: Companies
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: ''
+        reference: companies
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+        items:
+            -
+                title: Company
+                type: cms-page
+                code: ''
+                reference: company
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+    -
+        title: Banks
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: ''
+        reference: banks
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Licensing
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: ''
+        reference: licensing
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Fiduciary
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: ''
+        reference: fiduciary
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Accounting
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: ''
+        reference: accounting
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Additional
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: ''
+        reference: additional
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'

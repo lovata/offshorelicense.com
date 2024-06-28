@@ -1,0 +1,132 @@
+fields:
+    name:
+        label: Name
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    slug:
+        label: Url
+        oc.commentPosition: ''
+        span: auto
+        preset:
+            field: name
+            type: slug
+        type: text
+    title:
+        label: Title
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    region:
+        label: Region
+        oc.commentPosition: ''
+        options:
+            'Eastern Europe': 'Eastern Europe'
+            'Central Europe': 'Central Europe'
+            Africa: Africa
+            'Western Europe': 'Western Europe'
+            Asia: Asia
+            Pacific: Pacific
+            'Caribbean Region': 'Caribbean Region'
+        span: auto
+        type: dropdown
+    country:
+        label: Country
+        oc.commentPosition: ''
+        span: auto
+        type: text
+    logo:
+        label: Logo
+        oc.commentPosition: ''
+        mode: file
+        span: auto
+        type: mediafinder
+    type:
+        label: 'Corporate / Personal'
+        oc.commentPosition: ''
+        options:
+            corporate: 'Corporate bank account'
+            personal: 'Personal bank account'
+        span: auto
+        type: dropdown
+    info:
+        label: Info
+        size: small
+        oc.commentPosition: ''
+        span: full
+        type: textarea
+    description:
+        label: Description
+        size: giant
+        oc.commentPosition: ''
+        span: full
+        type: richeditor
+    price:
+        label: Price
+        oc.commentPosition: ''
+        span: left
+        type: number
+    featured:
+        label: Recommended
+        span: right
+        type: switch
+    discount:
+        label: Discount
+        oc.commentPosition: ''
+        span: auto
+        type: number
+    featured_order_id:
+        label: 'Recommended order'
+        span: right
+        oc.commentPosition: ''
+        type: number
+    disabled:
+        label: Disabled
+        span: auto
+        type: switch
+    tabs_title:
+        label: 'Tabs Title'
+        oc.commentPosition: ''
+        span: left
+        type: text
+    meta_title:
+        label: 'Meta Title'
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: textarea
+    meta_description:
+        label: 'Meta Description'
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: textarea
+    meta_keywords:
+        label: 'Meta Keywords'
+        size: ''
+        oc.commentPosition: ''
+        span: full
+        type: textarea
+tabs:
+    fields:
+        tab_rates:
+            label: 'Rates and Charges'
+            size: giant
+            oc.commentPosition: ''
+            span: full
+            type: richeditor
+            tab: 'Rates and Charges'
+        tab_services:
+            label: Services
+            size: giant
+            oc.commentPosition: ''
+            span: full
+            type: richeditor
+            tab: Services
+        tab_requirements:
+            label: Requirements
+            size: giant
+            oc.commentPosition: ''
+            span: full
+            type: richeditor
+            tab: Requirements

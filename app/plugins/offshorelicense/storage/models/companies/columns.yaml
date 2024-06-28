@@ -1,0 +1,28 @@
+columns:
+    id:
+        label: id
+        type: number
+    firstname:
+        label: firstname
+        type: text
+    lastname:
+        label: lastname
+        type: text
+    email:
+        label: email
+        type: text
+    skype:
+        label: skype
+        type: text
+    phone:
+        label: phone
+        type: text
+    message:
+        label: message
+        type: text
+    created_at:
+        label: created_at
+        type: datetime
+    ip:
+        label: ip
+        type: text

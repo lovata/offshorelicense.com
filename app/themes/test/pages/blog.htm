@@ -1,0 +1,180 @@
+title = "Blog"
+url = "/blog/:page"
+layout = "base"
+meta_title = "Forex, Gambling and Offshore industry news by Offshorelicense"
+meta_description = "Offshorelicense is not only the service company. We are the important consulting partner for growing and developing businesses. We will keep you informed on the most important industry news and other business processes in the world. We choose the most relevant information on offshore, taxation, banking, audit, licensing and other topics and share it with you."
+is_hidden = 0
+seo_keywords = "Forex news, Gambling news, Offshore industry news"
+robot_index = "index"
+robot_follow = "follow"
+contentType = "html"
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = 9
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "Detail"
+postPage = "Detail"
+
+[SeoCmsPage]
+==
+<?php
+function onStart(){     
+     $this->page['breadscrumbs'] = array('Home'=>$this->page['site_link'],'Blog'=>"");
+}
+?>
+==
+<div class="page">
+   <div class="page-top" style="height: 180px;">
+      <div class="content mainPage-list" style="padding-top: 0;">
+         <div class="text center">
+            <h1>Forex, Crypto and Offshore Industry News</h1>
+         </div>
+      </div>
+   </div>
+   
+   
+
+
+{% if this.page["breadscrumbs"] %}
+ <div class="white-bg">
+ <div class="content">
+    <ul class='breadscrumbs'>
+        {%for item,url in this.page["breadscrumbs"]%}
+        <li>
+            {% if url!="" %}
+                <a href="{{url}}">{{item}}</a>
+            {% else %}
+                {{item}}
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+</div>
+{% endif %}
+
+
+   <div class="whiteBackground">
+      <div id="bxdynamic_7DqYyc_start" style="display:none"></div>
+      <!-------------------------------------------------->
+      <!-----------------START Blog news------------------>
+      <!-------------------------------------------------->
+      <div class="content blog-news-list">
+      
+      
+      
+      
+<div class="inline-warp">
+         
+
+    {% set posts = blogPosts.posts %}
+
+
+    {% for post in posts %}
+    
+    <div class="inline-3">
+               
+               {% if post.featured_images.count %}
+                   {% for image in post.featured_images|slice(0, 1) %}
+                       <div class="logo clickable" data-url="{{ post.url }}" class="clickable" style="background-image: url('{{ image.path  }}');"></div>
+                   {% endfor %}
+               {% endif %}
+               
+               
+               
+               <label>
+                  <h2 class="clickable" data-url="{{ post.url }}">{{ post.title }}</h2>
+                  <h5>{{ post.published_at|date('M d, Y') }}</h5>
+               </label>
+               <span class="text">
+              {{ post.summary|striptags }}...
+              </span>
+               <a href="{{ post.url }}">Read more &gt;&gt;</a>
+    </div>
+
+        
+
+    {% endfor %}
+
+  
+            
+</div>
+         
+         
+         
+         
+         
+         
+         <br>
+         
+
+         <font class="line-navigation">
+         
+            {% if posts.lastPage > 1 %}
+            
+                    {% if posts.currentPage > 1 %}
+                        <a href = "{{ this.page.baseFileName|page({ (pageParam):'1' }) }}"><<</a>
+                        <a class="back" href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage-1) }) }}"><</a>
+                    {% endif %}
+            
+                    {% for page in 1..posts.lastPage %}
+                    {% if page<4%}
+                        <a class="{{ posts.currentPage == page ? 'active' : null }}" href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a>
+                    {%endif%}
+                    {% endfor %}
+
+                    {% if posts.currentPage!=4 %}
+                    <a>...</a>
+                    {%endif%}
+                    
+                    {% if posts.currentPage>=4 and posts.currentPage<=posts.lastPage-3%}
+                        <a class="{{ posts.currentPage == posts.currentPage ? 'active' : null }}" href="{{ this.page.baseFileName|page({ (pageParam): posts.currentPage }) }}">{{ posts.currentPage }}</a>
+                        
+                    {% if posts.currentPage!=posts.lastPage-3 %}
+                    <a>...</a>
+                    {%endif%}                        
+                        
+                    {%endif%}
+
+
+                    {% for page in 3..posts.lastPage %}
+                    {% if page>posts.lastPage-3%}
+                        <a class="{{ posts.currentPage == page ? 'active' : null }}" href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a>
+                    {%endif%}
+                    {% endfor %}
+
+            
+                    {% if posts.lastPage > posts.currentPage %}
+                        <a class="next" href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage+1) }) }}">></a>
+                        <a href = "{{ this.page.baseFileName|page({ (pageParam): posts.lastPage }) }}">>></a>
+                    {% endif %}
+            
+            {% endif %}
+         </font>
+         
+         
+         
+         
+
+         
+         
+         
+         
+         
+      </div>
+      <script>
+         $(document).ready(function() {
+         	$(".clickable").click(function() {
+         		var url = $(this).attr('data-url');
+         		window.location = url;
+         	});
+         });
+      </script>
+      <!-------------------------------------------------->
+      <!-------------------END Blog news------------------>
+      <!-------------------------------------------------->
+      <div id="bxdynamic_7DqYyc_end" style="display:none"></div>
+   </div>
+</div>

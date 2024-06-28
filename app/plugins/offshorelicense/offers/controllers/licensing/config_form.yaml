@@ -1,0 +1,10 @@
+name: Licensing
+form: $/offshorelicense/offers/models/licensing/fields.yaml
+modelClass: Offshorelicense\Offers\Models\Licensing
+defaultRedirect: offshorelicense/offers/licensing
+create:
+    redirect: 'offshorelicense/offers/licensing/update/:id'
+    redirectClose: offshorelicense/offers/licensing
+update:
+    redirect: offshorelicense/offers/licensing
+    redirectClose: offshorelicense/offers/licensing

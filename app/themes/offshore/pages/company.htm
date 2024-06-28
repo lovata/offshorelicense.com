@@ -1,0 +1,274 @@
+title = "Company"
+url = "/companies/:slug"
+layout = "base"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+contentType = "html"
+
+[SeoCmsPage]
+==
+<?php
+function onEnd() {
+    $this["record"] = Db::table('offshorelicense_offers_companies')->where('slug',$this->param('slug'))->where('disabled','<>','1')->first();
+    if (! $this["record"])
+        return Redirect::to('/404');
+    $this->SeoCmsPage->seo_title = $this["record"]->meta_title." - Offshorelicense";
+    //$this->SeoCmsPage->seo_keywords = $this["record"]->meta_keywords;
+    //$this->SeoCmsPage->seo_description = $this["record"]->meta_description;
+    $this->SeoCmsPage->seo_description = $this["record"]->name." formation with Offshorelicense";
+    
+    $this->page['breadscrumbs'] = array(
+        'Home'=>$this->page['site_link'],
+        'Companies'=>"/companies", 
+        ucfirst($this["record"]->region).""=>"/companies/#".preg_replace("/[^A-Za-z0-9]/", '', $this["record"]->region),
+        $this["record"]->name=>"",
+    );
+}
+?>
+==
+<div class="page company">
+		
+	<div class="bx_item_detail bx_blue" id="bx_117848907_455">
+<div id="companyDetailTop" class="page-top company">
+	<div style="padding-bottom: 0;" class="content mainPage-list">
+		<div class="text center">
+		
+		{% if attribute(record, "title")%}
+		    <h1>{{attribute(record, "title")}}</h1>
+		{% else %}
+			<h1>Companies</h1>
+		{% endif %}
+			
+			<div class="companyInfo">
+				<div class="logo" style="background-image: url('{{ attribute(record, "logo")|media }}');"></div>
+				<span>
+					<h2>{% if record %}
+                            {{ attribute(record, "name") }}
+                        {% else %}
+                            Not found
+                        {% endif %}
+                    </h2>
+					<span>{{ attribute(record, "info") | raw }}</span>
+				</span>
+				<div class="cost">
+					<h5></h5>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+{% if this.page["breadscrumbs"] %}
+ <div class="white-bg">
+ <div class="content">
+    <ul class='breadscrumbs'>
+        {%for item,url in this.page["breadscrumbs"]%}
+        <li>
+            {% if url!="" %}
+                <a href="{{url}}">{{item}}</a>
+            {% else %}
+                {{item}}
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+</div>
+{% endif %}
+
+
+
+
+<div id="companyDetailInfo" class="company">
+	<div class="cont">
+		<div class="logo"></div>
+		<span>{{ attribute(record, "description") | raw }}</span>
+	</div>
+</div>
+
+
+
+<div id="companyDetailBody" class="company">
+
+
+
+
+
+	<table cellspacing="0" cellpadding="0">
+		<thead>
+			<tr>
+				<th><a href="{{'companies'|page}}">Back to list</a></th>
+				<th class="bronze">Bronze</th>
+				<th class="silver">Silver</th>
+				<th class="gold">Gold</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Name check</td>
+				<td>{% if record.checks|slice(0, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td>{% if record.checks|slice(1, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td>{% if record.checks|slice(2, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+			</tr><tr>
+				<td>Company incorporation					<div data-id="company-inc" class="more">
+						<img src="{{ 'assets/img/minusGrean.png'|theme }}" border="0">
+						<img class="plus" src="{{ 'assets/img/plusGrean.png'|theme }}" border="0">
+					</div>
+				</td>
+				<td>{% if record.checks|slice(5, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td>{% if record.checks|slice(6, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td>{% if record.checks|slice(7, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+			</tr><tr class="moreBlock" data-bid="company-inc">
+				<td colspan="4">{{ attribute(record, "company_incorporation") | raw }}</td>
+			</tr><tr>
+				<td>Local secretary</td>
+				<td>{% if record.checks|slice(10, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td>{% if record.checks|slice(11, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td>{% if record.checks|slice(12, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+			</tr><tr>
+				<td>Government fees</td>
+				<td>{% if record.checks|slice(15, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td>{% if record.checks|slice(16, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td>{% if record.checks|slice(17, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+			</tr><tr>
+				<td>Registered office for 1 year</td>
+				<td>{% if record.checks|slice(20, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td>{% if record.checks|slice(21, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td>{% if record.checks|slice(22, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+			</tr><tr>
+				<td>Delivery of original documents</td>
+				<td>{% if record.checks|slice(25, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td>{% if record.checks|slice(26, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td>{% if record.checks|slice(27, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+			</tr><tr>
+				<td>Apostilled documents 					<div data-id="appostilled" class="more">
+						<img src="{{ 'assets/img/minusGrean.png'|theme }}" border="0">
+						<img class="plus" src="{{ 'assets/img/plusGrean.png'|theme }}" border="0">
+					</div>
+				</td>
+				<td>{% if record.checks|slice(30, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td>{% if record.checks|slice(31, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td>{% if record.checks|slice(32, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+			</tr><tr class="moreBlock" data-bid="appostilled">
+				<td colspan="4">{{ attribute(record, "apostilled_documents") | raw }}</td>
+			</tr><tr>
+				<td>Nominee director and shareholder					<div data-id="nominee" class="more">
+						<img src="{{ 'assets/img/minusGrean.png'|theme }}" border="0">
+						<img class="plus" src="{{ 'assets/img/plusGrean.png'|theme }}" border="0">
+					</div>
+				</td>
+				<td>{% if record.checks|slice(35, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td>{% if record.checks|slice(36, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td>{% if record.checks|slice(37, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+			</tr><tr class="moreBlock" data-bid="nominee">
+				<td colspan="4">{{ attribute(record, "nominee_director_and_shareholder") | raw }}</td>
+			</tr><tr>
+		</tr></tbody>
+		<tfoot>
+			<tr>
+				<td>Total amount:</td>
+					<td class="price">
+					    {% if attribute(record, "bronze_discount") > 0 %}
+						    <label class="disc">€{{ attribute(record, "bronze_discount") | number_format(0, '.', ',') }}</label><br/>
+						    <span>€{{ attribute(record, "bronze_price") | number_format(0, '.', ',') }}</span>
+						{% else %}
+						    {% if attribute(record, "bronze_price") > 0 %}
+						        <label>€{{ attribute(record, "bronze_price") | number_format(0, '.', ',') }}</label>
+						    {% else %}
+						        <label>On request</label>
+						    {% endif %}
+						{% endif %}
+					</td>
+					<td class="price">
+					    {% if attribute(record, "silver_discount") > 0 %}
+						    <label class="disc">€{{ attribute(record, "silver_discount") | number_format(0, '.', ',') }}</label><br/>
+						    <span>€{{ attribute(record, "silver_price") | number_format(0, '.', ',') }}</span>
+						{% else %}
+						    {% if attribute(record, "silver_price") > 0 %}
+						        <label>€{{ attribute(record, "silver_price") | number_format(0, '.', ',') }}</label>
+						    {% else %}
+						        <label>On request</label>
+						    {% endif %}
+						{% endif %}
+					</td>
+					<td class="price">
+					    {% if attribute(record, "gold_discount") > 0 %}
+						    <label class="disc">€{{ attribute(record, "gold_discount") | number_format(0, '.', ',') }}</label><br/>
+						    <span>€{{ attribute(record, "gold_price") | number_format(0, '.', ',') }}</span>
+						{% else %}
+						    {% if attribute(record, "gold_price") > 0 %}
+						        <label>€{{ attribute(record, "gold_price") | number_format(0, '.', ',') }}</label>
+						    {% else %}
+						        <label>On request</label>
+						    {% endif %}
+						{% endif %}
+					</td>
+			</tr>
+		</tfoot>
+	</table>
+
+
+
+
+
+
+
+
+
+{{partial('company-contact-form')}}
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+    <div class="page-content EverythingYouNeedToKnow">
+        <div class="content">
+            <div class="text center">
+            
+		{% if attribute(record, "tabs_title")%}
+		    <h3>{{attribute(record, "tabs_title")}}</h3>
+		    <h1></h1>
+		{% else %}
+			<h3>Facts &amp; Info for {{ attribute(record, "name") }}</h3>
+		{% endif %}            
+            
+                
+            </div>
+            <tab class="section-width-repair init">
+                <section data-icon="profile" data-id="1" class="act"><a>Company</a></section>
+                <section data-icon="service" data-id="2"><a>Services</a></section>
+                <section data-icon="document" data-id="3"><a>Requirements</a></section>
+            </tab>
+            <tabcontent>
+                <section data-id="1" class="text act">{{ attribute(record, "tab_company") | raw }}</section>
+                <section data-id="2" class="text">{{ attribute(record, "tab_services") | raw }}</section>
+                <section data-id="3" class="text">{{ attribute(record, "tab_requirements") | raw }}</section>
+            </tabcontent>
+        </div>
+    </div><script type="text/javascript">
+BX.ready(BX.defer(function(){
+	if (!!window.obbx_117848907_455)
+	{
+		window.obbx_117848907_455.allowViewedCount(true);
+	}
+}));
+</script>
+
+</div>

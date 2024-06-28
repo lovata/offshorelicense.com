@@ -1,0 +1,10 @@
+name: BanksController
+form: $/offshorelicense/storage/models/banks/fields.yaml
+modelClass: Offshorelicense\Storage\Models\Banks
+defaultRedirect: offshorelicense/storage/bankscontroller
+create:
+    redirect: 'offshorelicense/storage/bankscontroller/update/:id'
+    redirectClose: offshorelicense/storage/bankscontroller
+update:
+    redirect: offshorelicense/storage/bankscontroller
+    redirectClose: offshorelicense/storage/bankscontroller

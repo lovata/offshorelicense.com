@@ -1,0 +1,128 @@
+.list-of-el {}
+
+.list-of-el ul li {
+    margin-bottom: 10px;
+}
+
+.list-of-el ul li label {
+    min-height: 30px;
+    background: #fff;
+    display: block;
+    position: relative;
+    padding: 20px 70px 20px 25px;
+    cursor: pointer;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    color: #374d5c;
+}
+
+a.but {
+	float: right;
+	text-transform: none;
+}
+
+.list-of-el ul li label span {
+    line-height: 30px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.list-of-el ul li label:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 20px;
+    background: url('../img/arrowBottomGrean.png') center no-repeat;
+    width: 20px;
+    height: 12px;
+    margin: auto 0;
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+}
+
+.list-of-el ul li.act label:after {
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+    filter: brightness(100);
+    -webkit-filter: brightness(100);
+    -moz-filter: brightness(100);
+    -o-filter: brightness(100);
+    -ms-filter: brightness(100);
+    filter: brightness(100);
+}
+
+.list-of-el ul li.act label {
+    background: #374d5c;
+    color: #fff;
+}
+
+.list-of-el ul li .user_text {
+    max-height: 500px;
+    overflow: hidden;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    background: #fff;
+/*     padding: 0 25px; */
+    font-size: 16px;
+    position: relative;
+	
+	overflow-y: auto;
+	width: 874px;
+}
+.list-of-el ul li .pad {
+	padding: 30px 0px;
+	background: #fff;
+	display: none;
+	border-bottom: 3px solid #374d5c;
+}
+.list-of-el ul li .user_text .wrp {
+	padding: 0px 25px;
+}
+
+.list-of-el ul li .user_text p {
+    margin: 15px 0;
+	font-weight: 300;
+}
+
+.list-of-el ul li .user_text ul {}
+
+.list-of-el ul li .user_text ul li {
+    padding: 5px 0 5px 30px;
+    position: relative;
+	font-weight: 300;
+}
+
+.list-of-el ul li .user_text ul li:before {
+    position: absolute;
+    content: '';
+    width: 6px;
+    height: 6px;
+    left: 15px;
+    top: 14px;
+    background-color: #adbe4f;
+}
+
+.list-of-el ul li .user_text ul li p {
+    margin: 0;
+}
+.scroll-pane
+{
+	width: 100%;
+	overflow: auto;
+}
+.scroll-pane .jspVerticalBar {
+	background: none;
+	width: 5px;
+}
+.scroll-pane .jspTrack {
+	width: 2px;
+	background-color: #dedede;
+}
+.scroll-pane .jspDrag {
+	width: 6px;
+	margin: 0 -5px;
+	background: #697883;
+	left: 3px;
+}
