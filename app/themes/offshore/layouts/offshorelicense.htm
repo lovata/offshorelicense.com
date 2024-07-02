@@ -16,877 +16,836 @@ postPage = "Detail"
 function onStart()
 {
     $this->Track();
-    
-    if (!Request::secure()) {
-        //return Redirect::to('https://offshorelicense.com');
-    }
 
-
-    $pid = Input::get("pid");
-    if ($pid){
-        setcookie("pid", $pid);
-    }
-
-    $ipaddress = '';
-    
-    if (getenv('HTTP_CLIENT_IP'))
-        $ipaddress = getenv('HTTP_CLIENT_IP');
-    else if(getenv('HTTP_X_FORWARDED_FOR'))
-        $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
-    else if(getenv('HTTP_X_FORWARDED'))
-        $ipaddress = getenv('HTTP_X_FORWARDED');
-    else if(getenv('HTTP_FORWARDED_FOR'))
-        $ipaddress = getenv('HTTP_FORWARDED_FOR');
-    else if(getenv('HTTP_FORWARDED'))
-       $ipaddress = getenv('HTTP_FORWARDED');
-    else if(getenv('REMOTE_ADDR'))
-        $ipaddress = getenv('REMOTE_ADDR');
-    else
-        $ipaddress = 'UNKNOWN';
-        
-    $this->page["ipaddress"] = $ipaddress;
-    
-    $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];
-    $this->page["actual_link"] = $actual_link;
-    $this->page["site_link"] = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://".$_SERVER["HTTP_HOST"];
-    
-    
-    $companyTimezone = 'Europe/Riga';
-    $current = new DateTime("now", new DateTimeZone($companyTimezone) );
-    $current_formatted = $current->format('H');
-    
-    if ($current_formatted>=7 and $current_formatted<=18)
-     $this->page["contact_widget"] = "phone";
-    else
-     $this->page["contact_widget"] = "email";
-     
-     
-    $user = BackendAuth::getUser();
-    if ($user) {
-        $this->page["user"] = $user;
-    }
-
-     
+if (!Request::secure()) {
+//return Redirect::to('https://offshorelicense.com');
 }
 
 
+$pid = Input::get("pid");
+if ($pid){
+setcookie("pid", $pid);
+}
 
+$ipaddress = '';
+
+if (getenv('HTTP_CLIENT_IP'))
+$ipaddress = getenv('HTTP_CLIENT_IP');
+else if(getenv('HTTP_X_FORWARDED_FOR'))
+$ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+else if(getenv('HTTP_X_FORWARDED'))
+$ipaddress = getenv('HTTP_X_FORWARDED');
+else if(getenv('HTTP_FORWARDED_FOR'))
+$ipaddress = getenv('HTTP_FORWARDED_FOR');
+else if(getenv('HTTP_FORWARDED'))
+$ipaddress = getenv('HTTP_FORWARDED');
+else if(getenv('REMOTE_ADDR'))
+$ipaddress = getenv('REMOTE_ADDR');
+else
+$ipaddress = 'UNKNOWN';
+
+$this->page["ipaddress"] = $ipaddress;
+
+$actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];
+$this->page["actual_link"] = $actual_link;
+$this->page["site_link"] = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://".$_SERVER["HTTP_HOST"];
+
+
+$companyTimezone = 'Europe/Riga';
+$current = new DateTime("now", new DateTimeZone($companyTimezone) );
+$current_formatted = $current->format('H');
+
+if ($current_formatted>=7 and $current_formatted<=18)
+$this->page["contact_widget"] = "phone";
+else
+$this->page["contact_widget"] = "email";
+
+
+$user = BackendAuth::getUser();
+if ($user) {
+$this->page["user"] = $user;
+}
+
+
+}
 
 
 function onDoCurl($url, $fields)
 {
-    $fields_string = "";
-    foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
-    rtrim($fields_string, '&');    
-    $ch = curl_init();
-    curl_setopt($ch,CURLOPT_URL, $url);
-    curl_setopt($ch,CURLOPT_POST, count($fields));
-    curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
-    // Set so curl_exec returns the result instead of outputting it.
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    // Get the response and close the channel.
-    //sleep(5);die();
-    $response = curl_exec($ch);
-    curl_close($ch);
-    return $response;
+$fields_string = "";
+foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
+rtrim($fields_string, '&');
+$ch = curl_init();
+curl_setopt($ch,CURLOPT_URL, $url);
+curl_setopt($ch,CURLOPT_POST, count($fields));
+curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
+// Set so curl_exec returns the result instead of outputting it.
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+// Get the response and close the channel.
+//sleep(5);die();
+$response = curl_exec($ch);
+curl_close($ch);
+return $response;
 }
-
 
 
 function onSendCompanyForm()
 {
-    
-    $data = post();
 
-    $rules = [
-        'firstname' => 'required',
-        'lastname' => 'required',
-        'email' => 'required|email',
-    ];
+$data = post();
 
-    $validation = Validator::make($data, $rules);
+$rules = [
+'firstname' => 'required',
+'lastname' => 'required',
+'email' => 'required|email',
+];
 
-    if ($validation->fails()) {
-        throw new ValidationException($validation);
-    }
-    $this['result'] = DB::table('offshorelicense_storage_companies')->insert(
-        [
-            'firstname' => input('firstname'),
-            'lastname' => input('lastname'),
-            'email' => input('email'),
-            'skype' => input('skype'),
-            'phone' => input('phone'),
-            'message' => input('message'),
-            'created_at' => date('Y-m-d H:i:s'),
-            'ip' =>  $this->page["ipaddress"]
-        ]
-    );
-    
-    
-    $numbers = "1510331652847";
-    $sec = "ekcnvo";
-    $form_id="8";
-    $url = 'https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id='.$form_id.'&widget_user_lang=en&sec='.$sec.'&r='.$numbers;
+$validation = Validator::make($data, $rules);
 
-    $fields = array(
-    	'LEAD_NAME' => input('firstname'),
-    	'LEAD_LAST_NAME' =>input('lastname'),
-    	'LEAD_EMAIL' => input('email'),
-    	'LEAD_PHONE' => input('phone'),
-    	'LEAD_IM' => input('skype'),
-    	'LEAD_COMMENTS' => input('message'),
-    	'from' => urlencode(input('url')),
-    	'sessid' => urlencode(session_id())
-    );
-    
-    
-    $this["response"] = $this->onDoCurl($url, $fields);
-    $encodedResult = json_decode( $this["response"]);
+if ($validation->fails()) {
+throw new ValidationException($validation);
+}
+$this['result'] = DB::table('offshorelicense_storage_companies')->insert(
+[
+'firstname' => input('firstname'),
+'lastname' => input('lastname'),
+'email' => input('email'),
+'skype' => input('skype'),
+'phone' => input('phone'),
+'message' => input('message'),
+'created_at' => date('Y-m-d H:i:s'),
+'ip' =>  $this->page["ipaddress"]
+]
+);
 
-    if ($encodedResult->error=="true"){
-        Flash::error('Error');
-    } else {
-        //Flash::success('Success');
-    }
-    
-    $this['result'] = $encodedResult->text;
+
+$numbers = "1510331652847";
+$sec = "ekcnvo";
+$form_id="8";
+$url = 'https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id='.$form_id.'&widget_user_lang=en&sec='.$sec.'&r='.$numbers;
+
+$fields = array(
+'LEAD_NAME' => input('firstname'),
+'LEAD_LAST_NAME' =>input('lastname'),
+'LEAD_EMAIL' => input('email'),
+'LEAD_PHONE' => input('phone'),
+'LEAD_IM' => input('skype'),
+'LEAD_COMMENTS' => input('message'),
+'from' => urlencode(input('url')),
+'sessid' => urlencode(session_id())
+);
+
+
+$this["response"] = $this->onDoCurl($url, $fields);
+$encodedResult = json_decode( $this["response"]);
+
+if ($encodedResult->error=="true"){
+Flash::error('Error');
+} else {
+//Flash::success('Success');
 }
 
-
-
-
+$this['result'] = $encodedResult->text;
+}
 
 
 function onSendBankForm()
 {
-    
-    $data = post();
 
-    $rules = [
-        'firstname' => 'required',
-        'lastname' => 'required',
-        'company' => 'required_if:LEAD_UF_CRM_1472199402,31',
-        'email' => 'required|email',
-    ];
+$data = post();
 
-    $validation = Validator::make($data, $rules);
+$rules = [
+'firstname' => 'required',
+'lastname' => 'required',
+'company' => 'required_if:LEAD_UF_CRM_1472199402,31',
+'email' => 'required|email',
+];
 
-    if ($validation->fails()) {
-        throw new ValidationException($validation);
-    }
-    $this['result'] = DB::table('offshorelicense_storage_banks')->insert(
-        [
-            'firstname' => input('firstname'),
-            'lastname' => input('lastname'),
-            'company' => input('company'),
-            'email' => input('email'),
-            'skype' => input('skype'),
-            'phone' => input('phone'),
-            'message' => input('message'),
-            
-            'created_at' => date('Y-m-d H:i:s'),
-            'ip' =>  $this->page["ipaddress"]
-        ]
-    );
-    
-    
-    $numbers = "1510331652847";
-    $sec = "vt3nyi";
-    $form_id="6";
-    $url = 'https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id='.$form_id.'&widget_user_lang=en&sec='.$sec.'&r='.$numbers;
+$validation = Validator::make($data, $rules);
 
-    $fields = array(
-    	'LEAD_NAME' => input('firstname'),
-    	'LEAD_LAST_NAME' =>input('lastname'),
-    	'LEAD_EMAIL' => input('email'),
-    	'LEAD_PHONE' => input('phone'),
-    	'LEAD_IM' => input('skype'),
-    	'LEAD_COMMENTS' => input('message'),
-    	'LEAD_UF_CRM_1472199402' => input('LEAD_UF_CRM_1472199402'),
-    	'LEAD_UF_CRM_1472455700[0]' => input('LEAD_UF_CRM_1472455700_0'),
-    	'LEAD_UF_CRM_1472455700[1]' => input('LEAD_UF_CRM_1472455700_1'),
-    	'from' => urlencode(input('url')),
-    	'sessid' => urlencode(session_id())
-    );
-    
-    
-    $this["response"] = $this->onDoCurl($url, $fields);
-    $encodedResult = json_decode( $this["response"]);
+if ($validation->fails()) {
+throw new ValidationException($validation);
+}
+$this['result'] = DB::table('offshorelicense_storage_banks')->insert(
+[
+'firstname' => input('firstname'),
+'lastname' => input('lastname'),
+'company' => input('company'),
+'email' => input('email'),
+'skype' => input('skype'),
+'phone' => input('phone'),
+'message' => input('message'),
 
-    if ($encodedResult->error=="true"){
-        Flash::error('Error');
-    } else {
-        //Flash::success('Success');
-    }
-    
-    $this['result'] = $encodedResult->text;
+'created_at' => date('Y-m-d H:i:s'),
+'ip' =>  $this->page["ipaddress"]
+]
+);
+
+
+$numbers = "1510331652847";
+$sec = "vt3nyi";
+$form_id="6";
+$url = 'https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id='.$form_id.'&widget_user_lang=en&sec='.$sec.'&r='.$numbers;
+
+$fields = array(
+'LEAD_NAME' => input('firstname'),
+'LEAD_LAST_NAME' =>input('lastname'),
+'LEAD_EMAIL' => input('email'),
+'LEAD_PHONE' => input('phone'),
+'LEAD_IM' => input('skype'),
+'LEAD_COMMENTS' => input('message'),
+'LEAD_UF_CRM_1472199402' => input('LEAD_UF_CRM_1472199402'),
+'LEAD_UF_CRM_1472455700[0]' => input('LEAD_UF_CRM_1472455700_0'),
+'LEAD_UF_CRM_1472455700[1]' => input('LEAD_UF_CRM_1472455700_1'),
+'from' => urlencode(input('url')),
+'sessid' => urlencode(session_id())
+);
+
+
+$this["response"] = $this->onDoCurl($url, $fields);
+$encodedResult = json_decode( $this["response"]);
+
+if ($encodedResult->error=="true"){
+Flash::error('Error');
+} else {
+//Flash::success('Success');
 }
 
-
-
-
-
-
+$this['result'] = $encodedResult->text;
+}
 
 
 function onSendLicensingForm()
 {
-    
-    $data = post();
 
-    $rules = [
-        'firstname' => 'required',
-        'lastname' => 'required',
-        'email' => 'required|email',
-    ];
+$data = post();
 
-    $validation = Validator::make($data, $rules);
+$rules = [
+'firstname' => 'required',
+'lastname' => 'required',
+'email' => 'required|email',
+];
 
-    if ($validation->fails()) {
-        throw new ValidationException($validation);
-    }
-    $this['result'] = DB::table('offshorelicense_storage_licensing')->insert(
-        [
-            'firstname' => input('firstname'),
-            'lastname' => input('lastname'),
-            'email' => input('email'),
-            'skype' => input('skype'),
-            'phone' => input('phone'),
-            'message' => input('message'),
-            'created_at' => date('Y-m-d H:i:s'),
-            'ip' =>  $this->page["ipaddress"]
-        ]
-    );
-    
+$validation = Validator::make($data, $rules);
 
-    $numbers = "1510333041088";
-    $sec = "l7eeak";
-    $form_id="9";
-    $url = 'https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id='.$form_id.'&widget_user_lang=en&sec='.$sec.'&r='.$numbers;
+if ($validation->fails()) {
+throw new ValidationException($validation);
+}
+$this['result'] = DB::table('offshorelicense_storage_licensing')->insert(
+[
+'firstname' => input('firstname'),
+'lastname' => input('lastname'),
+'email' => input('email'),
+'skype' => input('skype'),
+'phone' => input('phone'),
+'message' => input('message'),
+'created_at' => date('Y-m-d H:i:s'),
+'ip' =>  $this->page["ipaddress"]
+]
+);
 
-    $fields = array(
-    	'LEAD_NAME' => input('firstname'),
-    	'LEAD_LAST_NAME' =>input('lastname'),
-    	'LEAD_EMAIL' => input('email'),
-    	'LEAD_PHONE' => input('phone'),
-    	'LEAD_IM' => input('skype'),
-    	'LEAD_COMMENTS' => input('message'),
-    	'from' => urlencode(input('url')),
-    	'sessid' => urlencode(session_id())
-    );
-    
-    
-    $this["response"] = $this->onDoCurl($url, $fields);
-    $encodedResult = json_decode( $this["response"]);
 
-    if ($encodedResult->error=="true"){
-        Flash::error('Error');
-    } else {
-        //Flash::success('Success');
-    }
-    
-    $this['result'] = $encodedResult->text;
+$numbers = "1510333041088";
+$sec = "l7eeak";
+$form_id="9";
+$url = 'https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id='.$form_id.'&widget_user_lang=en&sec='.$sec.'&r='.$numbers;
+
+$fields = array(
+'LEAD_NAME' => input('firstname'),
+'LEAD_LAST_NAME' =>input('lastname'),
+'LEAD_EMAIL' => input('email'),
+'LEAD_PHONE' => input('phone'),
+'LEAD_IM' => input('skype'),
+'LEAD_COMMENTS' => input('message'),
+'from' => urlencode(input('url')),
+'sessid' => urlencode(session_id())
+);
+
+
+$this["response"] = $this->onDoCurl($url, $fields);
+$encodedResult = json_decode( $this["response"]);
+
+if ($encodedResult->error=="true"){
+Flash::error('Error');
+} else {
+//Flash::success('Success');
 }
 
-
+$this['result'] = $encodedResult->text;
+}
 
 
 /*From footer*/
 function onSendContactusForm()
 {
-    
-    $data = post();
 
-    $rules = [
-        'firstname' => 'required',
-        'lastname' => 'required',
-        'email' => 'required|email',
-    ];
+$data = post();
 
-    $validation = Validator::make($data, $rules);
+$rules = [
+'firstname' => 'required',
+'lastname' => 'required',
+'email' => 'required|email',
+];
 
-    if ($validation->fails()) {
-        throw new ValidationException($validation);
-    }
-    $this['result'] = DB::table('offshorelicense_storage_contactform')->insert(
-        [
-            'firstname' => input('firstname'),
-            'lastname' => input('lastname'),
-            'email' => input('email'),
-            'skype' => input('skype'),
-            'phone' => input('phone'),
-            'message' => input('message'),
-            'created_at' => date('Y-m-d H:i:s'),
-            'ip' =>  $this->page["ipaddress"]
-        ]
-    );
-    
+$validation = Validator::make($data, $rules);
 
-    $numbers = "1510520584636";
-    $sec = "86vuc0";
-    $form_id="7";
-    $url = 'https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id='.$form_id.'&widget_user_lang=en&sec='.$sec.'&r='.$numbers;
+if ($validation->fails()) {
+throw new ValidationException($validation);
+}
+$this['result'] = DB::table('offshorelicense_storage_contactform')->insert(
+[
+'firstname' => input('firstname'),
+'lastname' => input('lastname'),
+'email' => input('email'),
+'skype' => input('skype'),
+'phone' => input('phone'),
+'message' => input('message'),
+'created_at' => date('Y-m-d H:i:s'),
+'ip' =>  $this->page["ipaddress"]
+]
+);
 
-    $fields = array(
-    	'LEAD_NAME' => input('firstname'),
-    	'LEAD_LAST_NAME' =>input('lastname'),
-    	'LEAD_EMAIL' => input('email'),
-    	'LEAD_PHONE' => input('phone'),
-    	'LEAD_IM' => input('skype'),
-    	'LEAD_COMMENTS' => input('message'),
-    	'from' => urlencode(input('url')),
-    	'sessid' => urlencode(session_id())
-    );
-    
-    
-    $this["response"] = $this->onDoCurl($url, $fields);
-    $encodedResult = json_decode( $this["response"]);
 
-    if ($encodedResult->error=="true"){
-        Flash::error('Error');
-    } else {
-        //Flash::success('Success');
-    }
-    
-    $this['result'] = $encodedResult->text;
+$numbers = "1510520584636";
+$sec = "86vuc0";
+$form_id="7";
+$url = 'https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id='.$form_id.'&widget_user_lang=en&sec='.$sec.'&r='.$numbers;
+
+$fields = array(
+'LEAD_NAME' => input('firstname'),
+'LEAD_LAST_NAME' =>input('lastname'),
+'LEAD_EMAIL' => input('email'),
+'LEAD_PHONE' => input('phone'),
+'LEAD_IM' => input('skype'),
+'LEAD_COMMENTS' => input('message'),
+'from' => urlencode(input('url')),
+'sessid' => urlencode(session_id())
+);
+
+
+$this["response"] = $this->onDoCurl($url, $fields);
+$encodedResult = json_decode( $this["response"]);
+
+if ($encodedResult->error=="true"){
+Flash::error('Error');
+} else {
+//Flash::success('Success');
 }
 
-
-
-
+$this['result'] = $encodedResult->text;
+}
 
 
 /*From contact us page*/
 function onSendContactusForm2()
 {
-    
-    $data = post();
 
-    $rules = [
-        'firstname' => 'required',
-        'email' => 'required|email',
-        'g-recaptcha-response' => "required"
-    ];
+$data = post();
 
-    $validation = Validator::make($data, $rules);
+$rules = [
+'firstname' => 'required',
+'email' => 'required|email',
+'g-recaptcha-response' => "required"
+];
 
-    if ($validation->fails()) {
-        throw new ValidationException($validation);
-    }
-    $this['result'] = DB::table('offshorelicense_storage_contactform')->insert(
-        [
-            'firstname' => input('firstname'),
-            'email' => input('email'),
-            'skype' => input('skype'),
-            'phone' => input('phone'),
-            'message' => input('message'),
-            'created_at' => date('Y-m-d H:i:s'),
-            'ip' =>  $this->page["ipaddress"]
-        ]
-    );
-    
+$validation = Validator::make($data, $rules);
 
-    $numbers = "1510520584636";
-    $sec = "86vuc0";
-    $form_id="7";
-    $url = 'https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id='.$form_id.'&widget_user_lang=en&sec='.$sec.'&r='.$numbers;
+if ($validation->fails()) {
+throw new ValidationException($validation);
+}
+$this['result'] = DB::table('offshorelicense_storage_contactform')->insert(
+[
+'firstname' => input('firstname'),
+'email' => input('email'),
+'skype' => input('skype'),
+'phone' => input('phone'),
+'message' => input('message'),
+'created_at' => date('Y-m-d H:i:s'),
+'ip' =>  $this->page["ipaddress"]
+]
+);
 
-    $fields = array(
-    	'LEAD_NAME' => input('firstname'),
-    	'LEAD_LAST_NAME' => "unknown",
-    	'LEAD_EMAIL' => input('email'),
-    	'LEAD_PHONE' => input('phone'),
-    	'LEAD_IM' => input('skype'),
-    	'LEAD_COMMENTS' => input('message'),
-    	'from' => urlencode(input('url')),
-    	'sessid' => urlencode(session_id())
-    );
-    
-    
-    $this["response"] = $this->onDoCurl($url, $fields);
-    $encodedResult = json_decode( $this["response"]);
 
-    if ($encodedResult->error=="true"){
-        Flash::error('Error');
-    } else {
-        //Flash::success('Success');
-    }
-    
-    $this['result'] = $encodedResult->text;
+$numbers = "1510520584636";
+$sec = "86vuc0";
+$form_id="7";
+$url = 'https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id='.$form_id.'&widget_user_lang=en&sec='.$sec.'&r='.$numbers;
+
+$fields = array(
+'LEAD_NAME' => input('firstname'),
+'LEAD_LAST_NAME' => "unknown",
+'LEAD_EMAIL' => input('email'),
+'LEAD_PHONE' => input('phone'),
+'LEAD_IM' => input('skype'),
+'LEAD_COMMENTS' => input('message'),
+'from' => urlencode(input('url')),
+'sessid' => urlencode(session_id())
+);
+
+
+$this["response"] = $this->onDoCurl($url, $fields);
+$encodedResult = json_decode( $this["response"]);
+
+if ($encodedResult->error=="true"){
+Flash::error('Error');
+} else {
+//Flash::success('Success');
 }
 
-
-
-
-
+$this['result'] = $encodedResult->text;
+}
 
 
 function onSendAdditionalForm()
 {
-    
-    $data = post();
 
-    $rules = [
-        'firstname' => 'required',
-        'lastname' => 'required',
-        'company' => 'required_if:LEAD_UF_CRM_1472199402,31',
-        'email' => 'required|email',
-    ];
+$data = post();
 
-    $validation = Validator::make($data, $rules);
+$rules = [
+'firstname' => 'required',
+'lastname' => 'required',
+'company' => 'required_if:LEAD_UF_CRM_1472199402,31',
+'email' => 'required|email',
+];
 
-    if ($validation->fails()) {
-        throw new ValidationException($validation);
-    }
-    $this['result'] = DB::table('offshorelicense_storage_additional')->insert(
-        [
-            'firstname' => input('firstname'),
-            'lastname' => input('lastname'),
-            'company' => input('company'),
-            'email' => input('email'),
-            'skype' => input('skype'),
-            'phone' => input('phone'),
-            'message' => input('message'),
-            'subject' => input('subject'),
-            'created_at' => date('Y-m-d H:i:s'),
-            'ip' =>  $this->page["ipaddress"]
-        ]
-    );
-    
-    
-    $numbers = "1510520985364";
-    $sec = "dlzltv";
-    $form_id="4";
-    $url = 'https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id='.$form_id.'&widget_user_lang=en&sec='.$sec.'&r='.$numbers;
+$validation = Validator::make($data, $rules);
 
-    $fields = array(
-    	'LEAD_NAME' => input('firstname'),
-    	'LEAD_LAST_NAME' => input('lastname'),
-    	'LEAD_COMPANY_TITLE'=> input('company'),
-    	'LEAD_EMAIL' => input('email'),
-    	'LEAD_PHONE' => input('phone'),
-    	'LEAD_IM' => input('skype'),
-    	'LEAD_COMMENTS' => input('message'),
-    	'LEAD_UF_CRM_1472199402' => input('LEAD_UF_CRM_1472199402'),
-    	'LEAD_UF_CRM_1472202272' => input('subject'),
-    	'from' => urlencode(input('url')),
-    	'sessid' => urlencode(session_id())
-    );
-    
-    
-    $this["response"] = $this->onDoCurl($url, $fields);
-    $encodedResult = json_decode( $this["response"]);
+if ($validation->fails()) {
+throw new ValidationException($validation);
+}
+$this['result'] = DB::table('offshorelicense_storage_additional')->insert(
+[
+'firstname' => input('firstname'),
+'lastname' => input('lastname'),
+'company' => input('company'),
+'email' => input('email'),
+'skype' => input('skype'),
+'phone' => input('phone'),
+'message' => input('message'),
+'subject' => input('subject'),
+'created_at' => date('Y-m-d H:i:s'),
+'ip' =>  $this->page["ipaddress"]
+]
+);
 
-    if ($encodedResult->error=="true"){
-        Flash::error('Error');
-    } else {
-        //Flash::success('Success');
-    }
-    
-    $this['result'] = $encodedResult->text;
+
+$numbers = "1510520985364";
+$sec = "dlzltv";
+$form_id="4";
+$url = 'https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id='.$form_id.'&widget_user_lang=en&sec='.$sec.'&r='.$numbers;
+
+$fields = array(
+'LEAD_NAME' => input('firstname'),
+'LEAD_LAST_NAME' => input('lastname'),
+'LEAD_COMPANY_TITLE'=> input('company'),
+'LEAD_EMAIL' => input('email'),
+'LEAD_PHONE' => input('phone'),
+'LEAD_IM' => input('skype'),
+'LEAD_COMMENTS' => input('message'),
+'LEAD_UF_CRM_1472199402' => input('LEAD_UF_CRM_1472199402'),
+'LEAD_UF_CRM_1472202272' => input('subject'),
+'from' => urlencode(input('url')),
+'sessid' => urlencode(session_id())
+);
+
+
+$this["response"] = $this->onDoCurl($url, $fields);
+$encodedResult = json_decode( $this["response"]);
+
+if ($encodedResult->error=="true"){
+Flash::error('Error');
+} else {
+//Flash::success('Success');
 }
 
-
+$this['result'] = $encodedResult->text;
+}
 
 
 function onSendUniversalForm()
 {
-    
-    $data = post();
-    
-    if (isset($_COOKIE['pid']))
-        $pid = $_COOKIE['pid'];
-    else $pid="";
 
-    $rules = [
-        'firstname' => 'required',
-        'lastname' => 'required',
-        'email' => 'required|email',
-        'phone' => 'required'
-    ];
+$data = post();
+
+if (isset($_COOKIE['pid']))
+$pid = $_COOKIE['pid'];
+else $pid="";
+
+$rules = [
+'firstname' => 'required',
+'lastname' => 'required',
+'email' => 'required|email',
+'phone' => 'required'
+];
 
 if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-    $ip = $_SERVER['HTTP_CLIENT_IP'];
+$ip = $_SERVER['HTTP_CLIENT_IP'];
 } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
 } else {
-    $ip = $_SERVER['REMOTE_ADDR'];
+$ip = $_SERVER['REMOTE_ADDR'];
 }
 
 
-    $validation = Validator::make($data, $rules);
+$validation = Validator::make($data, $rules);
 
-    if ($validation->fails()) {
-        Log::warning("form submission validation failed");
-        throw new ValidationException($validation);
-    }
-    $this['result'] = DB::table('offshorelicense_storage_contactform')->insert(
-        [
-            'firstname' => input('firstname'),
-            'lastname' => input('lastname'),
-            'email' => input('email'),
-            'skype' => input('skype'),
-            'phone' => input('phone'),
-            'message' => input('message'),
-            
-            'product_type' => input('product_type'),
-            'product_name' => input('product_name'),
-            'promocode' => input('promocode'),
-            
-            'email_subscribtion' => input('LEAD_UF_CRM_1528724976'),
-            
-            'created_at' => date('Y-m-d H:i:s'),
-            'ip' =>  $ip,
-            'url' => input('url'),
-            'pid' => $pid
-        ]
-    );
-
-    
-    $numbers = "1510331652847";
-    $sec = "j7wo4g";
-    $form_id="13";
-    $url = 'https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id='.$form_id.'&widget_user_lang=en&sec='.$sec.'&r='.$numbers;
-
-    $fields = array(
-    	'LEAD_NAME' => input('firstname'),
-    	'LEAD_LAST_NAME' =>input('lastname'),
-    	'LEAD_EMAIL' => input('email'),
-    	'LEAD_PHONE' => input('phone'),
-    	'LEAD_IM' => input('skype'),
-    	'LEAD_COMMENTS' => input('message'),
-    	'LEAD_SOURCE_DESCRIPTION' => input('url'),
-    	'LEAD_UF_CRM_1472455700[0]' => input('LEAD_UF_CRM_1472455700_0'),
-    	'LEAD_UF_CRM_1472455700[1]' => input('LEAD_UF_CRM_1472455700_1'),
-    	'LEAD_UF_CRM_1477656743' => input('product_type'),
-    	'LEAD_UF_CRM_1515071921' => input('product_name'),
-    	'LEAD_UF_CRM_1528724976' => input('LEAD_UF_CRM_1528724976'),
-    	'LEAD_UF_CRM_1530705157' => $pid,
-    	'from' => urlencode(input('url')),
-    	'sessid' => urlencode(session_id())
-    );
-    
-    
-    $this["response"] = $this->onDoCurl($url, $fields);
-    $encodedResult = json_decode( $this["response"]);
-
-    if ($encodedResult->error=="true"){
-        Log::warning("form submission error: curl failed");
-        Flash::error('Error');
-    } else {
-        //Flash::success('Success');
-    }
-    Log::info("form submission completed: ".$encodedResult->text);
-    $this['result'] = $encodedResult->text;
+if ($validation->fails()) {
+Log::warning("form submission validation failed");
+throw new ValidationException($validation);
 }
+$this['result'] = DB::table('offshorelicense_storage_contactform')->insert(
+[
+'firstname' => input('firstname'),
+'lastname' => input('lastname'),
+'email' => input('email'),
+'skype' => input('skype'),
+'phone' => input('phone'),
+'message' => input('message'),
 
+'product_type' => input('product_type'),
+'product_name' => input('product_name'),
+'promocode' => input('promocode'),
+
+'email_subscribtion' => input('LEAD_UF_CRM_1528724976'),
+
+'created_at' => date('Y-m-d H:i:s'),
+'ip' =>  $ip,
+'url' => input('url'),
+'pid' => $pid
+]
+);
+
+
+$numbers = "1510331652847";
+$sec = "j7wo4g";
+$form_id="13";
+$url = 'https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id='.$form_id.'&widget_user_lang=en&sec='.$sec.'&r='.$numbers;
+
+$fields = array(
+'LEAD_NAME' => input('firstname'),
+'LEAD_LAST_NAME' =>input('lastname'),
+'LEAD_EMAIL' => input('email'),
+'LEAD_PHONE' => input('phone'),
+'LEAD_IM' => input('skype'),
+'LEAD_COMMENTS' => input('message'),
+'LEAD_SOURCE_DESCRIPTION' => input('url'),
+'LEAD_UF_CRM_1472455700[0]' => input('LEAD_UF_CRM_1472455700_0'),
+'LEAD_UF_CRM_1472455700[1]' => input('LEAD_UF_CRM_1472455700_1'),
+'LEAD_UF_CRM_1477656743' => input('product_type'),
+'LEAD_UF_CRM_1515071921' => input('product_name'),
+'LEAD_UF_CRM_1528724976' => input('LEAD_UF_CRM_1528724976'),
+'LEAD_UF_CRM_1530705157' => $pid,
+'from' => urlencode(input('url')),
+'sessid' => urlencode(session_id())
+);
+
+
+$this["response"] = $this->onDoCurl($url, $fields);
+$encodedResult = json_decode( $this["response"]);
+
+if ($encodedResult->error=="true"){
+Log::warning("form submission error: curl failed");
+Flash::error('Error');
+} else {
+//Flash::success('Success');
+}
+Log::info("form submission completed: ".$encodedResult->text);
+$this['result'] = $encodedResult->text;
+}
 
 
 function onSendOfferForm()
 {
-    
-    $data = post();
-    
-    if (isset($_COOKIE['pid']))
-        $pid = $_COOKIE['pid'];
-    else $pid="";
 
-    $rules = [
-        'firstname' => 'required',
-        'email' => 'required|email'
-    ];
+$data = post();
+
+if (isset($_COOKIE['pid']))
+$pid = $_COOKIE['pid'];
+else $pid="";
+
+$rules = [
+'firstname' => 'required',
+'email' => 'required|email'
+];
 
 if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-    $ip = $_SERVER['HTTP_CLIENT_IP'];
+$ip = $_SERVER['HTTP_CLIENT_IP'];
 } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
 } else {
-    $ip = $_SERVER['REMOTE_ADDR'];
+$ip = $_SERVER['REMOTE_ADDR'];
 }
 
 
-    $validation = Validator::make($data, $rules);
+$validation = Validator::make($data, $rules);
 
-    if ($validation->fails()) {
-        Log::warning("form submission validation failed");
-        throw new ValidationException($validation);
-    }
-    $this['result'] = DB::table('offshorelicense_storage_contactform')->insert(
-        [
-            'firstname' => input('firstname'),
-            'lastname' => input('lastname'),
-            'email' => input('email'),
-            'skype' => input('skype'),
-            'phone' => input('phone'),
-            'message' => input('message'),
-            
-            'product_type' => input('product_type'),
-            'product_name' => input('product_name'),
-            'promocode' => input('promocode'),
-            
-            'email_subscribtion' => input('LEAD_UF_CRM_1528724976'),
-            
-            'created_at' => date('Y-m-d H:i:s'),
-            'ip' =>  $ip,
-            'url' => input('url'),
-            'pid' => $pid
-        ]
-    );
-
-    
-    $numbers = "1510331652847";
-    $sec = "j7wo4g";
-    $form_id="13";
-    $url = 'https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id='.$form_id.'&widget_user_lang=en&sec='.$sec.'&r='.$numbers;
-
-    $fields = array(
-    	'LEAD_NAME' => input('firstname'),
-    	'LEAD_LAST_NAME' =>input('lastname'),
-    	'LEAD_EMAIL' => input('email'),
-    	'LEAD_PHONE' => input('phone'),
-    	'LEAD_IM' => input('skype'),
-    	'LEAD_COMMENTS' => input('message'),
-    	'LEAD_SOURCE_DESCRIPTION' => input('url'),
-    	'LEAD_UF_CRM_1472455700[0]' => input('LEAD_UF_CRM_1472455700_0'),
-    	'LEAD_UF_CRM_1472455700[1]' => input('LEAD_UF_CRM_1472455700_1'),
-    	'LEAD_UF_CRM_1477656743' => input('product_type'),
-    	'LEAD_UF_CRM_1515071921' => input('product_name'),
-    	'LEAD_UF_CRM_1528724976' => input('LEAD_UF_CRM_1528724976'),
-    	'LEAD_UF_CRM_1530705157' => $pid,
-    	'from' => urlencode(input('url')),
-    	'sessid' => urlencode(session_id())
-    );
-    
-    
-    $this["response"] = $this->onDoCurl($url, $fields);
-    $encodedResult = json_decode( $this["response"]);
-
-    if ($encodedResult->error=="true"){
-        Log::warning("form submission error: curl failed");
-        Flash::error('Error');
-    } else {
-        //Flash::success('Success');
-    }
-    Log::info("form submission completed: ".$encodedResult->text);
-    $this['result'] = $encodedResult->text;
+if ($validation->fails()) {
+Log::warning("form submission validation failed");
+throw new ValidationException($validation);
 }
+$this['result'] = DB::table('offshorelicense_storage_contactform')->insert(
+[
+'firstname' => input('firstname'),
+'lastname' => input('lastname'),
+'email' => input('email'),
+'skype' => input('skype'),
+'phone' => input('phone'),
+'message' => input('message'),
+
+'product_type' => input('product_type'),
+'product_name' => input('product_name'),
+'promocode' => input('promocode'),
+
+'email_subscribtion' => input('LEAD_UF_CRM_1528724976'),
+
+'created_at' => date('Y-m-d H:i:s'),
+'ip' =>  $ip,
+'url' => input('url'),
+'pid' => $pid
+]
+);
 
 
+$numbers = "1510331652847";
+$sec = "j7wo4g";
+$form_id="13";
+$url = 'https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id='.$form_id.'&widget_user_lang=en&sec='.$sec.'&r='.$numbers;
+
+$fields = array(
+'LEAD_NAME' => input('firstname'),
+'LEAD_LAST_NAME' =>input('lastname'),
+'LEAD_EMAIL' => input('email'),
+'LEAD_PHONE' => input('phone'),
+'LEAD_IM' => input('skype'),
+'LEAD_COMMENTS' => input('message'),
+'LEAD_SOURCE_DESCRIPTION' => input('url'),
+'LEAD_UF_CRM_1472455700[0]' => input('LEAD_UF_CRM_1472455700_0'),
+'LEAD_UF_CRM_1472455700[1]' => input('LEAD_UF_CRM_1472455700_1'),
+'LEAD_UF_CRM_1477656743' => input('product_type'),
+'LEAD_UF_CRM_1515071921' => input('product_name'),
+'LEAD_UF_CRM_1528724976' => input('LEAD_UF_CRM_1528724976'),
+'LEAD_UF_CRM_1530705157' => $pid,
+'from' => urlencode(input('url')),
+'sessid' => urlencode(session_id())
+);
 
 
+$this["response"] = $this->onDoCurl($url, $fields);
+$encodedResult = json_decode( $this["response"]);
 
+if ($encodedResult->error=="true"){
+Log::warning("form submission error: curl failed");
+Flash::error('Error');
+} else {
+//Flash::success('Success');
+}
+Log::info("form submission completed: ".$encodedResult->text);
+$this['result'] = $encodedResult->text;
+}
 
 
 function detectDevice($user_agent){
-    if (empty($user_agent))
-        return '';
-    if(preg_match('/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i',$user_agent)||preg_match('/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i',substr($user_agent,0,4)))
-        return 'mobile';
-    else if (preg_match('/(tablet|ipad|playbook)|(android(?!.*(mobi|opera mini)))/i', strtolower($user_agent)))
-        return 'tablet';
-    else
-        return 'computer';
+if (empty($user_agent))
+return '';
+if(preg_match('/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i',$user_agent)||preg_match('/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i',substr($user_agent,0,4)))
+return 'mobile';
+else if (preg_match('/(tablet|ipad|playbook)|(android(?!.*(mobi|opera mini)))/i', strtolower($user_agent)))
+return 'tablet';
+else
+return 'computer';
 }
-
-
 
 
 function get($get, $post = false)
 {
-    if ($post && isset($_POST[$get])) {
-        if (is_array($_POST[$get]))
-            //Have to correct later for array
-            return $_POST[$get];
-        else
-            return mysql_real_escape_string($_POST[$get]);
-    }
-    if (isset($_GET[$get])) {
-        if (is_array($_GET[$get]))
-            ////Have to correct later for array
-            return $_GET[$get];
-        else
-            return mysql_real_escape_string($_GET[$get]);
-    }
-    return "";
+if ($post && isset($_POST[$get])) {
+if (is_array($_POST[$get]))
+//Have to correct later for array
+return $_POST[$get];
+else
+return mysql_real_escape_string($_POST[$get]);
+}
+if (isset($_GET[$get])) {
+if (is_array($_GET[$get]))
+////Have to correct later for array
+return $_GET[$get];
+else
+return mysql_real_escape_string($_GET[$get]);
+}
+return "";
 }
 
 
 function Track(){
 
-   $server = $_SERVER ;
-   $request = Input::all();
+$server = $_SERVER ;
+$request = Input::all();
 
-   $ip = isset($_SERVER['HTTP_CLIENT_IP'])?$_SERVER['HTTP_CLIENT_IP']:isset($_SERVER['HTTP_X_FORWARDED_FOR'])?$_SERVER['HTTP_X_FORWARDED_FOR']:$_SERVER['REMOTE_ADDR'];
+$ip = isset($_SERVER['HTTP_CLIENT_IP'])?$_SERVER['HTTP_CLIENT_IP']:isset($_SERVER['HTTP_X_FORWARDED_FOR'])?$_SERVER['HTTP_X_FORWARDED_FOR']:$_SERVER['REMOTE_ADDR'];
 
-   $tracker_row = [
-        'datetime'  => date('Y-m-d H:i:s'),
-        'url'       => $server["HTTP_HOST"].$server["REQUEST_URI"],
-        'path'      => $server["SCRIPT_FILENAME"],
-        'url_ref'       => URL::previous(),
-        'ip'        => $ip,
-        'gclid'        => get('gclid'),
-        'kw'        => get('kw'),
-        'mt'       => get('mt'),
-        'ad'       => get('ad'),
-        'adposition'       => get('adposition'),
-        'adgroup_id'       => get('adgroup_id'),
-        'g_device'       => get('g_device'),
-        'loc_physical_ms'       => get('loc_physical_ms'),
-        'loc_physical_ms'       => get('loc_physical_ms'),
-        'devicemodel'       => get('devicemodel'),
-        'device'    => get('platform'),
-        'user_agent'=> empty($server["HTTP_USER_AGENT"]) ? '' : $server["HTTP_USER_AGENT"],
-        'pid'       => get('pid'),
-        'detected_device'=> empty($server["HTTP_USER_AGENT"]) ? '' : $this->detectDevice($server["HTTP_USER_AGENT"]),
-        //'promokey'  => $request->tracking['promokey'],
-        //'promo'     => $request->cookie('promocode'),
-        //'phone'     => preg_replace('/[^0-9]/','', $request->tracking['phone'])*/
-    ];
-    
-    
-    $this['result'] = DB::table('offshorelicense_storage_tracking_visits')->insert($tracker_row);
-    //Log::warning($this['result']);
-    //if($this['result'] <> 1) {
-        //Log::warning($tracker_row);
-    //}
+$tracker_row = [
+'datetime'  => date('Y-m-d H:i:s'),
+'url'       => $server["HTTP_HOST"].$server["REQUEST_URI"],
+'path'      => $server["SCRIPT_FILENAME"],
+'url_ref'       => URL::previous(),
+'ip'        => $ip,
+'gclid'        => get('gclid'),
+'kw'        => get('kw'),
+'mt'       => get('mt'),
+'ad'       => get('ad'),
+'adposition'       => get('adposition'),
+'adgroup_id'       => get('adgroup_id'),
+'g_device'       => get('g_device'),
+'loc_physical_ms'       => get('loc_physical_ms'),
+'loc_physical_ms'       => get('loc_physical_ms'),
+'devicemodel'       => get('devicemodel'),
+'device'    => get('platform'),
+'user_agent'=> empty($server["HTTP_USER_AGENT"]) ? '' : $server["HTTP_USER_AGENT"],
+'pid'       => get('pid'),
+'detected_device'=> empty($server["HTTP_USER_AGENT"]) ? '' : $this->detectDevice($server["HTTP_USER_AGENT"]),
+//'promokey'  => $request->tracking['promokey'],
+//'promo'     => $request->cookie('promocode'),
+//'phone'     => preg_replace('/[^0-9]/','', $request->tracking['phone'])*/
+];
+
+
+$this['result'] = DB::table('offshorelicense_storage_tracking_visits')->insert($tracker_row);
+//Log::warning($this['result']);
+//if($this['result'] <> 1) {
+//Log::warning($tracker_row);
+//}
 }
-
-
-
-
-
-
 
 
 //
 
 
-    /*
-    //success response sample:
-    //$encodedResult = json_decode('{"error":false,"text":"Thank you, your message has been sent. We will contact you soon.","redirect":"","redirectDelay":5,"resultId":217,"gid":"24xqz832fl5xmv5qf3tv50h1tykqrs2t"}');
-    
-    form_id=3 = idle
-    form_id=6 = bank
-    form_id=7 = general
-    form_id=8 = company
-    form_id=9 = licensing
-    form_id=11 = merchant
-    
-    timestamp sample: 1510138094853
-    
-    https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id=3&widget_user_lang=en&sec=nqtde0&r=$timestamp
-    https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id=6&widget_user_lang=en&sec=vt3nyi&r=1510149752086
-    
-    company and general fields:
-    LEAD_NAME:arturtest
-    LEAD_LAST_NAME:Birzgaltest
-    LEAD_EMAIL:test@gmail.com
-    LEAD_IM:
-    LEAD_PHONE:1234567890
-    LEAD_COMMENTS:formtest
-    from:https://offshorelicense.com/eu/
-    sessid:b0c8a9d74868c7e695a476d6b7b64c8f
-    
-    */
-    
-    /*
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyz';
-    $randstring = '';
-    for ($i = 0; $i < 6; $i++) {
-        $randstring = $characters[rand(0, strlen($characters))];
-    }
-    
-    $url = 'https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id=3&widget_user_lang=en&sec='.$randstring.'&r='.microtime(true);
+/*
+//success response sample:
+//$encodedResult = json_decode('{"error":false,"text":"Thank you, your message has been sent. We will contact you soon.","redirect":"","redirectDelay":5,"resultId":217,"gid":"24xqz832fl5xmv5qf3tv50h1tykqrs2t"}');
 
-    $fields = array(
-    	'LEAD_NAME' => urlencode(input('firstname')),
-    	'LEAD_LAST_NAME' => urlencode(input('lastname')),
-    	'LEAD_EMAIL' => urlencode(input('email')),
-    	'LEAD_IM' => urlencode(input('skype')),
-    	'LEAD_COMMENTS' => urlencode(input('message')),
-    	'from' => urlencode($this->page["actual_link"]),
-    	'sessid' => urlencode(session_id())
-    );
-    $fields_string = "";
-    foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
-    rtrim($fields_string, '&');    
-    
-    $ch = curl_init();
-    curl_setopt($ch,CURLOPT_URL, $url);
-    curl_setopt($ch,CURLOPT_POST, count($fields));
-    curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
+form_id=3 = idle
+form_id=6 = bank
+form_id=7 = general
+form_id=8 = company
+form_id=9 = licensing
+form_id=11 = merchant
 
-    // Set so curl_exec returns the result instead of outputting it.
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    
-    // Get the response and close the channel.
-    $response = curl_exec($ch);
-    curl_close($ch);
-    */
-    
-    
-    
-    /*    
-    $url = 'https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id=6&widget_user_lang=en&sec=nqtde0&r='.microtime(true);
+timestamp sample: 1510138094853
 
-    bank fields:
-    LEAD_UF_CRM_1472199402:32
-    LEAD_NAME:arturtest
-    LEAD_LAST_NAME:Birzgaltest
-    LEAD_EMAIL:test@gmail.com
-    LEAD_IM:total_resonance
-    LEAD_PHONE:1234567890
-    LEAD_COMMENTS:Production bank account: /eu/banks/personal/alpha-bank/
-    LEAD_UF_CRM_1472455700[0]:61
-    LEAD_UF_CRM_1472455700[1]:62
-    from:https://offshorelicense.com/eu/banks/personal/alpha-bank/
-    sessid:b0c8a9d74868c7e695a476d6b7b64c8f        
-    */
-    
-    /*
-    $fields = array(
-        'LEAD_UF_CRM_1472199402' => urlencode(input('type')),
-    	'LEAD_NAME' => urlencode(input('firstname')),
-    	'LEAD_LAST_NAME' => urlencode(input('lastname')),
-    	'LEAD_EMAIL' => urlencode(input('email')),
-    	'LEAD_IM' => urlencode(input('skype')),
-    	'LEAD_COMMENTS' => urlencode(input('message')),
-    	"LEAD_UF_CRM_1472455700" = array({61,62}),
-    	'from' => urlencode($this->page["actual_link"]),
-    	'sessid' => urlencode(session_id())
-    );
-    $fields_string = "";
-    foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
-    rtrim($fields_string, '&');    
-    
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch,CURLOPT_POST, count($fields));
-    curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
+https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id=3&widget_user_lang=en&sec=nqtde0&r=$timestamp
+https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id=6&widget_user_lang=en&sec=vt3nyi&r=1510149752086
 
-    // Set so curl_exec returns the result instead of outputting it.
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    
-    // Get the response and close the channel.
-    $response = curl_exec($ch);
-    curl_close($ch);
-        
-    */
+company and general fields:
+LEAD_NAME:arturtest
+LEAD_LAST_NAME:Birzgaltest
+LEAD_EMAIL:test@gmail.com
+LEAD_IM:
+LEAD_PHONE:1234567890
+LEAD_COMMENTS:formtest
+from:https://offshorelicense.com/eu/
+sessid:b0c8a9d74868c7e695a476d6b7b64c8f
+
+*/
+
+/*
+$characters = '0123456789abcdefghijklmnopqrstuvwxyz';
+$randstring = '';
+for ($i = 0; $i < 6; $i++) {
+$randstring = $characters[rand(0, strlen($characters))];
+}
+
+$url = 'https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id=3&widget_user_lang=en&sec='.$randstring.'&r='.microtime(true);
+
+$fields = array(
+'LEAD_NAME' => urlencode(input('firstname')),
+'LEAD_LAST_NAME' => urlencode(input('lastname')),
+'LEAD_EMAIL' => urlencode(input('email')),
+'LEAD_IM' => urlencode(input('skype')),
+'LEAD_COMMENTS' => urlencode(input('message')),
+'from' => urlencode($this->page["actual_link"]),
+'sessid' => urlencode(session_id())
+);
+$fields_string = "";
+foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
+rtrim($fields_string, '&');
+
+$ch = curl_init();
+curl_setopt($ch,CURLOPT_URL, $url);
+curl_setopt($ch,CURLOPT_POST, count($fields));
+curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
+
+// Set so curl_exec returns the result instead of outputting it.
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+// Get the response and close the channel.
+$response = curl_exec($ch);
+curl_close($ch);
+*/
+
+
+/*
+$url = 'https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id=6&widget_user_lang=en&sec=nqtde0&r='.microtime(true);
+
+bank fields:
+LEAD_UF_CRM_1472199402:32
+LEAD_NAME:arturtest
+LEAD_LAST_NAME:Birzgaltest
+LEAD_EMAIL:test@gmail.com
+LEAD_IM:total_resonance
+LEAD_PHONE:1234567890
+LEAD_COMMENTS:Production bank account: /eu/banks/personal/alpha-bank/
+LEAD_UF_CRM_1472455700[0]:61
+LEAD_UF_CRM_1472455700[1]:62
+from:https://offshorelicense.com/eu/banks/personal/alpha-bank/
+sessid:b0c8a9d74868c7e695a476d6b7b64c8f
+*/
+
+/*
+$fields = array(
+'LEAD_UF_CRM_1472199402' => urlencode(input('type')),
+'LEAD_NAME' => urlencode(input('firstname')),
+'LEAD_LAST_NAME' => urlencode(input('lastname')),
+'LEAD_EMAIL' => urlencode(input('email')),
+'LEAD_IM' => urlencode(input('skype')),
+'LEAD_COMMENTS' => urlencode(input('message')),
+"LEAD_UF_CRM_1472455700" = array({61,62}),
+'from' => urlencode($this->page["actual_link"]),
+'sessid' => urlencode(session_id())
+);
+$fields_string = "";
+foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
+rtrim($fields_string, '&');
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch,CURLOPT_POST, count($fields));
+curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
+
+// Set so curl_exec returns the result instead of outputting it.
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+// Get the response and close the channel.
+$response = curl_exec($ch);
+curl_close($ch);
+
+*/
 ?>
 ==
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="{{ 'assets/img/favicon3.ico'|theme }}">
     <!--<link href='https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic,900&subset=latin,latin-ext' rel='stylesheet' type='text/css'>-->
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     {% component 'SeoCmsPage' %}
-    <meta property="og:image" content="{{"assets/img/imgpsh_fullsize.jpg"|theme}}" />
-    <meta name="viewport" content="width=device-width, initial-scale=0.1">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta property="og:image" content="{{ "assets/img/imgpsh_fullsize.jpg"|theme }}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <link href="{{ [
         'assets/css/css-fonts.css',
@@ -900,57 +859,64 @@ function Track(){
         'assets/js/slick/slick.css',
         'assets/js/slick/slick-theme.css',
         'assets/css/styles.css',
-        'assets/css/template_styles.css',
         '@framework.extras'
     ]|theme }}" rel="stylesheet">
-    
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-855148396"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('event', 'AW-855148396');
-</script>
+    {# <!-- Google tag (gtag.js) --> #}
+    {# <script async src="https://www.googletagmanager.com/gtag/js?id=AW-855148396"></script> #}
+    {# <script> #}
+    {#  window.dataLayer = window.dataLayer || []; #}
+    {#  function gtag(){dataLayer.push(arguments);} #}
+    {#  gtag('js', new Date()); #}
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XKPC8JYLEQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    {#  gtag('event', 'AW-855148396'); #}
+    {# </script> #}
 
-  gtag('config', 'G-XKPC8JYLEQ');
-</script>
+    {# <!-- Google tag (gtag.js) --> #}
+    {# <script async src="https://www.googletagmanager.com/gtag/js?id=G-XKPC8JYLEQ"></script> #}
+    {# <script> #}
+    {#  window.dataLayer = window.dataLayer || []; #}
+    {#  function gtag(){dataLayer.push(arguments);} #}
+    {#  gtag('js', new Date()); #}
+
+    {#  gtag('config', 'G-XKPC8JYLEQ'); #}
+    {# </script> #}
 
 
+    <!-- Global site tag (gtag.js) - Google AdWords: 855148396 -->
+    <!--<script async src="https://www.googletagmanager.com/gtag/js?id=AW-855148396"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-<!-- Global site tag (gtag.js) - Google AdWords: 855148396 -->
-<!--<script async src="https://www.googletagmanager.com/gtag/js?id=AW-855148396"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+      gtag('config', 'AW-855148396');
+    </script>
+    -->
 
-  gtag('config', 'AW-855148396');
-</script>
--->
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+          "gtm.start":
+            new Date().getTime(), event: "gtm.js"
+        });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s), dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src =
+          "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-5TQ6GD6");</script>
+    <!-- End Google Tag Manager -->
 
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-5TQ6GD6');</script>
-<!-- End Google Tag Manager -->
+    <!--
+        <script src='https://www.googleadservices.com/pagead/conversion_async.js'></script>
+    -->
 
-<!--
-    <script src='https://www.googleadservices.com/pagead/conversion_async.js'></script>
--->
-
-<script  src="https://code.jquery.com/jquery-3.2.1.min.js"  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="  crossorigin="anonymous"></script>
-<!--
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <!--
 <script src="{{ [
         'assets/js/core.js',
         'assets/js/core_db.js',
@@ -960,10 +926,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         'assets/js/core_fx.js',
     ]|theme }}">
     </script>-->
-    
+
     <!--
         'assets/js/core_frame_cache.js',
-    
+
     -->
     <script src="{{ [
         'assets/js/slides.min.jquery.js',
@@ -984,83 +950,96 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         'assets/js/slick/slick.min.js',
         'assets/js/jquery-ui-1.12.0.custom/jquery-ui.js',
         'assets/js/cookie-policy.js',
+        'assets/js/news-slick-config.js',
         '@framework',
         '@framework.extras'
     ]|theme }}"></script>
-    
 
-<!--
+
+    <!--
    <script  src="https://code.jquery.com/jquery-3.2.1.min.js"  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="  crossorigin="anonymous"></script>
    <script type="text/javascript" src="{{ 'assets/js/jquery-ui-1.12.0.custom/jquery-ui.min.js'|theme }}"></script>
 -->
 
-<title></title>
+    <title></title>
 
-<script type="text/javascript">if (document.documentElement) {
-        document.documentElement.id = "js"
-    }</script>
+    <script type="text/javascript">if (document.documentElement) {
+        document.documentElement.id = "js";
+      }</script>
 
-<script>
-$(document).ready(function(){
-    
-  $('#mainpage-team-carousel').slick({
-      slidesToShow: 2,
-      slidesToScroll: 2,
-      autoplay: true,
-      autoplaySpeed: 3000,
-      infinite: true,
-      speed: 1000,
-      dots: true,
-  });
-  
-});
-</script>
-      
-      
-<!--Start of Zendesk Chat Script-->
-<!--
-<script type="text/javascript">
-window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
-d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
-_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
-$.src="https://v2.zopim.com/?5Tu40FPQZsv5GDAI8U2f1JM0kGq3UT9I";z.t=+new Date;$.
-type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
-</script>
--->
-<!--End of Zendesk Chat Script-->      
-     
-  
- <!--Start of Bitrix Chat Script-->   
-<script>
-        (function(w,d,u){
-                var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/60000|0);
-                var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
-        })(window,document,'https://bitrix.offshorelicense.com/upload/crm/site_button/loader_2_7x25zx.js');
-</script>   
-<!--End of Bitrix Chat Script-->  
-      
-      
-      
-<!-- Hotjar Tracking Code for offshorelicense.com -->
-<script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:655991,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+    <script>
+      $(document).ready(function () {
+
+        $("#mainpage-team-carousel").slick({
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          // autoplay: true,
+          // autoplaySpeed: 3000,
+          infinite: true,
+          speed: 1000,
+          dots: true,
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
+            }
+          ]
+        });
+
+      });
+    </script>
+
+
+    <!--Start of Zendesk Chat Script-->
+    <!--
+    <script type="text/javascript">
+    window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+    d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+    _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+    $.src="https://v2.zopim.com/?5Tu40FPQZsv5GDAI8U2f1JM0kGq3UT9I";z.t=+new Date;$.
+    type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+    </script>
+    -->
+    <!--End of Zendesk Chat Script-->
+
+
+    <!--Start of Bitrix Chat Script-->
+    <script>
+      (function (w, d, u) {
+        var s = d.createElement("script");
+        s.async = true;
+        s.src = u + "?" + (Date.now() / 60000 | 0);
+        var h = d.getElementsByTagName("script")[0];
+        h.parentNode.insertBefore(s, h);
+      })(window, document, "https://bitrix.offshorelicense.com/upload/crm/site_button/loader_2_7x25zx.js");
+    </script>
+    <!--End of Bitrix Chat Script-->
+
+
+    <!-- Hotjar Tracking Code for offshorelicense.com -->
+    <script>
+      (function (h, o, t, j, a, r) {
+        h.hj = h.hj || function () {(h.hj.q = h.hj.q || []).push(arguments);};
+        h._hjSettings = { hjid: 655991, hjsv: 6 };
+        a = o.getElementsByTagName("head")[0];
+        r = o.createElement("script");
+        r.async = 1;
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
         a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
- 
-<meta name="facebook-domain-verification" content="mrzs5d4ccuzu4ad9p1cmynbg5wpzie" />
+      })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
+    </script>
+
+    <meta name="facebook-domain-verification" content="mrzs5d4ccuzu4ad9p1cmynbg5wpzie"/>
 </head>
 <body>
-
-
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TQ6GD6"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TQ6GD6"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 <div id="page" class="title big">
@@ -1068,845 +1047,935 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="top">
             <div class="content">
 
-   <a href={{'ready-made-products'|page}}  style="position:absolute; top:200px; right:100px;z-index: 101;" ><img src="{{'limited-time-offer2.png' | media}}" style="width:150px;" /></a>
-   
-                <a href="/"><div class="logo"></div></a>
+                <a href={{ 'ready-made-products'|page }}  style="position:absolute; top:200px; right:100px;z-index: 101;"
+                ><img src="{{ 'limited-time-offer2.png' | media }}" style="width:150px;"/></a>
+
+                <a href="/">
+                    <div class="logo"></div>
+                </a>
                 <div class="param">
                     <div id="bxdynamic_YscOAb_start" style="display:none"></div>
-                    
-                    
+
+
                     {% if this.page.contact_widget=='phone' %}
                         <div style="position:absolute;margin-left:-250px;width:230px;">
-                        <script>
-                        function submitConversion(){
-                              window.google_trackConversion({
-                                google_conversion_id: 855148396,
-                                google_conversion_label: "67V7CLDvvn0Q7I7ilwM",
-                                google_remarketing_only: false
-                              });
-                        }
-                        </script>
-                        <a href="tel:+442038071507" onclick="submitConversion();">
-                            <img width=32 style="float:left; margin-right:10px;margin-top:3px;"  src="{{'assets/img/call-us.png'|theme}}" title="Call us" alt="Call us">
-                            <span style="color:#2d404c;font-size:16px;">Contact us now</span><br/>
-                            <span style="color:#2d404c;font-weight:bold;font-size:18px;">+44 (2038) 07 15 07</span>
-                        </a>
+                            <script>
+                              function submitConversion () {
+                                window.google_trackConversion({
+                                  google_conversion_id: 855148396,
+                                  google_conversion_label: "67V7CLDvvn0Q7I7ilwM",
+                                  google_remarketing_only: false
+                                });
+                              }
+                            </script>
+                            <a href="tel:+442038071507" onclick="submitConversion();">
+                                <img width=32 style="float:left; margin-right:10px;margin-top:3px;"
+                                     src="{{ 'assets/img/call-us.png'|theme }}" title="Call us" alt="Call us">
+                                <span style="color:#2d404c;font-size:16px;">Contact us now</span><br/>
+                                <span style="color:#2d404c;font-weight:bold;font-size:18px;">+44 (2038) 07 15 07</span>
+                            </a>
                         </div>
                     {% endif %}
-                    
+
                     {% if this.page.contact_widget=='email' %}
                         <script>
-                        function submitConversionEmail(){
-                              window.google_trackConversion({
-                                google_conversion_id: 855148396,
-                                google_conversion_label: "fb9CCI_Uun0Q7I7ilwM",
-                                google_remarketing_only: false
-                              });
-                        }
+                          function submitConversionEmail () {
+                            window.google_trackConversion({
+                              google_conversion_id: 855148396,
+                              google_conversion_label: "fb9CCI_Uun0Q7I7ilwM",
+                              google_remarketing_only: false
+                            });
+                          }
                         </script>
                         <div style="position:absolute;margin-left:-250px;width:240px;">
-                        <a href="mailto:requests@offshorelicense.com" onclick="submitConversionEmail();">
-                            <img width=32 style="float:left; margin-right:10px;margin-top:3px;"  src="{{'assets/img/email-us3.png'|theme}}" title="Email us" alt="Email us">
-                            <span style="color:#2d404c;font-size:16px;">Email us</span><br/>
-                            <span style="color:#2d404c;font-weight:bold;font-size:14px;">requests@offshorelicense.com</span>
-                        </a>
+                            <a href="mailto:requests@offshorelicense.com" onclick="submitConversionEmail();">
+                                <img width=32 style="float:left; margin-right:10px;margin-top:3px;"
+                                     src="{{ 'assets/img/email-us3.png'|theme }}" title="Email us" alt="Email us">
+                                <span style="color:#2d404c;font-size:16px;">Email us</span><br/>
+                                <span style="color:#2d404c;font-weight:bold;font-size:14px;">requests@offshorelicense.com</span>
+                            </a>
                         </div>
                     {% endif %}
-                    
-                    
-     
-<div class="lang">
-	<label><font>Language</font><span>EN</span></label>
-	<ul>
-				<li><a rel="alternate" hreflang="ru" href="https://offshorelicense.ru">RU</a></li>
-				<li><a rel="alternate" hreflang="cn" href="http://offshorelicense.com.cn">CN</a></li>
-				
-		</ul>
-</div><div id="bxdynamic_YscOAb_end" style="display:none"></div>                </div>
+
+
+                    <div class="lang">
+                        <label><font>Language</font><span>EN</span></label>
+                        <ul>
+                            <li><a rel="alternate" hreflang="ru" href="https://offshorelicense.ru">RU</a></li>
+                            <li><a rel="alternate" hreflang="cn" href="http://offshorelicense.com.cn">CN</a></li>
+
+                        </ul>
+                    </div>
+                    <div id="bxdynamic_YscOAb_end" style="display:none"></div>
+                </div>
 
             </div>
         </div>
         <div class="middle">
             <div class="content">
-                <div id="bxdynamic_LkGdQn_start" style="display:none"></div><ul>
-	<li class=""><a href="{{ 'about'|page }}">About us</a></li>
-	<li class=""><a href="{{ 'about'|page }}/#aboutFormTop">Contact us</a></li>
-	<li><a href="{{ 'faq'|page }}">FAQ</a></li>
-    <li><a href="{{ 'ready-made-products'|page }}">Ready-made products</a></li>
-	<li><a href="{{ 'blog'|page({page:1}) }}">Blog</a></li>
-</ul><div id="bxdynamic_LkGdQn_end" style="display:none"></div>                <div id="headerSearchField">
+                <div id="bxdynamic_LkGdQn_start" style="display:none"></div>
+                <ul>
+                    <li class=""><a href="{{ 'about'|page }}">About us</a></li>
+                    <li class=""><a href="{{ 'about'|page }}/#aboutFormTop">Contact us</a></li>
+                    <li><a href="{{ 'faq'|page }}">FAQ</a></li>
+                    <li><a href="{{ 'ready-made-products'|page }}">Ready-made products</a></li>
+                    <li><a href="{{ 'blog'|page({page:1}) }}">Blog</a></li>
+                </ul>
+                <div id="bxdynamic_LkGdQn_end" style="display:none"></div>
+                <div id="headerSearchField">
                     <label>Search</label>
                     <div>
                         <div class="search-form">
-<form action="/search/index.php">
-	<input type="text" name="q" value="" placeholder="Search for?" size="15" maxlength="50" /><input name="s" type="submit" value="Search" />
-</form>
-</div>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("input[name='s']").click(function() {
-		console.log($("input[name='q']").val());
-		if($("input[name='q']").val() == "") return false;
-	});
-});
-</script>                    </div>
+                            <form action="/search/index.php">
+                                <input type="text" name="q" value="" placeholder="Search for?" size="15"
+                                       maxlength="50"/><input name="s" type="submit" value="Search"/>
+                            </form>
+                        </div>
+                        <script type="text/javascript">
+                          $(document).ready(function () {
+                            $("input[name='s']").click(function () {
+                              console.log($("input[name='q']").val());
+                              if ($("input[name='q']").val() == "") return false;
+                            });
+                          });
+                        </script>
+                    </div>
                 </div>
             </div>
         </div>
-    <div id="bxdynamic_XEVOpk_start" style="display:none"></div>
-<div class="bottom">
-	<div class="content">
-		<div id="main-shortcut">
-
-	<a href="{{ 'companies'|page }}">Companies</a>
-	<a href="{{ 'banks'|page }}">Banks</a>
-	<a href="{{ 'licensing'|page }}">Licensing</a>
-	<a href="{{ 'accounting'|page }}">Accounting</a>
-	<a href="{{ 'intellectualproperties'|page }}">Intellectual Property</a>
-	<a href="{{ 'additional'|page }}">Additional</a>
-	<a href="#form">Additional</a>
-   
-
-		</div>
-	</div>
-</div>
-
-<div class="clear"></div>
-<div id="bxdynamic_XEVOpk_end" style="display:none"></div>
-    </header>
-    
-{% page %}
-
-    <div class="page">
-		<div class="title-page-background">
-	<section id="sec1">
-		<div class="fixedCont _fixed">
-			<div id="bxdynamic_g8taYv_start" style="display:none"></div><div class="page-top main index-page-top-resize">
-	<div class="content">
-<div class="text">
-	<h1>Corporate services with a personal touch</h1>
-	<p>We deliver the most complex legal, technical and financial services in the most professional way, while always minding your personal 
-preferences.</p>
-</div>
-<div id="main-shortcut">
-	<a href="{{ 'companies'|page }}">
-	<label style="background-image: url({{ 'assets/img/company-formation.png'|theme }});">Companies</label>
-	<div>
-		<h2>Companies</h2>
-		<p class="elipsis">Professional company incorporation services in more than twenty jurisdictions.</p>
-	</div>
-	</a>
-	<a href="{{ 'banks'|page }}">
-	<label style=="background-image: url({{ 'assets/img/bank-account-opening.png'|theme }});">Banks</label>
-	<div>
-		<h2>Banks</h2>
-		<p class="elipsis">Corporate and Personal account opening for various business needs.</p>
-	</div>
-	</a>
-	<a href="{{ 'licensing'|page }}">
-	<label style="background-image: url({{ 'assets/img/financial-services-licensing.png'|theme }});">Licensing</label>
-	<div>
-		<h2>Licensing</h2>
-		<p class="elipsis">Assistance with Forex, Crypto & ICO Licensing in various jurisdictions.</p>
-	</div>
-	</a>
-	<a href="{{ 'accounting'|page }}">
-	<label style="background-image: url({{ 'assets/img/outsourced-accounting-and-audit-services.png'|theme }});">Accounting</label>
-	<div>
-		<h2>Accounting</h2>
-		<p class="elipsis">Outsource Accounting and Audit services.</p>
-	</div>
-	</a>
-	<a href="{{ 'intellectualproperties'|page }}">
-	<label style="background-image: url({{ 'assets/img/intellectual-property-services.png'|theme }});">Intellectual Property</label>
-	<div>
-		<h2>Intellectual Property</h2>
-		<p class="elipsis">Trademark, Design and Patent registration.</p>
-	</div>
-	</a>	
-	<a href="{{ 'additional'|page }}">
-	<label style="background-image: url({{ 'assets/img/additional-offshore-services.png'|theme }});">Additional</label>
-	<div>
-		<h2>Additional</h2>
-		<p class="elipsis">Merchant Accounts, Legal Consultatitions and Technical Solutions.</p>
-	</div>
-	</a>
-	<style>
-	.send-btn1 {
-    display: block;
-    width: 200px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 20px;
-    background-color: #E31F31;
-    height: 45px;
-    border: 0;
-    border-radius: 7px;
-    font-size: 20px;
-    margin-top: 30px;
-    font-weight: 700;
-    background-color:rgba(255,255,255,0.85);
-    color: #374d5c;
-    cursor: pointer;
-}
-	</style>
- <form action="https://www.offshorelicense.com/about/#aboutFormTop"> <button type="submit" class="send-btn1">Leave a request</button></form>
-</div>
-</div>
-</div>
+        <div id="bxdynamic_XEVOpk_start" style="display:none"></div>
+        <div class="bottom">
+            <div class="content">
+                <div id="main-shortcut">
+                    <a href="{{ 'companies'|page }}">Companies</a>
+                    <a href="{{ 'banks'|page }}">Banks</a>
+                    <a href="{{ 'licensing'|page }}">Licensing</a>
+                    <a href="{{ 'accounting'|page }}">Accounting</a>
+                    <a href="{{ 'intellectualproperties'|page }}">Intellectual Property</a>
+                    <a href="{{ 'additional'|page }}">Additional</a>
+                    <a href="#form">Additional</a>
 
 
-<div id="bxdynamic_g8taYv_end" style="display:none"></div>			<div class="clear"></div>
-		</div>
-		<div class="_white-wrapper">
-			<div class="content mainPage-list">
-				<h2 class="title-s-1">Recommended products</h2>
-				<p class="after-title-s-1">The most interesting products for your business needs, handpicked by our specialists.</p>
-				<div class="inline-warp">
-					<div class="inline-2 company">
-						<label>Companies<a href="/companies/">View more</a></label>
-						<ul>
-							<div id="bxdynamic_HT7zAX_start" style="display:none"></div><li class=""><a href="/companies/hong-kong-limited-company-formation">
-	<div class="logo" style="background-image: url({{ 'assets/upload/iblock/daf/daf597f92e5a21a5f726c87c92ef5ca8.png'|theme }});"></div>
-	<span>
-		<h3>Hong Kong Limited Liability Company (LTD)</h3>
-		<span>Hong Kong Limited Liability Company (LTD)</span>
-	</span>
-	<div class="cost">
-					<h6>&euro;2,200</h6>
-			<h5>&euro;1,980</h5>
-			</div>
-</a></li>
-
-<li class=""><a href="/companies/labuan-international-business-company-formation">
-	<div class="logo" style="background-image: url({{ 'assets/upload/iblock/bd7/bd70418e69bb60316156778e1b9ed34b.png'|theme }});"></div>
-	<span>
-		<h3>Labuan International Business Company (IBC)</h3>
-		<span>Labuan International Business Company (IBC)</span>
-	</span>
-	<div class="cost">
-					<h6>&euro;4,000</h6>
-			<h5>&euro;3,600</h5>
-			</div>
-</a></li>
-
-<li class=""><a href="/companies/gibraltar-limited-liability-company-formation">
-	<div class="logo" style="background-image: url({{ 'assets/upload/iblock/2ef/2efbf21144e38243fd6e9f12139811c5.gif'|theme }});"></div>
-	<span>
-		<h3>Gibraltar Limited Liability Company (LTD)</h3>
-		<span>Gibraltar Limited Liability Company (LTD)</span>
-	</span>
-	<div class="cost">
-					<h6>&euro;2,900</h6>
-			<h5>&euro;2,610</h5>
-			</div>
-</a></li>
-
-<div id="bxdynamic_HT7zAX_end" style="display:none"></div>						</ul>
-					</div>
-					<div class="inline-2 bank">
-						<label>Banks<a href="/banks/">View more</a></label>
-						<ul>
-							<div id="bxdynamic_GuphBt_start" style="display:none"></div>	<!--li class="">
-	<a href="/banks/personal/csob-personal-bank-account-opening">
-			<div class="logo" style="background-image: url({{ 'assets/upload/iblock/5d3/5d3676eef51ea1f4fec2cfc91958d941.png'|theme }});"></div>
-			<span>
-			<h3>ČSOB</h3>
-			<span>ČSOB</span>
-		</span>
-			<div class="cost">
-			<span>Starting from</span><br />
-							<h5>&euro;900</h5>
-						</div>
-		</a></li>
-	<li class="">
-	<a href="/banks/personal/personal-account-opening-in-bank-of-cyprus">
-			<div class="logo" style="background-image: url({{ 'assets/upload/iblock/416/4167a1d8ef4a6883d897ed2c10963939.jpg'|theme }});"></div>
-			<span>
-			<h3>Bank of Cyprus</h3>
-			<span>Bank of Cyprus</span>
-		</span>
-			<div class="cost">
-			<span>Starting from</span><br />
-							<h5>&euro;650</h5>
-						</div>
-		</a></li-->
-	<li class="">
-	<a href="/banks/corporate/pacific-private-bank-corporate-account-opening">
-			<div class="logo" style="background-image: url({{ 'assets/upload/iblock/90c/90c72461b713f9163684a3bcdbd914a2.png'|theme }});"></div>
-			<span>
-			<h3>Pacific Private Bank</h3>
-			<span>Pacific Private Bank</span>
-		</span>
-			<div class="cost">
-			<span>Starting from</span><br />
-							<h5>&euro;1,000</h5>
-						</div>
-		</a></li>
-		
-		<style>
-		.re-pr-h6 {
-        	font-size: 15px;
-        	font-weight: 300;
-        	color: #1e2b34;
-        	margin-bottom: 5px;
-        	text-decoration: line-through;
-    	    display: block;
-        }
-		</style>
-		
-<div id="bxdynamic_GuphBt_end" style="display:none"></div>						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="mainPage-ourApproach">
-				<div class="content">
-					<h2 class="title-s-1">Our approach</h2>
-					<p class="after-title-s-1">Our industry expertise coupled with close partnerships with partners and affiliates enable us to deliver the best possible solutions to our customers, growing their's and our business every day.</p>
-					<div class="inline-warp">
-						<div class="inline-3">
-							<span class="companies"></span>
-														<label>
-								<!--<h1>--><!--</h1>-->
-								<!--<h5>--><!--</h5>-->
-								<!-- 411 272 75 -->
-								
-								<div class="apr-h1"><strong id="counter1" data-value="{{ 411+(date().timestamp-1509547931)/(86400*7) }}">72</strong></div>
-								<div class="apr-h5">Companies</div>
-							</label>
-						</div>
-						<div class="inline-3">
-							<span class="bank"></span>
-							<label>
-								<div class="apr-h1"><strong id="counter2" data-value="{{ 272+(date().timestamp-1509547931)/(86400*7) }}">39</strong></div>
-								<div class="apr-h5">Bank Accounts</div>
-							</label>
-						</div>
-						<div class="inline-3">
-							<span class="licenses"></span>
-							<label>
-								<div class="apr-h1"><strong id="counter3" data-value="{{ 75+(date().timestamp-1509547931)/(86400*14) }}">16</strong></div>
-								<div class="apr-h5">Licenses</div>
-							</label>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div id="bxdynamic_7DqYyc_start" style="display:none"></div>
-			
-			<style>
-			.apr-h1 {
-			  font-size: 60px;
-              line-height: 58px;
-              font-weight: 900;
-              color: #fff;
-              }
-            .apr-h5 {
-              font-size: 24px;
-              line-height: 26px;
-              font-weight: 400;
-              color: #fff;
-                }
-            .comp-rec-h3 {
-              font-size: 18px;
-              font-weight: 700;
-              color: #1e2b34;
-              display: block;
-              line-height: 22px;
-              padding-bottom: 8px;
-              cursor: pointer;
-              margin-top: 8px;
-              white-space: nowrap;
-              overflow: hidden;
-              text-overflow: ellipsis;
-                }
-			</style>
-
-
-<!-------------------------------------------------->
-<!-----------------START Blog news------------------>
-<!-------------------------------------------------->
-
-<div class="content blog-news-list">
-	    <h2 class="title-s-1">Latest news</h2>    
-	    
-	    
-<div class="inline-warp">
-         
-
-    {% set posts = blogPosts.posts %}
-
-
-    {% for post in posts %}
-    
-    <div class="inline-3">
-               
-               {% if post.featured_images.count %}
-                   {% for image in post.featured_images|slice(0, 1) %}
-                       <div class="logo clickable" data-url="{{ post.url }}" style="background-image: url('{{ image.path  }}');"></div>
-                   {% endfor %}
-               {% endif %}
-               
-               
-               
-               <label>
-                  <div class="clickable lat-news-h1" data-url="{{ post.url }}">{{ post.title }}</div>
-                  <div class="lat-news-h5">{{ post.published_at|date('M d, Y') }}</div>
-               </label>
-               <span class="text">
-              {{ post.summary|striptags }}...
-              </span>
-               <a href="{{ post.url }}">Read more &gt;&gt;</a>
-    </div>
-
-        
-
-    {% endfor %}
-
-  
-            
-</div>
-      
-      <style>
-      .lat-news-h1 {
-          font-size: 18px;
-          color: #1e2b34;
-          font-weight: 700;
-          line-height: 22px;
-          cursor: pointer;
-          }
-      .lat-news-h5 {
-          font-size: 14px;
-          font-weight: 400;
-          color: #b4b4b4;
-          line-height: 14px;
-          margin-top: 10px;
-          }
-      </style>   
-    	    
-	    
-	
-	
-	
-	
-	    	<div style="text-align:center;"><a href="{{ 'blog'|page({page:1}) }}" class="but but-green">Read more articles</a></div>
-		</div>
-<script>
-         $(document).ready(function() {
-         	$(".clickable").click(function() {
-         		var url = $(this).attr('data-url');
-         		window.location = url;
-         	});
-         });
-</script>
-<!-------------------------------------------------->
-<!-------------------END Blog news------------------>
-<!-------------------------------------------------->
-
-			<div class="mainpage-team-image">
-				<div class="img"></div>
-			</div>
-
-
-
-
-<div class="content mainpage-team">
-   <h2 class="title-s-1">Testimonials</h2>
-   <div class="inline-warp" id="mainpage-team-carousel">
-   
-   
-   
-   <!-- testimonial 1 -->
-      <div class="inline-2">
-         <div class="logo" style="background-image: url('{{ 'assets/upload/iblock/31c/31cc725fd00d2b6eace2bc6a6c4b5774.png' | theme }}');"></div>
-         <div class="right">
-            <p class="">
-               “In Forex industry everything changes very fast, so you have to react quickly. Offshorelicense was the only corporate service provider who could offer me a solution, once I decided to discontinue operations in Belize due to changes in local laws. It was great help for me at the time.”											
-            </p>
-            <label>
-               <div class="te-mo-h2">Kavish Rodyyatiil</div>
-               <div class="te-mo-h3">India</div>
-            </label>
-         </div>
-      </div>
-      
-      
-      
-      
-      
-   <!-- testimonial 2 -->
-      <div class="inline-2">
-         <div class="logo" style="background-image: url('{{ 'assets/upload/iblock/46f/46fe36e0bb62cef94bedea85ccba2b6d.png' | theme}}');"></div>
-         <div class="right">
-            <p class="">
-               “I run an International company and wanted to expand my business and give more creditability to it. Offshorelicense team helped me with registering a company in Central Europe and obtaining a Trademark. This would have taken too much time for me to research myself. So Offshorelicense was a one-stop shop for me. Thank you!”											
-            </p>
-            <label>
-               <div class="te-mo-h2">Yurgen Mittmann</div>
-               <div class="te-mo-h3">Germany</div>
-            </label>
-         </div>
-      </div>
-      
-      
-      
-      
-      
-      
-   <!-- testimonial 3 -->
-      <div class="inline-2">
-         <div class="logo" style="background-image: url('{{ 'assets/upload/iblock/460/460e3c06d716e75f7a354dca75a27c80.png'|theme }}');"></div>
-         <div class="right">
-            <p class="">
-               “We are working with Offshorelicense for a long time. So every time we have a requirement for a new bank account, we turn to Offshorelicense for help. They can always give various options that we can pick from.”											
-            </p>
-            <label>
-               <div class="te-mo-h2">Junko Shinohara</div>
-               <div class="te-mo-h3">Japan</div>
-            </label>
-         </div>
-      </div>
-      
-      
-      
-      
-      
-      
-   <!-- testimonial 4 -->
-      <div class="inline-2">
-         <div class="logo" style="background-image: url('https://offshorelicense.com/storage/app/media/Johny_UK_.jpg');"></div>
-         <div class="right">
-            <p class="">
-               “Our acquaintance with Offshorelicense started with our request for their assistance with the audit for Vanuatu company, when our partner-auditor let us down, and failed to provide the services due to unspecified reasons. Luckily for us, Offshorelicense provided us with a solution that was both effective and time-efficient, allowing us to avoid unfavorable consequences. At the moment, Offshorelicense is the administrator of our company, and we are content with all the service provided by their team. “											
-            </p>
-            <label>
-               <div class="te-mo-h2">Johny Wonter</div>
-               <div class="te-mo-h3">United Kingdom</div>
-            </label>
-         </div>
-      </div> 
-      
-      
-      
-      
-      
-       
- <!-- testimonial 5 -->
-      <div class="inline-2">
-         <div class="logo" style="background-image: url('{{'assets/upload/iblock/079/0794c47ada86041feade20c8c837a48b.png' | theme}}');"></div>
-         <div class="right">
-            <p class="">
-               “The Offshorelicense team was recommended to me by my business partners, when I had difficulties in finding a Law firm that could draft legal documentation and Agreements in E-Gaming industry. The team did a very good job.”											
-            </p>
-            <label>
-               <div class="te-mo-h2">Nikolay P.</div>
-               <div class="te-mo-h3">Russian Federation</div>
-            </label>
-         </div>
-      </div>
-<!-- testimonial 6 -->
-      <div class="inline-2">
-         <div class="logo" style="background-image: url('https://offshorelicense.com/storage/app/media/Zhou_China.jpg');"></div>
-         <div class="right">
-            <p class="">
-               “Our company is providing legal and corporate services mainly to Chinese clients who usually have great interest, but are facing various obstacles and challenges in entering other than local Asian markets. Partnership relations with Offshorelicense gives us and our clients opportunity to expand internationally and receive credible advises and solutions concerning establishing Forex brokerage business both offshore and onshore. “											
-            </p>
-            <label>
-               <div class="te-mo-h2">Zhou Ran</div>
-               <div class="te-mo-h3">China</div>
-            </label>
-         </div>
-      </div>
-
-    <style>
-    .te-mo-h2 {
-    	font-size: 14px;
-    	color: #1e2b34;
-    	font-weight: 600;
-        }
-    .te-mo-h3 {
-    	font-size: 14px;
-    	color: #1e2b34;
-    	font-weight: 400;
-    }
-    </style>
-
-
-</div>
-	</section>
-</div>
-
-
-</div><!-- // .body -->
-</div>
-<footer>
-	<div class="top">
-		<div class="left_color"></div>
-		<div class="content">
-			<div class="left"><p>For any help or inquiries</p></div>
-			<div class="right">
-				{{ partial('contact-us-form.htm')}}
-				{{ partial('popup-contact-form.htm')}}
-				
-			</div>
-		</div>
-	</div>
-	<div class="middle">
-		<div class="content">
-			<div class="left">
-				<a href="/">
-					<div class="logo"></div>
-				</a>
-				
-				{% content 'footer-address' %}
-				
-			</div>
-			<div class="services">
-				<h3>Services</h3>
-				<div id="bxdynamic_rIpOz9_start" style="display:none"></div>
-<ul>
-	
-					<li class="current"><a href="{{ 'companies'|page }}">Companies</a></li>
-			
-					<li class=""><a href="{{ 'banks'|page }}">Banks</a></li>
-			
-					<li><a href="{{ 'licensing'|page }}">Licensing</a></li>
-			
-					<li><a href="{{ 'accounting'|page }}">Accounting</a></li>
-					
-					<li><a href="{{ 'intellectualproperties'|page }}">Intellectual Property</a></li>
-								
-					<li><a href="{{ 'additional'|page }}">Additional</a></li>
-			</ul><div id="bxdynamic_rIpOz9_end" style="display:none"></div>			</div>
-			<div class="right">
-				<h3>Useful links</h3>
-				<div id="bxdynamic_NMQc3w_start" style="display:none"></div>
-<ul >
-	
-					<li ><a href="{{ 'about'|page }}">About us</a></li>
-			
-					<li ><a href="{{ 'about'|page }}#aboutFormTop">Contact us</a></li>
-			
-					<li ><a href="{{ 'faq'|page }}">FAQ</a></li>
-                    <li class="{% if this.page.baseFileName=='ready-made-products' %}current{% endif %}"><a href="{{ 'ready-made-products'|page}}">Ready-made products</a></li>
-					<li ><a href="{{ 'blog'|page({page:1}) }}">Blog</a></li>
-			</ul><div id="bxdynamic_NMQc3w_end" style="display:none"></div>				<div class="social">
-					<a title="Follow us on Facebook" href="https://www.facebook.com/OffshorelicenseLTD/" target="_blank" class="fb"></a>
-					<a title="Follow us on LinkedIn" href="https://www.linkedin.com/company/offshorelicense-ltd" target="_blank" class="in"></a>
-					<a title="Follow us on Twitter" href="https://twitter.com/Offshorelicense" target="_blank" class="tw"></a>
-					<a title="Follow us on Google" href="https://plus.google.com/u/0/+OffshorelicenseLTD" target="_blank" class="gg"></a>
-									</div>
-			</div>
-		</div>
-	</div>
-	<div class="bottom">
-		<div class="content">
-			<div class="left">Copyright © 2015 - {{ 'now'|date('Y') }}&nbsp; OffshoreLicense.&nbsp;All rights reserved.</div>
-			<div class="right">
-				<a class="privacy privacy-opener" href="/terms/privacy" target="_self">Privacy Policy</a>
-				<a class="terms terms-opener" href="/terms/use" target="_self">Terms of Use</a>
-			</div>
-		</div>
-	</div>
-	
-	
-	
-	{% component 'googleTracker' %}
-	
-	
-	
-</footer>
-<div id="form3">
-		<form id="form" action="/sys/pdf/" method="POST" enctype="multipart/form-data">
-	<div class="cont">
-		<span>This Pre-Check form is a standard and required procedure, which gives an opportunity to make a merchant agreement based on full and detailed information. By giving incorrect or incomplete information may lead to agreement delay.</span>
-		<div class="col col1">
-			<table cellspacing="0" cellpadding="0" boder="0">
-				<tr>
-					<td></td><td>
-						<strong>Merchant details</strong>
-					</td>
-				</tr><tr>
-					<td>
-						<label for="company_name">Company name*</label>
-					</td><td>
-						<input type="text" name="company_name" data-rule-required="true" />
-					</td>
-				</tr><tr>
-					<td>
-						<label for="company_address">Company address*<br /><small>(street, city, country, index/PO box)</small></label>
-					</td><td>
-						<textarea name="company_address" data-rule-required="true"></textarea>
-					</td>
-				</tr><tr>
-					<td>
-						<label for="company_activities">Business Activities*</label>
-					</td><td>
-						<textarea name="company_activities" data-rule-required="true"></textarea>
-					</td>
-				</tr><tr>
-					<td>
-						<label for="company_incorporation">Country of incorporation*</label>
-					</td><td>
-						<input type="text" name="company_incorporation" data-rule-required="true" />
-					</td>
-				</tr><tr>
-					<td>
-						<label for="company_website">Company website</label>
-					</td><td>
-						<input type="text" placeholder="http://" name="company_website" />
-					</td>
-				</tr>
-			</table>
-			<table cellspacing="0" cellpadding="0" boder="0">
-				<tr>
-					<td></td><td>
-						<strong>Contact details</strong>
-					</td>
-				</tr><tr>
-					<td>
-						<label for="name">Name*</label>
-					</td><td>
-						<input type="text" name="name" data-rule-required="true" />
-					</td>
-				</tr><tr>
-					<td>
-						<label for="surname">Surname*</label>
-					</td><td>
-						<input type="text" name="surname" data-rule-required="true" />
-					</td>
-				</tr><tr>
-					<td>
-						<label for="email">E-mail*</label>
-					</td><td>
-						<input type="email" name="email" data-rule-required="true" data-rule-email="true"  required/>
-					</td>
-				</tr><tr>
-					<td>
-						<label for="phone">Phone*</label>
-					</td><td>
-						<input type="text" name="phone" data-rule-required="true" />
-					</td>
-				</tr><tr>
-					<td>
-						<label for="skype">Skype</label>
-					</td><td>
-						<input type="text" name="skype" />
-					</td>
-				</tr>
-			</table>
-		</div>
-		<div class="col col2">
-			<table cellspacing="0" cellpadding="0" boder="0">
-				<tr>
-					<td></td><td>
-						<strong>Processing information</strong>
-					</td>
-				</tr><tr class="turnover">
-					<td>
-						<label for="monthly_turnover">Monthly turnover*</label>
-					</td><td>
-						<input type="text" name="monthly_turnover" data-rule-required="true" data-rule-digits="true" />
-						<select name="monthly_turnover_currency">
-														<option value="EUR">EUR</option>
-														<option value="USD">USD</option>
-														<option value="GBP">GBP</option>
-													</select>
-					</td>
-				</tr><tr class="transaction">
-					<td>
-						<label for="transaction_amount">Transaction amount*</label>
-					</td><td>
-						<input type="text" placeholder="Min" name="transaction_amount_min" data-rule-required="true" data-rule-digits="true" />
-						<input type="text" placeholder="Max" name="transaction_amount_max" data-rule-required="true" data-rule-digits="true" />
-					</td>
-				</tr><tr>
-					<td>
-						<label for="company_activities">Processing currencies*</label>
-					</td><td class="checkbox">
-												<input type="checkbox" name="processing_currencies[]" value="EUR" data-rule-required="true" />&nbsp;<label for="processing_currencies">EUR</label>
-												<input type="checkbox" name="processing_currencies[]" value="USD" data-rule-required="true" />&nbsp;<label for="processing_currencies">USD</label>
-												<input type="checkbox" name="processing_currencies[]" value="GBP" data-rule-required="true" />&nbsp;<label for="processing_currencies">GBP</label>
-											</td>
-				</tr><tr>
-					<td>
-						<label for="settlement_currencies">Settlement currencies*</label>
-					</td><td class="checkbox">
-												<input type="checkbox" name="settlement_currencies[]" value="EUR" data-rule-required="true" />&nbsp;<label for="settlement_currencies">EUR</label>
-												<input type="checkbox" name="settlement_currencies[]" value="USD" data-rule-required="true" />&nbsp;<label for="settlement_currencies">USD</label>
-												<input type="checkbox" name="settlement_currencies[]" value="GBP" data-rule-required="true" />&nbsp;<label for="settlement_currencies">GBP</label>
-											</td>
-				</tr><tr>
-					<td>
-						<label for="sales_market">Sales Market*<br /><small>(% by countries)</small></label>
-					</td><td>
-						<textarea name="sales_market" data-rule-required="true"></textarea>
-					</td>
-				</tr><tr>
-					<td>
-						<label for="license">License*</label>
-					</td><td>
-						<select name="license" data-rule-required="true">
-							<option value="">Select...</option>
-							<option value="yes">yes</option>
-							<option value="no">no</option>
-							<option value="in process">in process</option>
-						</select>
-					</td>
-				</tr><tr>
-					<td>
-						<label for="eu_company">EU company*</label>
-					</td><td>
-						<select name="eu_company"  data-rule-required="true">
-							<option value="">Select...</option>
-							<option value="yes">yes</option>
-							<option value="no">no</option>
-							<option value="in process">in process</option>
-						</select>
-					</td>
-				</tr><tr>
-					<td>
-						<label for="is_it_start_up">Is it start-up?*</label>
-					</td><td>
-						<select name="is_it_start_up" data-rule-required="true">
-							<option value="">Select...</option>
-							<option value="yes">yes</option>
-							<option value="no">no</option>
-						</select>
-					</td>
-				</tr>
-			</table>
-			<span><b>Optional:</b> provide processing history (statement of last 6 months) with your current/previous acquirer.<br /><small class="limit">Attach only: .doc, .docx, .pdf     (File size not to extend 10 MB)</small></span>
-			
-			<input type="file" class="file" name="file" accept=".doc, .docx, .pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword,  	application/vnd.ms-word.document.macroEnabled.12, application/pdf"/>
-			
-			<div class="mandatory">*Required fields</div>
-		</div>
-		<div class="clear"></div>
-		<input type="hidden" name="backUrl" value="/" />
-		<button>Submit form</button>
-	</div>
-	</form>
-</div>
-
-
-
-        <div id="dialog-thankyou" title="Thank&nbsp;you,&nbsp;your&nbsp;message&nbsp;has&nbsp;been&nbsp;sent. We&nbsp;will&nbsp;contact&nbsp;you&nbsp;soon." style="padding-left:50px;">
-            <div class="row" style="text-align:center;margin-top:0px;margin-bottom:20px;">
-                <button class="btn btn-primary crm-webform-submit-button" onclick = "$('#dialog-thankyou').dialog('close');" style="width:150px;margin-left:-15pxl">Close</button>
+                </div>
             </div>
         </div>
 
+        <div class="clear"></div>
+        <div id="bxdynamic_XEVOpk_end" style="display:none"></div>
+    </header>
+
+    {% page %}
+
+    <div class="page">
+        <div class="title-page-background">
+            <section id="sec1">
+                <div class="fixedCont _fixed">
+                    <div id="bxdynamic_g8taYv_start" style="display:none"></div>
+                    <div class="page-top main index-page-top-resize">
+                        <div class="content">
+                            <div class="text page-top__content">
+                                <h1>Corporate services with a personal touch</h1>
+                                <p>We deliver the most complex legal, technical and financial services in the most
+                                    professional way, while always minding your personal
+                                    preferences.</p>
+                            </div>
+                            <div id="main-shortcut" class="page-top__content">
+                                <a href="{{ 'companies'|page }}">
+                                    <label style="background-image: url({{ 'assets/img/company-formation.png'|theme }});"><span>Companies</span></label>
+                                    <div>
+                                        <h2>Companies</h2>
+                                        <p class="elipsis">Professional company incorporation services in more than
+                                            twenty jurisdictions.</p>
+                                    </div>
+                                </a>
+                                <a href="{{ 'banks'|page }}">
+                                    <label style=="background-image:
+                                           url({{ 'assets/img/bank-account-opening.png'|theme }});"><span>Banks</span></label>
+                                    <div>
+                                        <h2>Banks</h2>
+                                        <p class="elipsis">Corporate and Personal account opening for various business
+                                            needs.</p>
+                                    </div>
+                                </a>
+                                <a href="{{ 'licensing'|page }}">
+                                    <label style="background-image: url({{ 'assets/img/financial-services-licensing.png'|theme }});"><span>Licensing</span></label>
+                                    <div>
+                                        <h2>Licensing</h2>
+                                        <p class="elipsis">Assistance with Forex, Crypto & ICO Licensing in various
+                                            jurisdictions.</p>
+                                    </div>
+                                </a>
+                                <a href="{{ 'accounting'|page }}">
+                                    <label style="background-image: url({{ 'assets/img/outsourced-accounting-and-audit-services.png'|theme }});"><span>Accounting</span></label>
+                                    <div>
+                                        <h2>Accounting</h2>
+                                        <p class="elipsis">Outsource Accounting and Audit services.</p>
+                                    </div>
+                                </a>
+                                <a href="{{ 'intellectualproperties'|page }}">
+                                    <label style="background-image: url({{ 'assets/img/intellectual-property-services.png'|theme }});"><span>Intellectual Property</span></label>
+                                    <div>
+                                        <h2>Intellectual Property</h2>
+                                        <p class="elipsis">Trademark, Design and Patent registration.</p>
+                                    </div>
+                                </a>
+                                <a href="{{ 'additional'|page }}">
+                                    <label style="background-image: url({{ 'assets/img/additional-offshore-services.png'|theme }});">Additional</label>
+                                    <div>
+                                        <h2>Additional</h2>
+                                        <p class="elipsis">Merchant Accounts, Legal Consultatitions and Technical
+                                            Solutions.</p>
+                                    </div>
+                                </a>
+                                <style>
+                                  .send-btn1 {
+                                    display: block;
+                                    width: 200px;
+                                    margin-left: auto;
+                                    margin-right: auto;
+                                    margin-bottom: 20px;
+                                    background-color: #E31F31;
+                                    height: 45px;
+                                    border: 0;
+                                    border-radius: 7px;
+                                    font-size: 20px;
+                                    margin-top: 30px;
+                                    font-weight: 700;
+                                    background-color: rgba(255, 255, 255, 0.85);
+                                    color: #374d5c;
+                                    cursor: pointer;
+                                  }
+                                </style>
+                                <form class="col-span-3" action="https://www.offshorelicense.com/about/#aboutFormTop">
+                                    <button type="submit" class="send-btn1">Leave a request</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
 
 
+                    <div id="bxdynamic_g8taYv_end" style="display:none"></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="_white-wrapper">
+                    <div class="content mainPage-list recommended">
+                        <h2 class="title-s-1">Recommended products</h2>
+                        <p class="after-title-s-1">The most interesting products for your business needs, handpicked by
+                            our specialists.</p>
+                        <div class="inline-warp recommended__wrap recommended__wrap--2">
+                            <div class="inline-2 company">
+                                <label>Companies<a href="/companies/">View more</a></label>
+                                <ul>
+                                    <div id="bxdynamic_HT7zAX_start" style="display:none"></div>
+                                    <li class=""><a href="/companies/hong-kong-limited-company-formation">
+                                            <div class="logo"
+                                                 style="background-image: url({{ 'assets/upload/iblock/daf/daf597f92e5a21a5f726c87c92ef5ca8.png'|theme }});"></div>
+                                            <span>
+                            <h3>Hong Kong Limited Liability Company (LTD)</h3>
+                            <span>Hong Kong Limited Liability Company (LTD)</span>
+                        </span>
+                                            <div class="cost">
+                                                <h6>&euro;2,200</h6>
+                                                <h5>&euro;1,980</h5>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li class=""><a href="/companies/labuan-international-business-company-formation">
+                                            <div class="logo"
+                                                 style="background-image: url({{ 'assets/upload/iblock/bd7/bd70418e69bb60316156778e1b9ed34b.png'|theme }});"></div>
+                                            <span>
+                            <h3>Labuan International Business Company (IBC)</h3>
+                            <span>Labuan International Business Company (IBC)</span>
+                        </span>
+                                            <div class="cost">
+                                                <h6>&euro;4,000</h6>
+                                                <h5>&euro;3,600</h5>
+                                            </div>
+                                        </a></li>
+
+                                    <li class=""><a href="/companies/gibraltar-limited-liability-company-formation">
+                                            <div class="logo"
+                                                 style="background-image: url({{ 'assets/upload/iblock/2ef/2efbf21144e38243fd6e9f12139811c5.gif'|theme }});"></div>
+                                            <span>
+                            <h3>Gibraltar Limited Liability Company (LTD)</h3>
+                            <span>Gibraltar Limited Liability Company (LTD)</span>
+                        </span>
+                                            <div class="cost">
+                                                <h6>&euro;2,900</h6>
+                                                <h5>&euro;2,610</h5>
+                                            </div>
+                                        </a></li>
+
+                                    <div id="bxdynamic_HT7zAX_end" style="display:none"></div>
+                                </ul>
+                            </div>
+                            <div class="inline-2 bank">
+                                <label>Banks<a href="/banks/">View more</a></label>
+                                <ul>
+                                    <div id="bxdynamic_GuphBt_start" style="display:none"></div>    <!--li class="">
+                        <a href="/banks/personal/csob-personal-bank-account-opening">
+                                <div class="logo" style="background-image: url({{ 'assets/upload/iblock/5d3/5d3676eef51ea1f4fec2cfc91958d941.png'|theme }});"></div>
+                                <span>
+                                <h3>ČSOB</h3>
+                                <span>ČSOB</span>
+                            </span>
+                                <div class="cost">
+                                <span>Starting from</span><br />
+                                                <h5>&euro;900</h5>
+                                            </div>
+                            </a></li>
+                        <li class="">
+                        <a href="/banks/personal/personal-account-opening-in-bank-of-cyprus">
+                                <div class="logo" style="background-image: url({{ 'assets/upload/iblock/416/4167a1d8ef4a6883d897ed2c10963939.jpg'|theme }});"></div>
+                                <span>
+                                <h3>Bank of Cyprus</h3>
+                                <span>Bank of Cyprus</span>
+                            </span>
+                                <div class="cost">
+                                <span>Starting from</span><br />
+                                                <h5>&euro;650</h5>
+                                            </div>
+                            </a></li-->
+                                    <li class="">
+                                        <a href="/banks/corporate/pacific-private-bank-corporate-account-opening">
+                                            <div class="logo"
+                                                 style="background-image: url({{ 'assets/upload/iblock/90c/90c72461b713f9163684a3bcdbd914a2.png'|theme }});"></div>
+                                            <span>
+                                <h3>Pacific Private Bank</h3>
+                                <span>Pacific Private Bank</span>
+                            </span>
+                                            <div class="cost">
+                                                <span>Starting from</span><br/>
+                                                <h5>&euro;1,000</h5>
+                                            </div>
+                                        </a></li>
+
+                                    <style>
+                                      .re-pr-h6 {
+                                        font-size: 15px;
+                                        font-weight: 300;
+                                        color: #1e2b34;
+                                        margin-bottom: 5px;
+                                        text-decoration: line-through;
+                                        display: block;
+                                      }
+                                    </style>
+
+                                    <div id="bxdynamic_GuphBt_end" style="display:none"></div>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mainPage-ourApproach approach">
+                        <div class="content">
+                            <h2 class="title-s-1">Our approach</h2>
+                            <p class="after-title-s-1">Our industry expertise coupled with close partnerships with
+                                partners and affiliates enable us to deliver the best possible solutions to our
+                                customers, growing their's and our business every day.</p>
+                            <div class="approach__warp">
+                                <div class="approach__item">
+                                    <span class="companies"></span>
+                                    <label>
+                                        <!--<h1>--><!--</h1>-->
+                                        <!--<h5>--><!--</h5>-->
+                                        <!-- 411 272 75 -->
+
+                                        <div class="apr-h1">
+                                            <strong id="counter1"
+                                                    data-value="{{ 411+(date().timestamp-1509547931)/(86400*7) }}">72</strong>
+                                        </div>
+                                        <div class="apr-h5">Companies</div>
+                                    </label>
+                                </div>
+                                <div class="approach__item">
+                                    <span class="bank"></span>
+                                    <label>
+                                        <div class="apr-h1"><strong id="counter2"
+                                                                    data-value="{{ 272+(date().timestamp-1509547931)/(86400*7) }}">39</strong>
+                                        </div>
+                                        <div class="apr-h5">Bank Accounts</div>
+                                    </label>
+                                </div>
+                                <div class="approach__item">
+                                    <span class="licenses"></span>
+                                    <label>
+                                        <div class="apr-h1"><strong id="counter3"
+                                                                    data-value="{{ 75+(date().timestamp-1509547931)/(86400*14) }}">16</strong>
+                                        </div>
+                                        <div class="apr-h5">Licenses</div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="bxdynamic_7DqYyc_start" style="display:none"></div>
+
+                    <style>
+                      .apr-h1 {
+                        font-size: 60px;
+                        line-height: 58px;
+                        font-weight: 900;
+                        color: #fff;
+                      }
+
+                      .apr-h5 {
+                        font-size: 24px;
+                        line-height: 26px;
+                        font-weight: 400;
+                        color: #fff;
+                      }
+
+                      .comp-rec-h3 {
+                        font-size: 18px;
+                        font-weight: 700;
+                        color: #1e2b34;
+                        display: block;
+                        line-height: 22px;
+                        padding-bottom: 8px;
+                        cursor: pointer;
+                        margin-top: 8px;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                      }
+                    </style>
+
+
+                    <!-------------------------------------------------->
+                    <!-----------------START Blog news------------------>
+                    <!-------------------------------------------------->
+                    <style>
+                      .lat-news-h1 {
+                        font-size: 18px;
+                        color: #1e2b34;
+                        font-weight: 700;
+                        line-height: 22px;
+                        cursor: pointer;
+                      }
+
+                      .lat-news-h5 {
+                        font-size: 14px;
+                        font-weight: 400;
+                        color: #b4b4b4;
+                        line-height: 14px;
+                        margin-top: 10px;
+                      }
+                    </style>
+                    <div class="content blog-news-list ">
+                        <h2 class="title-s-1">Latest news</h2>
+                        <div class="blog-news-list__warp js-blog-news-list">
+
+                            {% set posts = blogPosts.posts %}
+
+                            {% for post in posts %}
+
+                                <div class="blog-news-list__item">
+                                    {% if post.featured_images.count %}
+                                        {% for image in post.featured_images|slice(0, 1) %}
+                                            <div class="logo clickable" data-url="{{ post.url }}"
+                                                 style="background-image: url('{{ image.path }}');"></div>
+                                        {% endfor %}
+                                    {% endif %}
+                                    <label>
+                                        <div class="clickable lat-news-h1"
+                                             data-url="{{ post.url }}">{{ post.title }}</div>
+                                        <div class="lat-news-h5">{{ post.published_at|date('M d, Y') }}</div>
+                                    </label>
+                                    <span class="text">
+                                          {{ post.summary|striptags }}...
+                                          </span>
+                                    <a href="{{ post.url }}">Read more &gt;&gt;</a>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+
+
+
+                        <div style="text-align:center;"><a href="{{ 'blog'|page({page:1}) }}" class="but but-green">Read
+                                more articles</a></div>
+                    </div>
+                    <script>
+                      $(document).ready(function () {
+                        $(".clickable").click(function () {
+                          var url = $(this).attr("data-url");
+                          window.location = url;
+                        });
+                      });
+                    </script>
+                    <!-------------------------------------------------->
+                    <!-------------------END Blog news------------------>
+                    <!-------------------------------------------------->
+
+                    <div class="mainpage-team-image">
+                        <div class="img"></div>
+                    </div>
+
+
+                    <div class="content mainpage-team content">
+                        <h2 class="title-s-1">Testimonials</h2>
+                        <div class="inline-warp" id="mainpage-team-carousel">
+
+                            <!-- testimonial 1 -->
+                            <div class="inline-2">
+                                <div class="logo"
+                                     style="background-image: url('{{ 'assets/upload/iblock/31c/31cc725fd00d2b6eace2bc6a6c4b5774.png' | theme }}');"></div>
+                                <div class="right">
+                                    <p class="">
+                                        “In Forex industry everything changes very fast, so you have to react quickly.
+                                        Offshorelicense was the only corporate service provider who could offer me a
+                                        solution, once I decided to discontinue operations in Belize due to changes in
+                                        local laws. It was great help for me at the time.”
+                                    </p>
+                                    <label>
+                                        <div class="te-mo-h2">Kavish Rodyyatiil</div>
+                                        <div class="te-mo-h3">India</div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- testimonial 2 -->
+                            <div class="inline-2">
+                                <div class="logo"
+                                     style="background-image: url('{{ 'assets/upload/iblock/46f/46fe36e0bb62cef94bedea85ccba2b6d.png' | theme }}');"></div>
+                                <div class="right">
+                                    <p class="">
+                                        “I run an International company and wanted to expand my business and give more
+                                        creditability to it. Offshorelicense team helped me with registering a company
+                                        in Central Europe and obtaining a Trademark. This would have taken too much time
+                                        for me to research myself. So Offshorelicense was a one-stop shop for me. Thank
+                                        you!”
+                                    </p>
+                                    <label>
+                                        <div class="te-mo-h2">Yurgen Mittmann</div>
+                                        <div class="te-mo-h3">Germany</div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- testimonial 3 -->
+                            <div class="inline-2">
+                                <div class="logo"
+                                     style="background-image: url('{{ 'assets/upload/iblock/460/460e3c06d716e75f7a354dca75a27c80.png'|theme }}');"></div>
+                                <div class="right">
+                                    <p class="">
+                                        “We are working with Offshorelicense for a long time. So every time we have a
+                                        requirement for a new bank account, we turn to Offshorelicense for help. They
+                                        can always give various options that we can pick from.”
+                                    </p>
+                                    <label>
+                                        <div class="te-mo-h2">Junko Shinohara</div>
+                                        <div class="te-mo-h3">Japan</div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- testimonial 4 -->
+                            <div class="inline-2">
+                                <div class="logo"
+                                     style="background-image: url('https://offshorelicense.com/storage/app/media/Johny_UK_.jpg');"></div>
+                                <div class="right">
+                                    <p class="">
+                                        “Our acquaintance with Offshorelicense started with our request for their
+                                        assistance with the audit for Vanuatu company, when our partner-auditor let us
+                                        down, and failed to provide the services due to unspecified reasons. Luckily for
+                                        us, Offshorelicense provided us with a solution that was both effective and
+                                        time-efficient, allowing us to avoid unfavorable consequences. At the moment,
+                                        Offshorelicense is the administrator of our company, and we are content with all
+                                        the service provided by their team. “
+                                    </p>
+                                    <label>
+                                        <div class="te-mo-h2">Johny Wonter</div>
+                                        <div class="te-mo-h3">United Kingdom</div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- testimonial 5 -->
+                            <div class="inline-2">
+                                <div class="logo"
+                                     style="background-image: url('{{ 'assets/upload/iblock/079/0794c47ada86041feade20c8c837a48b.png' | theme }}');"></div>
+                                <div class="right">
+                                    <p class="">
+                                        “The Offshorelicense team was recommended to me by my business partners, when I
+                                        had difficulties in finding a Law firm that could draft legal documentation and
+                                        Agreements in E-Gaming industry. The team did a very good job.”
+                                    </p>
+                                    <label>
+                                        <div class="te-mo-h2">Nikolay P.</div>
+                                        <div class="te-mo-h3">Russian Federation</div>
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- testimonial 6 -->
+                            <div class="inline-2">
+                                <div class="logo"
+                                     style="background-image: url('https://offshorelicense.com/storage/app/media/Zhou_China.jpg');"></div>
+                                <div class="right">
+                                    <p class="">
+                                        “Our company is providing legal and corporate services mainly to Chinese clients
+                                        who usually have great interest, but are facing various obstacles and challenges
+                                        in entering other than local Asian markets. Partnership relations with
+                                        Offshorelicense gives us and our clients opportunity to expand internationally
+                                        and receive credible advises and solutions concerning establishing Forex
+                                        brokerage business both offshore and onshore. “
+                                    </p>
+                                    <label>
+                                        <div class="te-mo-h2">Zhou Ran</div>
+                                        <div class="te-mo-h3">China</div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <style>
+                              .te-mo-h2 {
+                                font-size: 14px;
+                                color: #1e2b34;
+                                font-weight: 600;
+                              }
+
+                              .te-mo-h3 {
+                                font-size: 14px;
+                                color: #1e2b34;
+                                font-weight: 400;
+                              }
+                            </style>
+                        </div>
+            </section>
+        </div>
+
+
+    </div><!-- // .body -->
+</div>
+<footer>
+    <div class="top">
+        <div class="left_color"></div>
+        <div class="content footer-top-content">
+            <div class="left"><p>For any help or inquiries</p></div>
+            <div class="right">
+                {{ partial('contact-us-form.htm') }}
+                {{ partial('popup-contact-form.htm') }}
+
+            </div>
+        </div>
+    </div>
+    <div class="middle footer-middle">
+        <div class="content footer-middle__wrap">
+            <div class="left">
+                <a href="/">
+                    <div class="logo"></div>
+                </a>
+
+                {% content 'footer-address' %}
+
+            </div>
+            <div class="services">
+                <h3>Services</h3>
+                <div id="bxdynamic_rIpOz9_start" style="display:none"></div>
+                <ul>
+
+                    <li class="current"><a href="{{ 'companies'|page }}">Companies</a></li>
+
+                    <li class=""><a href="{{ 'banks'|page }}">Banks</a></li>
+
+                    <li><a href="{{ 'licensing'|page }}">Licensing</a></li>
+
+                    <li><a href="{{ 'accounting'|page }}">Accounting</a></li>
+
+                    <li><a href="{{ 'intellectualproperties'|page }}">Intellectual Property</a></li>
+
+                    <li><a href="{{ 'additional'|page }}">Additional</a></li>
+                </ul>
+                <div id="bxdynamic_rIpOz9_end" style="display:none"></div>
+            </div>
+            <div class="right">
+                <h3>Useful links</h3>
+                <div id="bxdynamic_NMQc3w_start" style="display:none"></div>
+                <ul>
+
+                    <li><a href="{{ 'about'|page }}">About us</a></li>
+
+                    <li><a href="{{ 'about'|page }}#aboutFormTop">Contact us</a></li>
+
+                    <li><a href="{{ 'faq'|page }}">FAQ</a></li>
+                    <li class="{% if this.page.baseFileName=='ready-made-products' %}current{% endif %}"><a
+                                href="{{ 'ready-made-products'|page }}">Ready-made products</a></li>
+                    <li><a href="{{ 'blog'|page({page:1}) }}">Blog</a></li>
+                </ul>
+                <div id="bxdynamic_NMQc3w_end" style="display:none"></div>
+                <div class="social">
+                    <a title="Follow us on Facebook" href="https://www.facebook.com/OffshorelicenseLTD/" target="_blank"
+                       class="fb"></a>
+                    <a title="Follow us on LinkedIn" href="https://www.linkedin.com/company/offshorelicense-ltd"
+                       target="_blank" class="in"></a>
+                    <a title="Follow us on Twitter" href="https://twitter.com/Offshorelicense" target="_blank"
+                       class="tw"></a>
+                    <a title="Follow us on Google" href="https://plus.google.com/u/0/+OffshorelicenseLTD"
+                       target="_blank" class="gg"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="content footer-middle__wrap">
+            <div class="left">Copyright © 2015 - {{ 'now'|date('Y') }}&nbsp; OffshoreLicense.&nbsp;All rights
+                reserved.
+            </div>
+            <div class="right">
+                <a class="privacy privacy-opener" href="/terms/privacy" target="_self">Privacy Policy</a>
+                <a class="terms terms-opener" href="/terms/use" target="_self">Terms of Use</a>
+            </div>
+        </div>
+    </div>
+
+
+    {% component 'googleTracker' %}
+
+
+</footer>
+<div id="form3">
+    <form id="form" action="/sys/pdf/" method="POST" enctype="multipart/form-data">
+        <div class="cont">
+            <span>This Pre-Check form is a standard and required procedure, which gives an opportunity to make a merchant agreement based on full and detailed information. By giving incorrect or incomplete information may lead to agreement delay.</span>
+            <div class="col col1">
+                <table cellspacing="0" cellpadding="0" boder="0">
+                    <tr>
+                        <td></td>
+                        <td>
+                            <strong>Merchant details</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="company_name">Company name*</label>
+                        </td>
+                        <td>
+                            <input type="text" name="company_name" data-rule-required="true"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="company_address">Company address*<br/><small>(street, city, country, index/PO
+                                    box)</small></label>
+                        </td>
+                        <td>
+                            <textarea name="company_address" data-rule-required="true"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="company_activities">Business Activities*</label>
+                        </td>
+                        <td>
+                            <textarea name="company_activities" data-rule-required="true"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="company_incorporation">Country of incorporation*</label>
+                        </td>
+                        <td>
+                            <input type="text" name="company_incorporation" data-rule-required="true"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="company_website">Company website</label>
+                        </td>
+                        <td>
+                            <input type="text" placeholder="http://" name="company_website"/>
+                        </td>
+                    </tr>
+                </table>
+                <table cellspacing="0" cellpadding="0" boder="0">
+                    <tr>
+                        <td></td>
+                        <td>
+                            <strong>Contact details</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="name">Name*</label>
+                        </td>
+                        <td>
+                            <input type="text" name="name" data-rule-required="true"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="surname">Surname*</label>
+                        </td>
+                        <td>
+                            <input type="text" name="surname" data-rule-required="true"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="email">E-mail*</label>
+                        </td>
+                        <td>
+                            <input type="email" name="email" data-rule-required="true" data-rule-email="true" required/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="phone">Phone*</label>
+                        </td>
+                        <td>
+                            <input type="text" name="phone" data-rule-required="true"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="skype">Skype</label>
+                        </td>
+                        <td>
+                            <input type="text" name="skype"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col col2">
+                <table cellspacing="0" cellpadding="0" boder="0">
+                    <tr>
+                        <td></td>
+                        <td>
+                            <strong>Processing information</strong>
+                        </td>
+                    </tr>
+                    <tr class="turnover">
+                        <td>
+                            <label for="monthly_turnover">Monthly turnover*</label>
+                        </td>
+                        <td>
+                            <input type="text" name="monthly_turnover" data-rule-required="true"
+                                   data-rule-digits="true"/>
+                            <select name="monthly_turnover_currency">
+                                <option value="EUR">EUR</option>
+                                <option value="USD">USD</option>
+                                <option value="GBP">GBP</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="transaction">
+                        <td>
+                            <label for="transaction_amount">Transaction amount*</label>
+                        </td>
+                        <td>
+                            <input type="text" placeholder="Min" name="transaction_amount_min" data-rule-required="true"
+                                   data-rule-digits="true"/>
+                            <input type="text" placeholder="Max" name="transaction_amount_max" data-rule-required="true"
+                                   data-rule-digits="true"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="company_activities">Processing currencies*</label>
+                        </td>
+                        <td class="checkbox">
+                            <input type="checkbox" name="processing_currencies[]" value="EUR"
+                                   data-rule-required="true"/>&nbsp;<label for="processing_currencies">EUR</label>
+                            <input type="checkbox" name="processing_currencies[]" value="USD"
+                                   data-rule-required="true"/>&nbsp;<label for="processing_currencies">USD</label>
+                            <input type="checkbox" name="processing_currencies[]" value="GBP"
+                                   data-rule-required="true"/>&nbsp;<label for="processing_currencies">GBP</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="settlement_currencies">Settlement currencies*</label>
+                        </td>
+                        <td class="checkbox">
+                            <input type="checkbox" name="settlement_currencies[]" value="EUR"
+                                   data-rule-required="true"/>&nbsp;<label for="settlement_currencies">EUR</label>
+                            <input type="checkbox" name="settlement_currencies[]" value="USD"
+                                   data-rule-required="true"/>&nbsp;<label for="settlement_currencies">USD</label>
+                            <input type="checkbox" name="settlement_currencies[]" value="GBP"
+                                   data-rule-required="true"/>&nbsp;<label for="settlement_currencies">GBP</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="sales_market">Sales Market*<br/><small>(% by countries)</small></label>
+                        </td>
+                        <td>
+                            <textarea name="sales_market" data-rule-required="true"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="license">License*</label>
+                        </td>
+                        <td>
+                            <select name="license" data-rule-required="true">
+                                <option value="">Select...</option>
+                                <option value="yes">yes</option>
+                                <option value="no">no</option>
+                                <option value="in process">in process</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="eu_company">EU company*</label>
+                        </td>
+                        <td>
+                            <select name="eu_company" data-rule-required="true">
+                                <option value="">Select...</option>
+                                <option value="yes">yes</option>
+                                <option value="no">no</option>
+                                <option value="in process">in process</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="is_it_start_up">Is it start-up?*</label>
+                        </td>
+                        <td>
+                            <select name="is_it_start_up" data-rule-required="true">
+                                <option value="">Select...</option>
+                                <option value="yes">yes</option>
+                                <option value="no">no</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <span><b>Optional:</b> provide processing history (statement of last 6 months) with your current/previous acquirer.<br/><small
+                            class="limit">Attach only: .doc, .docx, .pdf     (File size not to extend 10 MB)</small></span>
+
+                <input type="file" class="file" name="file"
+                       accept=".doc, .docx, .pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword,  	application/vnd.ms-word.document.macroEnabled.12, application/pdf"/>
+
+                <div class="mandatory">*Required fields</div>
+            </div>
+            <div class="clear"></div>
+            <input type="hidden" name="backUrl" value="/"/>
+            <button>Submit form</button>
+        </div>
+    </form>
+</div>
+
+
+<div id="dialog-thankyou"
+     title="Thank&nbsp;you,&nbsp;your&nbsp;message&nbsp;has&nbsp;been&nbsp;sent. We&nbsp;will&nbsp;contact&nbsp;you&nbsp;soon."
+     style="padding-left:50px;">
+    <div class="row" style="text-align:center;margin-top:0px;margin-bottom:20px;">
+        <button class="btn btn-primary crm-webform-submit-button" onclick="$('#dialog-thankyou').dialog('close');"
+                style="width:150px;margin-left:-15pxl">Close
+        </button>
+    </div>
+</div>
 
 
 <!--
       {% framework extras %}
 -->
-      {% scripts %}
-      {% styles %}
+{% scripts %}
+{% styles %}
 
 </body>
 </html>

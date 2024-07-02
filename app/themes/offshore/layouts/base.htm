@@ -12,10 +12,10 @@ code = "main-menu"
 <?php
 function onStart()
 {
-    
-    
+
+
     $this->Track();
-    
+
     if (!Request::secure()) {
         //return Redirect::to('https://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]);
     }
@@ -23,10 +23,10 @@ function onStart()
    if ($pid){
         setcookie("pid", $pid);
     }
-    
-    
+
+
     $ipaddress = '';
-    
+
     if (getenv('HTTP_CLIENT_IP'))
         $ipaddress = getenv('HTTP_CLIENT_IP');
     else if(getenv('HTTP_X_FORWARDED_FOR'))
@@ -42,29 +42,29 @@ function onStart()
     else
         $ipaddress = 'UNKNOWN';
 
-        
-                
+
+
     $this->page["ipaddress"] = $ipaddress;
-    
+
     $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];
     $this->page["actual_link"] = $actual_link;
     $this->page["site_link"] = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://".$_SERVER["HTTP_HOST"];
-    
+
     $companyTimezone = 'Europe/Riga';
     $current = new DateTime("now", new DateTimeZone($companyTimezone) );
     $current_formatted = $current->format('H');
-    
+
     if ($current_formatted>=7 and $current_formatted<=18)
      $this->page["contact_widget"] = "phone";
     else
      $this->page["contact_widget"] = "email";
-     
+
     $user = BackendAuth::getUser();
     if ($user) {
         $this->page["user"] = $user;
-    } 
-    
-    
+    }
+
+
 }
 
 
@@ -84,15 +84,15 @@ function get_geolocation($apiKey, $ip, $lang = "en", $fields = "*", $excludes = 
     ));
     return curl_exec($cURL);
 }
-    
-    
+
+
 
 
 function onDoCurl($url, $fields)
 {
     $fields_string = "";
     foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
-    rtrim($fields_string, '&');    
+    rtrim($fields_string, '&');
     $ch = curl_init();
     curl_setopt($ch,CURLOPT_URL, $url);
     curl_setopt($ch,CURLOPT_POST, count($fields));
@@ -112,7 +112,7 @@ function onDoCurl($url, $fields)
 
 function onSendCompanyForm()
 {
-    
+
     $data = post();
 
     $rules = [
@@ -138,8 +138,8 @@ function onSendCompanyForm()
             'ip' =>  $this->page["ipaddress"]
         ]
     );
-    
-    
+
+
     $numbers = "1510331652847";
     $sec = "ekcnvo";
     $form_id="8";
@@ -156,8 +156,8 @@ function onSendCompanyForm()
     	'sessid' => urlencode(session_id())//,
         //'LEAD_UF_CRM_1512562036' => "https://offshorelicense.com"
     );
-    
-    
+
+
     $this["response"] = $this->onDoCurl($url, $fields);
     $encodedResult = json_decode( $this["response"]);
 
@@ -166,7 +166,7 @@ function onSendCompanyForm()
     } else {
         //Flash::success('Success');
     }
-    
+
     $this['result'] = $encodedResult->text;
 }
 
@@ -177,7 +177,7 @@ function onSendCompanyForm()
 
 function onSendBankForm()
 {
-    
+
     $data = post();
 
     $rules = [
@@ -201,13 +201,13 @@ function onSendBankForm()
             'skype' => input('skype'),
             'phone' => input('phone'),
             'message' => input('message'),
-            
+
             'created_at' => date('Y-m-d H:i:s'),
             'ip' =>  $this->page["ipaddress"]
         ]
     );
 
-    
+
     $numbers = "1510331652847";
     $sec = "vt3nyi";
     $form_id="6";
@@ -227,8 +227,8 @@ function onSendBankForm()
     	'from' => urlencode(input('url')),
     	'sessid' => urlencode(session_id())
     );
-    
-    
+
+
     $this["response"] = $this->onDoCurl($url, $fields);
     $encodedResult = json_decode( $this["response"]);
 
@@ -237,7 +237,7 @@ function onSendBankForm()
     } else {
         //Flash::success('Success');
     }
-    
+
     $this['result'] = $encodedResult->text;
 }
 
@@ -250,7 +250,7 @@ function onSendBankForm()
 
 function onSendLicensingForm()
 {
-    
+
     $data = post();
 
     $rules = [
@@ -276,7 +276,7 @@ function onSendLicensingForm()
             'ip' =>  $this->page["ipaddress"]
         ]
     );
-    
+
 
     $numbers = "1510333041088";
     $sec = "l7eeak";
@@ -293,8 +293,8 @@ function onSendLicensingForm()
     	'from' => urlencode(input('url')),
     	'sessid' => urlencode(session_id())
     );
-    
-    
+
+
     $this["response"] = $this->onDoCurl($url, $fields);
     $encodedResult = json_decode( $this["response"]);
 
@@ -303,7 +303,7 @@ function onSendLicensingForm()
     } else {
         //Flash::success('Success');
     }
-    
+
     $this['result'] = $encodedResult->text;
 }
 
@@ -313,7 +313,7 @@ function onSendLicensingForm()
 /*From footer*/
 function onSendContactusForm()
 {
-    
+
     $data = post();
 
     $rules = [
@@ -339,7 +339,7 @@ function onSendContactusForm()
             'ip' =>  $this->page["ipaddress"]
         ]
     );
-    
+
 
     $numbers = "1510520584636";
     $sec = "86vuc0";
@@ -356,8 +356,8 @@ function onSendContactusForm()
     	'from' => urlencode(input('url')),
     	'sessid' => urlencode(session_id())
     );
-    
-    
+
+
     $this["response"] = $this->onDoCurl($url, $fields);
     $encodedResult = json_decode( $this["response"]);
 
@@ -366,7 +366,7 @@ function onSendContactusForm()
     } else {
         //Flash::success('Success');
     }
-    
+
     $this['result'] = $encodedResult->text;
 }
 
@@ -378,7 +378,7 @@ function onSendContactusForm()
 /*From contact us page*/
 function onSendContactusForm2()
 {
-    
+
     $data = post();
 
     $rules = [
@@ -403,7 +403,7 @@ function onSendContactusForm2()
             'ip' =>  $this->page["ipaddress"]
         ]
     );
-    
+
 
     $numbers = "1510520584636";
     $sec = "86vuc0";
@@ -420,8 +420,8 @@ function onSendContactusForm2()
     	'from' => urlencode(input('url')),
     	'sessid' => urlencode(session_id())
     );
-    
-    
+
+
     $this["response"] = $this->onDoCurl($url, $fields);
     $encodedResult = json_decode( $this["response"]);
 
@@ -430,7 +430,7 @@ function onSendContactusForm2()
     } else {
         //Flash::success('Success');
     }
-    
+
     $this['result'] = $encodedResult->text;
 }
 
@@ -442,7 +442,7 @@ function onSendContactusForm2()
 
 function onSendAdditionalForm()
 {
-    
+
     $data = post();
 
     $rules = [
@@ -472,8 +472,8 @@ function onSendAdditionalForm()
             'ip' =>  $this->page["ipaddress"]
         ]
     );
-    
-    
+
+
     $numbers = "1510520985364";
     $sec = "dlzltv";
     $form_id="4";
@@ -492,8 +492,8 @@ function onSendAdditionalForm()
     	'from' => urlencode(input('url')),
     	'sessid' => urlencode(session_id())
     );
-    
-    
+
+
     $this["response"] = $this->onDoCurl($url, $fields);
     $encodedResult = json_decode( $this["response"]);
 
@@ -502,7 +502,7 @@ function onSendAdditionalForm()
     } else {
         //Flash::success('Success');
     }
-    
+
     $this['result'] = $encodedResult->text;
 }
 
@@ -516,7 +516,7 @@ function onSendAdditionalForm()
 
 function onSendUniversalForm()
 {
-    
+
     $data = post();
 
     if (isset($_COOKIE['pid']))
@@ -552,13 +552,13 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             'skype' => input('skype'),
             'phone' => input('phone'),
             'message' => input('message'),
-            
+
             'product_type' => input('product_type'),
             'product_name' => input('product_name'),
             'promocode' => input('promocode'),
-            
+
             'email_subscribtion' => input('LEAD_UF_CRM_1528724976'),
-            
+
             'created_at' => date('Y-m-d H:i:s'),
             'ip' =>  $ip,
             'url' => input('url'),
@@ -566,13 +566,13 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
         ]
     );
 
-    
+
     //Fixed by Evalds
     //$ipaddress1 = explode(',',$this->page["ipaddress"]);
     //$ipaddress1 = $ipaddress1[0];
     $ipaddress1 = explode(',',$ip);
     $ipaddress1 = $ipaddress1[0];
-    
+
     $apiKey = "08d570ea3f2149489356931efa4212ae";
     $location = $this->get_geolocation($apiKey, $ipaddress1);
     $decodedLocation = json_decode($location, true);
@@ -580,7 +580,7 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
     $this->page["decodedLocation1"] =$this->page["decodedLocation"]["country_name"]." ".$this->page["decodedLocation"]["city"];
 
 
-    
+
     $numbers = "1510331652847";
     $sec = "j7wo4g";
     $form_id="13";
@@ -604,8 +604,8 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
     	'from' => urlencode(input('url')),
     	'sessid' => urlencode(session_id())
     );
-    
-    
+
+
     $this["response"] = $this->onDoCurl($url, $fields);
     $encodedResult = json_decode( $this["response"]);
 
@@ -627,9 +627,9 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
 
 function onSendOfferForm()
 {
-    
+
     $data = post();
-    
+
     if (isset($_COOKIE['pid']))
         $pid = $_COOKIE['pid'];
     else $pid="";
@@ -662,13 +662,13 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             'skype' => input('skype'),
             'phone' => input('phone'),
             'message' => input('message'),
-            
+
             'product_type' => input('product_type'),
             'product_name' => input('product_name'),
             'promocode' => input('promocode'),
-            
+
             'email_subscribtion' => input('LEAD_UF_CRM_1528724976'),
-            
+
             'created_at' => date('Y-m-d H:i:s'),
             'ip' =>  $ip,
             'url' => input('url'),
@@ -676,8 +676,8 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
         ]
     );
 
-    
-    
+
+
     $ipaddress1 = explode(',',$this->page["ipaddress"]);
     $ipaddress1 = $ipaddress1[0];
     $apiKey = "08d570ea3f2149489356931efa4212ae";
@@ -687,8 +687,8 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
     $this->page["decodedLocation1"] =$this->page["decodedLocation"]["country_name"]." ".$this->page["decodedLocation"]["city"];
 
 
-    
-    
+
+
     $numbers = "1510331652847";
     $sec = "j7wo4g";
     $form_id="13";
@@ -712,8 +712,8 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
     	'from' => urlencode(input('url')),
     	'sessid' => urlencode(session_id())
     );
-    
-    
+
+
     $this["response"] = $this->onDoCurl($url, $fields);
     $encodedResult = json_decode( $this["response"]);
 
@@ -793,7 +793,7 @@ function Track(){
         //'promo'     => $request->cookie('promocode'),
         //'phone'     => preg_replace('/[^0-9]/','', $request->tracking['phone'])*/
     ];
-    
+
     $this['result'] = DB::table('offshorelicense_storage_tracking_visits')->insert($tracker_row);
 //    Log::warning($this['result']);
     //if($this['result'] <> 1) {
@@ -808,19 +808,19 @@ function Track(){
     /*
     //success response sample:
     //$encodedResult = json_decode('{"error":false,"text":"Thank you, your message has been sent. We will contact you soon.","redirect":"","redirectDelay":5,"resultId":217,"gid":"24xqz832fl5xmv5qf3tv50h1tykqrs2t"}');
-    
+
     form_id=3 = idle
     form_id=6 = bank
     form_id=7 = general
     form_id=8 = company
     form_id=9 = licensing
     form_id=11 = merchant
-    
+
     timestamp sample: 1510138094853
-    
+
     https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id=3&widget_user_lang=en&sec=nqtde0&r=$timestamp
     https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id=6&widget_user_lang=en&sec=vt3nyi&r=1510149752086
-    
+
     company and general fields:
     LEAD_NAME:arturtest
     LEAD_LAST_NAME:Birzgaltest
@@ -830,16 +830,16 @@ function Track(){
     LEAD_COMMENTS:formtest
     from:https://offshorelicense.com/eu/
     sessid:b0c8a9d74868c7e695a476d6b7b64c8f
-    
+
     */
-    
+
     /*
     $characters = '0123456789abcdefghijklmnopqrstuvwxyz';
     $randstring = '';
     for ($i = 0; $i < 6; $i++) {
         $randstring = $characters[rand(0, strlen($characters))];
     }
-    
+
     $url = 'https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id=3&widget_user_lang=en&sec='.$randstring.'&r='.microtime(true);
 
     $fields = array(
@@ -853,8 +853,8 @@ function Track(){
     );
     $fields_string = "";
     foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
-    rtrim($fields_string, '&');    
-    
+    rtrim($fields_string, '&');
+
     $ch = curl_init();
     curl_setopt($ch,CURLOPT_URL, $url);
     curl_setopt($ch,CURLOPT_POST, count($fields));
@@ -863,15 +863,15 @@ function Track(){
     // Set so curl_exec returns the result instead of outputting it.
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    
+
     // Get the response and close the channel.
     $response = curl_exec($ch);
     curl_close($ch);
     */
-    
-    
-    
-    /*    
+
+
+
+    /*
     $url = 'https://bitrix.offshorelicense.com/pub/form.php?view=frame&form_id=6&widget_user_lang=en&sec=nqtde0&r='.microtime(true);
 
     bank fields:
@@ -885,9 +885,9 @@ function Track(){
     LEAD_UF_CRM_1472455700[0]:61
     LEAD_UF_CRM_1472455700[1]:62
     from:https://offshorelicense.com/eu/banks/personal/alpha-bank/
-    sessid:b0c8a9d74868c7e695a476d6b7b64c8f        
+    sessid:b0c8a9d74868c7e695a476d6b7b64c8f
     */
-    
+
     /*
     $fields = array(
         'LEAD_UF_CRM_1472199402' => urlencode(input('type')),
@@ -902,8 +902,8 @@ function Track(){
     );
     $fields_string = "";
     foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
-    rtrim($fields_string, '&');    
-    
+    rtrim($fields_string, '&');
+
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch,CURLOPT_POST, count($fields));
@@ -912,11 +912,11 @@ function Track(){
     // Set so curl_exec returns the result instead of outputting it.
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    
+
     // Get the response and close the channel.
     $response = curl_exec($ch);
     curl_close($ch);
-        
+
     */
 ?>
 ==
@@ -929,7 +929,7 @@ function Track(){
       <link rel="shortcut icon" type="image/x-icon" href="{{ 'assets/img/favicon3.ico'|theme }}">
       <link href="https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic,900&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      
+
 {% component 'SeoCmsPage' %}
 
 
@@ -968,12 +968,12 @@ function Track(){
       <link href="{{ 'assets/css/core.css'|theme }}" type="text/css" rel="stylesheet">
       <link href="{{ 'assets/css/intlTelInput.css'|theme }}" type="text/css" data-template-style="true" rel="stylesheet">
       <link href="{{ 'assets/css/jquery.jscrollpane.css'|theme }}" type="text/css" data-template-style="true" rel="stylesheet">
--->      
+-->
       <!-- --
          <link href="{{ 'assets/css/reset.css'|theme }}" type="text/css" data-template-style="true" rel="stylesheet">
          -->
-                 
-<!--         
+
+<!--
       <link href="{{ 'assets/css/top_horizontal.css'|theme }}" type="text/css" data-template-style="true" rel="stylesheet">
       <link href="{{ 'assets/css/top_main_menu.css'|theme }}" type="text/css" data-template-style="true" rel="stylesheet">
 -->
@@ -1028,12 +1028,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     ]|theme }}">
     </script>
     -->
-    
+
     <!--
         'assets/js/core_frame_cache.js',
-    
+
     -->
-    
+
     <script src="{{ [
         'assets/js/slides.min.jquery.js',
         'assets/js/telInput/js/utils.js',
@@ -1052,7 +1052,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         'assets/js/jquery.validate.min.js',
         'assets/js/cookie-policy.js'
     ]|theme }}"></script>
-   
+
     <script type="text/javascript" src="{{ 'assets/js/jquery-ui-1.12.0.custom/jquery-ui.min.js'|theme }}"></script>
 <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&amp;libraries=geometry&amp;v=3.22&amp;key=AIzaSyAj4hd67mx4PT_HP8ZuXyisNNhKX8LJyC0"></script>
 
@@ -1063,10 +1063,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <script type="text/javascript" src="{{ 'assets/js/json2.min.js'|theme }}"></script>
       <script type="text/javascript" src="{{ 'assets/js/core_ls.js'|theme }}"></script>
       <script type="text/javascript" src="{{ 'assets/js/core_fx.js'|theme }}"></script>
-      
+
       <script type="text/javascript" src="{{ 'assets/js/core_frame_cache.js'|theme }}"></script>
       <script  src="https://code.jquery.com/jquery-3.2.1.min.js"  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="  crossorigin="anonymous"></script>
-      
+
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <script type="text/javascript" src="{{ 'assets/js/jquery-ui-1.12.0.custom/jquery-ui.min.js'|theme }}"></script>
       <script type="text/javascript" src="{{ 'assets/js/slides.min.jquery.js'|theme }}"></script>
@@ -1096,9 +1096,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
          document.documentElement.id = "js"
          }
       </script>
-      
-      
-      
+
+
+
 <!--Start of Zendesk Chat Script-->
 <!--
 <script type="text/javascript">
@@ -1109,10 +1109,10 @@ $.src="https://v2.zopim.com/?5Tu40FPQZsv5GDAI8U2f1JM0kGq3UT9I";z.t=+new Date;$.
 type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
 </script>
 -->
-<!--End of Zendesk Chat Script-->      
-     
-  
- <!--Start of Bitrix Chat Script-->   
+<!--End of Zendesk Chat Script-->
+
+
+ <!--Start of Bitrix Chat Script-->
 <script>
         (function(w,d,u){
                 var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/60000|0);
@@ -1120,9 +1120,9 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
         })(window,document,'https://bitrix.offshorelicense.com/upload/crm/site_button/loader_2_7x25zx.js');
 </script>
 
-<!--End of Bitrix Chat Script-->  
-      
-     
+<!--End of Bitrix Chat Script-->
+
+
 
 
 <!-- Hotjar Tracking Code for offshorelicense.com -->
@@ -1142,19 +1142,19 @@ type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
 
    </head>
    <body>
-   
+
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TQ6GD6"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-   
-   
+
+
    <!--
        Links leads to promo
    -->
    {% if (page.id | page == "https://www.offshorelicense.com/licensing/maurtius-global-business-category-1-licence")  %}
         {% partial "promo-url-1-form" %}
-        
+
    {% endif %}
 
 
@@ -1171,24 +1171,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
    <div id="log" style="position:absolute;top:0p;left:0px;z-index:999;"></div>
 
 
-   
+
       <div id="page">
          <header>
             <div class="top">
-            
+
                <div class="content">
 
-   <a href={{'ready-made-products'|page}}  style="position:absolute; top:200px; right:100px;z-index: 101;" ><img src="{{'limited-time-offer2.png' | media}}" style="width:150px;" /></a>               
-               
+   <a href={{'ready-made-products'|page}}  style="position:absolute; top:200px; right:100px;z-index: 101;" ><img src="{{'limited-time-offer2.png' | media}}" style="width:150px;" /></a>
+
                   <a href="/">
                      <div class="logo"></div>
                   </a>
                   <div class="param">
                      <div id="bxdynamic_YscOAb_start" style="display:none"></div>
-                     
-                     
-                     
-                     
+
+
+
+
                     {% if this.page.contact_widget=='phone' %}
                         <div style="position:absolute;margin-left:-250px;width:230px;">
                         <script>
@@ -1207,7 +1207,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         </a>
                         </div>
                     {% endif %}
-                    
+
                     {% if this.page.contact_widget=='email' %}
                         <script>
                         function submitConversionEmail(){
@@ -1226,10 +1226,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         </a>
                         </div>
                     {% endif %}
-                    
-                    
-                        
-                        
+
+
+
+
                      <div class="lang">
                         <label><font>Language</font><span>EN</span></label>
                         <ul>
@@ -1267,7 +1267,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                            		if($("input[name='q']").val() == "") return false;
                            	});
                            });
-                        </script>                    
+                        </script>
                      </div>
                   </div>
                </div>
@@ -1276,69 +1276,52 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="bottom">
                <div class="content">
                   <div id="main-shortcut">
-                  
+                    <ul>
+                        <li role="presentation" class="{% if this.page.id=='companies' or this.page.id=='company'%}active{% endif %}">
+                                        <a href="{{ 'companies'|page }}"">
+                                    Companies
+                                </a>
 
-            <ul>
-            
-            <li role="presentation" class="{% if this.page.id=='companies' or this.page.id=='company'%}active{% endif %}">
-                            <a href="{{ 'companies'|page }}"">
-                        Companies
-                    </a>
-                
-                    </li>
-                    
-                    
-            <li role="presentation" class="{% if this.page.id=='banks' or this.page.id=='bank'%}active{% endif %}">
-                            <a href="{{ 'banks'|page }}"">
-                        Banks
-                    </a>
-                
-                    </li>
-                    
-            <li role="presentation" class="{% if this.page.id=='licensing' or this.page.id=='license'%}active{% endif %}">
-                            <a href="{{ 'licensing'|page }}"  class="{{ item.isActive or item.isChildActive ? 'act' : '' }}">
-                        Licensing
-                    </a>
-                
-                    </li>
+                                </li>
+                        <li role="presentation" class="{% if this.page.id=='banks' or this.page.id=='bank'%}active{% endif %}">
+                                        <a href="{{ 'banks'|page }}"">
+                                    Banks
+                                </a>
 
-                
-            <li role="presentation" class="{% if this.page.id=='accounting' or this.page.id=='accounting'%}active{% endif %}">
-                            <a href="{{ 'accounting'|page }}"  class="{{ item.isActive or item.isChildActive ? 'act' : '' }}">
-                        Accounting
-                    </a>
-                
-                    </li>
-                    
+                                </li>
+                        <li role="presentation" class="{% if this.page.id=='licensing' or this.page.id=='license'%}active{% endif %}">
+                                        <a href="{{ 'licensing'|page }}"  class="{{ item.isActive or item.isChildActive ? 'act' : '' }}">
+                                    Licensing
+                                </a>
 
-            <li role="presentation" class="{% if this.page.id=='intellectualproperties' or this.page.id=='intellectualproperties'%}active{% endif %}">
-                            <a href="{{ 'intellectualproperties'|page }}"  class="{{ item.isActive or item.isChildActive ? 'active' : '' }}">
-                        Intellectual Property
-                    </a>
-                
+                                </li>
+                        <li role="presentation" class="{% if this.page.id=='accounting' or this.page.id=='accounting'%}active{% endif %}">
+                                        <a href="{{ 'accounting'|page }}"  class="{{ item.isActive or item.isChildActive ? 'act' : '' }}">
+                                    Accounting
+                                </a>
+
+                                </li>
+                        <li role="presentation" class="{% if this.page.id=='intellectualproperties' or this.page.id=='intellectualproperties'%}active{% endif %}">
+                                        <a href="{{ 'intellectualproperties'|page }}"  class="{{ item.isActive or item.isChildActive ? 'active' : '' }}">
+                                    Intellectual Property
+                                </a>
+
+                                </li>
+                        <li role="presentation" class="{% if this.page.id=='additional' or this.page.id=='additional'%}active{% endif %}">
+                                    <a href="{{ 'additional'|page }}" >
+                                Additional
+                            </a>
                     </li>
-                    
-                            
-                    
-                    
-            <li role="presentation" class="{% if this.page.id=='additional' or this.page.id=='additional'%}active{% endif %}">
-                            <a href="{{ 'additional'|page }}" >
-                        Additional
-                    </a>
-                
-                    </li>
-            </ul>
-                 
-                  
+                    </ul>
+
                      <!--{% component 'staticMenu' %}-->
-
                   </div>
                </div>
             </div>
             <div class="clear"></div>
             <div id="bxdynamic_XEVOpk_end" style="display:none"></div>
          </header>
-         
+
          {% page %}
          <!-- // .body -->
       </div>
@@ -1350,18 +1333,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   <p>For any help or inquiries</p>
                </div>
                <div class="right">
-                  
+
                   <!--
                   <p>Call Us Now On</p>
                   <span>+44 (2038) 07 15 07</span>
                   <script>b24form({"id":"7","lang":"en","sec":"86vuc0","type":"button","click":""});</script>
                   <a id="dialog-contact-us-btn" class="web-form-popup-btn-7">Contact us</a>
                   -->
-                  
+
                   {{ partial('contact-us-form.htm')}}
                   {{ partial('popup-contact-form.htm')}}
-                  
-                  
+
+
                </div>
             </div>
          </div>
@@ -1415,22 +1398,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                </div>
             </div>
          </div>
-         
-    
+
+
       <!--
        <div>
       {{this.page["decodedLocation1"]}}
       </div>
       -->
-        
-        
+
+
          {% component 'googleTracker' %}
-         
+
       </footer>
       <script type="text/javascript">
          $(document).ready(function() {
          	var height = $( window ).height()-100;
-         	
+
          	$( "#form3" ).dialog({
          		autoOpen: false,
          		height: height,
@@ -1449,7 +1432,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          			$('body').css('overflow','auto');
          		}
          	});
-         	
+
          	$( "#form3-message" ).dialog({
          		autoOpen: false,
          		closeOnEscape: true,
@@ -1464,23 +1447,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          			$('body').css('overflow','auto');
          		}
          	});
-         	
+
          	$( ".form3opener" ).on( "click", function() {
          		$( "#form3" ).dialog("open");
          	});
-         
+
          	jQuery.validator.addMethod("myEmail", function(value, element) { //checking an email for @ symbol and for suffix (ex: .com)
          		return this.optional( element ) || ( /^[a-z0-9]+([-._][a-z0-9]+)*@([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,4}$/.test(value) && /^(?=.{1,64}@.{4,64}$)(?=.{6,100}$).*/.test(value));
          	}, 'Please enter valid email address.');
-         	
+
          	jQuery.validator.addMethod("minMax", function(value, element) { //checking field max if it has value lower than min
          			return this.optional( element ) || (parseInt($('input[name=transaction_amount_min]').val()) < parseInt(value));
          	}, 'Please enter greater value than min.');
-         	
+
          	jQuery.validator.addMethod("maxMin", function(value, element) { //checking field min if it has value lower than max
          			return this.optional( element ) || (parseInt($('input[name=transaction_amount_max]').val()) > parseInt(value));
          	}, 'Please enter lower value than max.');
-         	
+
          	$("#form3 form").validate({
          		rules: {
          			email: {
@@ -1516,7 +1499,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          				$('small[class=limit]').css("color","red");		//higlight requirements for file
          				data.submit().abort();					//abort loading file
          				$(".file").replaceWith( $(".file").val('').clone( true ) ); //remove file name from input if file was not loaded
-         			}else if(data.originalFiles[0]['size'] > 10485760) {		
+         			}else if(data.originalFiles[0]['size'] > 10485760) {
          				$('small[class=limit]').css("color","red");		//higlight requirements for file
          				data.submit().abort();					//abort loading file
          				$(".file").replaceWith( $(".file").val('').clone( true ) ); //remove file name from input if file was not loaded
@@ -1775,19 +1758,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
          <div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div>
          <div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div>
       </div>
-      
-      
+
+
 
         <div id="dialog-thankyou" title="Thank&nbsp;you,&nbsp;your&nbsp;message&nbsp;has&nbsp;been&nbsp;sent. We&nbsp;will&nbsp;contact&nbsp;you&nbsp;soon." style="padding-left:50px;">
             <div class="row" style="text-align:center;margin-top:0px;margin-bottom:20px;">
                 <button class="btn btn-primary crm-webform-submit-button" onclick = "$('#dialog-thankyou').dialog('close');" style="width:150px;margin-left:-15px;">Close</button>
             </div>
         </div>
-        
+
       {% framework extras %}
       {% scripts %}
       {% styles %}
 
-      
+
    </body>
 </html>
