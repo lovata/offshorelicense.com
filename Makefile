@@ -25,6 +25,12 @@ app-apply-dump:
 	ansible-playbook --vault-id .vault-password-$(inventory) ansible/playbooks/project/apply-dump.yml -i ansible/$(inventory)-hosts.yml
 	make app-migrate
 
+# Staging commands
+staging-init:
+	ansible-playbook --vault-id .vault-password-staging ansible/playbooks/init/init-docker.yml -i ansible/staging-hosts.yml
+	ansible-playbook --vault-id .vault-password-staging ansible/playbooks/staging/init-nginx.yml -i ansible/staging-hosts.yml
+	ansible-playbook --vault-id .vault-password-staging ansible/playbooks/init/init-app.yml -i ansible/staging-hosts.yml
+
 # Docker commands
 docker-status:
 	docker ps

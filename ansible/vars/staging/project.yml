@@ -1,6 +1,8 @@
 APP_ENV: staging
 APP_DEBUG: true
-APP_URL: 'http://localhost'
+DEBUGBAR_ENABLED: false
+FORCE_MAIL_SETTING: true
+APP_URL: 'http://offshorelicense.com.lovata.tech'
 BROADCAST_DRIVER: log
 CACHE_DRIVER: file
 QUEUE_CONNECTION: sync
@@ -12,4 +14,6 @@ ENABLE_REDIS: false
 ENABLE_QUEUE: false
 ENABLE_MAILPIT: true
 
-SAIL_XDEBUG_MODE: off
+SAIL_XDEBUG_MODE: 'off'
+
+APP_CODE_PATH_CONTAINER: /var/www/html/offshorelicense.com/app
