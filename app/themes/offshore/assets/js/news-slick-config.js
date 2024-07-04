@@ -1,4 +1,4 @@
-class RatesSlider {
+class NewsSlider {
   constructor()
   {
     this.slides = null;
@@ -11,13 +11,12 @@ class RatesSlider {
     })
   }
   initSlider() {
-    this.slides = document.querySelector('.js-blog-news-list');
+    this.slides = $('.js-blog-news-list')
     if(!this.slides) return false;
     this.initSlickSlider()
-    console.log(this.slides)
   }
   initSlickSlider() {
-    $('.js-blog-news-list').slick({
+    this.slides.slick({
       infinite: true,
       slidesToShow: 3,
       slidesToScroll: 3,
@@ -46,4 +45,4 @@ class RatesSlider {
   }
 }
 
-new RatesSlider()
+new NewsSlider()

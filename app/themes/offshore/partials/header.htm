@@ -1,0 +1,57 @@
+<div class="js-header-menu header-menu close">
+    <div class="header-menu__wrap">
+        <div class="">
+            <div class="header-menu__header">
+                <a href="{{ 'ready-made-products'|page }}">
+                    <img src="{{ '/assets/img/logo.png' | theme }}"/>
+                </a>
+
+                <button class="js-menu-button header-menu__close">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                        <path d="M6 18L18 6M6 6L18 18" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="header-menu__container">
+            <ul>
+                <li><a class="header-menu__link" href="{{ 'about'|page }}">About us</a></li>
+                <li><a class="header-menu__link" href="{{ 'about'|page }}#aboutFormTop">Contact us</a></li>
+                <li><a class="header-menu__link" href="{{ 'faq'|page }}">FAQ</a></li>
+
+                <li><a class="header-menu__link" href="{{ 'ready-made-products'|page }}">Ready-made products</a></li>
+                <li><a class="header-menu__link" href="{{ 'blog'|page({page:1}) }}">Blog</a></li>
+                <li><a class="header-menu__link" href="{{ 'companies'|page }}">Companies</a></li>
+                <li><a class="header-menu__link" href="{{ 'banks'|page }}">Banks</a></li>
+                <li><a class="header-menu__link" href="{{ 'licensing'|page }}">Licensing</a></li>
+                <li><a class="header-menu__link" href="{{ 'accounting'|page }}">Accounting</a></li>
+                <li><a class="header-menu__link" href="{{ 'intellectualproperties'|page }}">Intellectual Property</a></li>
+                <li><a class="header-menu__link" href="{{ 'additional'|page }}">Additional</a></li>
+            </ul>
+        </div>
+        <div class="header-menu__container">
+            <div class="header-menu__lang lang js-accordion">
+                <button class="js-accordion-head lang__btn">Language <span>EN</span>
+                    <img src="{{ '/assets/img/arrowBottomGrean.png' | theme }}"/>
+                </button>
+                <ul class="js-accordeon-content lang__content">
+                    <li><a class="lang__link" rel="alternate" hreflang="ru" href="https://offshorelicense.ru">RU</a></li>
+                    <li><a class="lang__link" rel="alternate" hreflang="cn" href="http://offshorelicense.com.cn">CN</a></li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="header-menu__container">
+            {% if this.page.contact_widget=='phone' %}
+                <div>
+                    <a href="tel:+442038071507" onclick="submitConversion();">
+                        <img width=32 style="float:left; margin-right:10px;margin-top:3px;"
+                             src="{{ 'assets/img/call-us.png'|theme }}" title="Call us" alt="Call us">
+                        <span style="color:#2d404c;font-size:16px;">Contact us now</span><br/>
+                        <span style="color:#2d404c;font-weight:bold;font-size:18px;">+44 (2038) 07 15 07</span>
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

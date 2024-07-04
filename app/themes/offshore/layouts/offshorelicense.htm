@@ -859,6 +859,7 @@ curl_close($ch);
         'assets/js/slick/slick.css',
         'assets/js/slick/slick-theme.css',
         'assets/css/styles.css',
+        'assets/css/template_styles.css',
         '@framework.extras'
     ]|theme }}" rel="stylesheet">
 
@@ -944,6 +945,7 @@ curl_close($ch);
         'assets/js/scrollPane/mwheelIntent.js',
         'assets/js/scrollPane/jquery.jscrollpane.min.js',
         'assets/js/do-in.js',
+        'assets/js/header.js',
         'assets/js/jquery.visual.counter.js',
         'assets/js/title.js',
         'assets/js/jquery.validate.min.js',
@@ -951,6 +953,8 @@ curl_close($ch);
         'assets/js/jquery-ui-1.12.0.custom/jquery-ui.js',
         'assets/js/cookie-policy.js',
         'assets/js/news-slick-config.js',
+        'assets/js/accordion.js',
+        'assets/js/main-slick-config.js',
         '@framework',
         '@framework.extras'
     ]|theme }}"></script>
@@ -1007,32 +1011,32 @@ curl_close($ch);
 
 
     <!--Start of Bitrix Chat Script-->
-    <script>
-      (function (w, d, u) {
-        var s = d.createElement("script");
-        s.async = true;
-        s.src = u + "?" + (Date.now() / 60000 | 0);
-        var h = d.getElementsByTagName("script")[0];
-        h.parentNode.insertBefore(s, h);
-      })(window, document, "https://bitrix.offshorelicense.com/upload/crm/site_button/loader_2_7x25zx.js");
-    </script>
-    <!--End of Bitrix Chat Script-->
+{#    <script>#}
+{#      (function (w, d, u) {#}
+{#        var s = d.createElement("script");#}
+{#        s.async = true;#}
+{#        s.src = u + "?" + (Date.now() / 60000 | 0);#}
+{#        var h = d.getElementsByTagName("script")[0];#}
+{#        h.parentNode.insertBefore(s, h);#}
+{#      })(window, document, "https://bitrix.offshorelicense.com/upload/crm/site_button/loader_2_7x25zx.js");#}
+{#    </script>#}
+{#    <!--End of Bitrix Chat Script-->#}
 
 
-    <!-- Hotjar Tracking Code for offshorelicense.com -->
-    <script>
-      (function (h, o, t, j, a, r) {
-        h.hj = h.hj || function () {(h.hj.q = h.hj.q || []).push(arguments);};
-        h._hjSettings = { hjid: 655991, hjsv: 6 };
-        a = o.getElementsByTagName("head")[0];
-        r = o.createElement("script");
-        r.async = 1;
-        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-        a.appendChild(r);
-      })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
-    </script>
+{#    <!-- Hotjar Tracking Code for offshorelicense.com -->#}
+{#    <script>#}
+{#      (function (h, o, t, j, a, r) {#}
+{#        h.hj = h.hj || function () {(h.hj.q = h.hj.q || []).push(arguments);};#}
+{#        h._hjSettings = { hjid: 655991, hjsv: 6 };#}
+{#        a = o.getElementsByTagName("head")[0];#}
+{#        r = o.createElement("script");#}
+{#        r.async = 1;#}
+{#        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;#}
+{#        a.appendChild(r);#}
+{#      })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");#}
+{#    </script>#}
 
-    <meta name="facebook-domain-verification" content="mrzs5d4ccuzu4ad9p1cmynbg5wpzie"/>
+{#    <meta name="facebook-domain-verification" content="mrzs5d4ccuzu4ad9p1cmynbg5wpzie"/>#}
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -1045,20 +1049,21 @@ curl_close($ch);
 <div id="page" class="title big">
     <header>
         <div class="top">
-            <div class="content">
-
-                <a href={{ 'ready-made-products'|page }}  style="position:absolute; top:200px; right:100px;z-index: 101;"
+            <div class="header-top-content content">
+                <button class="header-burger js-menu-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </button>
+                <a href="{{ 'ready-made-products'|page }}" class="fixed-ready-made"  style=""
                 ><img src="{{ 'limited-time-offer2.png' | media }}" style="width:150px;"/></a>
-
                 <a href="/">
                     <div class="logo"></div>
                 </a>
                 <div class="param">
                     <div id="bxdynamic_YscOAb_start" style="display:none"></div>
-
-
                     {% if this.page.contact_widget=='phone' %}
-                        <div style="position:absolute;margin-left:-250px;width:230px;">
+                        <div class="header-phone">
                             <script>
                               function submitConversion () {
                                 window.google_trackConversion({
@@ -1098,7 +1103,7 @@ curl_close($ch);
                     {% endif %}
 
 
-                    <div class="lang">
+                    <div class="header-top-lang lang">
                         <label><font>Language</font><span>EN</span></label>
                         <ul>
                             <li><a rel="alternate" hreflang="ru" href="https://offshorelicense.ru">RU</a></li>
@@ -1108,7 +1113,6 @@ curl_close($ch);
                     </div>
                     <div id="bxdynamic_YscOAb_end" style="display:none"></div>
                 </div>
-
             </div>
         </div>
         <div class="middle">
@@ -1145,7 +1149,7 @@ curl_close($ch);
         </div>
         <div id="bxdynamic_XEVOpk_start" style="display:none"></div>
         <div class="bottom">
-            <div class="content">
+            <div class="">
                 <div id="main-shortcut">
                     <a href="{{ 'companies'|page }}">Companies</a>
                     <a href="{{ 'banks'|page }}">Banks</a>
@@ -1159,9 +1163,10 @@ curl_close($ch);
                 </div>
             </div>
         </div>
-
         <div class="clear"></div>
         <div id="bxdynamic_XEVOpk_end" style="display:none"></div>
+
+        {% partial 'header' contactWidget = this.page.contact_widget %}
     </header>
 
     {% page %}
@@ -1179,7 +1184,7 @@ curl_close($ch);
                                     professional way, while always minding your personal
                                     preferences.</p>
                             </div>
-                            <div id="main-shortcut" class="page-top__content">
+                            <div id="main-shortcut" class="page-top__content js-main-shortcut">
                                 <a href="{{ 'companies'|page }}">
                                     <label style="background-image: url({{ 'assets/img/company-formation.png'|theme }});"><span>Companies</span></label>
                                     <div>
@@ -1227,29 +1232,30 @@ curl_close($ch);
                                             Solutions.</p>
                                     </div>
                                 </a>
-                                <style>
-                                  .send-btn1 {
-                                    display: block;
-                                    width: 200px;
-                                    margin-left: auto;
-                                    margin-right: auto;
-                                    margin-bottom: 20px;
-                                    background-color: #E31F31;
-                                    height: 45px;
-                                    border: 0;
-                                    border-radius: 7px;
-                                    font-size: 20px;
-                                    margin-top: 30px;
-                                    font-weight: 700;
-                                    background-color: rgba(255, 255, 255, 0.85);
-                                    color: #374d5c;
-                                    cursor: pointer;
-                                  }
-                                </style>
-                                <form class="col-span-3" action="https://www.offshorelicense.com/about/#aboutFormTop">
-                                    <button type="submit" class="send-btn1">Leave a request</button>
-                                </form>
+
                             </div>
+                            <style>
+                              .send-btn1 {
+                                display: block;
+                                width: 200px;
+                                margin-left: auto;
+                                margin-right: auto;
+                                margin-bottom: 20px;
+                                background-color: #E31F31;
+                                height: 45px;
+                                border: 0;
+                                border-radius: 7px;
+                                font-size: 20px;
+                                margin-top: 30px;
+                                font-weight: 700;
+                                background-color: rgba(255, 255, 255, 0.85);
+                                color: #374d5c;
+                                cursor: pointer;
+                              }
+                            </style>
+                            <form class="col-span-3" action="https://www.offshorelicense.com/about/#aboutFormTop">
+                                <button type="submit" class="send-btn1">Leave a request</button>
+                            </form>
                         </div>
                     </div>
 
@@ -1262,108 +1268,105 @@ curl_close($ch);
                         <h2 class="title-s-1">Recommended products</h2>
                         <p class="after-title-s-1">The most interesting products for your business needs, handpicked by
                             our specialists.</p>
-                        <div class="inline-warp recommended__wrap recommended__wrap--2">
-                            <div class="inline-2 company">
-                                <label>Companies<a href="/companies/">View more</a></label>
-                                <ul>
-                                    <div id="bxdynamic_HT7zAX_start" style="display:none"></div>
-                                    <li class=""><a href="/companies/hong-kong-limited-company-formation">
-                                            <div class="logo"
-                                                 style="background-image: url({{ 'assets/upload/iblock/daf/daf597f92e5a21a5f726c87c92ef5ca8.png'|theme }});"></div>
-                                            <span>
-                            <h3>Hong Kong Limited Liability Company (LTD)</h3>
-                            <span>Hong Kong Limited Liability Company (LTD)</span>
-                        </span>
-                                            <div class="cost">
-                                                <h6>&euro;2,200</h6>
-                                                <h5>&euro;1,980</h5>
-                                            </div>
-                                        </a>
-                                    </li>
 
-                                    <li class=""><a href="/companies/labuan-international-business-company-formation">
-                                            <div class="logo"
-                                                 style="background-image: url({{ 'assets/upload/iblock/bd7/bd70418e69bb60316156778e1b9ed34b.png'|theme }});"></div>
-                                            <span>
-                            <h3>Labuan International Business Company (IBC)</h3>
-                            <span>Labuan International Business Company (IBC)</span>
-                        </span>
-                                            <div class="cost">
-                                                <h6>&euro;4,000</h6>
-                                                <h5>&euro;3,600</h5>
-                                            </div>
-                                        </a></li>
 
-                                    <li class=""><a href="/companies/gibraltar-limited-liability-company-formation">
-                                            <div class="logo"
-                                                 style="background-image: url({{ 'assets/upload/iblock/2ef/2efbf21144e38243fd6e9f12139811c5.gif'|theme }});"></div>
-                                            <span>
-                            <h3>Gibraltar Limited Liability Company (LTD)</h3>
-                            <span>Gibraltar Limited Liability Company (LTD)</span>
-                        </span>
-                                            <div class="cost">
-                                                <h6>&euro;2,900</h6>
-                                                <h5>&euro;2,610</h5>
-                                            </div>
-                                        </a></li>
 
-                                    <div id="bxdynamic_HT7zAX_end" style="display:none"></div>
-                                </ul>
+                        <div class="recommended__wrap recommended__wrap--2">
+                            <div class="recommended-card">
+                                <div class="recommended-card__header header">
+                                    <div class="header__label header__label--company">
+                                        <p class="header__text">Companies</p>
+                                    </div>
+                                    <a class="header__more" href="/companies/" bis_skin_checked="1">View more</a>
+                                </div>
+                                <div class="recommended-card__container">
+                                    <ul class="recommended-card__list list">
+                                        <li class="list__item">
+                                            <a class="list__link" href="/">
+                                            <span class="list__icon">
+                                                <img class="list__img" src="{{ '/assets/upload/iblock/daf/daf597f92e5a21a5f726c87c92ef5ca8.png'|theme }}" alt="">
+                                            </span>
+                                                <span class="list__container">
+                                                <span class="list__content">
+                                                 <p class="list__title"> Hong Kong Limited Liability Company (LTD)</p>
+                                                 <p class="list__text">Hong Kong Limited Liability Company (LTD)</p>
+                                            </span>
+                                            <div class="list__cost">
+                                                <s class="list__old">&euro;2,200</s>
+                                                <p class="list__sale">&euro;1,980</p>
+                                            </div>
+                                               <span class="list__arrow"></span>
+                                           </span>
+                                            </a>
+                                        </li>
+                                        <li class="list__item">
+                                            <a class="list__link" href="/">
+                                            <span class="list__icon">
+                                                <img class="list__img" src="{{ '/assets/upload/iblock/bd7/bd70418e69bb60316156778e1b9ed34b.png'|theme }}" alt="">
+                                            </span>
+                                                <span class="list__container">
+                                                <span class="list__content">
+                                                 <p class="list__title"> Labuan International Business Company (IBC)</p>
+                                                 <p class="list__text">Labuan International Business Company (IBC)</p>
+                                            </span>
+                                            <div class="list__cost">
+                                                <s class="list__old">&euro;4,000</s>
+                                                <p class="list__sale">&euro;3,600</p>
+                                            </div>
+                                               <span class="list__arrow"></span>
+                                           </span>
+                                            </a>
+                                        </li>
+                                        <li class="list__item">
+                                            <a class="list__link" href="/">
+                                            <span class="list__icon">
+                                                <img class="list__img" src="{{ 'assets/upload/iblock/2ef/2efbf21144e38243fd6e9f12139811c5.gif'|theme }}" alt="">
+                                            </span>
+                                                <span class="list__container">
+                                                <span class="list__content">
+                                                 <p class="list__title">Gibraltar Limited Liability Company (LTD)</p>
+                                                 <p class="list__text">Gibraltar Limited Liability Company (LTD)</p>
+                                            </span>
+                                            <div class="list__cost">
+                                                <s class="list__old">&euro;2,900</s>
+                                                <p class="list__sale">&euro;2,610</p>
+                                            </div>
+                                               <span class="list__arrow"></span>
+                                           </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="inline-2 bank">
-                                <label>Banks<a href="/banks/">View more</a></label>
-                                <ul>
-                                    <div id="bxdynamic_GuphBt_start" style="display:none"></div>    <!--li class="">
-                        <a href="/banks/personal/csob-personal-bank-account-opening">
-                                <div class="logo" style="background-image: url({{ 'assets/upload/iblock/5d3/5d3676eef51ea1f4fec2cfc91958d941.png'|theme }});"></div>
-                                <span>
-                                <h3>ČSOB</h3>
-                                <span>ČSOB</span>
-                            </span>
-                                <div class="cost">
-                                <span>Starting from</span><br />
-                                                <h5>&euro;900</h5>
+                            <div class="recommended-card">
+                                <div class="recommended-card__header header">
+                                    <div class="header__label header__label--bank">
+                                        <p class="header__text">Licenses</p>
+                                    </div>
+                                    <a class="header__more" href="/banks/" bis_skin_checked="1">View more</a>
+                                </div>
+                                <div class="recommended-card__container">
+                                    <ul class="recommended-card__list list">
+                                        <li class="list__item">
+                                            <a class="list__link" href="/">
+                                            <span class="list__icon">
+                                                <img class="list__img" src="{{ '/assets/upload/iblock/90c/90c72461b713f9163684a3bcdbd914a2.png'|theme }}" alt="">
+                                            </span>
+                                                <span class="list__container">
+                                                <span class="list__content">
+                                                 <p class="list__title"> Hong Kong Limited Liability Company (LTD)</p>
+                                                 <p class="list__text">Hong Kong Limited Liability Company (LTD)</p>
+                                            </span>
+                                            <div class="list__cost">
+                                                <p class="list__old">Starting from</p>
+                                                <p class="list__price">&euro;1,080</p>
                                             </div>
-                            </a></li>
-                        <li class="">
-                        <a href="/banks/personal/personal-account-opening-in-bank-of-cyprus">
-                                <div class="logo" style="background-image: url({{ 'assets/upload/iblock/416/4167a1d8ef4a6883d897ed2c10963939.jpg'|theme }});"></div>
-                                <span>
-                                <h3>Bank of Cyprus</h3>
-                                <span>Bank of Cyprus</span>
-                            </span>
-                                <div class="cost">
-                                <span>Starting from</span><br />
-                                                <h5>&euro;650</h5>
-                                            </div>
-                            </a></li-->
-                                    <li class="">
-                                        <a href="/banks/corporate/pacific-private-bank-corporate-account-opening">
-                                            <div class="logo"
-                                                 style="background-image: url({{ 'assets/upload/iblock/90c/90c72461b713f9163684a3bcdbd914a2.png'|theme }});"></div>
-                                            <span>
-                                <h3>Pacific Private Bank</h3>
-                                <span>Pacific Private Bank</span>
-                            </span>
-                                            <div class="cost">
-                                                <span>Starting from</span><br/>
-                                                <h5>&euro;1,000</h5>
-                                            </div>
-                                        </a></li>
-
-                                    <style>
-                                      .re-pr-h6 {
-                                        font-size: 15px;
-                                        font-weight: 300;
-                                        color: #1e2b34;
-                                        margin-bottom: 5px;
-                                        text-decoration: line-through;
-                                        display: block;
-                                      }
-                                    </style>
-
-                                    <div id="bxdynamic_GuphBt_end" style="display:none"></div>
-                                </ul>
+                                               <span class="list__arrow"></span>
+                                           </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1960,15 +1963,15 @@ curl_close($ch);
 </div>
 
 
-<div id="dialog-thankyou"
-     title="Thank&nbsp;you,&nbsp;your&nbsp;message&nbsp;has&nbsp;been&nbsp;sent. We&nbsp;will&nbsp;contact&nbsp;you&nbsp;soon."
-     style="padding-left:50px;">
-    <div class="row" style="text-align:center;margin-top:0px;margin-bottom:20px;">
-        <button class="btn btn-primary crm-webform-submit-button" onclick="$('#dialog-thankyou').dialog('close');"
-                style="width:150px;margin-left:-15pxl">Close
-        </button>
-    </div>
-</div>
+{#<div id="dialog-thankyou"#}
+{#     title="Thank&nbsp;you,&nbsp;your&nbsp;message&nbsp;has&nbsp;been&nbsp;sent. We&nbsp;will&nbsp;contact&nbsp;you&nbsp;soon."#}
+{#     style="padding-left:50px;">#}
+{#    <div class="row" style="text-align:center;margin-top:0px;margin-bottom:20px;">#}
+{#        <button class="btn btn-primary crm-webform-submit-button" onclick="$('#dialog-thankyou').dialog('close');"#}
+{#                style="width:150px;margin-left:-15pxl">Close#}
+{#        </button>#}
+{#    </div>#}
+{#</div>#}
 
 
 <!--
