@@ -1149,7 +1149,7 @@ curl_close($ch);
         </div>
         <div id="bxdynamic_XEVOpk_start" style="display:none"></div>
         <div class="bottom">
-            <div class="">
+            <div class="content">
                 <div id="main-shortcut">
                     <a href="{{ 'companies'|page }}">Companies</a>
                     <a href="{{ 'banks'|page }}">Banks</a>
@@ -1157,9 +1157,6 @@ curl_close($ch);
                     <a href="{{ 'accounting'|page }}">Accounting</a>
                     <a href="{{ 'intellectualproperties'|page }}">Intellectual Property</a>
                     <a href="{{ 'additional'|page }}">Additional</a>
-                    <a href="#form">Additional</a>
-
-
                 </div>
             </div>
         </div>
@@ -1282,58 +1279,35 @@ curl_close($ch);
                                 <div class="recommended-card__container">
                                     <ul class="recommended-card__list list">
                                         <li class="list__item">
-                                            <a class="list__link" href="/">
-                                            <span class="list__icon">
-                                                <img class="list__img" src="{{ '/assets/upload/iblock/daf/daf597f92e5a21a5f726c87c92ef5ca8.png'|theme }}" alt="">
-                                            </span>
-                                                <span class="list__container">
-                                                <span class="list__content">
-                                                 <p class="list__title"> Hong Kong Limited Liability Company (LTD)</p>
-                                                 <p class="list__text">Hong Kong Limited Liability Company (LTD)</p>
-                                            </span>
-                                            <div class="list__cost">
-                                                <s class="list__old">&euro;2,200</s>
-                                                <p class="list__sale">&euro;1,980</p>
-                                            </div>
-                                               <span class="list__arrow"></span>
-                                           </span>
-                                            </a>
+
+                                            {% partial 'recommended-card'
+                                                href="/companies/st-lucia-international-business-company-formation"
+                                                img='/assets/upload/iblock/daf/daf597f92e5a21a5f726c87c92ef5ca8.png'|theme
+                                                title="St.Lucia International Business Company Formation"
+                                                text="Establishing of St.Lucia IBC for conducting your international business with anonymity, flexible company structure, privacy protection, no audit or reporting."
+                                                oldPrice="&euro;2,200"
+                                                oldSale="&euro;1,980"
+                                            %}
                                         </li>
                                         <li class="list__item">
-                                            <a class="list__link" href="/">
-                                            <span class="list__icon">
-                                                <img class="list__img" src="{{ '/assets/upload/iblock/bd7/bd70418e69bb60316156778e1b9ed34b.png'|theme }}" alt="">
-                                            </span>
-                                                <span class="list__container">
-                                                <span class="list__content">
-                                                 <p class="list__title"> Labuan International Business Company (IBC)</p>
-                                                 <p class="list__text">Labuan International Business Company (IBC)</p>
-                                            </span>
-                                            <div class="list__cost">
-                                                <s class="list__old">&euro;4,000</s>
-                                                <p class="list__sale">&euro;3,600</p>
-                                            </div>
-                                               <span class="list__arrow"></span>
-                                           </span>
-                                            </a>
+                                            {% partial 'recommended-card'
+                                                href="/companies/st-vincent-and-the-grenadines-llc-formation"
+                                                img='/assets/upload/iblock/daf/daf597f92e5a21a5f726c87c92ef5ca8.png'|theme
+                                                title="St. Vincent and the Grenadines LLC Company Formation"
+                                                text="St. Vincent LLC enjoys tax-free regime and high degree of confidentiality."
+                                                oldPrice="&euro;2,500"
+                                                oldSale="&euro;2,000"
+                                            %}
                                         </li>
                                         <li class="list__item">
-                                            <a class="list__link" href="/">
-                                            <span class="list__icon">
-                                                <img class="list__img" src="{{ 'assets/upload/iblock/2ef/2efbf21144e38243fd6e9f12139811c5.gif'|theme }}" alt="">
-                                            </span>
-                                                <span class="list__container">
-                                                <span class="list__content">
-                                                 <p class="list__title">Gibraltar Limited Liability Company (LTD)</p>
-                                                 <p class="list__text">Gibraltar Limited Liability Company (LTD)</p>
-                                            </span>
-                                            <div class="list__cost">
-                                                <s class="list__old">&euro;2,900</s>
-                                                <p class="list__sale">&euro;2,610</p>
-                                            </div>
-                                               <span class="list__arrow"></span>
-                                           </span>
-                                            </a>
+                                            {% partial 'recommended-card'
+                                                href="/companies/authorised-company-mauritius"
+                                                img='/assets/upload/iblock/daf/daf597f92e5a21a5f726c87c92ef5ca8.png'|theme
+                                                title="Mauritius Authorised Company"
+                                                text="Authorised Companies in Mauritius are not tax resident and do not have access to the Mauritius Double Taxation Treaties and are generally used for trading and investment."
+                                                oldPrice="&euro;9,500"
+                                                oldSale="&euro;8,000"
+                                            %}
                                         </li>
                                     </ul>
                                 </div>
@@ -1346,24 +1320,30 @@ curl_close($ch);
                                     <a class="header__more" href="/banks/" bis_skin_checked="1">View more</a>
                                 </div>
                                 <div class="recommended-card__container">
-                                    <ul class="recommended-card__list list">
+                                    <ul class="recommended-card__list">
                                         <li class="list__item">
-                                            <a class="list__link" href="/">
-                                            <span class="list__icon">
-                                                <img class="list__img" src="{{ '/assets/upload/iblock/90c/90c72461b713f9163684a3bcdbd914a2.png'|theme }}" alt="">
-                                            </span>
-                                                <span class="list__container">
-                                                <span class="list__content">
-                                                 <p class="list__title"> Hong Kong Limited Liability Company (LTD)</p>
-                                                 <p class="list__text">Hong Kong Limited Liability Company (LTD)</p>
-                                            </span>
-                                            <div class="list__cost">
-                                                <p class="list__old">Starting from</p>
-                                                <p class="list__price">&euro;1,080</p>
-                                            </div>
-                                               <span class="list__arrow"></span>
-                                           </span>
-                                            </a>
+                                            {% partial 'recommended-card'
+                                                href="/licensing/cryptocurrency-exchange-license-el-salvador"
+                                                img='/assets/upload/iblock/daf/daf597f92e5a21a5f726c87c92ef5ca8.png'|theme
+                                                title="El Salvador Cryptocurrency Exchange License"
+                                                text="The cryptocurrency license aims to attract global crypto enterprises by providing a clear legal environment while promoting innovation and economic development in the sector."
+                                            %}
+                                        </li>
+                                        <li class="list__item">
+                                            {% partial 'recommended-card'
+                                                href="/licensing/comoros-international-brokerage-and-clearing-house-licens"
+                                                img='/assets/upload/iblock/daf/daf597f92e5a21a5f726c87c92ef5ca8.png'|theme
+                                                title="Comoros International Brokerage License"
+                                                text="Comoros International Brokerage and Clearing House License"
+                                            %}
+                                        </li>
+                                        <li class="list__item">
+                                            {% partial 'recommended-card'
+                                                href="/licensing/fiji-foreign-exchange-dealer-license"
+                                                img='/assets/upload/iblock/daf/daf597f92e5a21a5f726c87c92ef5ca8.png'|theme
+                                                title="Fiji Foreign Exchange Dealer License"
+                                                text="Company in Fiji is an excellent way for international entrepreneurs to conduct business in one of the world's most rapidly growing economies."
+                                            %}
                                         </li>
                                     </ul>
                                 </div>

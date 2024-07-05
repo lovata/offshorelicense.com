@@ -1521,7 +1521,7 @@ script + #page .page {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-image: url('../img/original/company.jpg');
-	
+
 }
 
 .about-team-image {
@@ -1530,7 +1530,7 @@ script + #page .page {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-image: url('../img/original/company.jpg');
-	
+
 }
 
 
@@ -1626,7 +1626,6 @@ script + #page .page {
     font-size: 36px;
     font-weight: 400;
     color: #fff;
-    text-transform: uppercase;
     line-height: 60px;
     margin-bottom: 20px;
 	margin-top: 10px;
@@ -1663,7 +1662,7 @@ script + #page .page {
 .std-style.business li { display: block;
 	padding: 5px 0;
 }
-.std-style.business li:before { 
+.std-style.business li:before {
 	background-color: transparent;
 	content: counters(item, ".", decimal) ". ";
 	counter-increment: item;
@@ -1673,11 +1672,11 @@ script + #page .page {
 	top: unset !important;
 }
 
-.std-style.business ol:nth-child(2n+1) li:before { 
+.std-style.business ol:nth-child(2n+1) li:before {
 	margin-left: -45px;
 }
 
-.std-style.business ol:nth-child(3n+1) li:before { 
+.std-style.business ol:nth-child(3n+1) li:before {
 	margin-left: -50px;
 }
 
@@ -2259,7 +2258,7 @@ tab section a {
 	color: #1e2b34;
 	text-align: left;
 	padding: 15px 0px;
-	padding-left: 65px; 
+	padding-left: 65px;
 	background-repeat: no-repeat;
     background-position: left center;
 }
@@ -3177,7 +3176,7 @@ background-color: transparent!important;
 	width: 2px;
 	background-color: #dedede;
 }
- 
+
 ::-webkit-scrollbar-thumb {
 	width: 6px;
 	margin: 0 -5px;
@@ -3398,7 +3397,7 @@ background-color: transparent!important;
 	display: none;
 }
 #licDetailBody table thead > tr > th {
-	border-bottom: solid 2px #374d5c; 
+	border-bottom: solid 2px #374d5c;
 	color: #fff;
 	height: 50px;
 	line-height: 50px;
@@ -3566,7 +3565,7 @@ background-color: transparent!important;
     left: 0;
 }
 
-#page .page .page-top .content .text h1 {
+#page .page .page-top .main h1 {
     font-size: 55px;
     font-weight: 400;
     color: #fff;
@@ -3629,7 +3628,7 @@ background-color: transparent!important;
 }
 @media screen and (max-height: 1200px) {
 
-	#page .page .page-top.main #main-shortcut > a:hover>div,	
+	#page .page .page-top.main #main-shortcut > a:hover>div,
 	#page .page .page-top.main #main-shortcut > a,
 	#page .page .page-top.main #main-shortcut > a > label {
 		height: 130px !important;

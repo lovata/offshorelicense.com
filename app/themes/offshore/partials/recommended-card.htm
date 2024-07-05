@@ -1,0 +1,32 @@
+<a class="offer-card" href="{{ href }}">
+    <span class="offer-card__icon">
+        <img class="offer-card__img" src="{{ img }}" alt="">
+    </span>
+    <span class="offer-card__container">
+        <span class="offer-card__content">
+         <p class="offer-card__title">{{ title }}</p>
+         <p class="offer-card__text">{{text}})</p>
+    </span>
+    {% if oldPrice or oldSale or priceTitle %}
+        <div class="offer-card__cost">
+            {% if priceTitle %}
+                <p class="offer-card__old">{{ priceTitle }}</p>
+            {% endif %}
+            {% if oldPrice %}
+                <s class="offer-card__old">{{ oldPrice | raw }}</s>
+            {% endif %}
+            {% if oldSale %}
+                <p class="offer-card__sale">{{oldSale | raw }}</p>
+            {% endif %}
+
+            {% if price %}
+                <p class="offer-card__price">€{{price}}</p>
+            {% endif %}
+
+        </div>
+    {% endif %}
+       <span class="offer-card__arrow"></span>
+    </span>
+</a>
+
+

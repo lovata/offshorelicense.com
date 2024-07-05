@@ -569,10 +569,10 @@ header .top .user .logout {
 }
 
 
-footer {
-  position: relative;
-  z-index: 16;
-}
+/*footer {*/
+/*  position: relative;*/
+/*  z-index: 16;*/
+/*}*/
 
 @media screen and (max-width: 767px) {
   footer {
@@ -1932,7 +1932,7 @@ script + #page .page {
   font-weight: 400;
   color: #fff;
   text-transform: uppercase;
-  line-height: 60px;
+
   margin-bottom: 20px;
   margin-top: 10px;
 }
@@ -4293,7 +4293,7 @@ font.notetext {
 
 
 @media screen and (max-width: 767px) {
-  .bottom.showen,
+  #page header .bottom,
   #page header .middle,
   .header-top-lang,
   .header-phone {
@@ -4431,26 +4431,26 @@ font.notetext {
   margin-bottom: 0;
 }
 
-.recommended-card .list__link {
+.offer-card {
   display: flex;
   padding: 14px 12px;
   /*grid-template-columns: 60px 1fr;*/
 }
 
-.recommended-card .list__icon {
+.offer-card__icon {
   display: block;
   margin: 0 12px 0 0;
   flex-shrink: 0;
 }
 
 @media screen and (min-width: 560px) {
-  .recommended-card .list__icon {
+  .offer-card__icon {
     margin: 3px 25px 3px 10px;
   }
 }
 
 
-.recommended-card .list__img {
+.offer-card__img {
   height: 60px;
   width: 60px;
   border: 1px solid #d0d0d0;
@@ -4459,14 +4459,14 @@ font.notetext {
 }
 
 
-.recommended-card .list__content {
+.offer-card__content {
   display: block;
   flex-grow: 1;
 }
 
 @media screen and (min-width: 560px) {
-  .recommended-card .list__text,
-  .recommended-card .list__title {
+  .offer-card__text,
+  .offer-card__title {
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -4474,25 +4474,25 @@ font.notetext {
   }
 }
 
-.recommended-card .list__title {
+.offer-card__title {
   font-size: 18px;
   font-weight: 700;
   color: #1e2b34;
   margin-bottom: 8px;
 }
 
-.recommended-card .list__text {
+.offer-card__text {
   font-weight: 300;
   color: #374d5c;
 }
 
-.recommended-card .list__container {
+.offer-card__container {
   border-left: 3px solid #adbe4f;
   padding-left: 12px;
 }
 
 @media screen and (min-width: 560px) {
-  .recommended-card .list__container {
+  .offer-card__container {
     display: flex;
     flex-grow: 1;
     align-items: center;
@@ -4502,13 +4502,13 @@ font.notetext {
 }
 
 @media screen and (min-width: 1280px) {
-  .recommended-card .list__container {
+  .offer-card__container {
     padding-right: 18px;
   }
 }
 
 
-.recommended-card .list__arrow {
+.offer-card__arrow {
   -ms-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
@@ -4525,19 +4525,19 @@ font.notetext {
 
 
 @media screen and (max-width: 559px) {
-  .recommended-card .list__arrow {
+  .offer-card__arrow {
     display: none;
   }
 }
 
-.recommended-card .list__price,
-.recommended-card .list__old,
-.recommended-card .list__sale {
+.offer-card__price,
+.offer-card__old,
+.offer-card__sale {
   text-align: right;
   white-space: nowrap;
 }
 
-.recommended-card .list__old {
+.offer-card__old {
   font-size: 15px;
   font-weight: 300;
   color: #1e2b34;
@@ -4545,26 +4545,62 @@ font.notetext {
   display: block;
 }
 
-.recommended-card .list__sale {
+.offer-card__sale {
   color: #dd2c00;
   font-size: 18px;
   font-weight: 700;
   display: block;
 }
 
-.recommended-card .list__price {
+.offer-card__price {
   font-size: 18px;
   font-weight: 700;
   display: block;
   color: #1e2b34;
 }
 
-.recommended-card .list__cost {
+.offer-card__cost {
   padding-left: 12px;
 }
 
 @media screen and (max-width: 559px) {
-  .recommended-card .list__cost {
+  .offer-card__cost {
     padding-top: 12px;
   }
+}
+
+
+.main-offer {
+
+}
+@media screen and (min-width: 1024px) {
+
+  .main-offer {
+    height: 460px;
+  }
+
+  .main-offer__wrap {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 1037px;
+    margin: auto;
+    column-gap: 40px;
+
+  }
+
+}
+
+.main-offer__list {
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 10px;
+}
+.main-offer__list:last-child {
+  margin-bottom: 0;
+}
+
+.main-offer__title{
+  font-size: 24px;
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 15px;
 }

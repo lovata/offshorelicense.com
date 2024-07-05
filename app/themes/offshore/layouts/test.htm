@@ -3,12 +3,12 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-      
+
     <!--<meta http-equiv="Refresh" content="0;URL=https://offshorelicense.com" />-->
     <link rel="shortcut icon" type="image/x-icon" href="{{ 'assets/img/favicon3.ico'|theme }}">
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic,900&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    
+
 {% component 'SeoCmsPage' %}
 
 
@@ -19,7 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.1">
     <link rel="stylesheet" type="text/css"
           href="{{ 'assets/css/colors.css'|theme }}"/>
-    
+
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
@@ -118,22 +118,22 @@
 
 
 
- 
+
         <title>Coming Soon  </title>
 
     <script type="text/javascript">if (document.documentElement) {
             document.documentElement.id = "js"
         }</script>
-        
-        
-        
-        
+
+
+
+
 
 
     <script type="text/javascript" src="{{'assets/js/slick/slick.min.js'|theme }}"></script>
 <script>
 $(document).ready(function(){
-    
+
   $('#mainpage-team-carousel').slick({
       slidesToShow: 2,
       slidesToScroll: 2,
@@ -143,12 +143,12 @@ $(document).ready(function(){
       speed: 1000,
       dots: true,
   });
-  
+
 });
 </script>
 
 <meta name="facebook-domain-verification" content="mrzs5d4ccuzu4ad9p1cmynbg5wpzie" />
-        
+
 </head>
 <body>
 
@@ -157,14 +157,14 @@ $(document).ready(function(){
     <header>
         <div class="top">
             <div class="content">
-            
+
 <a href={{'ready-made-products'|page}}  style="position:absolute; top:150px; right:100px;z-index: 101;" ><img src="{{'limited-time-offer2.png' | media}}" style="width:150px;" /></a>
-            
+
                 <a href="/"><div class="logo"></div></a>
                 <div class="param">
                     <div id="bxdynamic_YscOAb_start" style="display:none"></div>
-                    
-                    
+
+
                     {% if this.page.contact_widget=='phone' %}
                         <div style="position:absolute;margin-left:-250px;width:230px;">
                         <a href="tel:+442038071507">
@@ -174,7 +174,7 @@ $(document).ready(function(){
                         </a>
                         </div>
                     {% endif %}
-                    
+
                     {% if this.page.contact_widget=='email' %}
                         <div style="position:absolute;margin-left:-250px;width:240px;">
                         <a href="mailto:requests@offshorelicense.com">
@@ -184,9 +184,9 @@ $(document).ready(function(){
                         </a>
                         </div>
                     {% endif %}
-                    
-                    
-     
+
+
+
 <div class="lang">
 	<label><font>Language</font><span>EN</span></label>
 	<ul>
@@ -241,7 +241,7 @@ $(document).ready(function(){
 <div class="clear"></div>
 <div id="bxdynamic_XEVOpk_end" style="display:none"></div>
     </header>
-    
+
 {% page %}
 
     <div class="page">
@@ -252,7 +252,7 @@ $(document).ready(function(){
 	<div class="content">
 <div class="text">
 	<h1>TEST Corporate services with a personal touch</h1>
-	<p>We deliver the most complex legal, technical and financial services in the most professional way, while always minding your personal 
+	<p>We deliver the most complex legal, technical and financial services in the most professional way, while always minding your personal
 preferences.</p>
 </div>
 <div id="main-shortcut">
@@ -290,7 +290,7 @@ preferences.</p>
 		<h2>Intellectual Property</h2>
 		<p class="elipsis">Trademark, Design and Patent registration.</p>
 	</div>
-	</a>	
+	</a>
 	<a href="{{ 'additional'|page }}">
 	<label style="background-image: url({{ 'assets/img/additional-offshore-services.png'|theme }});">Additional</label>
 	<div>
@@ -406,7 +406,7 @@ preferences.</p>
 								<!--<h1>--><!--</h1>-->
 								<!--<h5>--><!--</h5>-->
 								<!-- 411 272 75 -->
-								
+
 								<h1><strong id="counter1" data-value="{{ 411+(date().timestamp-1509547931)/(86400*7) }}">72</strong></h1>
 								<h5>Companies</h5>
 							</label>
@@ -437,27 +437,27 @@ preferences.</p>
 <!-------------------------------------------------->
 
 <div class="content blog-news-list">
-	    <h2 class="title-s-1">Latest news</h2>    
-	    
-	    
+	    <h2 class="title-s-1">Latest news</h2>
+
+
 <div class="inline-warp">
-         
+
 
     {% set posts = blogPosts.posts %}
 
 
     {% for post in posts %}
-    
+
     <div class="inline-3">
-               
+
                {% if post.featured_images.count %}
                    {% for image in post.featured_images|slice(0, 1) %}
                        <div class="logo clickable" data-url="{{ post.url }}" style="background-image: url('{{ image.path  }}');"></div>
                    {% endfor %}
                {% endif %}
-               
-               
-               
+
+
+
                <label>
                   <h1 class="clickable" data-url="{{ post.url }}">{{ post.title }}</h1>
                   <h5>{{ post.published_at|date('M d, Y') }}</h5>
@@ -468,20 +468,20 @@ preferences.</p>
                <a href="{{ post.url }}">Read more &gt;&gt;</a>
     </div>
 
-        
+
 
     {% endfor %}
 
-  
-            
+
+
 </div>
-         
-    	    
-	    
-	
-	
-	
-	
+
+
+
+
+
+
+
 	    	<div style="text-align:center;"><a href="{{ 'blog'|page({page:1}) }}" class="but but-green">Read more articles</a></div>
 		</div>
 <script>
@@ -506,15 +506,15 @@ preferences.</p>
 <div class="content mainpage-team">
    <h2 class="title-s-1">Testimonials</h2>
    <div class="inline-warp" id="mainpage-team-carousel">
-   
-   
-   
+
+
+
    <!-- testimonial 1 -->
       <div class="inline-2">
          <div class="logo" style="background-image: url('{{ 'assets/upload/iblock/31c/31cc725fd00d2b6eace2bc6a6c4b5774.png' | theme }}');"></div>
          <div class="right">
             <p class="">
-               “In Forex industry everything changes very fast, so you have to react quickly. Offshorelicense was the only corporate service provider who could offer me a solution, once I decided to discontinue operations in Belize due to changes in local laws. It was great help for me at the time.”											
+               “In Forex industry everything changes very fast, so you have to react quickly. Offshorelicense was the only corporate service provider who could offer me a solution, once I decided to discontinue operations in Belize due to changes in local laws. It was great help for me at the time.”
             </p>
             <label>
                <h2>Kavish Rodyyatiil</h2>
@@ -522,17 +522,17 @@ preferences.</p>
             </label>
          </div>
       </div>
-      
-      
-      
-      
-      
+
+
+
+
+
    <!-- testimonial 2 -->
       <div class="inline-2">
          <div class="logo" style="background-image: url('{{ 'assets/upload/iblock/46f/46fe36e0bb62cef94bedea85ccba2b6d.png' | theme}}');"></div>
          <div class="right">
             <p class="">
-               “I run an International company and wanted to expand my business and give more creditability to it. Offshorelicense team helped me with registering a company in Central Europe and obtaining a Trademark. This would have taken too much time for me to research myself. So Offshorelicense was a one-stop shop for me. Thank you!”											
+               “I run an International company and wanted to expand my business and give more creditability to it. Offshorelicense team helped me with registering a company in Central Europe and obtaining a Trademark. This would have taken too much time for me to research myself. So Offshorelicense was a one-stop shop for me. Thank you!”
             </p>
             <label>
                <h2>Yurgen Mittmann</h2>
@@ -540,18 +540,18 @@ preferences.</p>
             </label>
          </div>
       </div>
-      
-      
-      
-      
-      
-      
+
+
+
+
+
+
    <!-- testimonial 3 -->
       <div class="inline-2">
          <div class="logo" style="background-image: url('{{ 'assets/upload/iblock/460/460e3c06d716e75f7a354dca75a27c80.png'|theme }}');"></div>
          <div class="right">
             <p class="">
-               “We are working with Offshorelicense for a long time. So every time we have a requirement for a new bank account, we turn to Offshorelicense for help. They can always give various options that we can pick from.”											
+               “We are working with Offshorelicense for a long time. So every time we have a requirement for a new bank account, we turn to Offshorelicense for help. They can always give various options that we can pick from.”
             </p>
             <label>
                <h2>Junko Shinohara</h2>
@@ -559,37 +559,37 @@ preferences.</p>
             </label>
          </div>
       </div>
-      
-      
-      
-      
-      
-      
+
+
+
+
+
+
    <!-- testimonial 4 -->
       <div class="inline-2">
          <div class="logo" style="background-image: url('https://offshorelicense.com/storage/app/media/JOHNY%20black.jpg');"></div>
          <div class="right">
             <p class="">
-               “Our acquaintance with Offshorelicense started with our request for their assistance with the audit for Vanuatu company, when our partner-auditor let us down, and failed to provide the services due to unspecified reasons. Luckily for us, Offshorelicense provided us with a solution that was both effective and time-efficient, allowing us to avoid unfavorable consequences. At the moment, Offshorelicense is the administrator of our company, and we are content with all the service provided by their team. “											
+               “Our acquaintance with Offshorelicense started with our request for their assistance with the audit for Vanuatu company, when our partner-auditor let us down, and failed to provide the services due to unspecified reasons. Luckily for us, Offshorelicense provided us with a solution that was both effective and time-efficient, allowing us to avoid unfavorable consequences. At the moment, Offshorelicense is the administrator of our company, and we are content with all the service provided by their team. “
             </p>
             <label>
                <h2>Johny Wonter</h2>
                <h3>United Kingdom</h3>
             </label>
          </div>
-      </div> 
-      
-      
-      
-      
-      
-       
+      </div>
+
+
+
+
+
+
  <!-- testimonial 5 -->
       <div class="inline-2">
          <div class="logo" style="background-image: url('{{'assets/upload/iblock/079/0794c47ada86041feade20c8c837a48b.png' | theme}}');"></div>
          <div class="right">
             <p class="">
-               “The Offshorelicense team was recommended to me by my business partners, when I had difficulties in finding a Law firm that could draft legal documentation and Agreements in E-Gaming industry. The team did a very good job.”											
+               “The Offshorelicense team was recommended to me by my business partners, when I had difficulties in finding a Law firm that could draft legal documentation and Agreements in E-Gaming industry. The team did a very good job.”
             </p>
             <label>
                <h2>Nikolay P.</h2>
@@ -602,7 +602,7 @@ preferences.</p>
          <div class="logo" style="background-image: url('https://offshorelicense.com/storage/app/media/KITAJKA.jpg');"></div>
          <div class="right">
             <p class="">
-               “Our company is providing legal and corporate services mainly to Chinese clients who usually have great interest, but are facing various obstacles and challenges in entering other than local Asian markets. Partnership relations with Offshorelicense gives us and our clients opportunity to expand internationally and receive credible advises and solutions concerning establishing Forex brokerage business both offshore and onshore. “											
+               “Our company is providing legal and corporate services mainly to Chinese clients who usually have great interest, but are facing various obstacles and challenges in entering other than local Asian markets. Partnership relations with Offshorelicense gives us and our clients opportunity to expand internationally and receive credible advises and solutions concerning establishing Forex brokerage business both offshore and onshore. “
             </p>
             <label>
                <h2>Zhou Ran</h2>
@@ -636,38 +636,38 @@ preferences.</p>
 				<a href="/">
 					<div class="logo"></div>
 				</a>
-				
+
 				{% content 'footer-address' %}
-				
+
 			</div>
 			<div class="services">
 				<h3>Services</h3>
 				<div id="bxdynamic_rIpOz9_start" style="display:none"></div>
 <ul>
-	
+
 					<li class="current"><a href="{{ 'companies'|page }}">Companies</a></li>
-			
+
 					<li class=""><a href="{{ 'banks'|page }}">Banks</a></li>
-			
+
 					<li><a href="{{ 'licensing'|page }}">Licensing</a></li>
-			
+
 					<li><a href="{{ 'accounting'|page }}">Accounting</a></li>
-					
+
 					<li><a href="{{ 'intellectualproperties'|page }}">Intellectual Property</a></li>
-								
+
 					<li><a href="{{ 'additional'|page }}">Additional</a></li>
 			</ul><div id="bxdynamic_rIpOz9_end" style="display:none"></div>			</div>
 			<div class="right">
 				<h3>Useful links</h3>
 				<div id="bxdynamic_NMQc3w_start" style="display:none"></div>
 <ul >
-	
+
 					<li ><a href="{{ 'about'|page }}">About us</a></li>
-			
+
 					<li ><a href="{{ 'about'|page }}#aboutFormTop">Contact us</a></li>
-			
+
 					<li ><a href="{{ 'faq'|page }}">FAQ</a></li>
-			
+
 					<li ><a href="{{ 'blog'|page({page:1}) }}">Blog</a></li>
 			</ul><div id="bxdynamic_NMQc3w_end" style="display:none"></div>				<div class="social">
 					<a title="Follow us on Facebook" href="https://www.facebook.com/OffshorelicenseLTD/" target="_blank" class="fb"></a>
@@ -687,13 +687,13 @@ preferences.</p>
 			</div>
 		</div>
 	</div>
-	
-	
-	
+
+
+
 	{% component 'googleTracker' %}
-	
-	
-	
+
+
+
 </footer>
 <div id="form3">
 		<form action="/sys/pdf/" method="POST" enctype="multipart/form-data">
@@ -856,9 +856,9 @@ preferences.</p>
 				</tr>
 			</table>
 			<span><b>Optional:</b> provide processing history (statement of last 6 months) with your current/previous acquirer.<br /><small class="limit">Attach only: .doc, .docx, .pdf     (File size not to extend 10 MB)</small></span>
-			
+
 			<input type="file" class="file" name="file" accept=".doc, .docx, .pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword,  	application/vnd.ms-word.document.macroEnabled.12, application/pdf"/>
-			
+
 			<div class="mandatory">*Required fields</div>
 		</div>
 		<div class="clear"></div>
@@ -884,7 +884,7 @@ preferences.</p>
 <script type="text/javascript">
 $(document).ready(function() {
 	var height = $( window ).height()-100;
-	
+
 	$( "#form3" ).dialog({
 		autoOpen: false,
 		height: height,
@@ -903,7 +903,7 @@ $(document).ready(function() {
 			$('body').css('overflow','auto');
 		}
 	});
-	
+
 	$( "#form3-message" ).dialog({
 		autoOpen: false,
 		closeOnEscape: true,
@@ -918,7 +918,7 @@ $(document).ready(function() {
 			$('body').css('overflow','auto');
 		}
 	});
-	
+
 	$( ".form3opener" ).on( "click", function() {
 		$( "#form3" ).dialog("open");
 	});
@@ -926,15 +926,15 @@ $(document).ready(function() {
 	jQuery.validator.addMethod("myEmail", function(value, element) { //checking an email for @ symbol and for suffix (ex: .com)
 		return this.optional( element ) || ( /^[a-z0-9]+([-._][a-z0-9]+)*@([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,4}$/.test(value) && /^(?=.{1,64}@.{4,64}$)(?=.{6,100}$).*/.test(value));
 	}, 'Please enter valid email address.');
-	
+
 	jQuery.validator.addMethod("minMax", function(value, element) { //checking field max if it has value lower than min
 			return this.optional( element ) || (parseInt($('input[name=transaction_amount_min]').val()) < parseInt(value));
 	}, 'Please enter greater value than min.');
-	
+
 	jQuery.validator.addMethod("maxMin", function(value, element) { //checking field min if it has value lower than max
 			return this.optional( element ) || (parseInt($('input[name=transaction_amount_max]').val()) > parseInt(value));
 	}, 'Please enter lower value than max.');
-	
+
 	$("#form3 form").validate({
 		rules: {
 			email: {
@@ -960,7 +960,7 @@ $(document).ready(function() {
 			$(element).closest("td").removeClass("errorImp");
 		}
 	});
-		
+
 	var url = "/upload/accounting/";
 	var file_name='';
 	$('.file').fileupload({
@@ -970,7 +970,7 @@ $(document).ready(function() {
 				$('small[class=limit]').css("color","red");		//higlight requirements for file
 				data.submit().abort();					//abort loading file
 				$(".file").replaceWith( $(".file").val('').clone( true ) ); //remove file name from input if file was not loaded
-			}else if(data.originalFiles[0]['size'] > 10485760) {		
+			}else if(data.originalFiles[0]['size'] > 10485760) {
 				$('small[class=limit]').css("color","red");		//higlight requirements for file
 				data.submit().abort();					//abort loading file
 				$(".file").replaceWith( $(".file").val('').clone( true ) ); //remove file name from input if file was not loaded
