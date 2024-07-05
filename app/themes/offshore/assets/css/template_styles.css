@@ -1,3 +1,6 @@
+.ololo {
+  border: 1px solid #000;
+}
 html, body, div, h1, h2, h3, h4, h5, h6, p, img, ul, li, table {
   margin: 0;
   padding: 0;
@@ -948,242 +951,6 @@ script + #page .page {
 .page-content.BrowseCompaniesByRegion .content.AddRemake > ul > li > label > span {
   height: 30px;
   border-left: none;
-}
-
-/*-----------------------------------------------------------------------------------------------------------------------*/
-.page-content.BrowseBanksByRegion .content {
-  width: 888px;
-}
-
-.page-content.BrowseBanksByRegion .content > ul {
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li {
-  margin-bottom: 10px;
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li > label {
-  height: 50px;
-  background: #fff;
-  display: block;
-  position: relative;
-  padding: 20px 0;
-  font-size: 0;
-  cursor: pointer;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li > label .logo {
-  display: inline-block;
-  height: 40px;
-  width: 40px;
-  margin: 5px 35px 5px 20px;
-  border-radius: 50%;
-  background-position: center;
-  vertical-align: top;
-  background-repeat: no-repeat;
-  background-color: #374d5c;
-  background-image: url('../img/globeWhite.png');
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li.act > label .logo {
-  background-image: url('../img/globeDarkBlue.png');
-  background-color: #fff;
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li > label > span {
-  display: inline-block;
-  font-size: 16px;
-  vertical-align: top;
-  height: 50px;
-  width: calc(100% - 200px);
-  padding: 0 10px 0 25px;
-  border-left: 3px solid #87949d;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li > label > span span {
-  font-size: 16px;
-  font-weight: 300;
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li > label > span label {
-  font-size: 18px;
-  font-weight: 700;
-  display: block;
-  line-height: 18px;
-  margin-bottom: 10px;
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li > label:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 20px;
-  background: url('../img/arrowBottomGrean.png') center no-repeat;
-  width: 20px;
-  height: 12px;
-  margin: auto 0;
-  -webkit-transition: -webkit-transform 0.3s;
-  transition: transform 0.3s;
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li.act > label:after {
-  -ms-transform: rotate(180deg); /* IE 9 */
-  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
-  transform: rotate(180deg);
-  filter: brightness(100); /* Someday, sigh ... */
-  -webkit-filter: brightness(100); /* Prefixed CSS3 blur filters */
-  -moz-filter: brightness(100);
-  -o-filter: brightness(100);
-  -ms-filter: brightness(100);
-  filter: brightness(100); /* Firefox needs SVG */
-  /* IE lte 9 */
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li.act > label {
-  background: #374d5c;
-  color: #fff;
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li.act > label > span {
-  border-left: 3px solid #fff;
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li > ul {
-  max-height: 0;
-  overflow: hidden;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li:last-child {
-  border-bottom: 3px solid #374d5c;
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li {
-  border-bottom: 1px solid #c8c8c8;
-  /*     border-bottom: 0; */
-  font-size: 0;
-  padding: 15px 0;
-  background: #fff;
-  position: relative;
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li > .logo,
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li > a > .logo {
-  display: inline-block;
-  height: 57px;
-  width: 57px;
-  margin: 0 26px 0 10px;
-  border-radius: 50%;
-  background-position: center;
-  background-size: cover;
-  vertical-align: top;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border: 1px solid #d0d0d0;
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li > span {
-  display: inline-block;
-  font-size: 16px;
-  vertical-align: top;
-  height: 45px;
-  padding: 0 10px 0 25px;
-  border-left: 3px solid #adbe4f;
-  width: calc(100% - 450px);
-  margin: 6px 0;
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li > span label {
-  font-size: 18px;
-  font-weight: 700;
-  display: block;
-  line-height: 18px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  color: #1e2b34;
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li > span > span {
-  font-size: 16px;
-  font-weight: 300;
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li.act > ul {
-  max-height: 1000px;
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li .cost {
-  float: right;
-  display: block;
-  width: 90px;
-  height: 35px;
-  vertical-align: middle;
-  text-align: right;
-  padding: 8px 30px 10px 0;
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li .cost span {
-  width: 100%;
-  height: 10px;
-  display: inline-block;
-  line-height: 15px;
-  font-size: 15px;
-  font-weight: 300;
-  color: #1e2b34;
-  margin-bottom: 10px;
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li .cost.discount {
-  height: 47px;
-  padding: 6px 30px 6px 0;
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li a.button {
-  float: right;
-  line-height: 35px;
-  height: 35px;
-  padding: 0 20px;
-  margin: 12px 20px 12px 0;
-  display: block;
-  font-size: 11px;
-  font-weight: 400;
-  color: #fff;
-  background: #8aa203;
-  text-transform: uppercase;
-  border-radius: 5px;
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li .cost h5 {
-  font-size: 18px;
-  color: #1e2b34;
-  font-weight: 700;
-  display: block;
-  line-height: 27px;
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li .cost h6 + h5 {
-  color: #dd2c00;
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li .cost.discount h5 {
-  line-height: 22px;
-}
-
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li .cost.discount h6 {
-  font-size: 15px;
-  font-weight: 300;
-  color: #1e2b34;
-  margin-bottom: 5px;
-  text-decoration: line-through;
-  display: block;
 }
 
 
@@ -2203,6 +1970,73 @@ font.notetext {
   background-image: url('../img/menuCompanyVerySmallGrean.png');
 }
 
+
+
+*[data-icon="service"] a {
+  background-image: url('../img/serviceWhite.png');
+}
+
+*[data-icon="document"] a {
+  background-image: url('../img/documentWhite.png');
+}
+
+*[data-icon="profile"] a {
+  background-image: url('../img/businessWhite.png');
+}
+
+*[data-icon="plain"] a {
+  background-image: url('../img/planeWhite.png');
+}
+
+.act[data-icon="service"] a {
+  background-image: url('../img/serviceGrey.png');
+}
+
+.act[data-icon="document"] a {
+  background-image: url('../img/documentGrey.png');
+}
+
+.act[data-icon="profile"] a {
+  background-image: url('../img/businessGrey.png');
+}
+
+.act[data-icon="plain"] a {
+  background-image: url('../img/planeGrey.png');
+}
+
+*[data-icon="userSmall"] a {
+  background-image: url('../img/userVerySmallPastelBlue.png');
+}
+
+*[data-icon="companySmall"] a {
+  background-image: url('../img/menuCompanyVerySmallPastelBlue.png');
+}
+
+*[data-icon="auditSmall"] a {
+  background-image: url('../img/auditVerySmallPastelBlue.png');
+}
+
+*[data-icon="accountingSmall"] a {
+  background-image: url('../img/menuAccountingVerySmallPastelBlue.png');
+}
+
+.act[data-icon="userSmall"] a {
+  background-image: url('../img/userVerySmallGreen.png');
+}
+
+.act[data-icon="accountingSmall"] a {
+  background-image: url('../img/menuAccountingVerySmallGreen.png');
+}
+
+.act[data-icon="auditSmall"] a {
+  background-image: url('../img/auditVerySmallGreen.png');
+}
+
+.act[data-icon="companySmall"] a {
+  background-image: url('../img/menuCompanyVerySmallGrean.png');
+}
+
+
 #page .bx-authform {
   display: none;
 }
@@ -2748,33 +2582,6 @@ font.notetext {
   vertical-align: text-top;
 }
 
-#companyDetailBody.company div.customServiceCont {
-  background-color: #63869e;
-  padding: 35px;
-  padding-right: 30px;
-}
-
-#companyDetailBody.company div.customServiceCont span {
-  color: #fff;
-}
-
-#companyDetailBody.company div.customServiceCont a {
-  background-color: #fff;
-  border-radius: 5px;
-  color: #374d5c;
-  display: inline-block;
-  float: right;
-  font-size: 14px;
-  font-weight: 700;
-  height: 45px;
-  line-height: 45px;
-  margin-left: 50px;
-  text-align: center;
-  vertical-align: middle;
-  width: 220px;
-}
-
-
 #page .page .page-top#companyDetailTop.bank {
   height: 300px;
 }
@@ -2900,7 +2707,6 @@ font.notetext {
 
 #companyDetailBody.bank {
   padding-top: 50px;
-  width: 885px;
   margin: 0px auto;
   margin-bottom: 70px;
 }
@@ -3078,32 +2884,46 @@ font.notetext {
   margin-bottom: 27px;
 }
 
-#companyDetailBody.bank div.customServiceCont {
+.customServiceCont {
   background-color: #63869e;
   padding: 35px;
+  display: flex;
+  align-items: center;
+  flex-direction: column-reverse;
 }
 
-#companyDetailBody.bank div.customServiceCont span {
+@media screen and (min-width: 560px) {
+  .customServiceCont {
+    flex-direction: row-reverse;
+  }
+}
+
+.customServiceCont span {
   color: #fff;
 }
 
-#companyDetailBody.bank div.customServiceCont a {
+.customServiceCont a {
+  flex-shrink: 0;
   background-color: #fff;
   border-radius: 5px;
   color: #374d5c;
-  display: inline-block;
-  float: right;
+  display: block;
   font-size: 14px;
   font-weight: 700;
-  height: 45px;
-  line-height: 45px;
-  margin-left: 50px;
+  /*margin-left: 50px;*/
+  height: 50px;
+  line-height: 50px;
   text-align: center;
-  vertical-align: middle;
   width: 220px;
+  margin-top: 12px!important;
 }
 
 
+@media screen and (min-width: 560px) {
+  .customServiceCont a {
+    margin-top: 0;
+  }
+}
 .list-of-el {
 }
 
@@ -4000,30 +3820,7 @@ font.notetext {
   margin-bottom: 27px;
 }
 
-.bank #companyDetailBody div.customServiceCont {
-  background-color: #63869e;
-  padding: 35px;
-}
 
-.bank #companyDetailBody div.customServiceCont span {
-  color: #fff;
-}
-
-.bank #companyDetailBody div.customServiceCont a {
-  background-color: #fff;
-  border-radius: 5px;
-  color: #374d5c;
-  display: inline-block;
-  float: right;
-  font-size: 14px;
-  font-weight: 700;
-  height: 45px;
-  line-height: 45px;
-  margin-left: 50px;
-  text-align: center;
-  vertical-align: middle;
-  width: 220px;
-}
 
 
 /*License   */
@@ -4306,31 +4103,6 @@ font.notetext {
   cursor: pointer;
   margin-right: 30px;
   margin-bottom: 27px;
-}
-
-#licDetailBody div.customServiceCont {
-  background-color: #63869e;
-  padding: 35px;
-}
-
-#licDetailBody div.customServiceCont span {
-  color: #fff;
-}
-
-#licDetailBody div.customServiceCont a {
-  background-color: #fff;
-  border-radius: 5px;
-  color: #374d5c;
-  display: inline-block;
-  float: right;
-  font-size: 14px;
-  font-weight: 700;
-  height: 48px;
-  line-height: 48px;
-  margin-left: 50px;
-  text-align: center;
-  vertical-align: middle;
-  width: 180px;
 }
 
 
@@ -4642,30 +4414,6 @@ font.notetext {
   background-color: transparent !important;
 }
 
-.licensing .page-content.BrowseCompaniesByRegion .content div.customServiceCont {
-  background-color: #63869e;
-  padding: 35px;
-}
-
-.licensing .page-content.BrowseCompaniesByRegion .content div.customServiceCont span {
-  color: #fff;
-}
-
-.licensing .page-content.BrowseCompaniesByRegion .content div.customServiceCont a {
-  background-color: #fff;
-  border-radius: 5px;
-  color: #374d5c;
-  display: inline-block;
-  float: right;
-  font-size: 14px;
-  font-weight: 700;
-  height: 48px;
-  line-height: 48px;
-  margin-left: 50px;
-  text-align: center;
-  vertical-align: middle;
-  width: 180px;
-}
 
 .licensing .content.mainPage-list .inline-warp .inline-2 > ul li > a > span {
   width: 290px !important;
@@ -4691,38 +4439,6 @@ font.notetext {
   background-color: transparent !important;
 }
 
-.intprop .page-content.BrowseCompaniesByRegion .content div.customServiceCont {
-  background-color: #63869e;
-  padding: 35px;
-}
-
-.intprop .page-content.BrowseCompaniesByRegion .content div.customServiceCont span {
-  color: #fff;
-}
-
-.intprop .page-content.BrowseCompaniesByRegion .content div.customServiceCont a {
-  background-color: #fff;
-  border-radius: 5px;
-  color: #374d5c;
-  display: inline-block;
-  float: right;
-  font-size: 14px;
-  font-weight: 700;
-  height: 48px;
-  line-height: 48px;
-  margin-left: 50px;
-  text-align: center;
-  vertical-align: middle;
-  width: 180px;
-}
-
-.intprop .content.mainPage-list .inline-warp .inline-2 > ul li > a > span {
-  width: 290px !important;
-}
-
-.intprop .content.mainPage-list .inline-warp .inline-2 > ul li .cost {
-  display: none !important;
-}
 
 
 /*Additional*/
@@ -4872,31 +4588,6 @@ font.notetext {
   left: 3px;
 }
 
-.additional div.customServiceCont {
-  background-color: #63869e;
-  padding: 35px;
-  padding-right: 30px;
-}
-
-.additional div.customServiceCont span {
-  color: #fff;
-}
-
-.additional div.customServiceCont a {
-  background-color: #fff;
-  border-radius: 5px;
-  color: #374d5c;
-  display: inline-block;
-  float: right;
-  font-size: 14px;
-  font-weight: 700;
-  height: 45px;
-  line-height: 45px;
-  margin-left: 50px;
-  text-align: center;
-  vertical-align: middle;
-  width: 220px;
-}
 
 
 .ui-dialog-title {

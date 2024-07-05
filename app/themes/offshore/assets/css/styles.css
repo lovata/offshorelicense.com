@@ -8,6 +8,9 @@ html, body, div, h1, h2, h3, h4, h5, h6, p, img, ul, li, table {
   background: transparent
 }
 
+* {
+  box-sizing: border-box;
+}
 ol, ul {
   list-style: none
 }
@@ -462,6 +465,9 @@ header .top .user .logout {
 #page header .bottom #main-shortcut {
   font-size: 0;
   overflow: hidden;
+}
+#page header .bottom #main-shortcut * {
+  box-sizing: content-box;
 }
 
 #page header .bottom #main-shortcut a {
@@ -1225,6 +1231,7 @@ script + #page .page {
 
 .content.mainPage-list {
   padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 
@@ -2289,6 +2296,7 @@ script + #page .page {
 /*-----------------------------------------------------------------------------------------------------------------------*/
 .page-content.BrowseBanksByRegion .content {
   max-width: 888px;
+  width: 100%;
 }
 
 .page-content.BrowseBanksByRegion .content > ul {
@@ -2299,7 +2307,6 @@ script + #page .page {
 }
 
 .page-content.BrowseBanksByRegion .content > ul > li > label {
-  height: 50px;
   background: #fff;
   display: block;
   position: relative;
@@ -2308,6 +2315,32 @@ script + #page .page {
   cursor: pointer;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+}
+
+.breadscrumbs {
+  list-style: none;
+  padding: 10px 0px 10px 0px;
+  margin: 0px;
+}
+.breadscrumbs li {
+  display: inline;
+  padding-left: 0.5em;
+  text-indent: -1em;
+  color: #adbe4f;
+  font-size: 14px;
+}
+.breadscrumbs li a {
+  color: #000;
+  font-size: 14px;
+}
+.breadscrumbs li:before {
+  content: ">";
+  padding-right: 5px;
+  color: black;
+}
+.breadscrumbs li:first-child:before {
+  content: "";
+  padding-right: 0px;
 }
 
 .page-content.BrowseBanksByRegion .content > ul > li > label .logo {
@@ -2325,6 +2358,14 @@ script + #page .page {
   transition: 0.5s;
 }
 
+
+@media screen and (max-width: 559px) {
+  .page-content.BrowseBanksByRegion .content > ul > li > label .logo {
+    margin: 5px 12px 5px 8px;
+  }
+}
+
+
 .page-content.BrowseBanksByRegion .content > ul > li.act > label .logo {
   background-image: url('../img/globeDarkBlue.png');
   background-color: #fff;
@@ -2340,6 +2381,13 @@ script + #page .page {
   border-left: 3px solid #87949d;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+}
+
+@media screen and (max-width: 559px) {
+  .page-content.BrowseBanksByRegion .content > ul > li > label > span {
+    width: calc(100% - 120px);
+    padding: 0 10px 0 12px;
+  }
 }
 
 .page-content.BrowseBanksByRegion .content > ul > li > label > span span {
@@ -2746,12 +2794,26 @@ tab.smallBanks {
   margin-bottom: 10px;
   display: block;
   text-align: right;
-  height: 50px;
-  max-width: 888px;
+  height: auto!important;
+  /*height: 50px;*/
+  max-width: 96%;
 }
 
+.content .content{
+  padding: 0!important;
+}
+
+@media screen and (min-width: 888px) {
+  tab.smallBanks,
+  .BrowseCompaniesByRegion {
+    max-width: 888px;
+    width: 100% !important;
+  }
+}
+
+
 tab.smallBanks section {
-  padding: 0 25px 0 50px;
+  padding: 0;
   margin: 0;
   line-height: 45px;
   height: 45px;
@@ -2762,6 +2824,18 @@ tab.smallBanks section {
   font-weight: 300;
   color: #374d5c;
   background-position: left 20px center;
+}
+
+@media screen and (min-width: 560px) {
+  tab.smallBanks section {
+    padding: 0 25px 0 50px;
+  }
+}
+@media screen and (max-width: 559px) {
+  tab.smallBanks section {
+    padding: 0 13px;
+    width: 94%;
+  }
 }
 
 tab.smallBanks section.act {
@@ -3918,29 +3992,13 @@ font.notetext {
   margin-top: 20px;
 }
 
-#licDetailBody div.customServiceCont {
+.customServiceCont {
   background-color: #63869e;
   padding: 35px;
 }
 
-#licDetailBody div.customServiceCont span {
+.customServiceCont span {
   color: #fff;
-}
-
-#licDetailBody div.customServiceCont a {
-  background-color: #fff;
-  border-radius: 5px;
-  color: #374d5c;
-  display: inline-block;
-  float: right;
-  font-size: 14px;
-  font-weight: 700;
-  height: 48px;
-  line-height: 48px;
-  margin-left: 50px;
-  text-align: center;
-  vertical-align: middle;
-  width: 180px;
 }
 
 #page .page .page-top .content {
@@ -4508,11 +4566,13 @@ font.notetext {
 .offer-card__text {
   font-weight: 300;
   color: #374d5c;
+  font-size: 16px!important;
 }
 
 .offer-card__container {
   border-left: 3px solid #adbe4f;
   padding-left: 12px;
+  flex-grow: 1;
 }
 
 @media screen and (min-width: 560px) {
@@ -4531,6 +4591,22 @@ font.notetext {
   }
 }
 
+
+
+.offer-card__action {
+  line-height: 35px;
+  height: 35px;
+  padding: 0 20px;
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  color: #fff;
+  background: #8aa203;
+  text-transform: uppercase;
+  border-radius: 5px;
+  text-align: center;
+  margin-left: 12px;
+}
 
 .offer-card__arrow {
   -ms-transform: rotate(45deg);
@@ -4585,11 +4661,15 @@ font.notetext {
 
 .offer-card__cost {
   padding-left: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
 }
 
 @media screen and (max-width: 559px) {
   .offer-card__cost {
     padding-top: 12px;
+
   }
 }
 
