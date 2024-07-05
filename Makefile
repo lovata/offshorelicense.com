@@ -7,12 +7,12 @@ local-init:
 	ansible-playbook --vault-id .vault-password-$(inventory) ansible/playbooks/init/init-nginx.yml -i ansible/$(inventory)-hosts.yml
 	ansible-playbook --vault-id .vault-password-$(inventory) ansible/playbooks/init/init-app.yml -i ansible/$(inventory)-hosts.yml
 local-up:
-	docker compose up -d
+	docker-compose up -d
 	make docker-status
 local-stop:
-	docker compose stop
+	docker-compose stop
 local-bash:
-	docker compose exec --user=sail backend_app bash
+	docker-compose exec --user=sail backend_app bash
 
 # Project commands
 app-migrate:

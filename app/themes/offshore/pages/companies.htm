@@ -61,13 +61,30 @@ function onStart()
 						<ul>
 						{% endif %}
 						<li class="main-offer__list">
-							{% partial 'recommended-card'
-								href='accountingdetails'|page({'type':item.type, 'slug':item.slug})
-								img=item.logo|media
-								title=item.name
-								text=item.type|title
-								priceTitle="Starting from"
-								price='€' ~item.price| number_format(0, '.', ',') %}
+
+							{% if item.bronze_discount > 0 %}
+								{% partial 'recommended-card'
+									href='accountingdetails'|page({'type':item.type, 'slug':item.slug})
+									img=item.logo|media
+									title=item.name
+									text=item.type|title
+									priceTitle="Starting from"
+									oldPrice=item.bronze_price | number_format(0, '.', ',')
+									oldSale=item.bronze_discount | number_format(0, '.', ',')
+								%}
+
+							{% else %}
+								{% partial 'recommended-card'
+									href='accountingdetails'|page({'type':item.type, 'slug':item.slug})
+									img=item.logo|media
+									title=item.name
+									text=item.type|title
+									priceTitle="Starting from"
+									price=item.bronze_price | number_format(0, '.', ',')
+
+								%}
+							{% endif %}
+
 						</li>
 					{% endfor %}
 				</ul>
@@ -207,7 +224,7 @@ function onStart()
 
 				<h3>Everything You Need to Know About Company Incorporation</h3>
 			</div>
-			<tab class="init">
+			<tab class="init tab--col-3">
 				<section class="act" data-icon="service" data-id="1"><a>Why?</a></section>
 				<section data-icon="document" data-id="2"><a>How?</a></section>
 				<section data-icon="profile" data-id="3"><a>Where?</a></section></tab>

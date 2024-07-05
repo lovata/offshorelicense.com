@@ -2585,31 +2585,46 @@ tab.smallBanks + tabContent > section {
 }
 
 tab {
-  font-size: 0;
   max-width: 1177px;
   height: 80px;
-  display: block;
+
+}
+
+@media screen and (min-width: 560px) {
+  tab {
+    display: grid;
+  }
+}
+
+tab.tab--col-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
 }
 
 tab section {
-  width: calc(25% - 3px);
   display: inline-block;
   vertical-align: bottom;
   height: 80px;
   background-color: #adbe4f;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  margin-right: 4px;
+
   text-align: center;
+  width: 100%;
 }
 
-.merchant tab section,
-.technical tab section,
-.licensing tab section,
-.banks tab section,
-.companies tab section {
-  width: calc(33% + 1.261px);
+@media screen and (min-width: 560px) {
+  tab section {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
 }
+
+/*.merchant tab section,*/
+/*.technical tab section,*/
+/*.licensing tab section,*/
+/*.banks tab section,*/
+/*.companies tab section {*/
+/*  width: calc(33% + 1.261px);*/
+/*}*/
 
 .merchant tab section:nth-child(3n),
 .technical tab section:nth-child(3n),
@@ -2667,7 +2682,13 @@ tab section:not(.act) {
 
 tabcontent section {
   display: none;
-  padding: 45px 48px 65px;
+  padding: 45px 16px 65px;
+}
+
+@media screen and (min-width: 768px) {
+  tabcontent section {
+    padding: 32px 48px;
+  }
 }
 
 .std-style,

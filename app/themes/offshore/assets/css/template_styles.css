@@ -949,92 +949,89 @@ tab.smallBanks + tabContent > section {
 }
 
 
-tab {
-  font-size: 0;
-  max-width: 1177px;
-  height: 80px;
-  display: block;
-}
+/*tab {*/
+/*  font-size: 0;*/
+/*  max-width: 1177px;*/
+/*  height: 80px;*/
+/*  display: block;*/
+/*  border: 1px solid #000;*/
+/*}*/
 
-tab section {
-  width: calc(25% - 3px);
-  display: inline-block;
-  vertical-align: bottom;
-  /*     padding: 20px 10px 20px 115px; */
-  height: 80px;
-  background-color: #adbe4f;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  margin-right: 4px;
-  text-align: center;
-}
+/*tab section {*/
 
-.merchant tab section,
-.technical tab section,
-.licensing tab section,
-.banks tab section,
-.companies tab section {
-  width: calc(33% + 1.261px);
-}
+/*  display: inline-block;*/
 
-.merchant tab section:nth-child(3n),
-.technical tab section:nth-child(3n),
-.licensing tab section:nth-child(3n),
-.banks tab section:nth-child(3n),
-.companies tab section:nth-child(3n) {
-  margin-right: 0;
-}
+/*  !*     padding: 20px 10px 20px 115px; *!*/
+/*  height: 80px;*/
+/*  background-color: #adbe4f;*/
+/*  border-top-left-radius: 5px;*/
+/*  border-top-right-radius: 5px;*/
+/*  margin-right: 4px;*/
+/*  text-align: center;*/
+/*}*/
 
-tab section:before {
-  content: '';
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
-}
+/*.merchant tab section,*/
+/*.technical tab section,*/
+/*.licensing tab section,*/
+/*.banks tab section,*/
+/*.companies tab section {*/
+/*  width: calc(33% + 1.261px);*/
+/*}*/
 
-tab section a {
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 21px;
-  font-size: 16px;
-  font-weight: 400;
-  color: #1e2b34;
-  text-align: left;
-  padding: 15px 0px;
-  padding-left: 65px;
-  background-repeat: no-repeat;
-  background-position: left center;
-}
+/*.merchant tab section:nth-child(3n),*/
+/*.technical tab section:nth-child(3n),*/
+/*.licensing tab section:nth-child(3n),*/
+/*.banks tab section:nth-child(3n),*/
+/*.companies tab section:nth-child(3n) {*/
+/*  margin-right: 0;*/
+/*}*/
 
-tab.section-width-repair section {
-  width: calc(33% + 1.2px);
-}
+/*tab section:before {*/
+/*  content: '';*/
+/*  display: inline-block;*/
+/*  height: 100%;*/
+/*  vertical-align: middle;*/
+/*}*/
 
-tab.section-width-repair section:nth-child(3n) {
-  margin-right: 0;
-}
+/*tab section a {*/
+/*  display: inline-block;*/
+/*  vertical-align: middle;*/
+/*  line-height: 21px;*/
+/*  font-size: 16px;*/
+/*  font-weight: 400;*/
+/*  color: #1e2b34;*/
+/*  text-align: left;*/
+/*  padding: 15px 0px;*/
+/*  padding-left: 65px;*/
+/*  background-repeat: no-repeat;*/
+/*  background-position: left center;*/
+/*}*/
 
-tab section:nth-child(4n) {
-  margin-right: 0;
-}
+/*tab.section-width-repair section {*/
+/*  width: calc(33% + 1.2px);*/
+/*}*/
 
-tab section.act {
-  background-color: #fff;
-}
+/*tab.section-width-repair section:nth-child(3n) {*/
+/*  margin-right: 0;*/
+/*}*/
 
-tabcontent {
-  background-color: #fff;
-  display: block;
-}
+/*tab section:nth-child(4n) {*/
+/*  margin-right: 0;*/
+/*}*/
 
-tab section:not(.act) {
-  cursor: pointer;
-}
+/*tab section.act {*/
+/*  background-color: #fff;*/
+/*}*/
 
-tabcontent section {
-  display: none;
-  padding: 45px 48px 65px;
-}
+/*tabcontent {*/
+/*  background-color: #fff;*/
+/*  display: block;*/
+/*}*/
+
+/*tab section:not(.act) {*/
+/*  cursor: pointer;*/
+/*}*/
+
 
 .std-style,
 tabcontent section.text {
