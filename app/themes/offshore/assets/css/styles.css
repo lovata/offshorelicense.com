@@ -1021,7 +1021,6 @@ footer .bottom .right a:last-child {
   }
 }
 
-
 footer .bottom {
   padding: 16px 0;
 }
@@ -1030,16 +1029,32 @@ footer a:hover {
   text-decoration: underline;
 }
 
-#page .page {
-  padding-top: 100px;
+#page .page.page-short {
+  padding-top: 70px;
 }
 
-@media screen and (max-width: 767px) {
-  #page .page {
-    padding-top: 96px;
 
+@media screen and (min-width: 768px) {
+  #page .page.page-short {
+    padding-top: 130px;
   }
 }
+
+#page .page:not(.page-short) {
+  #page .page:not(.page-short) {
+    padding-top: 100px;
+  }
+}
+
+#page .page:not(.page-short) {
+  padding-top: 96px;
+}
+@media screen and (min-width: 768px) {
+  #page .page:not(.page-short) {
+    padding-top: 123px;
+  }
+}
+
 
 script + #page .page {
   margin-top: 0;
@@ -1058,11 +1073,6 @@ script + #page .page {
 }
 
 /* TODO TEMP block place */
-
-/*#page .page .page-top.main #main-shortcut {*/
-/* position: absolute;*/
-/* top: 315px;*/
-/*}*/
 
 
 #page .page .page-top.main #main-shortcut {
@@ -1214,10 +1224,16 @@ script + #page .page {
 }
 
 .content.mainPage-list {
-  padding-top: 80px;
-  padding-bottom: 30px;
+  padding-top: 30px;
 }
 
+
+@media screen and (min-width: 768px) {
+  .content.mainPage-list {
+    padding-top: 80px;
+    padding-bottom: 30px;
+  }
+}
 
 .content.mainPage-list .inline-warp {
   margin: 35px 0 0;
@@ -1927,14 +1943,23 @@ script + #page .page {
   margin-top: 125px;
 }
 
-#page .page .page-top .content .text h2 {
-  font-size: 36px;
+#page .main-offer__heading {
+  font-size: 26px!important;
+  line-height: 1.3!important;
   font-weight: 400;
   color: #fff;
   text-transform: uppercase;
-
   margin-bottom: 20px;
   margin-top: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  #page .main-offer__heading {
+    font-size: 36px!important;
+  }
+}
+#page .page .page-top .content .title {
+  font-size: 36px;
 }
 
 .page-content {
@@ -2263,7 +2288,7 @@ script + #page .page {
 
 /*-----------------------------------------------------------------------------------------------------------------------*/
 .page-content.BrowseBanksByRegion .content {
-  width: 888px;
+  max-width: 888px;
 }
 
 .page-content.BrowseBanksByRegion .content > ul {
@@ -2722,7 +2747,7 @@ tab.smallBanks {
   display: block;
   text-align: right;
   height: 50px;
-  width: 888px;
+  max-width: 888px;
 }
 
 tab.smallBanks section {
@@ -4291,13 +4316,12 @@ font.notetext {
   width: 230px;
 }
 
-
 @media screen and (max-width: 767px) {
-  #page header .bottom,
-  #page header .middle,
+  header .bottom,
+  header .middle,
   .header-top-lang,
   .header-phone {
-    display: none;
+    display: none!important;
   }
 }
 
