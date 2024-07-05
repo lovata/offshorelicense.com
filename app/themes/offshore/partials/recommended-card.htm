@@ -7,7 +7,7 @@
          <p class="offer-card__title">{{ title }}</p>
          <p class="offer-card__text">{{text}}</p>
     </span>
-    {% if oldPrice or oldSale or priceTitle %}
+    {% if oldPrice or oldSale or price or priceTitle or actionText %}
         <div class="offer-card__cost">
           <div class="">
                 {% if priceTitle %}
@@ -21,7 +21,7 @@
               {% endif %}
 
               {% if price %}
-                  <p class="offer-card__price">€{{price}}</p>
+                  <p class="offer-card__price">{{price}}</p>
               {% endif %}
           </div>
             {% if actionText %}

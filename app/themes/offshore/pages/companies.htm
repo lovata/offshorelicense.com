@@ -20,11 +20,11 @@ function onStart()
             ->orderby('region')
             ->groupBy('region')
             ->get();
-     
+
      foreach ($regions as $region){
           $array[$region->region] = Db::table('offshorelicense_offers_companies')->where('region',$region->region)->where('disabled','<>','1')->orderby('name')->get();
      }
-     
+
      //noob sorting:)
     /* if(isset ($array["Europe"]))  $array2["Europe"] = $array["Europe"];
      if(isset ($array["North & South America"])) $array2["North & South America"] = $array["North & South America"];
@@ -32,13 +32,13 @@ function onStart()
      if(isset ($array["Africa"])) $array2["Africa"] = $array["Africa"];
      if(isset ($array["Caribbean Region"])) $array2["Caribbean Region"] = $array["Caribbean Region"];
      if(isset ($array["Oceania & Pacific Islands"])) $array2["Oceania & Pacific Islands"] = $array["Oceania & Pacific Islands"];*/
-     
+
      $this->page["List"] =$array;
-     
+
      $featured = array();
      $featured = Db::table('offshorelicense_offers_companies')->where('featured','1')->where('disabled','<>','Yes')->orderby('featured_order_id')->take(4)->get();
-     $this->page["Featured"] =$featured;    
-     
+     $this->page["Featured"] =$featured;
+
      $this->page['breadscrumbs'] = array('Home'=>$this->page['site_link'],'Companies'=>"");
 }
 ?>
@@ -47,55 +47,55 @@ function onStart()
 	<!-------------------------------------------------->
 	<!----------START Recommended companies------------->
 	<!-------------------------------------------------->
-	<div class="page-top" style="height: 460px;">
-		<div class="content mainPage-list" style="padding-bottom: 0;">
-			<div class="text center">
-
-				<h1>Offshore Company Formation</h1>
-
-				<h2>Best Companies for Incorporation</h2>
+	<div class="page-top main-offer">
+		<div class="content mainPage-list">
+			<div class="text center ">
+				<h1 class="main-offer__heading">Offshore Company Formation</h1>
+				<h2 class="main-offer__subheading">Offshore Company Formation</h2>
 			</div>
-			<div id="companies_recomended">
-				<div class="inline-warp">
-					<div class="inline-2 company inline-over">
-
-						<ul style="background-color: transparent;">
-						{%for item in this.page["Featured"]%}
-						
-                        <li class="float-left margin-left">
-                           <a href="{{'company'|page({'slug':item.slug})}}">
-                              <div style="background-image: url('{{item.logo|media}}');"><br></div>
-                              <span><h3>{{item.name}}</h3> 
-                              <span>{{item.info}}</span></span>
-                    
-                    			    {% if item.bronze_discount > 0 %}
-                    			    <div class="cost discount">
-                    				    <h6>€{{ item.bronze_price | number_format(0, '.', ',') }}</h6>
-                    				    <h5>€{{ item.bronze_discount | number_format(0, '.', ',') }}</h5>
-                    				</div>
-                    				{% else %}
-                    				<div class="cost">
-                    				    <h5>€{{item.bronze_price| number_format(0, '.', ',') }}</h5>
-                    				</div>
-                    				{% endif %}
-                    
-                           </a>
-                        </li>
-							
-							
-						{% endfor %}
+			<div class="main-offer__wrap js-main-offer-slider">
+				<ul>
+					{% for item in this.page["Featured"] %}
+						{% if loop.index == 3 %}
 						</ul>
-					</div>
-				</div>
+						<ul>
+						{% endif %}
+						<li class="main-offer__list">
+							{% partial 'recommended-card'
+								href='accountingdetails'|page({'type':item.type, 'slug':item.slug})
+								img=item.logo|media
+								title=item.name
+								text=item.type|title
+								priceTitle="Starting from"
+								price='€' ~item.price| number_format(0, '.', ',') %}
+						</li>
+					{% endfor %}
+				</ul>
+				<ul>
+					{% for item in this.page["featured_audit"] %}
+
+						<li class="main-offer__list">
+							{% partial 'recommended-card'
+								href='accountingdetails'|page({'type':item.type, 'slug':item.slug})
+								img=item.logo|media
+								title=item.name
+								text=item.type|title
+								priceTitle="Starting from"
+								price='€' ~item.price| number_format(0, '.', ',') %}
+						</li>
+					{% endfor %}
+				</ul>
 			</div>
+
+
 		</div>
 	</div>
 	<!-------------------------------------------------->
 	<!-----------END Recommended companies-------------->
 	<!-------------------------------------------------->
-	
 
-    
+
+
     {% if this.page["breadscrumbs"] %}
      <div class="content">
         <ul class='breadscrumbs'>
@@ -111,11 +111,11 @@ function onStart()
         </ul>
     </div>
     {% endif %}
-    
 
 
 
-	<div class="page-content BrowseCompaniesByRegion">
+
+	<div class="page-content BrowseBanksByRegion ">
 		<div class="content">
 			<div class="text center">
 
@@ -123,47 +123,79 @@ function onStart()
 			</div>
 
 			<ul>
-			
-			
+
+
 			{%for region_name,region in this.page["List"]%}
-			
-			
+
+
 				<li id="accordion_{{region_name|replace({' ':'','&':''}) }}">
-					<label onclick="$(this).parent('li').toggleClass('act')">  
+					<label onclick="$(this).parent('li').toggleClass('act')">
 						<div class="logo"><br></div>
 						<span><label>{{region_name}}</label> <span>{{region|length}} companies available</span></span>
 					</label>
                     <ul>
     					{%for item in region%}
-    						<li><a href="{{'company'|page({'slug':item.slug})}}"><div class="logo" style="background-image: url('{{item.logo|media}}');"><br></div></a>
-    							<span><a href="{{'company'|page({'slug':item.slug})}}"><label>{{item.name}}</label></a> <span>{{item.info}}</span></span>
-    							<a class="button" href="{{'company'|page({'slug':item.slug})}}">Learn more</a>
-        					    
-        					    {% if item.bronze_discount > 0 %}
-        					    <div class="cost discount">
-        						    <h6>€{{ item.bronze_price | number_format(0, '.', ',') }}</h6>
-        						    <h5>€{{ item.bronze_discount | number_format(0, '.', ',') }}</h5>
-        						</div>
-        						{% elseif item.bronze_price > 0 %}
-        						<div class="cost">
-        						    <h5>€{{item.bronze_price| number_format(0, '.', ',') }}</h5>
-        						</div>|
-        						{% else %}
-        						<div class="cost">
-        						    <h5>On request</h5>
-        						</div>|
-        						{% endif %}
-        						
-        						
-    						</li>					
+							<li>
+								{% if item.bronze_discount > 0 %}
+									{% partial 'recommended-card'
+										href='company'|page({'slug':item.slug})
+										img=item.logo|media
+										title=item.name
+										text=item.info
+										oldPrice='€' ~ item.bronze_price | number_format(0, '.', ',')
+										oldSale='€' ~item.bronze_discount
+										actionText="Learn more"
+									%}
+								{% elseif item.bronze_price > 0 %}
+									{% partial 'recommended-card'
+										href='company'|page({'slug':item.slug})
+										img=item.logo|media
+										title=item.name
+										text=item.info
+										price='€' ~item.bronze_price| number_format(0, '.', ',')
+										actionText="Learn more"
+									%}
+								{% else %}
+									{% partial 'recommended-card'
+										href='company'|page({'slug':item.slug})
+										img=item.logo|media
+										title=item.name
+										text=item.info
+										actionText="Learn more"
+										price="On request"
+									%}
+								{% endif %}
+{#    						<li><a href="{{'company'|page({'slug':item.slug})}}"><div class="logo" style="background-image: url('{{item.logo|media}}');"><br></div></a>#}
+{#    							<span>#}
+{#									<a href="{{'company'|page({'slug':item.slug})}}"><label>{{item.name}}</label></a>#}
+{#									<span>{{item.info}}</span></span>#}
+{#    							<a class="button" href="{{'company'|page({'slug':item.slug})}}">Learn more</a>#}
+
+{#        					    {% if item.bronze_discount > 0 %}#}
+{#        					    <div class="cost discount">#}
+{#        						    <h6>€{{ item.bronze_price | number_format(0, '.', ',') }}</h6>#}
+{#        						    <h5>€{{ item.bronze_discount | number_format(0, '.', ',') }}</h5>#}
+{#        						</div>#}
+{#        						{% elseif item.bronze_price > 0 %}#}
+{#        						<div class="cost">#}
+{#        						    <h5>€{{item.bronze_price| number_format(0, '.', ',') }}</h5>#}
+{#        						</div>|#}
+{#        						{% else %}#}
+{#        						<div class="cost">#}
+{#        						    <h5>On request</h5>#}
+{#        						</div>|#}
+{#        						{% endif %}#}
+
+
+{#    						</li>#}
     					{% endfor %}
 				    </ul>
 				</li>
-					
+
 	        {% endfor %}
 
-					
-					
+
+
 		</div>
 	</div>
 	<!-------------------------------------------------->
@@ -175,11 +207,11 @@ function onStart()
 
 				<h3>Everything You Need to Know About Company Incorporation</h3>
 			</div>
-			<tab class="init">     
-				<section class="act" data-icon="service" data-id="1"><a>Why?</a></section>     
-				<section data-icon="document" data-id="2"><a>How?</a></section>     
+			<tab class="init">
+				<section class="act" data-icon="service" data-id="1"><a>Why?</a></section>
+				<section data-icon="document" data-id="2"><a>How?</a></section>
 				<section data-icon="profile" data-id="3"><a>Where?</a></section></tab>
-			<tabcontent>     
+			<tabcontent>
 				<section class="text act" data-id="1">
 
 					<h4>It is legal</h4>
@@ -241,7 +273,7 @@ function onStart()
 						<li>Tax planning – is legal, is practice where tax liability is reduced by using various strategies and methods within the law in order to reduce amount of owed taxes.</li>
 						<li>Tax evasion – is illegal, is practice when financial data is amended or not reported in order to not pay owed taxes.</li>
 					</ul>
-				</section>     
+				</section>
 				<section class="text" data-id="2">
 
 					<h4>Perform these steps</h4>
@@ -291,7 +323,7 @@ function onStart()
 					<ul>
 						<li>The time of incorporation depends on the correctness and full submission of all required documents to us, and time for incorporation process varies in each country and depends on each country’s legal framework, bureaucracy, operational efficiency of responsible authorities. For incorporation time of any particular country please search it on our webpage or contact us.</li>
 					</ul>
-				</section>     
+				</section>
 				<section class="text" data-id="3">
 
 					<h4>Which country</h4>

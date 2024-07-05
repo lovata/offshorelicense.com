@@ -1960,6 +1960,13 @@ script + #page .page {
   margin-top: 10px;
 }
 
+.main-offer__subheading {
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
 @media screen and (min-width: 768px) {
   #page .main-offer__heading {
     font-size: 36px!important;
@@ -2476,7 +2483,6 @@ script + #page .page {
   display: inline-block;
   font-size: 16px;
   vertical-align: top;
-  height: 45px;
   padding: 0 10px 0 25px;
   border-left: 3px solid #adbe4f;
   width: calc(100% - 450px);
@@ -4606,6 +4612,7 @@ font.notetext {
   border-radius: 5px;
   text-align: center;
   margin-left: 12px;
+  flex-shrink: 0;
 }
 
 .offer-card__arrow {
@@ -4664,6 +4671,7 @@ font.notetext {
   display: flex;
   align-items: center;
   justify-content: end;
+  flex-shrink: 0;
 }
 
 @media screen and (max-width: 559px) {

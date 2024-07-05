@@ -100,7 +100,7 @@ $this->page['breadscrumbs'] = array('Home'=>$this->page['site_link'],'Accounting
                                 title=item.name
                                 text=item.type|title
                                 priceTitle="Starting from"
-                                price=item.price| number_format(0, '.', ',') %}
+                                price='€' ~item.price| number_format(0, '.', ',') %}
                         </li>
                     {% endfor %}
                 </ul>
@@ -114,7 +114,7 @@ $this->page['breadscrumbs'] = array('Home'=>$this->page['site_link'],'Accounting
                                 title=item.name
                                 text=item.type|title
                                 priceTitle="Starting from"
-                                price=item.price| number_format(0, '.', ',') %}
+                                price='€' ~item.price| number_format(0, '.', ',') %}
                         </li>
                     {% endfor %}
                 </ul>
@@ -173,7 +173,6 @@ $this->page['breadscrumbs'] = array('Home'=>$this->page['site_link'],'Accounting
                                             <ul>
                                                 {% for item in region %}
                                                     <li>
-
                                                         {% partial 'recommended-card'
                                                             href='accountingdetails'|page({'type':item.type, 'slug':item.slug})
                                                             img=item.logo|media
@@ -181,29 +180,23 @@ $this->page['breadscrumbs'] = array('Home'=>$this->page['site_link'],'Accounting
                                                             text=item.country
                                                             priceTitle="Starting from"
                                                             actionText="Learn more"
-                                                            price=item.price| number_format(0, '.', ',') %} ~ '*')
+                                                            price='€' ~item.price| number_format(0, '.', ',') ~ '*'
 
                                                         %}
                                                     </li>
                                                 {% endfor %}
                                             </ul>
                                         </li>
-
                                     {% endfor %}
                                 </ul>
-
-
                             </div>
                         </div>
                     </div>
                 </section>
-
                 <section data-id="2">
                     <div class="content">
                         <div class="BrowseCompaniesByRegion">
                             <div class="content">
-
-
                                 <ul>
                                     {% for region_name,region in this.page["List2"] %}
 
