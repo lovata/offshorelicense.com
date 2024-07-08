@@ -63,7 +63,7 @@ function onStart()
 						<li class="main-offer__list">
 							{% if item.bronze_discount > 0 %}
 								{% partial 'recommended-card'
-									href='accountingdetails'|page({'type':item.type, 'slug':item.slug})
+									href='company'|page({'slug':item.slug})
 									img=item.logo|media
 									title=item.name
 									text=item.type|title
@@ -74,7 +74,7 @@ function onStart()
 
 							{% else %}
 								{% partial 'recommended-card'
-									href='accountingdetails'|page({'type':item.type, 'slug':item.slug})
+									href='company'|page({'slug':item.slug})
 									img=item.logo|media
 									title=item.name
 									text=item.type|title

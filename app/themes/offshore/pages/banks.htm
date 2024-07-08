@@ -101,7 +101,7 @@ function onStart()
 
                     <li class="main-offer__list">
                         {% partial 'recommended-card'
-                            href='accountingdetails'|page({'type':item.type, 'slug':item.slug})
+                            href='bank'|page({'type':item.type, 'slug':item.slug})
                             img=item.logo|media
                             title=item.name
                             text=item.type|title
@@ -114,7 +114,7 @@ function onStart()
                 {% for item in this.page["FeaturedPersonal"] %}
                     <li class="main-offer__list">
                         {% partial 'recommended-card'
-                            href='accountingdetails'|page({'type':item.type, 'slug':item.slug})
+                            href='bank'|page({'type':item.type, 'slug':item.slug})
                             img=item.logo|media
                             title=item.name
                             text=item.type|title
