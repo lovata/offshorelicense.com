@@ -100,6 +100,7 @@ $this->page['breadscrumbs'] = array('Home'=>$this->page['site_link'],'Accounting
                                 title=item.name
                                 text=item.type|title
                                 priceTitle="Starting from"
+                                isArrow=true
                                 price='€' ~item.price| number_format(0, '.', ',') %}
                         </li>
                     {% endfor %}
@@ -114,6 +115,7 @@ $this->page['breadscrumbs'] = array('Home'=>$this->page['site_link'],'Accounting
                                 title=item.name
                                 text=item.type|title
                                 priceTitle="Starting from"
+                                isArrow=true
                                 price='€' ~item.price| number_format(0, '.', ',') %}
                         </li>
                     {% endfor %}

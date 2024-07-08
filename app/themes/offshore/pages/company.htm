@@ -17,10 +17,10 @@ function onEnd() {
     //$this->SeoCmsPage->seo_keywords = $this["record"]->meta_keywords;
     //$this->SeoCmsPage->seo_description = $this["record"]->meta_description;
     $this->SeoCmsPage->seo_description = $this["record"]->name." formation with Offshorelicense";
-    
+
     $this->page['breadscrumbs'] = array(
         'Home'=>$this->page['site_link'],
-        'Companies'=>"/companies", 
+        'Companies'=>"/companies",
         ucfirst($this["record"]->region).""=>"/companies/#".preg_replace("/[^A-Za-z0-9]/", '', $this["record"]->region),
         $this["record"]->name=>"",
     );
@@ -28,40 +28,25 @@ function onEnd() {
 ?>
 ==
 <div class="page company">
-		
 	<div class="bx_item_detail bx_blue" id="bx_117848907_455">
-<div id="companyDetailTop" class="page-top company">
-	<div style="padding-bottom: 0;" class="content mainPage-list">
-		<div class="text center">
-		
-		{% if attribute(record, "title")%}
-		    <h1>{{attribute(record, "title")}}</h1>
-		{% else %}
-			<h1>Companies</h1>
-		{% endif %}
-			
-			<div class="companyInfo">
-				<div class="logo" style="background-image: url('{{ attribute(record, "logo")|media }}');"></div>
-				<span>
-					<h2>{% if record %}
-                            {{ attribute(record, "name") }}
-                        {% else %}
-                            Not found
-                        {% endif %}
-                    </h2>
-					<span>{{ attribute(record, "info") | raw }}</span>
-				</span>
-				<div class="cost">
-					<h5></h5>
+		<div id="companyDetailTop" class="page-top company">
+			<div class="content mainPage-list">
+				<div class="text center">
+				{% if attribute(record, "title")%}
+					<h1 class="main-offer__heading">{{attribute(record, "title")}}</h1>
+				{% else %}
+					<h1 class="main-offer__heading">Companies</h1>
+				{% endif %}
+				<div class="companyInfo main-offer__list">
+					{% partial 'recommended-card'
+						img=attribute(record, "logo")|media
+						title= attribute(record, "name")
+						text=attribute(record, "info")
+					%}
+				</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
-
-
-
-
 {% if this.page["breadscrumbs"] %}
  <div class="white-bg">
  <div class="content">
@@ -79,35 +64,25 @@ function onEnd() {
 </div>
 </div>
 {% endif %}
-
-
-
-
-<div id="companyDetailInfo" class="company">
-	<div class="cont">
+<div id="companyDetailInfo" class="company description-page">
+	<div class="cont content">
 		<div class="logo"></div>
 		<span>{{ attribute(record, "description") | raw }}</span>
 	</div>
 </div>
 
-
-
-<div id="companyDetailBody" class="company">
-
-
-
-
-
-	<table cellspacing="0" cellpadding="0">
-		<thead>
+<div id="companyDetailBody" class="content company">
+	<div class="color-table">
+		<table cellspacing="0" cellpadding="0">
+			<thead>
 			<tr>
 				<th><a href="{{'companies'|page}}">Back to list</a></th>
 				<th class="bronze">Bronze</th>
 				<th class="silver">Silver</th>
 				<th class="gold">Gold</th>
 			</tr>
-		</thead>
-		<tbody>
+			</thead>
+			<tbody>
 			<tr>
 				<td>Name check</td>
 				<td>{% if record.checks|slice(0, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
@@ -167,91 +142,67 @@ function onEnd() {
 			</tr><tr class="moreBlock" data-bid="nominee">
 				<td colspan="4">{{ attribute(record, "nominee_director_and_shareholder") | raw }}</td>
 			</tr><tr>
-		</tr></tbody>
-		<tfoot>
+			</tr></tbody>
+			<tfoot>
 			<tr>
 				<td>Total amount:</td>
-					<td class="price">
-					    {% if attribute(record, "bronze_discount") > 0 %}
-						    <label class="disc">€{{ attribute(record, "bronze_discount") | number_format(0, '.', ',') }}</label><br/>
-						    <span>€{{ attribute(record, "bronze_price") | number_format(0, '.', ',') }}</span>
+				<td class="price">
+					{% if attribute(record, "bronze_discount") > 0 %}
+						<label class="disc">€{{ attribute(record, "bronze_discount") | number_format(0, '.', ',') }}</label><br/>
+						<span>€{{ attribute(record, "bronze_price") | number_format(0, '.', ',') }}</span>
+					{% else %}
+						{% if attribute(record, "bronze_price") > 0 %}
+							<label>€{{ attribute(record, "bronze_price") | number_format(0, '.', ',') }}</label>
 						{% else %}
-						    {% if attribute(record, "bronze_price") > 0 %}
-						        <label>€{{ attribute(record, "bronze_price") | number_format(0, '.', ',') }}</label>
-						    {% else %}
-						        <label>On request</label>
-						    {% endif %}
+							<label>On request</label>
 						{% endif %}
-					</td>
-					<td class="price">
-					    {% if attribute(record, "silver_discount") > 0 %}
-						    <label class="disc">€{{ attribute(record, "silver_discount") | number_format(0, '.', ',') }}</label><br/>
-						    <span>€{{ attribute(record, "silver_price") | number_format(0, '.', ',') }}</span>
+					{% endif %}
+				</td>
+				<td class="price">
+					{% if attribute(record, "silver_discount") > 0 %}
+						<label class="disc">€{{ attribute(record, "silver_discount") | number_format(0, '.', ',') }}</label><br/>
+						<span>€{{ attribute(record, "silver_price") | number_format(0, '.', ',') }}</span>
+					{% else %}
+						{% if attribute(record, "silver_price") > 0 %}
+							<label>€{{ attribute(record, "silver_price") | number_format(0, '.', ',') }}</label>
 						{% else %}
-						    {% if attribute(record, "silver_price") > 0 %}
-						        <label>€{{ attribute(record, "silver_price") | number_format(0, '.', ',') }}</label>
-						    {% else %}
-						        <label>On request</label>
-						    {% endif %}
+							<label>On request</label>
 						{% endif %}
-					</td>
-					<td class="price">
-					    {% if attribute(record, "gold_discount") > 0 %}
-						    <label class="disc">€{{ attribute(record, "gold_discount") | number_format(0, '.', ',') }}</label><br/>
-						    <span>€{{ attribute(record, "gold_price") | number_format(0, '.', ',') }}</span>
+					{% endif %}
+				</td>
+				<td class="price">
+					{% if attribute(record, "gold_discount") > 0 %}
+						<label class="disc">€{{ attribute(record, "gold_discount") | number_format(0, '.', ',') }}</label><br/>
+						<span>€{{ attribute(record, "gold_price") | number_format(0, '.', ',') }}</span>
+					{% else %}
+						{% if attribute(record, "gold_price") > 0 %}
+							<label>€{{ attribute(record, "gold_price") | number_format(0, '.', ',') }}</label>
 						{% else %}
-						    {% if attribute(record, "gold_price") > 0 %}
-						        <label>€{{ attribute(record, "gold_price") | number_format(0, '.', ',') }}</label>
-						    {% else %}
-						        <label>On request</label>
-						    {% endif %}
+							<label>On request</label>
 						{% endif %}
-					</td>
+					{% endif %}
+				</td>
 			</tr>
-		</tfoot>
-	</table>
-
-
-
-
-
-
-
-
-
-{{partial('company-contact-form')}}
-
-
-
-
-
-
-
-
-
-
+			</tfoot>
+		</table>
+	</div>
+</div>
+<div class="color-table company-contact-form">
+	{{partial('company-contact-form')}}
+</div>
 </div>
 
-
-
-
-
-</div>
-
-    <div class="page-content EverythingYouNeedToKnow">
+    <div class="tab-files accord EverythingYouNeedToKnow">
         <div class="content">
             <div class="text center">
-            
-		{% if attribute(record, "tabs_title")%}
-		    <h3>{{attribute(record, "tabs_title")}}</h3>
-		    <h1></h1>
-		{% else %}
-			<h3>Facts &amp; Info for {{ attribute(record, "name") }}</h3>
-		{% endif %}            
-            
-                
+				{% if attribute(record, "tabs_title")%}
+					<h3>{{attribute(record, "tabs_title")}}</h3>
+					<h1></h1>
+				{% else %}
+					<h3>Facts &amp; Info for {{ attribute(record, "name") }}</h3>
+				{% endif %}
             </div>
-            <tab class="section-width-repair init">
+            <tab class="section-width-repair init tab--col-3">
                 <section data-icon="profile" data-id="1" class="act"><a>Company</a></section>
                 <section data-icon="service" data-id="2"><a>Services</a></section>
                 <section data-icon="document" data-id="3"><a>Requirements</a></section>
@@ -271,4 +222,4 @@ BX.ready(BX.defer(function(){
 }));
 </script>
 
-</div>
+

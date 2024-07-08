@@ -68,10 +68,10 @@ function onStart()
 									title=item.name
 									text=item.type|title
 									priceTitle="Starting from"
+									isArrow=true
 									oldPrice=item.bronze_price | number_format(0, '.', ',')
 									oldSale=item.bronze_discount | number_format(0, '.', ',')
 								%}
-
 							{% else %}
 								{% partial 'recommended-card'
 									href='company'|page({'slug':item.slug})
@@ -80,10 +80,9 @@ function onStart()
 									text=item.type|title
 									priceTitle="Starting from"
 									price=item.bronze_price | number_format(0, '.', ',')
-
+									isArrow=true
 								%}
 							{% endif %}
-
 						</li>
 					{% endfor %}
 				</ul>

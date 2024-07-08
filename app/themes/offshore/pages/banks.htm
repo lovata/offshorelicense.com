@@ -81,7 +81,6 @@ function onStart()
 ?>
 ==
 <div class="page page-short">
-
 <div class="page-top main-offer">
     <div class="content mainPage-list">
         <div class="text center">
@@ -106,7 +105,9 @@ function onStart()
                             title=item.name
                             text=item.type|title
                             priceTitle="Starting from"
-                            price='€' ~item.price| number_format(0, '.', ',') %}
+                            price='€' ~item.price| number_format(0, '.', ',')
+                            isArrow=true
+                        %}
                     </li>
                 {% endfor %}
             </ul>
@@ -119,7 +120,9 @@ function onStart()
                             title=item.name
                             text=item.type|title
                             priceTitle="Starting from"
-                            price='€' ~item.price| number_format(0, '.', ',') %}
+                            price='€' ~item.price| number_format(0, '.', ',')
+                            isArrow=true
+                        %}
                     </li>
                 {% endfor %}
             </ul>
@@ -184,6 +187,7 @@ function onStart()
                                                         priceTitle="Starting from"
                                                         actionText="Learn more"
                                                         price='€' ~item.price| number_format(0, '.', ',')
+                                                        isArrow=true
 
                                                     %}
                                                 </li>
@@ -192,7 +196,7 @@ function onStart()
                                     </li>
                                 {% endfor %}
                             </ul>
-                        </div
+                        </div>
                     </div>
                 </div>
             </section>

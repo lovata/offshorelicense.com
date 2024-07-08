@@ -1980,14 +1980,11 @@ script + #page .page {
   font-size: 36px;
 }
 
-.page-content {
-  margin: 60px 0;
-}
-
 .page-content b {
   font-weight: 600;
 }
 
+.tab-files .text,
 .page-content .text {
   margin-bottom: 20px;
 }
@@ -1996,6 +1993,7 @@ script + #page .page {
 }
 
 .privacy h3,
+.tab-files .text h3,
 .page-content .text h3 {
   color: #374d5c;
   font-size: 24px;
@@ -2033,13 +2031,10 @@ script + #page .page {
   margin-left: -50px;
 }
 
+.tab-files .text.center,
 .page-content .text.center {
   text-align: center;
 }
-
-
-
-
 
 /*-----------------------------------------------------------------------------------------------------------------------*/
 .page-content.accord .content {
@@ -2351,7 +2346,6 @@ tab {
   vertical-align: bottom;
   height: 80px;
   background-color: #adbe4f;
-
   text-align: center;
   width: 100%;
 }
@@ -2365,21 +2359,11 @@ tab {
 
 
 .tab-files tab {
-  /*font-size: 0;*/
-  /*max-width: 1177px;*/
   height: 80px;
-  /*border: 1px solid #000;*/
 }
 
-.tab-files tab > section {
-
-  /*display: inline-block;*/
-
-  /*     padding: 20px 10px 20px 115px; */
-  /*height: 80px;*/
+.tab-files tab  section {
   background-color: #adbe4f;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
   margin-right: 4px;
   text-align: center;
 }
@@ -2422,19 +2406,8 @@ tab section a {
   background-position: left center;
 }
 
-tab.section-width-repair section {
-  width: calc(33% + 1.2px);
-}
-
-tab.section-width-repair section:nth-child(3n) {
-  margin-right: 0;
-}
-
-tab section:nth-child(4n) {
-  margin-right: 0;
-}
-
-tab section.act {
+.tab-files tab section.act,
+.page-content tab section.act {
   background-color: #fff;
 }
 
@@ -3621,172 +3594,6 @@ font.notetext {
   }
 }
 
-
-#licDetailBody {
-  padding-top: 50px;
-  width: 885px;
-  margin: 0px auto;
-  margin-bottom: 60px;
-}
-
-#licDetailBody table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-#licDetailBody table tr.moreBlock td,
-#licDetailBody table tr.moreBlock td * {
-  display: none;
-}
-
-#licDetailBody table thead > tr > th {
-  border-bottom: solid 2px #374d5c;
-  color: #fff;
-  height: 50px;
-  line-height: 50px;
-}
-
-#licDetailBody table thead > tr > th:first-child {
-  text-align: left;
-}
-
-#licDetailBody table thead > tr > th a {
-  color: #374d5c;
-  font-size: 16px;
-  font-weight: 700;
-  background: url('../img/fullArrowLeftDarkBlue.png') no-repeat center left;
-  padding-left: 28px;
-  transition: all 0.5s ease 0s;
-}
-
-#licDetailBody table thead > tr > th a:hover {
-  background-position: 8px center;
-}
-
-#licDetailBody table thead > tr > th.bronze {
-  background-color: #965a38;
-  width: 145px;
-}
-
-#licDetailBody table thead > tr > th.silver {
-  background-color: #a8a8a8;
-  width: 145px;
-}
-
-#licDetailBody table thead > tr > th.gold {
-  background-color: #d9a441;
-  width: 145px;
-}
-
-#licDetailBody table thead > tr > th.white {
-  background-color: #fff;
-  width: 145px;
-  color: #374d5c;
-  padding: 0 40px;
-}
-
-#licDetailBody table tr > td {
-  border: solid 1px #c8c8c8;
-  min-height: 35px;
-  line-height: 53px;
-  background-color: #fff;
-  text-align: center;
-}
-
-#licDetailBody table tr > td:first-child {
-  border-left: none;
-  padding-left: 30px;
-  text-align: left;
-}
-
-#licDetailBody table tr > td:last-child {
-  border-right: none;
-}
-
-#licDetailBody table tr > td div.more {
-  display: inline-block;
-  float: right;
-  vertical-align: middle;
-  width: 22px;
-  height: 22px;
-  margin-top: 16px;
-  margin-right: 35px;
-  cursor: pointer;
-}
-
-#licDetailBody table tr > td div.more img {
-  position: absolute;
-  -webkit-transition: opacity 1s ease-in-out;
-  -moz-transition: opacity 1s ease-in-out;
-  -o-transition: opacity 1s ease-in-out;
-  transition: opacity 1s ease-in-out;
-  opacity: 1;
-}
-
-#licDetailBody table tr > td div.more img.plus {
-  z-index: 8;
-}
-
-#licDetailBody table tr > td div.more img.transparent {
-  opacity: 0;
-}
-
-#licDetailBody table tr.moreBlock td {
-  padding: 25px;
-}
-
-#licDetailBody table tr.moreBlock td > ul {
-  margin-left: 16px;
-}
-
-#licDetailBody table tr.moreBlock td > ul > li {
-  list-style: none;
-  line-height: 33px;
-  padding-left: 16px;
-}
-
-#licDetailBody table tr.moreBlock td > ul > li:before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  background-color: #adbe4f;
-  position: absolute;
-  margin-top: 13px;
-  margin-left: -16px;
-}
-
-#licDetailBody table tfoot > tr > td {
-  border: none;
-  border-top: solid 2px #c8c8c8;
-}
-
-#licDetailBody table tfoot > tr > td {
-  font-weight: 700;
-}
-
-#licDetailBody table tfoot > tr > td:first-child {
-  text-align: right;
-}
-
-#licDetailBody table tfoot > tr > td.addToCart {
-  border-top: none;
-}
-
-#licDetailBody button.precheck {
-  height: 45px;
-  background: #8aa203;
-  border-radius: 4px;
-  border: none;
-  color: #fff;
-  text-transform: uppercase;
-  font-weight: 700;
-  cursor: pointer;
-  margin-right: 10px;
-  float: right;
-  width: 180px;
-  margin-top: 20px;
-}
-
 .customServiceCont {
   background-color: #63869e;
   padding: 35px;
@@ -3813,10 +3620,6 @@ font.notetext {
   left: 0;
 }
 
-#page .page .page-top .content .text p {
-  font-size: 24px;
-  color: #fff;
-}
 
 #page.title .page .page-top .content {
   position: relative;
@@ -4363,12 +4166,14 @@ font.notetext {
   font-weight: 700;
   color: #1e2b34;
   margin-bottom: 8px;
+  text-align: left;
 }
 
 .offer-card__text {
   font-weight: 300;
   color: #374d5c;
   font-size: 16px !important;
+  text-align: left;
 }
 
 .offer-card__container {
@@ -4411,8 +4216,7 @@ font.notetext {
 }
 
 .offer-card__arrow {
-
-
+  margin-top: 10px;
   margin-left: 6px;
   transition: 0.3s;
   flex-shrink: 0;
@@ -4490,9 +4294,9 @@ font.notetext {
 
 @media screen and (min-width: 1024px) {
 
-  .main-offer {
-    height: 460px;
-  }
+  /*.main-offer {*/
+  /*  height: 460px;*/
+  /*}*/
 
   .main-offer__wrap {
     display: grid;

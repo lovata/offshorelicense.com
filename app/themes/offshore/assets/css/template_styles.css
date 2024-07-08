@@ -70,7 +70,8 @@ button::-moz-focus-inner {
 
 .content {
   max-width: 1177px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .whiteBackground {
@@ -620,8 +621,16 @@ script + #page .page {
 
 
 .page-content {
-  margin: 60px 0;
+  margin: 30px 0;
 }
+
+
+@media screen and (min-width: 768px) {
+  .page-content {
+    margin: 60px 0;
+  }
+}
+
 
 .page-content b {
   font-weight: 600;
@@ -759,6 +768,14 @@ tabcontent section.text p {
   margin-bottom: 15px;
 }
 
+.detail-body-table .std-style p {
+  margin-bottom: 0;
+  line-height: 22px;
+}
+
+.detail-body-table td.std-style {
+  padding: 30px;
+}
 .std-style b,
 tabcontent section.text p b {
   font-weight: 600;
@@ -1955,31 +1972,38 @@ font.notetext {
 }
 
 
-#page .page .page-top#companyDetailTop.company {
-  height: 300px;
-}
 
-#page .page #companyDetailInfo.company {
+#page .page .description-page {
   background: #fff;
 }
 
-#page .page #companyDetailInfo.company div.cont {
-  width: 885px;
-  margin: 0px auto;
-  padding: 32px 0px;
-  min-height: 65px;
+#page .page .description-page .cont {
+  max-width: 885px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  display: flex;
+  align-items: center;
 }
 
-#page .page #companyDetailInfo.company div.cont .logo {
-  width: 110px;
-  display: table-cell;
-  padding-right: 15px;
-  background: url('../img/company-formation.png') no-repeat center center;
-  height: 62px;
+#page .page .description-page div.cont .logo {
+  width: 60px;
+  flex-shrink: 0;
+  margin-right: 15px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 83px;
 }
 
-#page .page #companyDetailInfo.company div.cont span {
-  display: table-cell;
+@media screen and (min-width: 768px) {
+  #page .page .description-page div.cont .logo {
+    width: 110px;
+  }
+}
+
+
+#page .page .description-page div.cont span {
   font-size: 16px;
   color: #1e2b34;
   font-weight: 300;
@@ -1993,99 +2017,116 @@ font.notetext {
   top: 80px;
 }
 
-#page .page .page-top#companyDetailTop.company div.companyInfo {
-  display: block;
-  margin: 0px auto;
-  margin-bottom: 10px;
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 15px 52px 15px 12px;
-  font-size: 0;
-  width: 821px;
+/*#page .page .page-top#companyDetailTop.company div.companyInfo {*/
+/*  display: block;*/
+/*  margin: 0px auto;*/
+/*  margin-bottom: 10px;*/
+/*  background-color: rgba(255, 255, 255, 0.8);*/
+/*  padding: 15px 52px 15px 12px;*/
+/*  font-size: 0;*/
+/*  width: 821px;*/
+/*}*/
+
+/*#page .page .page-top#companyDetailTop.company div.companyInfo .logo {*/
+/*  display: inline-block;*/
+/*  height: 60px;*/
+/*  width: 60px;*/
+/*  margin: 3px 25px 3px 10px;*/
+/*  border: 1px solid #d0d0d0;*/
+/*  border-radius: 50%;*/
+/*  background-position: center;*/
+/*  background-size: cover;*/
+/*  vertical-align: top;*/
+/*  background-repeat: no-repeat;*/
+/*}*/
+
+/*#page .page .page-top#companyDetailTop.company div.companyInfo > span {*/
+/*  display: inline-block;*/
+/*  font-size: 16px;*/
+/*  vertical-align: top;*/
+/*  height: 68px;*/
+/*  width: 586px;*/
+/*  padding: 0 10px 0 25px;*/
+/*  border-left: 3px solid #adbe4f;*/
+/*}*/
+
+/*#page .page .page-top#companyDetailTop.company div.companyInfo > span label {*/
+/*  font-size: 18px;*/
+/*  font-weight: 700;*/
+/*  color: #1e2b34;*/
+/*  display: flex;*/
+/*  line-height: 22px;*/
+/*  padding-bottom: 8px;*/
+/*}*/
+
+/*#page .page .page-top#companyDetailTop.company div.companyInfo > span h2 {*/
+/*  font-size: 18px;*/
+/*  font-weight: 700;*/
+/*  color: #1e2b34;*/
+/*  display: flex;*/
+/*  line-height: 22px;*/
+/*  padding-bottom: 8px;*/
+/*}*/
+
+
+/*#page .page .page-top#companyDetailTop.company div.companyInfo > span span {*/
+/*  font-size: 16px;*/
+/*  color: #374d5c;*/
+/*  font-weight: 300;*/
+/*  line-height: 19px;*/
+/*  display: flex;*/
+/*  height: 38px;*/
+/*  width: 100%;*/
+/*  overflow: hidden;*/
+/*  text-overflow: ellipsis;*/
+/*  text-align: left;*/
+/*}*/
+
+/*#page .page .page-top#companyDetailTop.company div.companyInfo .cost {*/
+/*  float: right;*/
+/*  display: block;*/
+/*  width: 90px;*/
+/*  height: 46px;*/
+/*  vertical-align: middle;*/
+/*  text-align: right;*/
+/*  padding: 11px 0;*/
+/*}*/
+
+/*#page .page .page-top#companyDetailTop.company div.companyInfo .cost h5 {*/
+/*  font-size: 30px;*/
+/*  color: #1e2b34;*/
+/*  font-weight: 700;*/
+/*  display: block;*/
+/*  line-height: 46px;*/
+/*}*/
+
+
+.color-table {
+  max-width: 885px;
+  margin: auto;
+  overflow-x: auto;
 }
 
-#page .page .page-top#companyDetailTop.company div.companyInfo .logo {
-  display: inline-block;
-  height: 60px;
-  width: 60px;
-  margin: 3px 25px 3px 10px;
-  border: 1px solid #d0d0d0;
-  border-radius: 50%;
-  background-position: center;
-  background-size: cover;
-  vertical-align: top;
-  background-repeat: no-repeat;
-}
+.company-contact-form {
 
-#page .page .page-top#companyDetailTop.company div.companyInfo > span {
-  display: inline-block;
-  font-size: 16px;
-  vertical-align: top;
-  height: 68px;
-  width: 586px;
-  padding: 0 10px 0 25px;
-  border-left: 3px solid #adbe4f;
-}
-
-#page .page .page-top#companyDetailTop.company div.companyInfo > span label {
-  font-size: 18px;
-  font-weight: 700;
-  color: #1e2b34;
-  display: flex;
-  line-height: 22px;
-  padding-bottom: 8px;
-}
-
-#page .page .page-top#companyDetailTop.company div.companyInfo > span h2 {
-  font-size: 18px;
-  font-weight: 700;
-  color: #1e2b34;
-  display: flex;
-  line-height: 22px;
-  padding-bottom: 8px;
 }
 
 
-#page .page .page-top#companyDetailTop.company div.companyInfo > span span {
-  font-size: 16px;
-  color: #374d5c;
-  font-weight: 300;
-  line-height: 19px;
-  display: flex;
-  height: 38px;
-  width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: left;
+@media screen and (min-width: 560px) {
+  .company-contact-form {
+    margin-bottom: 100px;
+  }
 }
 
-#page .page .page-top#companyDetailTop.company div.companyInfo .cost {
-  float: right;
-  display: block;
-  width: 90px;
-  height: 46px;
-  vertical-align: middle;
-  text-align: right;
-  padding: 11px 0;
-}
-
-#page .page .page-top#companyDetailTop.company div.companyInfo .cost h5 {
-  font-size: 30px;
-  color: #1e2b34;
-  font-weight: 700;
-  display: block;
-  line-height: 46px;
-}
 
 #companyDetailBody.company {
   padding-top: 50px;
-  width: 885px;
-  margin: 0px auto;
-  margin-bottom: 100px;
 }
 
 #companyDetailBody.company table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 768px;
 }
 
 #companyDetailBody.company table tr.moreBlock td,
@@ -2144,6 +2185,7 @@ font.notetext {
   border-left: none;
   padding-left: 30px;
   text-align: left;
+  position: relative;
 }
 
 #companyDetailBody.company table tr > td:last-child {
@@ -2281,34 +2323,6 @@ font.notetext {
   background: #fff;
 }
 
-#page .page #companyDetailInfo.bank div.cont {
-  width: 885px;
-  margin: 0px auto;
-  padding: 32px 0px;
-  min-height: 65px;
-}
-
-#page .page #companyDetailInfo.bank div.cont .logo {
-  width: 110px;
-  display: table-cell;
-  padding-right: 15px;
-  background: url('../img/bank-account-opening.png') no-repeat center center;
-  height: 57px;
-}
-
-#page .page #companyDetailInfo.bank div.cont span {
-  display: table-cell;
-  font-size: 16px;
-  color: #1e2b34;
-  font-weight: 300;
-  vertical-align: middle;
-}
-
-#page .page #companyDetailInfo.bank div.cont span b {
-  margin-bottom: 5px;
-  display: inline-block;
-}
-
 #companyDetailTop.bank .content.mainPage-list {
   padding-top: 20px;
 }
@@ -2399,7 +2413,6 @@ font.notetext {
 #companyDetailBody.bank {
   padding-top: 50px;
   margin: 0px auto;
-  margin-bottom: 70px;
 }
 
 #companyDetailBody.bank table {
@@ -2438,9 +2451,16 @@ font.notetext {
 }
 
 #companyDetailBody.bank table thead > tr > th:last-child {
-  background: #fff url('../img/menuCompanyVerySmallGrean.png') no-repeat 25px center;
-  width: 295px;
+  background-color: white;
 }
+
+@media screen and (min-width: 560px) {
+  #companyDetailBody.bank table thead > tr > th:last-child {
+    width: 295px;
+    background: #fff url('../img/menuCompanyVerySmallGrean.png') no-repeat 25px center;
+  }
+}
+
 
 #companyDetailBody.bank table tr > td {
   border-bottom: solid 1px #c8c8c8;
@@ -3118,6 +3138,19 @@ table.about-form-table {
   /* 	padding-top: 15px !important; */
 }
 
+.main-offer__list {
+  margin-bottom: 10px;
+}
+.main-offer__list:last-child {
+  margin-bottom: 0;
+}
+.mainPage-list .main-offer__list {
+  max-width: 880px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 .page.searchpage .page-top .content .text {
   top: 15px !important;
 }
@@ -3199,136 +3232,12 @@ font.notetext {
 
 /*Bank   */
 
-#page .page.bank .page-top#companyDetailTop {
-  height: 300px;
-}
+/*#page .page.bank .page-top#companyDetailTop {*/
+/*  height: 300px;*/
+/*}*/
 
 #page .page.bank #companyDetailInfo {
   background: #fff;
-}
-
-#page .page.bank #companyDetailInfo div.cont {
-  width: 885px;
-  margin: 0px auto;
-  padding: 32px 0px;
-  min-height: 65px;
-}
-
-#page .page.bank #companyDetailInfo div.cont .logo {
-  width: 110px;
-  display: table-cell;
-  padding-right: 15px;
-  background: url('../img/bank-account-opening.png') no-repeat center center;
-  height: 81px;
-}
-
-#page .page.bank #companyDetailInfo div.cont span {
-  display: table-cell;
-  font-size: 16px;
-  color: #1e2b34;
-  font-weight: 300;
-  vertical-align: middle;
-}
-
-#page .page.bank #companyDetailInfo div.cont span b {
-  margin-bottom: 5px;
-  display: inline-block;
-}
-
-#companyDetailTop .content.mainPage-list {
-  padding-top: 20px;
-}
-
-#page .page.bank .page-top#companyDetailTop .content .text {
-  top: 80px;
-}
-
-#page .page.bank .page-top#companyDetailTop div.companyInfo {
-  display: block;
-  margin: 0px auto;
-  margin-bottom: 10px;
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 15px 52px 15px 12px;
-  font-size: 0;
-  width: 821px;
-}
-
-#page .page.bank .page-top#companyDetailTop div.companyInfo .logo {
-  display: inline-block;
-  height: 60px;
-  width: 60px;
-  margin: 3px 25px 3px 10px;
-  border: 1px solid #d0d0d0;
-  border-radius: 50%;
-  background-position: center;
-  background-size: cover;
-  vertical-align: top;
-  background-repeat: no-repeat;
-}
-
-#page .page.bank .page-top#companyDetailTop div.companyInfo > span {
-  display: inline-block;
-  font-size: 16px;
-  vertical-align: middle;
-  height: 68px;
-  width: 586px;
-  padding: 0 10px 0 25px;
-  border-left: 3px solid #adbe4f;
-}
-
-#page .page.bank .page-top#companyDetailTop div.companyInfo > span label {
-  font-size: 18px;
-  font-weight: 700;
-  color: #1e2b34;
-  display: flex;
-  line-height: 22px;
-  padding-bottom: 8px;
-}
-
-#page .page.bank .page-top#companyDetailTop div.companyInfo > span h2 {
-  font-size: 18px;
-  font-weight: 700;
-  color: #1e2b34;
-  display: flex;
-  line-height: 22px;
-  padding-bottom: 8px;
-}
-
-#page .page.bank .page-top#companyDetailTop div.companyInfo > span span {
-  font-size: 16px;
-  color: #374d5c;
-  font-weight: 300;
-  line-height: 19px;
-  display: flex;
-}
-
-#page .page.bank .page-top#companyDetailTop div.companyInfo .cost {
-  float: right;
-  display: block;
-  width: 90px;
-  height: 46px;
-  vertical-align: middle;
-  text-align: right;
-  padding: 1px 0;
-}
-
-#page .page.bank .page-top#companyDetailTop div.companyInfo .cost span {
-  width: 100%;
-  height: 10px;
-  display: inline-block;
-  line-height: 15px;
-  font-size: 15px;
-  font-weight: 300;
-  color: #1e2b34;
-  margin-bottom: 10px;
-}
-
-#page .page.bank .page-top#companyDetailTop div.companyInfo .cost h5 {
-  font-size: 30px;
-  color: #1e2b34;
-  font-weight: 700;
-  display: block;
-  line-height: 46px;
 }
 
 .bankcompanyDetailBody {
@@ -3373,10 +3282,6 @@ font.notetext {
   background-position: 8px center;
 }
 
-.bank #companyDetailBody table thead > tr > th:last-child {
-  background: #fff url('../img/menuCompanyVerySmallGrean.png') no-repeat 25px center;
-  width: 295px;
-}
 
 .bank #companyDetailBody table tr > td {
   border-bottom: solid 1px #c8c8c8;
@@ -3516,23 +3421,18 @@ font.notetext {
 
 /*License   */
 
+/*#page .page.license #licDetailInfo {*/
+/*  background: #fff;*/
+/*}*/
 
-#page .page.license .page-top#licDetailTop {
-  height: 300px;
-}
+/*#page .page.license #licDetailInfo div.cont {*/
+/*  width: 885px;*/
+/*  margin: 0px auto;*/
+/*  padding: 32px 0px;*/
+/*  min-height: 65px;*/
+/*}*/
 
-#page .page.license #licDetailInfo {
-  background: #fff;
-}
-
-#page .page.license #licDetailInfo div.cont {
-  width: 885px;
-  margin: 0px auto;
-  padding: 32px 0px;
-  min-height: 65px;
-}
-
-#page .page.license #licDetailInfo div.cont .logo {
+#licenseDetailInfo.description-page .logo {
   width: 110px;
   height: 71px;
   display: table-cell;
@@ -3540,103 +3440,126 @@ font.notetext {
   background: url('../img/financial-services-licensing.png') no-repeat center center;
 }
 
-#page .page.license #licDetailInfo div.cont span {
+#bankDetailInfo.description-page .logo {
+  background: url('../img/bank-account-opening.png') no-repeat center center;
+  width: 110px;
   display: table-cell;
-  font-size: 16px;
-  color: #1e2b34;
-  vertical-align: middle;
-  font-weight: 300;
+  padding-right: 15px;
+  height: 81px;
+}
+#companyDetailInfo.description-page .logo {
+  background-image: url('../img/company-formation.png');
+  width: 110px;
+  display: table-cell;
+  padding-right: 15px;
+  height: 81px;
 }
 
-#licDetailTop .content.mainPage-list {
-  padding-top: 20px;
-}
 
-#page .page.license .page-top#licDetailTop .content .text {
-  top: 80px;
-}
+/*#page .page.license #licDetailInfo div.cont span {*/
+/*  display: table-cell;*/
+/*  font-size: 16px;*/
+/*  color: #1e2b34;*/
+/*  vertical-align: middle;*/
+/*  font-weight: 300;*/
+/*}*/
 
-#page .page.license .page-top#licDetailTop div.licInfo {
-  display: block;
-  margin: 0px auto 40px;
-  margin-bottom: 10px;
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 15px 52px 15px 12px;
-  font-size: 0;
-  width: 821px;
-}
+/*#licDetailTop .content.mainPage-list {*/
+/*  padding-top: 20px;*/
+/*}*/
 
-#page .page.license .page-top#licDetailTop div.licInfo .logo {
-  display: inline-block;
-  height: 60px;
-  width: 60px;
-  margin: 3px 25px 3px 10px;
-  border: 1px solid #d0d0d0;
-  border-radius: 50%;
-  background-position: center;
-  background-size: cover;
-  vertical-align: top;
-  background-repeat: no-repeat;
-}
+/*#page .page.license .page-top#licDetailTop .content .text {*/
+/*  top: 80px;*/
+/*}*/
 
-#page .page.license .page-top#licDetailTop div.licInfo > span {
-  display: inline-block;
-  font-size: 16px;
-  vertical-align: middle;
-  height: 68px;
-  width: 586px;
-  padding: 0 10px 0 25px;
-  border-left: 3px solid #adbe4f;
-}
+/*#page .page.license .page-top#licDetailTop div.licInfo {*/
+/*  display: block;*/
+/*  margin: 0px auto 40px;*/
+/*  margin-bottom: 10px;*/
+/*  background-color: rgba(255, 255, 255, 0.8);*/
+/*  padding: 15px 52px 15px 12px;*/
+/*  font-size: 0;*/
+/*  width: 821px;*/
+/*}*/
 
-#page .page.license .page-top#licDetailTop div.licInfo > span label {
-  font-size: 18px;
-  font-weight: 700;
-  color: #1e2b34;
-  display: flex;
-  line-height: 22px;
-  padding-bottom: 8px;
-}
+/*#page .page.license .page-top#licDetailTop div.licInfo .logo {*/
+/*  display: inline-block;*/
+/*  height: 60px;*/
+/*  width: 60px;*/
+/*  margin: 3px 25px 3px 10px;*/
+/*  border: 1px solid #d0d0d0;*/
+/*  border-radius: 50%;*/
+/*  background-position: center;*/
+/*  background-size: cover;*/
+/*  vertical-align: top;*/
+/*  background-repeat: no-repeat;*/
+/*}*/
 
-#page .page.license .page-top#licDetailTop div.licInfo > span h2 {
-  font-size: 18px;
-  font-weight: 700;
-  color: #1e2b34;
-  display: flex;
-  line-height: 22px;
-  padding-bottom: 8px;
-}
+/*#page .page.license .page-top#licDetailTop div.licInfo > span {*/
+/*  display: inline-block;*/
+/*  font-size: 16px;*/
+/*  vertical-align: middle;*/
+/*  height: 68px;*/
+/*  width: 586px;*/
+/*  padding: 0 10px 0 25px;*/
+/*  border-left: 3px solid #adbe4f;*/
+/*}*/
 
-#page .page.license .page-top#licDetailTop div.licInfo > span span {
-  font-size: 16px;
-  color: #374d5c;
-  font-weight: 300;
-  line-height: 19px;
-  display: flex;
-}
+/*#page .page.license .page-top#licDetailTop div.licInfo > span label {*/
+/*  font-size: 18px;*/
+/*  font-weight: 700;*/
+/*  color: #1e2b34;*/
+/*  display: flex;*/
+/*  line-height: 22px;*/
+/*  padding-bottom: 8px;*/
+/*}*/
 
-#page .page.license .page-top#licDetailTop div.licInfo .cost {
-  float: right;
-  display: block;
-  width: 90px;
-  height: 46px;
-  vertical-align: middle;
-  text-align: right;
-  padding: 11px 0;
-}
+/*#page .page.license .page-top#licDetailTop div.licInfo > span h2 {*/
+/*  font-size: 18px;*/
+/*  font-weight: 700;*/
+/*  color: #1e2b34;*/
+/*  display: flex;*/
+/*  line-height: 22px;*/
+/*  padding-bottom: 8px;*/
+/*}*/
 
-#page .page.license .page-top#licDetailTop div.licInfo .cost h5 {
-  font-size: 30px;
-  color: #1e2b34;
-  font-weight: 700;
-  display: block;
-  line-height: 46px;
-}
+/*#page .page.license .page-top#licDetailTop div.licInfo > span span {*/
+/*  font-size: 16px;*/
+/*  color: #374d5c;*/
+/*  font-weight: 300;*/
+/*  line-height: 19px;*/
+/*  display: flex;*/
+/*}*/
+
+/*#page .page.license .page-top#licDetailTop div.licInfo .cost {*/
+/*  float: right;*/
+/*  display: block;*/
+/*  width: 90px;*/
+/*  height: 46px;*/
+/*  vertical-align: middle;*/
+/*  text-align: right;*/
+/*  padding: 11px 0;*/
+/*}*/
+
+/*#page .page.license .page-top#licDetailTop div.licInfo .cost h5 {*/
+/*  font-size: 30px;*/
+/*  color: #1e2b34;*/
+/*  font-weight: 700;*/
+/*  display: block;*/
+/*  line-height: 46px;*/
+/*}*/
 
 #licDetailBody {
-  padding-top: 50px;
-  width: 885px;
+  padding-top: 30px;
+  max-width: 885px;
   margin: 0px auto;
+}
+
+
+@media screen and (min-width: 560px) {
+  #licDetailBody {
+    padding-top: 50px;
+  }
 }
 
 #licDetailBody table {
@@ -3660,16 +3583,58 @@ font.notetext {
   text-align: left;
 }
 
-#licDetailBody table thead > tr > th a {
+.detail-body-table__back {
   color: #374d5c;
   font-size: 16px;
   font-weight: 700;
   background: url('../img/fullArrowLeftDarkBlue.png') no-repeat center left;
-  padding-left: 28px;
   transition: all 0.5s ease 0s;
+  white-space: nowrap;
+  padding: 16px 10px 16px 28px;
+  display: inline-block;
+  flex-grow: 1;
+}
+.detail-body-table__wrap {
+  border-bottom: 2px solid #1e2b34;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-#licDetailBody table thead > tr > th a:hover {
+@media screen and (min-width: 560px) {
+  .detail-body-table__wrap {
+    border-bottom: 2px solid #1e2b34;
+  }
+}
+
+
+
+.detail-body-table__title img {
+  margin-right: 15px;
+  flex-shrink: 1;
+}
+.detail-body-table__title span{
+  color: #374d5c;
+  font-size: 18px;
+  font-weight: 700;
+}
+.detail-body-table__title {
+  padding: 16px 20px;
+  background-color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+
+@media screen and (min-width: 560px) {
+  .detail-body-table__title {
+    padding: 16px 40px;
+  }
+}
+
+.detail-body-table__back:hover {
   background-position: 8px center;
 }
 
@@ -3677,6 +3642,7 @@ font.notetext {
   background-color: #965a38;
   width: 145px;
 }
+
 
 #licDetailBody table thead > tr > th.silver {
   background-color: #a8a8a8;
@@ -3690,7 +3656,7 @@ font.notetext {
 
 #licDetailBody table thead > tr > th.white {
   background-color: #fff;
-  width: 145px;
+  max-width: 295px;
   color: #374d5c;
   padding: 0 40px;
 }
