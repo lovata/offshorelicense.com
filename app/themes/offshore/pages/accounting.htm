@@ -158,13 +158,9 @@ $this->page['breadscrumbs'] = array('Home'=>$this->page['site_link'],'Accounting
                 <section class="act" data-id="1">
                     <div class="">
                         <div class="BrowseCompaniesByRegion">
-                            <div class="content" as>
-
-
+                            <div class="content">
                                 <ul>
                                     {% for region_name,region in this.page["List"] %}
-
-
                                         <li id="accordion_accounting{{ region_name|replace({' ':''}) }}">
                                             <label onclick="$(this).parent('li').toggleClass('act')">
                                                 <div class="logo"><br></div>
@@ -226,16 +222,10 @@ $this->page['breadscrumbs'] = array('Home'=>$this->page['site_link'],'Accounting
                                                 {% endfor %}
                                             </ul>
                                         </li>
-
                                     {% endfor %}
                                 </ul>
-
-
                             </div>
-
                         </div>
-
-
                     </div>
                 </section>
             </tabcontent>

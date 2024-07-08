@@ -61,7 +61,6 @@ function onStart()
 						<ul>
 						{% endif %}
 						<li class="main-offer__list">
-
 							{% if item.bronze_discount > 0 %}
 								{% partial 'recommended-card'
 									href='accountingdetails'|page({'type':item.type, 'slug':item.slug})

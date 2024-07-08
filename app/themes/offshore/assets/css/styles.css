@@ -4053,6 +4053,13 @@ font.notetext {
   color: #fff;
 }
 
+
+@media screen and (min-width: 560px) {
+  .customServiceCont span {
+    margin-right: 16px;
+  }
+}
+
 #page .page .page-top .content {
   position: relative;
 }
@@ -4662,20 +4669,30 @@ font.notetext {
 }
 
 .offer-card__arrow {
-  -ms-transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
-  width: 16px;
-  height: 16px;
-  border-right: 4px solid #adbe4f;
-  border-top: 4px solid #adbe4f;
-  display: inline-block;
-  -webkit-transition: 0.3s;
+
+
+
   margin-left: 6px;
   transition: 0.3s;
   flex-shrink: 0;
 }
 
+
+.offer-card__arrow:before {
+  content: '';
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  width: 12px;
+  height: 12px;
+  border-right: 4px solid #adbe4f;
+  border-top: 4px solid #adbe4f;
+  display: inline-block;
+}
+
+.offer-card:hover .offer-card__arrow {
+  transform: translateX(12px);
+}
 
 @media screen and (max-width: 559px) {
   .offer-card__arrow {
@@ -4761,4 +4778,22 @@ font.notetext {
   font-weight: 400;
   color: #fff;
   margin-bottom: 15px;
+}
+
+.compare-licenses-btn{
+  margin:0;
+  display: inline-block;
+  width: auto;
+  white-space:nowrap;
+  box-shadow: #00000030 0 0 20px;
+}
+
+@media screen and (min-width: 1280px) {
+  .compare-licenses-btn{
+    position:absolute;
+    left:885px;
+    top:40px;
+
+    padding:0px;
+  }
 }
