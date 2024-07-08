@@ -19,73 +19,52 @@ function onStart()
             ->where('disabled','<>','Yes')
             ->groupBy('type')
             ->get();
-     
+
      foreach ($types as $type){
           $array[$type->type] = Db::table('offshorelicense_offers_intprop')->where('type',$type->type)->where('disabled','<>','1')->orderby('name')->get();
      }
 
      $this->page["List"] =$array;
-     
+
      $featured = array();
      $featured = Db::table('offshorelicense_offers_intprop')->where('featured','1')->where('disabled','<>','1')->orderby('featured_order_id')->take(4)->get();
-     $this->page["Featured"] =$featured;   
-     
-     $this->page['breadscrumbs'] = array('Home'=>$this->page['site_link'],'Intellectual Property'=>"");     
-     
+     $this->page["Featured"] =$featured;
+
+     $this->page['breadscrumbs'] = array('Home'=>$this->page['site_link'],'Intellectual Property'=>"");
+
 }
 ?>
 ==
-<div class="page intprop">
-		
-<div class="page-top" style="height: 460px;">
+<div class="page page-short intprop">
+
+<div class="page-top main-offer">
 	<div class="content mainPage-list">
 		<div class="text center">
-			<h1>Intellectual property services</h1>
-			<h2>Best Intellectual Property Services</h2>
+			<h1 class="main-offer__heading">Intellectual property services</h1>
+			<h2 class="main-offer__subheading">Best Intellectual Property Services</h2>
 		</div>
-		<div id="companies_recomended">
-			<div class="inline-warp">
-				<div class="inline-2 inline-2left bank">
-					<ul class="transparent-background">
-					
-						<div id="bxdynamic_GBEzmQ_start" style="display:none"></div>
-								
-			
-						{%for item in this.page["Featured"]%}
-						
-						
 
-
-						
-                        <li class="float-left margin-left">
-                           <a href="{{'intellectualproperty'|page({'slug':item.slug})}}">
-                              <div style="background-image: url('{{item.logo|media}}');"><br></div>
-                              <span><h3>{{item.name}}</h3> 
-                              <span>
-						    {{item.type}}     
-                              </span></span>
-
-                    				<div class="cost">
-                    				</div>
-
-                           </a>
-                        </li>
-							
-							
-						{% endfor %}
-			
-<div id="bxdynamic_GBEzmQ_end" style="display:none"></div>								<div class="clear"></div>
-					</ul>
-				</div>
-				<div class="clear"></div>
-			</div>
+		<div class="main-offer__wrap js-main-offer-slider">
+			<ul class="transparent-background">
+				{%for item in this.page["Featured"]%}
+				{% if loop.index == 3 %}
+				</ul>
+				<ul>
+				{% endif %}
+					<li class="main-offer__list">
+						{% partial 'recommended-card'
+							href='intellectualproperty'|page({'slug':item.slug})
+							img=item.logo|media
+							title=item.name
+							isArrow=true
+							text=item.type|title
+						%}
+					</li>
+				{% endfor %}
+			</ul>
 		</div>
 	</div>
 </div>
-
-
-
-
 {% if this.page["breadscrumbs"] %}
  <div class="content">
     <ul class='breadscrumbs'>
@@ -102,47 +81,36 @@ function onStart()
 </div>
 {% endif %}
 
-
-
-<div class="page-content BrowseCompaniesByRegion">
+<div class="page-content accord BrowseCompaniesByRegion">
 	<div class="content">
 		<div class="text center">
 			<h3>Browse IPS by Type</h3>
 		</div>
-		
-		
-		
-		
-					
 		<ul>
 			{%for type_name,type in this.page["List"]%}
-			
-			
 				<li id="accordion_{{type_name|replace({' ':''}) }}">
-					<label onclick="$(this).parent('li').toggleClass('act')">  
+					<label onclick="$(this).parent('li').toggleClass('act')">
 						<div class="logo" ><br></div>
 						<span><label>{{type_name}}</label>
 						<span>{{type|length}} items available</span></span>
 					</label>
                     <ul>
     					{%for item in type%}
-    						<li><a href="{{'intellectualproperty'|page({'slug':item.slug})}}"><div class="logo" style="background-image: url('{{item.logo|media}}');"><br></div></a>
-    							<span><a href="{{'intellectualproperty'|page({'slug':item.slug})}}"><label>{{item.name}}</label></a> <span>{{item.info}}</span></span>
-    							<a class="button" href="{{'intellectualproperty'|page({'slug':item.slug})}}">Learn more</a>
-    						</li>					
+							<li id="accordion_{{type_name|replace({' ':''}) }}">
+								{% partial 'recommended-card'
+									href='intellectualproperty'|page({'slug':item.slug})
+									img=item.logo|media
+									title=item.name
+									text=item.info
+									actionText="Learn more"
+								%}
+							</li>
     					{% endfor %}
 				    </ul>
 				</li>
-					
 	        {% endfor %}
-		
 		</ul>
-		
-		
-		
-                {{partial('intprop-contact-form')}}
+        {{partial('intprop-contact-form')}}
 	</div>
 </div>
-
-
 </div>

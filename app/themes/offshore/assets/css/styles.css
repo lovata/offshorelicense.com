@@ -2037,287 +2037,24 @@ script + #page .page {
   text-align: center;
 }
 
-.page-content.BrowseCompaniesByRegion .content {
-  width: 888px;
-}
 
-.page-content.BrowseCompaniesByRegion .content > ul {
-}
 
-.page-content.BrowseCompaniesByRegion .content > ul > li {
-  margin-bottom: 10px;
-}
 
-.page-content.BrowseCompaniesByRegion .content > ul > li > label {
-  height: 50px;
-  background: #fff;
-  display: block;
-  position: relative;
-  padding: 20px 0;
-  font-size: 0;
-  cursor: pointer;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-.page-content.BrowseCompaniesByRegion .content > ul > li > label .logo {
-  display: inline-block;
-  height: 40px;
-  width: 40px;
-  margin: 5px 35px 5px 20px;
-  border-radius: 50%;
-  background-position: center;
-  vertical-align: top;
-  background-repeat: no-repeat;
-  background-color: #374d5c;
-  background-image: url('../img/globeWhite.png');
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-.page-content.BrowseCompaniesByRegion .content > ul > li.act > label .logo {
-  background-image: url('../img/globeDarkBlue.png');
-  background-color: #fff;
-}
-
-.page-content.BrowseCompaniesByRegion .content > ul > li > label > span {
-  display: inline-block;
-  font-size: 16px;
-  vertical-align: top;
-  height: 50px;
-  width: calc(100% - 150px);
-  padding: 0 10px 0 25px;
-  border-left: 3px solid #87949d;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-.page-content.BrowseCompaniesByRegion .content > ul > li > label > span span {
-  font-size: 16px;
-  font-weight: 300;
-  display: inline-block;
-  height: 20px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  width: 700px;
-}
-
-.page-content.BrowseCompaniesByRegion .content > ul > li > label > span label {
-  font-size: 18px;
-  font-weight: 700;
-  display: block;
-  line-height: 18px;
-  margin-bottom: 10px;
-  cursor: pointer;
-}
-
-.page-content.BrowseCompaniesByRegion .content > ul > li > label:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 20px;
-  background: url('../img/arrowBottomGrean.png') center no-repeat;
-  width: 20px;
-  height: 12px;
-  margin: auto 0;
-  -webkit-transition: -webkit-transform 0.3s;
-  transition: transform 0.3s;
-}
-
-.page-content.BrowseCompaniesByRegion .content > ul > li.act > label:after {
-  -ms-transform: rotate(180deg); /* IE 9 */
-  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
-  transform: rotate(180deg);
-  filter: brightness(100); /* Someday, sigh ... */
-  -webkit-filter: brightness(100); /* Prefixed CSS3 blur filters */
-  -moz-filter: brightness(100);
-  -o-filter: brightness(100);
-  -ms-filter: brightness(100);
-  filter: brightness(100); /* Firefox needs SVG */
-  /* IE lte 9 */
-}
-
-.page-content.BrowseCompaniesByRegion .content > ul > li.act > label {
-  background: #374d5c;
-  color: #fff;
-}
-
-.page-content.BrowseCompaniesByRegion .content > ul > li.act > label > span {
-  border-left: 3px solid #fff;
-}
-
-.page-content.BrowseCompaniesByRegion .content > ul > li > ul {
-  max-height: 0;
-  overflow: hidden;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-.page-content.BrowseCompaniesByRegion .content > ul > li ul > li:last-child {
-  border-bottom: 3px solid #374d5c;
-}
-
-.page-content.BrowseCompaniesByRegion .content > ul > li ul > li {
-  border-bottom: 1px solid #c8c8c8;
-  font-size: 0;
-  padding: 15px 0;
-  background: #fff;
-  position: relative;
-}
-
-.page-content.BrowseCompaniesByRegion .content > ul > li ul > li > .logo,
-.page-content.BrowseCompaniesByRegion .content > ul > li ul > li > a > .logo {
-  display: inline-block;
-  height: 57px;
-  width: 57px;
-  margin: 0 26px 0 10px;
-  border: 1px solid #d0d0d0;
-  border-radius: 50%;
-  background-position: center;
-  background-size: cover;
-  vertical-align: top;
-  background-repeat: no-repeat;
-}
-
-.page-content.BrowseCompaniesByRegion .content > ul > li ul > li > span {
-  display: inline-block;
-  font-size: 16px;
-  vertical-align: top;
-  height: 45px;
-  padding: 0 10px 0 25px;
-  border-left: 3px solid #adbe4f;
-  width: calc(100% - 450px);
-  margin: 6px 0;
-}
-
-.page-content.BrowseCompaniesByRegion .content > ul > li ul > li > span label {
-  font-size: 18px;
-  font-weight: 700;
-  display: block;
-  line-height: 18px;
-  margin-bottom: 10px;
-  letter-spacing: 0.25px;
-  cursor: pointer;
-  color: #1e2b34;
-}
-
-.page-content.BrowseCompaniesByRegion .content > ul > li ul > li > span > span {
-  font-size: 16px;
-  font-weight: 300;
-  height: 20px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  width: 500px;
-  display: inline-block;
-  color: #374d5c;
-}
-
-.page-content.BrowseCompaniesByRegion .content > ul > li.act > ul {
-  max-height: 100%;
-  overflow-y: auto;
-}
-
-.page-content.BrowseCompaniesByRegion .content > ul > li ul > li .cost {
-  float: right;
-  display: block;
-  width: 90px;
-  height: 27px;
-  vertical-align: middle;
-  text-align: right;
-  padding: 16px 30px 16px 0;
-}
-
-.page-content.BrowseCompaniesByRegion .content > ul > li ul > li .cost.discount {
-  height: 47px;
-  padding: 6px 30px 6px 0;
-}
-
-.page-content.BrowseCompaniesByRegion .content > ul > li ul > li a.button {
-  float: right;
-  line-height: 35px;
-  height: 35px;
-  padding: 0 20px;
-  margin: 12px 20px 12px 0;
-  display: block;
-  font-size: 11px;
-  font-weight: 400;
-  color: #fff;
-  background: #8aa203;
-  text-transform: uppercase;
-  border-radius: 5px;
-}
-
-.page-content.BrowseCompaniesByRegion .content > ul > li ul > li .cost h5 {
-  font-size: 18px;
-  color: #1e2b34;
-  font-weight: 700;
-  display: block;
-  line-height: 27px;
-}
-
-.page-content.BrowseCompaniesByRegion .content > ul > li ul > li .cost h6 + h5 {
-  color: #dd2c00;
-}
-
-.page-content.BrowseCompaniesByRegion .content > ul > li ul > li .cost.discount h5 {
-  line-height: 22px;
-}
-
-.page-content.BrowseCompaniesByRegion .content > ul > li ul > li .cost.discount h6 {
-  font-size: 15px;
-  font-weight: 300;
-  color: #1e2b34;
-  margin-bottom: 5px;
-  text-decoration: line-through;
-  display: block;
-}
-
-/*-------------------------(BrowseCompaniesByRegion !!!!remake!!!!for ADDITIONAL section)------------------------------------------*/
-.page-content.BrowseCompaniesByRegion .content.AddRemake > ul > li > label .logo {
-  height: 0;
-  width: 0;
-  margin: 0;
-  border-radius: 0;
-  background-color: #fff;
-  background-image: none;
-}
-
-.page-content.BrowseCompaniesByRegion .content.AddRemake > ul > li.act > label .logo {
-  background-image: none;
-  background-color: #fff;
-}
-
-.page-content.BrowseCompaniesByRegion .content.AddRemake > ul > li > label > span label {
-  line-height: 30px;
-  cursor: pointer;
-}
-
-.page-content.BrowseCompaniesByRegion .content.AddRemake > ul > li > label {
-  height: 30px;
-}
-
-.page-content.BrowseCompaniesByRegion .content.AddRemake > ul > li > label > span {
-  height: 30px;
-  border-left: none;
-}
 
 /*-----------------------------------------------------------------------------------------------------------------------*/
-.page-content.BrowseBanksByRegion .content {
+.page-content.accord .content {
   max-width: 888px;
   width: 100%;
 }
 
-.page-content.BrowseBanksByRegion .content > ul {
+.page-content.accord .content > ul {
 }
 
-.page-content.BrowseBanksByRegion .content > ul > li {
+.page-content.accord .content > ul > li {
   margin-bottom: 10px;
 }
 
-.page-content.BrowseBanksByRegion .content > ul > li > label {
+.page-content.accord .content > ul > li > label {
   background: #fff;
   display: block;
   position: relative;
@@ -2358,7 +2095,7 @@ script + #page .page {
   padding-right: 0px;
 }
 
-.page-content.BrowseBanksByRegion .content > ul > li > label .logo {
+.page-content.accord .content > ul > li > label .logo {
   display: inline-block;
   height: 40px;
   width: 40px;
@@ -2375,18 +2112,18 @@ script + #page .page {
 
 
 @media screen and (max-width: 559px) {
-  .page-content.BrowseBanksByRegion .content > ul > li > label .logo {
+  .page-content.accord .content > ul > li > label .logo {
     margin: 5px 12px 5px 8px;
   }
 }
 
 
-.page-content.BrowseBanksByRegion .content > ul > li.act > label .logo {
+.page-content.accord .content > ul > li.act > label .logo {
   background-image: url('../img/globeDarkBlue.png');
   background-color: #fff;
 }
 
-.page-content.BrowseBanksByRegion .content > ul > li > label > span {
+.page-content.accord .content > ul > li > label > span {
   display: inline-block;
   font-size: 16px;
   vertical-align: top;
@@ -2399,18 +2136,18 @@ script + #page .page {
 }
 
 @media screen and (max-width: 559px) {
-  .page-content.BrowseBanksByRegion .content > ul > li > label > span {
+  .page-content.accord .content > ul > li > label > span {
     width: calc(100% - 120px);
     padding: 0 10px 0 12px;
   }
 }
 
-.page-content.BrowseBanksByRegion .content > ul > li > label > span span {
+.page-content.accord .content > ul > li > label > span span {
   font-size: 16px;
   font-weight: 300;
 }
 
-.page-content.BrowseBanksByRegion .content > ul > li > label > span label {
+.page-content.accord .content > ul > li > label > span label {
   font-size: 18px;
   font-weight: 700;
   display: block;
@@ -2418,7 +2155,7 @@ script + #page .page {
   margin-bottom: 10px;
 }
 
-.page-content.BrowseBanksByRegion .content > ul > li > label:after {
+.page-content.accord .content > ul > li > label:after {
   content: '';
   position: absolute;
   top: 0;
@@ -2432,7 +2169,7 @@ script + #page .page {
   transition: transform 0.3s;
 }
 
-.page-content.BrowseBanksByRegion .content > ul > li.act > label:after {
+.page-content.accord .content > ul > li.act > label:after {
   -ms-transform: rotate(180deg); /* IE 9 */
   -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
   transform: rotate(180deg);
@@ -2445,27 +2182,27 @@ script + #page .page {
   /* IE lte 9 */
 }
 
-.page-content.BrowseBanksByRegion .content > ul > li.act > label {
+.page-content.accord .content > ul > li.act > label {
   background: #374d5c;
   color: #fff;
 }
 
-.page-content.BrowseBanksByRegion .content > ul > li.act > label > span {
+.page-content.accord .content > ul > li.act > label > span {
   border-left: 3px solid #fff;
 }
 
-.page-content.BrowseBanksByRegion .content > ul > li > ul {
+.page-content.accord .content > ul > li > ul {
   max-height: 0;
   overflow: hidden;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li:last-child {
+.page-content.accord .content > ul > li > ul > li:last-child {
   border-bottom: 3px solid #374d5c;
 }
 
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li {
+.page-content.accord .content > ul > li > ul > li {
   border-bottom: 1px solid #c8c8c8;
   font-size: 0;
   padding: 15px 0;
@@ -2473,8 +2210,8 @@ script + #page .page {
   position: relative;
 }
 
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li > .logo,
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li > a > .logo {
+.page-content.accord .content > ul > li > ul > li > .logo,
+.page-content.accord .content > ul > li > ul > li > a > .logo {
   display: inline-block;
   height: 57px;
   width: 57px;
@@ -2487,7 +2224,7 @@ script + #page .page {
   border: 1px solid #d0d0d0;
 }
 
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li > span {
+.page-content.accord .content > ul > li > ul > li > span {
   display: inline-block;
   font-size: 16px;
   vertical-align: top;
@@ -2497,7 +2234,7 @@ script + #page .page {
   margin: 6px 0;
 }
 
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li > span label {
+.page-content.accord .content > ul > li > ul > li > span label {
   font-size: 18px;
   font-weight: 700;
   display: block;
@@ -2507,16 +2244,16 @@ script + #page .page {
   color: #1e2b34;
 }
 
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li > span > span {
+.page-content.accord .content > ul > li > ul > li > span > span {
   font-size: 16px;
   font-weight: 300;
 }
 
-.page-content.BrowseBanksByRegion .content > ul > li.act > ul {
+.page-content.accord .content > ul > li.act > ul {
   max-height: 1000px;
 }
 
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li .cost {
+.page-content.accord .content > ul > li > ul > li .cost {
   float: right;
   display: block;
   width: 90px;
@@ -2526,7 +2263,7 @@ script + #page .page {
   padding: 8px 30px 10px 0;
 }
 
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li .cost span {
+.page-content.accord .content > ul > li > ul > li .cost span {
   width: 100%;
   height: 10px;
   display: inline-block;
@@ -2537,12 +2274,12 @@ script + #page .page {
   margin-bottom: 10px;
 }
 
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li .cost.discount {
+.page-content.accord .content > ul > li > ul > li .cost.discount {
   height: 47px;
   padding: 6px 30px 6px 0;
 }
 
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li a.button {
+.page-content.accord .content > ul > li > ul > li a.button {
   float: right;
   line-height: 35px;
   height: 35px;
@@ -2557,7 +2294,7 @@ script + #page .page {
   border-radius: 5px;
 }
 
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li .cost h5 {
+.page-content.accord .content > ul > li > ul > li .cost h5 {
   font-size: 18px;
   color: #1e2b34;
   font-weight: 700;
@@ -2565,15 +2302,15 @@ script + #page .page {
   line-height: 27px;
 }
 
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li .cost h6 + h5 {
+.page-content.accord .content > ul > li > ul > li .cost h6 + h5 {
   color: #dd2c00;
 }
 
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li .cost.discount h5 {
+.page-content.accord .content > ul > li > ul > li .cost.discount h5 {
   line-height: 22px;
 }
 
-.page-content.BrowseBanksByRegion .content > ul > li > ul > li .cost.discount h6 {
+.page-content.accord .content > ul > li > ul > li .cost.discount h6 {
   font-size: 15px;
   font-weight: 300;
   color: #1e2b34;
@@ -2861,15 +2598,14 @@ tab.smallBanks {
 }
 
 @media screen and (min-width: 888px) {
-  tab.smallBanks,
-  .BrowseCompaniesByRegion {
+  tab.smallBanks {
     max-width: 888px;
     width: 100% !important;
   }
 }
 
 
-.page-content.BrowseBanksByRegion tab section {
+.page-content.accord tab section {
   padding: 0;
   margin: 0;
   line-height: 45px;
@@ -2885,13 +2621,13 @@ tab.smallBanks {
 }
 
 @media screen and (min-width: 560px) {
-  .page-content.BrowseBanksByRegion tab section {
+  .page-content.accord tab section {
     padding: 0 25px 0 50px;
   }
 }
 
 @media screen and (max-width: 559px) {
-  .page-content.BrowseBanksByRegion tab section {
+  .page-content.accord tab section {
     padding: 0 13px;
     width: 100%;
   }

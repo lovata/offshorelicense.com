@@ -13,22 +13,22 @@ function onEnd() {
      $this["record"] = Db::table('offshorelicense_offers_intprop')->where('slug',$this->param('slug'))->where('disabled','<>','1')->first();
     if (! $this["record"])
         return Redirect::to('/404');
-        
+
     $this->page['breadscrumbs'] = array(
         'Home'=>$this->page['site_link'],
-        'Intellectual Property'=>"/intellectualproperty", 
+        'Intellectual Property'=>"/intellectualproperty",
         ucfirst($this["record"]->type).""=>"/intellectualproperty#".str_replace(' ','',$this["record"]->type),
         $this["record"]->name=>"",
     );
-    
+
     $this->SeoCmsPage->seo_title = $this["record"]->meta_title." - Offshorelicense";
     $this->SeoCmsPage->seo_keywords = $this["record"]->meta_keywords;
     $this->SeoCmsPage->seo_description = $this["record"]->meta_description;
-    
+
     //$this->SeoCmsPage->seo_title = $this["record"]->name." with Offshorelicense";
-    //$this->SeoCmsPage->seo_description = $this["record"]->name." licensing solution with Offshorelicense";  
-    //$this->SeoCmsPage->seo_keywords = $this["record"]->name." with Offshorelicense";    
-    
+    //$this->SeoCmsPage->seo_description = $this["record"]->name." licensing solution with Offshorelicense";
+    //$this->SeoCmsPage->seo_keywords = $this["record"]->name." with Offshorelicense";
+
 }
 ?>
 ==
@@ -41,7 +41,7 @@ function onEnd() {
 		    <h1>{{attribute(record, "title")}}</h1>
 		{% else %}
 			<h1>INTELLECTUAL PROPERTY</h1>
-		{% endif %}            
+		{% endif %}
 
                <div class="licInfo">
                   <div class="logo" style="background-image: url('{{ attribute(record, "logo")|media }}');"></div>
@@ -60,9 +60,9 @@ function onEnd() {
             </div>
          </div>
       </div>
-      
-      
-      
+
+
+
 
 
 
@@ -85,15 +85,15 @@ function onEnd() {
 {% endif %}
 
 
-      
+
       <div id="licDetailInfo">
          <div class="cont">
             <div class="logo"  style="background-image: url('{{ 'assets/img/menuIntBigGreen.png'|theme }}');"></div>
             <span>{{ attribute(record, "info") | raw }}</span>
          </div>
       </div>
-      
-      
+
+
 
 
       <div id="licDetailBody">
