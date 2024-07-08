@@ -57,7 +57,7 @@ function onStart()
 					{% endif %}
 					<li class="main-offer__list">
 					{% partial 'recommended-card'
-						href='accountingdetails'|page({'type':item.type, 'slug':item.slug})
+						href='license'|page({'slug':item.slug})
 						img=item.logo|media
 						title=item.name
 						isArrow=item.name

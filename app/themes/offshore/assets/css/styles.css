@@ -4793,7 +4793,6 @@ font.notetext {
     position:absolute;
     left:885px;
     top:40px;
-
-    padding:0px;
+    padding:0;
   }
 }
