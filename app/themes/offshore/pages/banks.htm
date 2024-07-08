@@ -15,18 +15,18 @@ contentType = "html"
 function onStart()
 {
     $array = $array2 = array();
-    
+
     $regions = DB::table('offshorelicense_offers_banks')
             ->select('region')
             ->where('type','personal')
             ->where('disabled','<>','Yes')
             ->groupBy('region')
             ->get();
-     
+
      foreach ($regions as $region){
           $array[$region->region] = Db::table('offshorelicense_offers_banks')->where('region',$region->region)->where('type','personal')->where('disabled','<>','1')->orderby('name')->get();
      }
-     
+
      //noob sorting:)
      /*if(isset ($array["Eastern Europe"]))  $array2["Eastern Europe"] = $array["Eastern Europe"];
      if(isset ($array["Western Europe"])) $array2["Western Europe"] = $array["Western Europe"];
@@ -34,23 +34,23 @@ function onStart()
      if(isset ($array["Africa"])) $array2["Africa"] = $array["Africa"];
      if(isset ($array["Pacific"])) $array2["Pacific"] = $array["Pacific"];
      if(isset ($array["Caribbean Region"])) $array2["Caribbean Region"] = $array["Caribbean Region"];*/
-     
+
      $this->page["List"] =$array;
-     
-     
+
+
      $array = $array2 = array();
-     
+
     $regions = DB::table('offshorelicense_offers_banks')
             ->select('region')
             ->where('type','corporate')
             ->where('disabled','<>','Yes')
             ->groupBy('region')
             ->get();
-     
+
      foreach ($regions as $region){
           $array[$region->region] = Db::table('offshorelicense_offers_banks')->where('region',$region->region)->where('type','corporate')->where('disabled','<>','1')->orderby('name')->get();
      }
-     
+
      //noob sorting:)
      /*if(isset ($array["Eastern Europe"]))  $array2["Eastern Europe"] = $array["Eastern Europe"];
      if(isset ($array["Western Europe"])) $array2["Western Europe"] = $array["Western Europe"];
@@ -58,102 +58,73 @@ function onStart()
      if(isset ($array["Africa"])) $array2["Africa"] = $array["Africa"];
      if(isset ($array["Pacific"])) $array2["Pacific"] = $array["Pacific"];
      if(isset ($array["Caribbean Region"])) $array2["Caribbean Region"] = $array["Caribbean Region"];*/
-     
-     $this->page["List2"] =$array;     
-     
-     
-     
+
+     $this->page["List2"] =$array;
+
+
+
      $featuredPersonal = array();
      $featuredPersonal = Db::table('offshorelicense_offers_banks')->where('type','personal')->where('featured','1')->where('disabled','<>','1')->orderby('featured_order_id')->take(2)->get();
      $this->page["FeaturedPersonal"] =$featuredPersonal;
-     
-          
+
+
      $featuredCorporate = array();
      $featuredCorporate = Db::table('offshorelicense_offers_banks')->where('type','corporate')->where('featured','1')->where('disabled','<>','1')->orderby('featured_order_id')->take(2)->get();
-     $this->page["FeaturedCorporate"] =$featuredCorporate;    
-     
-     
+     $this->page["FeaturedCorporate"] =$featuredCorporate;
+
+
      $this->page['breadscrumbs'] = array('Home'=>$this->page['site_link'],'Banks'=>"");
 
-     
-     
+
+
 }
 ?>
 ==
-<div class="page">
-		
-<div class="page-top" style="height: 460px;">
-    <div class="content mainPage-list" style="padding-bottom: 0;">
+<div class="page page-short">
+
+<div class="page-top main-offer">
+    <div class="content mainPage-list">
         <div class="text center">
-            <h1>Open Offshore Bank Account</h1>
-            <div class="inline-warp" style="margin-top: 15px;">
-                <div class="inline-2" style="width: 38%">
-                    <h2>Best Corporate Bank Accounts</h2>
+            <h1 class="main-offer__heading">Open Offshore Bank Account</h1>
+            <div class="main-offer__wrap">
+                <div>
+                    <h2 class="main-offer__title">Best Corporate Bank Accounts</h2>
                 </div>
-                <div class="inline-2">
-                    <h2>Best Personal Bank Accounts</h2>
-                </div>
-            </div>
-        </div>
-        <div id="companies_recomended">
-            <div class="inline-warp">
-                <div class="inline-2 inline-2left bank">
-                    <ul style="background-color: transparent;">
-                        <div id="bxdynamic_9POZg9_start" style="display:none"></div>
-                        
-                        
-                  {%for item in this.page["FeaturedCorporate"]%}
-                  <li class="margin-left" style="">
-                     <a href="{{'bank'|page({'type':item.type, 'slug':item.slug})}}">
-                        <div class="logo" style="background-image: url('{{item.logo|media}}');"></div>
-                        <span>
-                        <h3>{{item.name}}</h3>
-                        <span>{{item.country}}</span>
-                        </span>
-                        <div class="cost">
-        					<span>Starting from</span>
-                           <h5>€{{item.price| number_format(0, '.', ',') }}</h5>
-                        </div>
-                     </a>
-                  </li>
-                  {% endfor %}
-	
-	
-	
-	
-<div id="bxdynamic_9POZg9_end" style="display:none"></div>                    </ul>
-<!--                </div>
-            </div>
-            <div class="inline-warp">
-                <div class="inline-2 bank">-->
-                    <ul style="background-color: transparent;">
-                        <div id="bxdynamic_HPJQZ6_start" style="display:none"></div>
-                        
-                        
-                        
-                {%for item in this.page["FeaturedPersonal"]%}
-                  <li class="margin-left" style="">
-                     <a href="{{'bank'|page({'type':item.type, 'slug':item.slug})}}">
-                        <div class="logo" style="background-image: url('{{item.logo|media}}');"></div>
-                        <span>
-                        <h3>{{item.name}}</h3>
-                        <span>{{item.country}}</span>
-                        </span>
-                        <div class="cost">
-        					<span>Starting from</span>
-                           <h5>€{{item.price| number_format(0, '.', ',') }}</h5>
-                        </div>
-                     </a>
-                  </li>
-                  {% endfor %}
-                  
-                  
-<div id="bxdynamic_HPJQZ6_end" style="display:none"></div>                    </ul>
-
-
+                <div>
+                    <h2 class="main-offer__title">Best Personal Bank Accounts</h2>
                 </div>
             </div>
         </div>
+        <div class="main-offer__wrap js-main-offer-slider">
+            <ul>
+                {% for item in this.page["FeaturedCorporate"] %}
+
+                    <li class="main-offer__list">
+                        {% partial 'recommended-card'
+                            href='accountingdetails'|page({'type':item.type, 'slug':item.slug})
+                            img=item.logo|media
+                            title=item.name
+                            text=item.type|title
+                            priceTitle="Starting from"
+                            price='€' ~item.price| number_format(0, '.', ',') %}
+                    </li>
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for item in this.page["FeaturedPersonal"] %}
+                    <li class="main-offer__list">
+                        {% partial 'recommended-card'
+                            href='accountingdetails'|page({'type':item.type, 'slug':item.slug})
+                            img=item.logo|media
+                            title=item.name
+                            text=item.type|title
+                            priceTitle="Starting from"
+                            price='€' ~item.price| number_format(0, '.', ',') %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
     </div>
 </div>
 <!-------------------------------------------------->
@@ -194,74 +165,48 @@ function onStart()
             <section class="act" data-id="1">
                 <div class="content">
                     <div class="BrowseCompaniesByRegion">
-	<div class="content">
-	
-	
-	
-	
-	<ul>
-			{%for region_name,region in this.page["List2"]%}
-			
-			
-				<li id="accordion_corporate{{region_name|replace({' ':''}) }}">
-					<label onclick="$(this).parent('li').toggleClass('act')">  
-						<div class="logo"><br></div>
-						<span><label>{{region_name}}</label> <span>{{region|length}} banks available</span></span>
-					</label>
-                    <ul>
-    					{%for item in region%}
-    						<li><a href="{{'bank'|page({'type':item.type, 'slug':item.slug})}}"><div class="logo" style="background-image: url('{{item.logo|media}}');"><br></div></a>
-    							<span><a href="{{'bank'|page({'type':item.type, 'slug':item.slug})}}"><label>{{item.name}}</label></a> <span>{{item.country}}</span></span>
-    							<a class="button" href="{{'bank'|page({'type':item.type, 'slug':item.slug})}}">Learn more</a>
-        						<div class="cost">
-        						<span>Starting from</span><br>
-        						    <h5>€{{item.price| number_format(0, '.', ',') }}</h5>
-        						</div>
-    						</li>					
-    					{% endfor %}
-				    </ul>
-				</li>
-					
-	        {% endfor %}
-	</ul>
-	
-	
-	
-	</div>
-</div>
+                        <div class="content">
+                            <ul>
+                                {%for region_name,region in this.page["List2"]%}
+                                    <li id="accordion_corporate{{region_name|replace({' ':''}) }}">
+                                        <label onclick="$(this).parent('li').toggleClass('act')">
+                                            <div class="logo"><br></div>
+                                            <span><label>{{region_name}}</label> <span>{{region|length}} banks available</span></span>
+                                        </label>
+                                        <ul>
+                                            {%for item in region%}
+                                                <li>
+                                                    {% partial 'recommended-card'
+                                                        href='bank'|page({'type':item.type, 'slug':item.slug})
+                                                        img=item.logo|media
+                                                        title=item.name
+                                                        text=item.country
+                                                        priceTitle="Starting from"
+                                                        actionText="Learn more"
+                                                        price='€' ~item.price| number_format(0, '.', ',')
+
+                                                    %}
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div
+                    </div>
                 </div>
             </section>
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
             <section data-id="2">
                 <div class="content">
                     <div class="BrowseCompaniesByRegion">
 	<div class="content">
-	
-	
-	
-	
+
 	<ul>
 			{%for region_name,region in this.page["List"]%}
-			
-			
+
+
 				<li id="accordion_personal{{region_name|replace({' ':''}) }}">
-					<label onclick="$(this).parent('li').toggleClass('act')">  
+					<label onclick="$(this).parent('li').toggleClass('act')">
 						<div class="logo"><br></div>
 						<span><label>{{region_name}}</label> <span>{{region|length}} banks available</span></span>
 					</label>
@@ -274,14 +219,14 @@ function onStart()
         						<span>Starting from</span><br>
         						    <h5>€{{item.price| number_format(0, '.', ',') }}</h5>
         						</div>
-    						</li>					
+    						</li>
     					{% endfor %}
 				    </ul>
 				</li>
-					
+
 	        {% endfor %}
 	</ul>
-	
+
 	</div>
 </div>
                 </div>
@@ -290,16 +235,16 @@ function onStart()
     </div>
 </div>
 
- <div class="page-content EverythingYouNeedToKnow">
-    <div class="content banks">
+ <div class="page-content tab-files EverythingYouNeedToKnow">
+    <div class="content companies">
         <div class="text center">
             <h3>Everything you need to know about bank account opening</h3>
         </div>
-        <tab class="init">
+        <tab class="init tab--col-3">
             <section data-icon="service" data-id="1" class="act"><a>Why?</a></section>
             <section data-icon="document" data-id="2"><a>How?</a></section>
             <section data-icon="profile" data-id="3"><a>Where?</a></section>
-                    </tab>
+        </tab>
         <tabcontent>
             <section data-id="1" class="text act"><p>
 	 Offshorelicense has built up strong association with international banks in over 50 different jurisdictions. We believe that Offshorelicense offers the best combination of service, pricing and quality, with no hidden costs.

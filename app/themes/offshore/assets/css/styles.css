@@ -2382,7 +2382,7 @@ script + #page .page {
   display: inline-block;
   font-size: 16px;
   vertical-align: top;
-  height: 50px;
+  /*height: 50px;*/
   width: calc(100% - 200px);
   padding: 0 10px 0 25px;
   border-left: 3px solid #87949d;
@@ -2591,17 +2591,17 @@ tab {
 }
 
 @media screen and (min-width: 560px) {
-  tab {
+  .tab-files tab {
     display: grid;
   }
 }
 
-tab.tab--col-3 {
+.tab-files tab.tab--col-3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 4px;
 }
 
-tab section {
+.tab-files tab section {
   display: inline-block;
   vertical-align: bottom;
   height: 80px;
@@ -2612,11 +2612,35 @@ tab section {
 }
 
 @media screen and (min-width: 560px) {
-  tab section {
+.tab-files  tab section {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
   }
 }
+
+
+
+
+.tab-files tab {
+  /*font-size: 0;*/
+  /*max-width: 1177px;*/
+  height: 80px;
+  /*border: 1px solid #000;*/
+}
+
+.tab-files tab > section {
+
+  /*display: inline-block;*/
+
+  /*     padding: 20px 10px 20px 115px; */
+  /*height: 80px;*/
+  background-color: #adbe4f;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-right: 4px;
+  text-align: center;
+}
+
 
 /*.merchant tab section,*/
 /*.technical tab section,*/
@@ -2823,7 +2847,7 @@ tab.smallBanks {
   text-align: right;
   height: auto!important;
   /*height: 50px;*/
-  max-width: 96%;
+  /*max-width: 96%;*/
 }
 
 .content .content{
@@ -2839,29 +2863,30 @@ tab.smallBanks {
 }
 
 
-tab.smallBanks section {
+.page-content.BrowseBanksByRegion tab section {
   padding: 0;
   margin: 0;
   line-height: 45px;
-  height: 45px;
+  /*height: 45px;*/
   width: auto;
   border-radius: 0;
   background-color: #f6f6f6;
   font-size: 18px;
   font-weight: 300;
   color: #374d5c;
+  display: inline-block;
   background-position: left 20px center;
 }
 
 @media screen and (min-width: 560px) {
-  tab.smallBanks section {
+  .page-content.BrowseBanksByRegion tab section {
     padding: 0 25px 0 50px;
   }
 }
 @media screen and (max-width: 559px) {
-  tab.smallBanks section {
+  .page-content.BrowseBanksByRegion tab section {
     padding: 0 13px;
-    width: 94%;
+    width: 100%;
   }
 }
 

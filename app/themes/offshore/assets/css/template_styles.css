@@ -949,26 +949,6 @@ tab.smallBanks + tabContent > section {
 }
 
 
-/*tab {*/
-/*  font-size: 0;*/
-/*  max-width: 1177px;*/
-/*  height: 80px;*/
-/*  display: block;*/
-/*  border: 1px solid #000;*/
-/*}*/
-
-/*tab section {*/
-
-/*  display: inline-block;*/
-
-/*  !*     padding: 20px 10px 20px 115px; *!*/
-/*  height: 80px;*/
-/*  background-color: #adbe4f;*/
-/*  border-top-left-radius: 5px;*/
-/*  border-top-right-radius: 5px;*/
-/*  margin-right: 4px;*/
-/*  text-align: center;*/
-/*}*/
 
 /*.merchant tab section,*/
 /*.technical tab section,*/
@@ -1161,28 +1141,28 @@ div.privacy {
 }
 
 
-tab.smallBanks {
-  border-bottom: 3px solid #374d5c;
-  margin-bottom: 10px;
-  display: block;
-  text-align: right;
-  height: 50px;
-  width: 888px;
-}
+/*tab.smallBanks {*/
+/*  border-bottom: 3px solid #374d5c;*/
+/*  margin-bottom: 10px;*/
+/*  display: block;*/
+/*  text-align: right;*/
+/*  height: 50px;*/
+/*  !*width: 888px;*!*/
+/*}*/
 
-tab.smallBanks section {
-  padding: 0 25px 0 50px;
-  margin: 0;
-  line-height: 45px;
-  height: 45px;
-  width: auto;
-  border-radius: 0;
-  background-color: #f6f6f6;
-  font-size: 18px;
-  font-weight: 300;
-  color: #374d5c;
-  background-position: left 20px center;
-}
+/*tab.smallBanks section {*/
+/*  padding: 0 25px 0 50px;*/
+/*  margin: 0;*/
+/*  line-height: 45px;*/
+/*  height: 45px;*/
+/*  !*width: auto;*!*/
+/*  border-radius: 0;*/
+/*  background-color: #f6f6f6;*/
+/*  font-size: 18px;*/
+/*  font-weight: 300;*/
+/*  color: #374d5c;*/
+/*  background-position: left 20px center;*/
+/*}*/
 
 tab.smallBanks section.act {
   height: 50px;

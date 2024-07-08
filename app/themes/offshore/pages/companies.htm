@@ -43,7 +43,7 @@ function onStart()
 }
 ?>
 ==
-<div class="page">
+<div class="page page-short">
 	<!-------------------------------------------------->
 	<!----------START Recommended companies------------->
 	<!-------------------------------------------------->
@@ -128,23 +128,13 @@ function onStart()
         </ul>
     </div>
     {% endif %}
-
-
-
-
 	<div class="page-content BrowseBanksByRegion ">
 		<div class="content">
 			<div class="text center">
-
 				<h3>Browse Companies by Region</h3>
 			</div>
-
 			<ul>
-
-
 			{%for region_name,region in this.page["List"]%}
-
-
 				<li id="accordion_{{region_name|replace({' ':'','&':''}) }}">
 					<label onclick="$(this).parent('li').toggleClass('act')">
 						<div class="logo"><br></div>
@@ -182,46 +172,19 @@ function onStart()
 										price="On request"
 									%}
 								{% endif %}
-{#    						<li><a href="{{'company'|page({'slug':item.slug})}}"><div class="logo" style="background-image: url('{{item.logo|media}}');"><br></div></a>#}
-{#    							<span>#}
-{#									<a href="{{'company'|page({'slug':item.slug})}}"><label>{{item.name}}</label></a>#}
-{#									<span>{{item.info}}</span></span>#}
-{#    							<a class="button" href="{{'company'|page({'slug':item.slug})}}">Learn more</a>#}
-
-{#        					    {% if item.bronze_discount > 0 %}#}
-{#        					    <div class="cost discount">#}
-{#        						    <h6>€{{ item.bronze_price | number_format(0, '.', ',') }}</h6>#}
-{#        						    <h5>€{{ item.bronze_discount | number_format(0, '.', ',') }}</h5>#}
-{#        						</div>#}
-{#        						{% elseif item.bronze_price > 0 %}#}
-{#        						<div class="cost">#}
-{#        						    <h5>€{{item.bronze_price| number_format(0, '.', ',') }}</h5>#}
-{#        						</div>|#}
-{#        						{% else %}#}
-{#        						<div class="cost">#}
-{#        						    <h5>On request</h5>#}
-{#        						</div>|#}
-{#        						{% endif %}#}
-
-
-{#    						</li>#}
     					{% endfor %}
 				    </ul>
 				</li>
-
 	        {% endfor %}
-
-
-
+			</ul>
 		</div>
 	</div>
 	<!-------------------------------------------------->
 	<!----------START Recommended companies------------->
 	<!-------------------------------------------------->
-	<div class="page-content EverythingYouNeedToKnow">
+	<div class="page-content tab-files EverythingYouNeedToKnow">
 		<div class="content companies">
 			<div class="text center">
-
 				<h3>Everything You Need to Know About Company Incorporation</h3>
 			</div>
 			<tab class="init tab--col-3">
