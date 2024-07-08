@@ -1,7 +1,7 @@
 [viewBag]
 ==
 <div class="customServiceCont">
-		<a id="dialog-bank-form-btn" class="web-form-popup-btn-8" data-title="Request Merchant Pre-Check Process" style="margin-top:-12px;">APPLY NOW!</a><span>Not sure what Accounting or Audit Service to choose? Leave your application online! We will get back to you with a free 15 minutes consultation.</span>
+		<a id="dialog-bank-form-btn" class="web-form-popup-btn-8" data-title="Request Merchant Pre-Check Process">APPLY NOW!</a><span>Not sure what Accounting or Audit Service to choose? Leave your application online! We will get back to you with a free 15 minutes consultation.</span>
 	</div>
 
 
@@ -11,7 +11,7 @@
   <p style="color:#334D5C;font-weight:300;font-family: 'Lato', sans-serif;margin-bottom:30px;">
   Do not hesitate to submit the form below and our team will contact you shortly!
   </p>
-  
+
 
 
 <form
@@ -24,15 +24,15 @@
     >
 
     <input type="hidden" name='url' value="{{ ''| page }}">
-    <!--{% if record %} 
+    <!--{% if record %}
     <input type="hidden" name='product_type' value="{{ record.type }}">
     {% else %}
     <input type="hidden" name='product_type' value="{{ this.page.id }}">
     {% endif %}-->
     <input type="hidden" name='product_type' value="70">
-    
-    
-    <input type="hidden" name='product_name' value="{{ record.name }}">    
+
+
+    <input type="hidden" name='product_name' value="{{ record.name }}">
 <!--<div class="crm-webform-group" style="margin-bottom:20px;">
     <div class="crm-webform-label-content">
         <label class="crm-webform-checkbox-container crm-webform-checkbox-radio">
@@ -63,7 +63,7 @@
             <span data-validate-for="lastname" class="crm-tooltip"></span>
         </div>
     </div>
-    
+
     <div class="form-group row crm-webform-group CompanyName" style="display:none;">
         <div class="">
             <input class="form-control crm-webform-input" name="company" placeholder="Company*" />
@@ -102,7 +102,7 @@
 <div class="crm-webform-label-content">
 	<div>
 	<label class="crm-webform-checkbox-container crm-webform-checkbox-checkbox">
-    	<input class="crm-webform-checkbox crm-webform-input-checkbox crm-webform-input" type="checkbox" name="LEAD_UF_CRM_1528724976" id="LEAD_UF_CRM_1528724976" value="Y"> 
+    	<input class="crm-webform-checkbox crm-webform-input-checkbox crm-webform-input" type="checkbox" name="LEAD_UF_CRM_1528724976" id="LEAD_UF_CRM_1528724976" value="Y">
     	<i></i>
     	<span class="crm-webform-checkbox-name highlight-when-not-checked">I agree to receive emails about Offshorelicense products and services (You can unsubscribe at any time)</span>
 	</label>
@@ -112,7 +112,7 @@
     <div class="row">
         <button type=button  onclick="processform2()" class="btn btn-primary crm-webform-submit-button">
             Request a custom service
-        </button>      
+        </button>
         <button style="display:none;" id="dialog-submit"  class="btn btn-primary crm-webform-submit-button" type=submit data-attach-loading>
             Request a custom service
         </button>
@@ -168,9 +168,9 @@
 
             }
          });
-          
+
          $("#dialog-bank-form-btn").click(function(){
-             $('#dialog-bank').dialog('open');   
+             $('#dialog-bank').dialog('open');
          })
       } );
 </script>

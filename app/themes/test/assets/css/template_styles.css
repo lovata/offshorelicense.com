@@ -1553,7 +1553,7 @@ script + #page .page {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-image: url('../img/original/worldwide-team-of-experts-in-legal-technical-and-financial-services.jpg');
-	
+
 }
 
 .about-team-image {
@@ -1562,7 +1562,7 @@ script + #page .page {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-image: url('../img/original/worldwide-team-of-experts-in-legal-technical-and-financial-services.jpg');
-	
+
 }
 
 
@@ -1659,7 +1659,7 @@ script + #page .page {
     font-weight: 400;
     color: #fff;
     text-transform: uppercase;
-    line-height: 60px;
+    line-height: 1;
     margin-bottom: 20px;
 	margin-top: 10px;
 }
@@ -1708,7 +1708,7 @@ script + #page .page {
 .std-style.business li { display: block;
 	padding: 5px 0;
 }
-.std-style.business li:before { 
+.std-style.business li:before {
 	background-color: transparent;
 	content: counters(item, ".", decimal) ". ";
 	counter-increment: item;
@@ -1718,11 +1718,11 @@ script + #page .page {
 	top: unset !important;
 }
 
-.std-style.business ol:nth-child(2n+1) li:before { 
+.std-style.business ol:nth-child(2n+1) li:before {
 	margin-left: -45px;
 }
 
-.std-style.business ol:nth-child(3n+1) li:before { 
+.std-style.business ol:nth-child(3n+1) li:before {
 	margin-left: -50px;
 }
 
@@ -2306,7 +2306,7 @@ tab section a {
 	color: #1e2b34;
 	text-align: left;
 	padding: 15px 0px;
-	padding-left: 65px; 
+	padding-left: 65px;
 	background-repeat: no-repeat;
     background-position: left center;
 }
@@ -3252,7 +3252,7 @@ background-color: transparent!important;
 	width: 2px;
 	background-color: #dedede;
 }
- 
+
 ::-webkit-scrollbar-thumb {
 	width: 6px;
 	margin: 0 -5px;
@@ -3478,16 +3478,7 @@ background-color: transparent!important;
     width: 100%;
     left: 0;
 }
-/*
-#page .page .page-top .content .text h1 {
-    font-size: 55px;
-    font-weight: 400;
-    color: #fff;
-    text-transform: uppercase;
-    line-height: 60px;
-    margin-bottom: 10px;
-    width: 700px;
-}*/
+
 
 #page .page .page-top .content .text p {
     font-size: 24px;
@@ -3542,7 +3533,7 @@ background-color: transparent!important;
 }
 @media screen and (max-height: 1200px) {
 
-	#page .page .page-top.main #main-shortcut > a:hover>div,	
+	#page .page .page-top.main #main-shortcut > a:hover>div,
 	#page .page .page-top.main #main-shortcut > a,
 	#page .page .page-top.main #main-shortcut > a > label {
 		height: 130px !important;
@@ -3739,7 +3730,7 @@ background-color: transparent!important;
 	display: none;
 }
 #companyDetailBody.company table thead > tr > th {
-	border-bottom: solid 2px #374d5c; 
+	border-bottom: solid 2px #374d5c;
 	color: #fff;
 	height: 50px;
 	line-height: 50px;
@@ -4066,7 +4057,7 @@ background-color: transparent!important;
 	display: none;
 }
 #companyDetailBody.bank table thead > tr > th {
-	border-bottom: solid 2px #374d5c; 
+	border-bottom: solid 2px #374d5c;
 	height: 50px;
 	line-height: 50px;
 	color: #374d5c;
@@ -4305,7 +4296,7 @@ a.but {
 /*     padding: 0 25px; */
     font-size: 16px;
     position: relative;
-	
+
 	overflow-y: auto;
 	width: 874px;
 }
@@ -4588,23 +4579,23 @@ table.about-form-table{
     font-weight: 300;
 }
 
-.news-detail .news-detail-text ul { 
-   list-style-type: disc; 
-   list-style-position: inside; 
+.news-detail .news-detail-text ul {
+   list-style-type: disc;
+   list-style-position: inside;
 }
-.news-detail .news-detail-text ol { 
-   list-style-type: decimal; 
-   list-style-position: inside; 
+.news-detail .news-detail-text ol {
+   list-style-type: decimal;
+   list-style-position: inside;
 }
-.news-detail .news-detail-text ul ul, .news-detail .news-detail-text ol ul { 
-   list-style-type: circle; 
-   list-style-position: inside; 
-   margin-left: 15px; 
+.news-detail .news-detail-text ul ul, .news-detail .news-detail-text ol ul {
+   list-style-type: circle;
+   list-style-position: inside;
+   margin-left: 15px;
 }
-.news-detail .news-detail-text ol ol,.news-detail .news-detail-text  ul ol { 
-   list-style-type: lower-latin; 
-   list-style-position: inside; 
-   margin-left: 15px; 
+.news-detail .news-detail-text ol ol,.news-detail .news-detail-text  ul ol {
+   list-style-type: lower-latin;
+   list-style-position: inside;
+   margin-left: 15px;
 }
 
 
@@ -4619,7 +4610,7 @@ table.about-form-table{
     margin-top: 1em;
     margin-bottom: 1em;
     margin-left: 0;
-    margin-right: 0;    
+    margin-right: 0;
     /*margin-bottom: 15px;*/
 	color: #374d5c;
 	font-weight: 300;
@@ -4736,7 +4727,7 @@ table.about-form-table{
 
 .page.searchpage .page-top {
 	height: 180px !important;
-	
+
 }
 #page .page.searchpage .page-top .content .text h2 {
 	margin-top: 80px !important;
@@ -4978,7 +4969,7 @@ font.notetext {
 	display: none;
 }
 .bank #companyDetailBody table thead > tr > th {
-	border-bottom: solid 2px #374d5c; 
+	border-bottom: solid 2px #374d5c;
 	height: 50px;
 	line-height: 50px;
 	color: #374d5c;
@@ -5301,7 +5292,7 @@ font.notetext {
 	display: none;
 }
 #licDetailBody table thead > tr > th {
-	border-bottom: solid 2px #374d5c; 
+	border-bottom: solid 2px #374d5c;
 	color: #fff;
 	height: 50px;
 	line-height: 50px;
@@ -5562,11 +5553,11 @@ tabcontent section.text p b {
                      .row .crm-webform-input:-moz-placeholder, .row .crm-webform-select select:-moz-placeholder {
                       color: #bbb;
                     }
-                    
+
                      .crm-webform-checkbox-name{
-                         color:#777 
+                         color:#777
                      }
-                     
+
                      .row .crm-webform-header-container {
                      background: none;
                      border-bottom: none;
@@ -5599,8 +5590,8 @@ tabcontent section.text p b {
                      .row .crm-webform-block .crm-webform-body {
                      margin: 0 50px 0px;
                      }
-                     
-                     
+
+
                      /*
                      #field_LEAD_PHONE, #field_LEAD_IM {
                      width:50%;
@@ -5686,7 +5677,7 @@ tabcontent section.text p b {
                      left: 27px;
                      position: absolute;
                      top: 42px;
-                     }				
+                     }
                      .tooltip{
                      display:none;
                      }*/
@@ -5694,7 +5685,7 @@ tabcontent section.text p b {
                         /*position: absolute;*/
                             position: relative;
                             margin-left: auto;
-                        
+
                         margin-top:-87px;
                         padding: 4px 12px 4px;
                         line-height: 16px;
@@ -5708,7 +5699,7 @@ tabcontent section.text p b {
                         float:right;
                         display:inline;
                         display:none;
-                     }    
+                     }
                      .visible{
                          display:inline;
                      }
@@ -5723,7 +5714,7 @@ tabcontent section.text p b {
                         border-width: 8px 8px 0 8px;
                         border-color: #f2dfdf transparent transparent transparent;
                     }
-                    
+
                     .crm-tooltip:before, .crm-tooltip:after {
                         -webkit-box-sizing: border-box;
                         -moz-box-sizing: border-box;
@@ -5921,7 +5912,7 @@ tabcontent section.text p b {
 /*     padding: 0 25px; */
     font-size: 16px;
     position: relative;
-	
+
 	overflow-y: auto;
 	width: 874px;
 }
@@ -6027,24 +6018,24 @@ tabcontent section.text p b {
 
 
 
-#companyDetailBody ul { 
-   list-style-type: disc; 
-   list-style-position: inside; 
+#companyDetailBody ul {
+   list-style-type: disc;
+   list-style-position: inside;
    margin-top: 10px;
 }
-#companyDetailBody ol { 
-   list-style-type: decimal; 
-   list-style-position: inside; 
+#companyDetailBody ol {
+   list-style-type: decimal;
+   list-style-position: inside;
 }
-#companyDetailBody ul ul, #companyDetailBody ol ul { 
-   list-style-type: circle; 
-   list-style-position: inside; 
-   margin-left: 15px; 
+#companyDetailBody ul ul, #companyDetailBody ol ul {
+   list-style-type: circle;
+   list-style-position: inside;
+   margin-left: 15px;
 }
-#companyDetailBody ol ol, #companyDetailBody ul ol { 
-   list-style-type: lower-latin; 
-   list-style-position: inside; 
-   margin-left: 15px; 
+#companyDetailBody ol ol, #companyDetailBody ul ol {
+   list-style-type: lower-latin;
+   list-style-position: inside;
+   margin-left: 15px;
 }
 
 #companyDetailBody li
@@ -6054,7 +6045,7 @@ tabcontent section.text p b {
     position: relative;
     margin-left: 10px;
     margin-bottom: 10px;
-    list-style-type: none; 
+    list-style-type: none;
 }
 
 #companyDetailBody li:before {
@@ -6084,11 +6075,11 @@ tabcontent section.text p b {
     padding: 10px 0px 10px 0px;
     margin: 0px;
 }
-    
+
 .breadscrumbs li{
     display:inline;
     padding-left: 0.5em;
-    text-indent: -1em; 
+    text-indent: -1em;
     color:#adbe4f;
     font-size:14px;
 }
@@ -6124,7 +6115,7 @@ color:#000;
 
 
 .highlight-when-not-checked{
-    
+
 }
 .highlighted-when-not-checked{
     background-color: #ffd4d1;
