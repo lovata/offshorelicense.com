@@ -1603,11 +1603,11 @@ script + #page .page {
   max-width: 1077px;
 }
 
-.inline-warp .inline-3 {
-  width: 33.3333%;
-  display: inline-block;
-  vertical-align: top;
-}
+/*.inline-warp .inline-3 {*/
+/*  width: 33.3333%;*/
+/*  display: inline-block;*/
+/*  vertical-align: top;*/
+/*}*/
 
 .page .mainPage-ourApproach .inline-warp .inline-3 {
   width: calc(33.3333% - 50px);
@@ -1644,11 +1644,11 @@ script + #page .page {
   padding: 0 40px;
 }
 
-.inline-warp .inline-3 {
-  width: 33.3333%;
-  display: inline-block;
-  vertical-align: top;
-}
+/*.inline-warp .inline-3 {*/
+/*  width: 33.3333%;*/
+/*  display: inline-block;*/
+/*  vertical-align: top;*/
+/*}*/
 
 .page .mainPage-ourApproach .inline-warp .inline-3 {
   width: calc(33.3333% - 50px);
@@ -2500,9 +2500,6 @@ tabcontent section.text ul li:before {
   background-color: #adbe4f;
 }
 
-div.privacy {
-  width: 750px;
-}
 
 .std-style ol li {
   list-style-type: decimal;
@@ -3282,16 +3279,28 @@ font.notetext {
 }
 
 .bx-404-container {
-  width: 720px;
+  max-width: 720px;
+  width: 100%;
   background: #fff;
   position: relative;
-  margin: 0px auto;
-  margin-top: 50px;
-  box-shadow: 0px 0px 5px 0px #ccc;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 0 5px 0 #ccc;
   text-align: center;
-  padding: 60px 0px;
-  margin-bottom: 100px;
+  padding: 30px 16px;
+
 }
+
+@media screen and (min-width: 768px) {
+  .bx-404-container {
+    margin-top: 50px;
+    margin-bottom: 100px;
+    padding: 30px 30px 100px;
+  }
+}
+
 
 .bx-404-container h1 {
   color: #8aa203;
@@ -3396,59 +3405,6 @@ font.notetext {
   line-height: 1px;
   border: none;
   background-color: #999;
-}
-
-.about-us-title {
-  height: 180px !important;
-}
-
-
-*[data-icon="service"] a {
-  background-image: url('../img/serviceWhite.png');
-}
-
-*[data-icon="document"] a {
-  background-image: url('../img/documentWhite.png');
-}
-
-*[data-icon="profile"] a {
-  background-image: url('../img/businessWhite.png');
-}
-
-*[data-icon="plain"] a {
-  background-image: url('../img/planeWhite.png');
-}
-
-.act[data-icon="service"] a {
-  background-image: url('../img/serviceGrey.png');
-}
-
-.act[data-icon="document"] a {
-  background-image: url('../img/documentGrey.png');
-}
-
-.act[data-icon="profile"] a {
-  background-image: url('../img/businessGrey.png');
-}
-
-.act[data-icon="plain"] a {
-  background-image: url('../img/planeGrey.png');
-}
-
-*[data-icon="userSmall"] a {
-  background-image: url('../img/userVerySmallPastelBlue.png');
-}
-
-*[data-icon="companySmall"] a {
-  background-image: url('../img/menuCompanyVerySmallPastelBlue.png');
-}
-
-.act[data-icon="userSmall"] a {
-  background-image: url('../img/userVerySmallGreen.png');
-}
-
-.act[data-icon="companySmall"] a {
-  background-image: url('../img/menuCompanyVerySmallGrean.png');
 }
 
 #page .bx-authform {

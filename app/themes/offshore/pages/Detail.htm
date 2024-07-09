@@ -29,22 +29,22 @@ post = "post"
 <?php
 function onEnd() {
     if (!$this["blogPost"]->post)
-        return Redirect::to('/404');    
+        return Redirect::to('/404');
     $this->SeoCmsPage->seo_title = $this["blogPost"]->post->seo_title;
     $this->SeoCmsPage->seo_description = $this["blogPost"]->post->seo_description;
     $this->SeoCmsPage->seo_keywords = $this["blogPost"]->post->seo_keywords;
 
-    
-    
-    
+
+
+
     //$this->SeoCmsPage->seo_title = $this["SeoBlogPost"]->title;
     $this->page['breadscrumbs'] = array(
         'Home'=>$this->page['site_link'],
-        'Blog'=>"/blog/detail", 
+        'Blog'=>"/blog/detail",
         $this["blogPost"]->post->title=>"",
-    );    
-    
-    
+    );
+
+
 
 }
 ?>
@@ -55,20 +55,14 @@ function onEnd() {
 <!-------------------START Blog--------------------->
 <!-------------------------------------------------->
 
-<div class="page-top" style="height: 180px;">
-    <div class="content mainPage-list" style="padding-top: 0;">
-        <div class="text center" style="padding-top: 20px;">
-            <h2 style="    font-size: 36px;
-            font-weight: 400;
-            color: #fff;
-            text-transform: uppercase;
-            line-height: 60px;
-            margin-bottom: 20px;
-            margin-top: 10px;">Blog</h2>
+<div class="page-top">
+    <div class="content mainPage-list">
+        <div class="text center">
+            <h1 class="main-offer__heading">Blog</h1>
         </div>
     </div>
 </div>
- 
+
 <!-------------------------------------------------->
 <!--------------------END Blog---------------------->
 <!-------------------------------------------------->
@@ -101,7 +95,7 @@ function onEnd() {
 
 <div class="whiteBackground">
     <div class="news-detail content">
-    
+
     	<h1 style="    font-size: 26px;
     line-height: 30px;
     margin-bottom: 10px;
@@ -110,20 +104,20 @@ function onEnd() {
     	<div class="news-detail-text">
            {% for image in post.featured_images|slice(0, 1) %}
                <img src="{{ image.path  }}" style="display:none;"/>
-           {% endfor %}    	
+           {% endfor %}
     	{{ post.content_html|raw }}
     	</div>
-    
+
         <div class="news-tags"><label>Tags:</label>
             {% for tag in post.tags %}
                 <a href="/search/{{ tag.name }}">{{ tag.name }}</a>
             {% endfor %}
         </div>
-    		
+
     	<a href="{{ 'blog'|page({page:1}) }}" class="news-back-link">Back to list</a>
-    
-    
-    
+
+
+
         {% if  blogRelated.posts.count>0 %}
             <div class="news-related-articles">
                 <h3>Related Articles</h3>
@@ -132,11 +126,11 @@ function onEnd() {
                     {% endfor %}
     		</div>
         {% endif %}
-    
-    
-    
-    
-    
+
+
+
+
+
     </div>
 </div>
 

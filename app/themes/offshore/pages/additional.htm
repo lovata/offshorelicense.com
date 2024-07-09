@@ -36,102 +36,81 @@ function onStart(){
 {% set detailsUrlParameter = builderList.detailsUrlParameter %}
 
 
+<div class="page page-short additional">
+    <div class="page-top about-us-title">
+        <div class="content mainPage-list">
+            <div class="text center">
+                <h1 class="main-offer__heading">Additional services</h1>
+            </div>
+        </div>
+    </div>
 
 
-
-<div class="page additional">
-<div class="page-top about-us-title">
-   <div class="content mainPage-list">
-      <div class="text center">
-         <h1>Additional services</h1>
-      </div>
-   </div>
-</div>
-
-
-
-
-{% if this.page["breadscrumbs"] %}
- <div class="content">
-    <ul class='breadscrumbs'>
-        {%for item,url in this.page["breadscrumbs"]%}
-        <li>
-            {% if url!="" %}
-                <a href="{{url}}">{{item}}</a>
-            {% else %}
-                {{item}}
-            {% endif %}
-        </li>
-        {% endfor %}
-    </ul>
-</div>
-{% endif %}
+    {% if this.page["breadscrumbs"] %}
+        <div class="content">
+            <ul class='breadscrumbs'>
+                {% for item,url in this.page["breadscrumbs"] %}
+                    <li>
+                        {% if url!="" %}
+                            <a href="{{ url }}">{{ item }}</a>
+                        {% else %}
+                            {{ item }}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
 
 
+    <div class="page-content BrowseBanksByRegion">
+        <div class="content">
+            <div class="text center">
+                <h2>Merchant Accounts, Legal Consultations and Technical Solutions</h2>
+            </div>
+            <div class="content">
+                <div class="list-of-el">
+                    <ul>
+                        {% for record in records %}
+                            <li class="list-el">
+                                <label onclick="openTab($(this))" id="{{ attribute(record, "title")|replace({' ':''}) }}">
+                                    <h3> {{ attribute(record, "title") }}</h3>
+                                </label>
 
 
-<div class="page-content BrowseBanksByRegion">
-<div class="content">
-   <div class="text center">
-      <h2>Merchant Accounts, Legal Consultations and Technical Solutions</h2>
-   </div>
-   <div class="content">
-      <div class="list-of-el">
-         <ul>
-         
-         
-
-    {% for record in records %}
-        <li class="list-el">
-               <label onclick="openTab($(this))" id="{{ attribute(record, "title")|replace({' ':''}) }}">
-               <h3> {{ attribute(record, "title") }}</h3>
-               </label>
-               
-               
-                <div class="pad">
-                    <div class="user_text scroll-pane jspScrollable">
-                         <div class="wrp">
-                             {{ attribute(record, "body") | raw }}
-                         </div>
-                    </div>
+                                <div class="pad">
+                                    <div class="user_text scroll-pane jspScrollable">
+                                        <div class="wrp">
+                                            {{ attribute(record, "body") | raw }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </div>
-                
-                
-        </li>
-    {% endfor %}
+                <script type="text/javascript">
+                  function openTab (th) {
+                    if ($(th).parent("li").hasClass("act")) {
+                      $(th).parent("li").removeClass("act");
+                      $(th).parent("li").find(".pad").hide();
+                    } else {
+                      $(".list-of-el li").removeClass("act");
+                      $(".list-of-el li").find(".pad").hide();
+                      $(th).parent("li").addClass("act");
+                      $(th).parent("li").find(".pad").show();
+                      $(th).parent("li").find(".scroll-pane").height($(th).parent("li").find(".wrp").height() + 60).jScrollPane();
+                    }
+                  }
 
-         
-            
-         </ul>
-         </div>
-         <script type="text/javascript">
-            function openTab(th) {
-            		if($(th).parent('li').hasClass('act')) {
-            			$(th).parent('li').removeClass('act');
-            			$(th).parent('li').find('.pad').hide();
-            		} else {
-            			$('.list-of-el li').removeClass('act');
-            			$('.list-of-el li').find('.pad').hide();
-            			$(th).parent('li').addClass('act');
-            			$(th).parent('li').find('.pad').show()
-            			$(th).parent('li').find('.scroll-pane').height($(th).parent('li').find('.wrp').height()+60).jScrollPane();
-            		}
-            }
-            
-            
-            $(function(){
-                openTab($(window.location.hash));
-                var y = $(window).scrollTop();
-                $(window).scrollTop(y-200);
-            })
-            
-            
-         </script>		</div>
-         
-         {% partial 'additional-contact-form' %}
-         
-         
-         
-      </div>
-   </div>
+                  $(function () {
+                    openTab($(window.location.hash));
+                    var y = $(window).scrollTop();
+                    $(window).scrollTop(y - 200);
+                  });
+                </script>
+            </div>
+            {% partial 'additional-contact-form' %}
+        </div>
+    </div>
 </div>
