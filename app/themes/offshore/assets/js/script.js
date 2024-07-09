@@ -103,30 +103,17 @@ function timerIncrement() {
     idleTime = idleTime + 1;
     if (idleTime > 90) { // 1.5 minutes
         var popup_closed = getCookie("popup_closed");
-        
-        
-        if ($('.ui-dialog').is(':visible')) { 
+
+
+        if ($('.ui-dialog').is(':visible')) {
           popup_closed = "1";
-        }        
-        
-        
-        if (popup_closed!=="1") $('#dialog-contactus2').dialog('open');   
+        }
+
+
+        if (popup_closed!=="1") $('#dialog-contactus2').dialog('open');
         idleTime = 0;
     }
 }
-
-
-
-$(function(){
-    
-    if(window.location.hash=="#aboutFormTop") {
-      $("#menu-contact-us").addClass("current");
-      $("#menu-about-us").removeClass("current");
-    } else {
-      // Fragment doesn't exist
-    }
-    
-})
 
 
 $(function(){
@@ -143,7 +130,7 @@ $(function(){
 $(function(){
   var type = window.location.hash.substr(1);
   $("#accordion_"+type).addClass("act");
-  
+
   if (type.indexOf("personal") !== -1){
     $("#tab_corporate").removeClass("act");
     $("#tab_personal").addClass("act");
@@ -152,7 +139,7 @@ $(function(){
     $("#tab_personal").removeClass("act");
     $("#tab_corporate").addClass("act");
   }
-    
+
   if (type.indexOf("audit") !== -1){
     $("#tab_accounting").removeClass("act");
     $("#tab_audit").addClass("act");
@@ -161,11 +148,11 @@ $(function(){
     $("#tab_audit").removeClass("act");
     $("#tab_accounting").addClass("act");
   }
-        
+
   var elementExists = document.getElementById('accordion_'+type);
   if (elementExists)
     document.getElementById('accordion_'+type).scrollIntoView();
-    
+
 })
 
 
@@ -178,7 +165,7 @@ $(function(){
 
 
 
-	
+
 	$("input.phone, table.about-form-table input[name='form_text_4']").intlTelInput({
 		initialCountry: "auto",
 		geoIpLookup: function(callback) {
@@ -190,9 +177,9 @@ $(function(){
 		autoHideDialCode: false,
 		nationalMode: false,
 		utilsScript: "/local/templates/offshore/js/telInput/js/utils.js",
-		
+
 	});
-	
+
 	$( ".terms-dialog" ).dialog({
 		autoOpen: false,
 		height: 660,
@@ -234,7 +221,7 @@ $(function(){
 	$( ".privacy-opener" ).on( "click", function() {
 		$( ".privacy-dialog" ).dialog("open");
 	});
-	
+
 	$( ".business-dialog" ).dialog({
 		autoOpen: false,
 		height: 660,
@@ -259,8 +246,8 @@ $(function(){
 
 	$(".elipsis").dotdotdot({	//change at end of multiple lines text to dots if exeeds borders
 		watch: "window",
-	}); 
-	
+	});
+
 	$('body').on( "click", ".ui-widget-overlay", function() { //close pop up terms and privacy tabs on click everythere
 		$('body').css('overflow','auto');
 		$( ".privacy-dialog" ).dialog( "close" );
@@ -273,15 +260,15 @@ $(function(){
 		$( ".notetext" ).dialog( "close" );
 		$( "#form3-message" ).dialog("close");
 	});
-	
+
 	$("#bx_auth_servform").click(function(){
 		$("#bx_auth_servform").hide();
 	});
-	
+
 });
 /*
 	document.documentElement.addEventListener('gesturestart', function (event) {
-		event.preventDefault();      
+		event.preventDefault();
 	}, false);
 
 */

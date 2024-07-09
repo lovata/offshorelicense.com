@@ -14,6 +14,8 @@ class MainSlider {
     window.addEventListener("resize", () => {
       this.setScreen();
     });
+
+
   }
 
   initSlider () {

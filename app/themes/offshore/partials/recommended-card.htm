@@ -1,4 +1,6 @@
-<a class="offer-card" href="{{ href }}">
+
+
+<{% if href %}a href="{{ href }}"{% else %}div{% endif %} class="offer-card">
     <span class="offer-card__icon">
         <img class="offer-card__img" src="{{ img }}" alt="">
     </span>
@@ -33,6 +35,6 @@
             <span class="offer-card__arrow"></span>
         {% endif %}
     </span>
-</a>
+</{% if href %}a{% else %}div{% endif %}>
 
 

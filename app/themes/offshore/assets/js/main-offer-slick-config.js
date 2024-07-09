@@ -40,7 +40,6 @@ class MainOfferSlider {
   }
 
   initSlickSlider () {
-
     this.slide = $(".js-main-offer-slider").slick({
       arrows: false,
       infinite: true,

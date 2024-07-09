@@ -58,7 +58,6 @@ function onEnd() {
 		{% endif %}
 			<div class="companyInfo main-offer__list">
 				{% partial 'recommended-card'
-					href='bank'|page({'type':item.type, 'slug':item.slug})
 					img=attribute(record, "logo")|media
 					title= attribute(record, "name")
 					text=attribute(record, "country")

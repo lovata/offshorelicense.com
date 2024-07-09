@@ -15,8 +15,8 @@
         </div>
         <div class="header-menu__container">
             <ul>
-                <li><a class="header-menu__link{% if pageId=='about' %} current{% endif %}" href="{{ 'about'|page }}">About us</a></li>
-                <li><a class="header-menu__link js-menu-button{% if pageId ~ '#aboutFormTop' == 'about#aboutFormTop' %} current{% endif %}" href="{{ 'about'|page }}#aboutFormTop">Contact us</a></li>
+                <li><a class="js-menu-about-us header-menu__link{% if pageId=='about' %} current{% endif %}" href="{{ 'about'|page }}">About us</a></li>
+                <li><a class="js-menu-contact-us header-menu__link js-menu-button" href="{{ 'about'|page }}#aboutFormTop">Contact us</a></li>
                 <li><a class="header-menu__link{% if pageId=='faq' %} current{% endif %}" href="{{ 'faq'|page }}">FAQ</a></li>
                 <li><a class="header-menu__link{% if pageId=='ready-made-products' %} current{% endif %}" href="{{ 'ready-made-products'|page }}">Ready-made products</a></li>
                 <li><a class="header-menu__link{% if pageId=='blog' %} current{% endif %}" href="{{ 'blog'|page({page:1}) }}">Blog</a></li>

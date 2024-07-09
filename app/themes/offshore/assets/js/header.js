@@ -11,6 +11,10 @@ class Header {
 
   eventHandlers () {
     window.addEventListener("load", () => {
+      if(window.location.hash=="#aboutFormTop") {
+        $(".js-menu-contact-us").addClass("current");
+        $(".js-menu-about-us").removeClass("current");
+      }
       this.header = document.querySelector(".js-header-menu");
       this.headerEventButton();
       this.setScreen();
@@ -60,3 +64,6 @@ class Header {
   }
 }
 new Header()
+
+
+

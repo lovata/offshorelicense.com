@@ -206,8 +206,6 @@ $this->page['breadscrumbs'] = array('Home'=>$this->page['site_link'],'Accounting
                                             </label>
                                             <ul>
                                                 {% for item in region %}
-
-                                                    <li>
                                                 <li>
                                                     {% partial 'recommended-card'
                                                         href='accountingdetails'|page({'type':item.type, 'slug':item.slug})
@@ -220,8 +218,6 @@ $this->page['breadscrumbs'] = array('Home'=>$this->page['site_link'],'Accounting
 
                                                     %}
                                                 </li>
-                                                    </li>
-
                                                 {% endfor %}
                                             </ul>
                                         </li>
