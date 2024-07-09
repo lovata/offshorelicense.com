@@ -4338,10 +4338,41 @@ font.notetext {
 }
 
 
-.highlight-when-not-checked {
-
-}
 
 .highlighted-when-not-checked {
   background-color: #ffd4d1;
+}
+#dialog-bank {
+  max-width: 500px;
+  width: 100% !important
+}
+
+.ui-dialog {
+  left: 0!important;
+  top: 10%;
+  margin-left: 0!important;
+  height: auto;
+  max-width: 500px;
+  width: 100% !important
+}
+
+
+@media screen and (max-width: 767px) {
+  .form-group {
+    width: 100% !important;
+  }
+  .form-group > div{
+    width: 100% !important;
+  }
+}
+@media screen and (min-width: 768px) {
+  .ui-dialog {
+    margin-left: -250px!important;
+    left: 50% !important;
+  }
+}
+
+.ui-dialog .ui-dialog-titlebar,
+.ui-dialog .ui-dialog-content {
+  padding-left: 0!important;
 }
