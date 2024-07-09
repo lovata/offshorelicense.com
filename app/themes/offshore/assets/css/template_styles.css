@@ -1922,7 +1922,12 @@ font.notetext {
 }
 
 #companyDetailTop.company .content.mainPage-list {
-  padding-top: 80px;
+  padding-top: 30px;
+}
+@media screen and (min-width: 768px) {
+  #companyDetailTop.company .content.mainPage-list {
+    padding-top: 80px;
+  }
 }
 
 #page .page .page-top#companyDetailTop.company .content .text {
@@ -3126,14 +3131,17 @@ form[name="SIMPLE_FORM_1"] p[align="right"] {
 }
 
 .search-page {
-  width: 890px;
+  max-width: 890px;
   position: relative;
-  margin: 0px auto;
-  margin-top: 65px;
-  margin-bottom: 60px;
+  margin: 30px auto;
   padding: 30px;
   background-color: #fff;
-  box-shadow: 0px 0px 5px 0px #ccc;
+  box-shadow: 0 0 5px 0 #ccc;
+}
+@media screen and (min-width: 1280px) {
+  .search-page {
+    margin: 65px auto 60px;
+  }
 }
 
 .search-page hr {
@@ -3178,6 +3186,7 @@ form[name="SIMPLE_FORM_1"] p[align="right"] {
   color: #4d5e6b;
   font-family: "Lato", Helvetica, Arial, sans-serif;
   font-size: 14px;
+  flex-grow: 1;
 }
 
 .search-page input[type="submit"] {
@@ -3187,11 +3196,16 @@ form[name="SIMPLE_FORM_1"] p[align="right"] {
   cursor: pointer;
   font-weight: 500;
   height: 35px;
-  margin-bottom: 27px;
-  margin-right: 30px;
+  margin-left: 16px;
   padding: 0 15px;
   text-transform: uppercase;
   background: #8aa203;
+}
+
+@media screen and (min-width: 1280px) {
+  .search-page input[type="submit"] {
+    margin-left: 30px;
+  }
 }
 
 font.notetext {

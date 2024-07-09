@@ -86,6 +86,7 @@ function onStart()
 						</li>
 					{% endfor %}
 				</ul>
+				{% if this.page["featured_audit"] %}
 				<ul>
 					{% for item in this.page["featured_audit"] %}
 
@@ -100,6 +101,7 @@ function onStart()
 						</li>
 					{% endfor %}
 				</ul>
+				{% endif %}
 			</div>
 
 

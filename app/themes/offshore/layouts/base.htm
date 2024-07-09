@@ -1000,6 +1000,7 @@ curl_close($ch);
         'assets/js/jquery.validate.min.js',
         'assets/js/cookie-policy.js',
         'assets/js/slick/slick.min.js',
+        'assets/js/accordion.js',
         'assets/js/main-offer-slick-config.js',
         'assets/js/header.js'
     ]|theme }}"></script>
@@ -1156,11 +1157,11 @@ curl_close($ch);
             <div class="content">
                 <div id="bxdynamic_LkGdQn_start" style="display:none"></div>
                 <ul>
-                    <li class=""><a href="{{ 'about'|page }}">About us</a></li>
-                    <li class=""><a href="{{ 'about'|page }}/#aboutFormTop">Contact us</a></li>
-                    <li><a href="{{ 'faq'|page }}">FAQ</a></li>
-                    <li><a href="{{ 'ready-made-products'|page }}">Ready-made products</a></li>
-                    <li><a href="{{ 'blog'|page({page:1}) }}">Blog</a></li>
+                    <li class="{% if this.page.id=='about' %}current{% endif %}"><a href="{{ 'about'|page }}">About us</a></li>
+                    <li class="{% if  this.page.id ~ '/#aboutFormTop' =='about' %}current{% endif %}"><a href="{{ 'about'|page }}/#aboutFormTop">Contact us</a></li>
+                    <li class="{% if this.page.id=='faq' %}current{% endif %}"><a href="{{ 'faq'|page }}">FAQ</a></li>
+                    <li class="{% if this.page.id=='ready-made-products' %}current{% endif %}"><a href="{{ 'ready-made-products'|page }}">Ready-made products</a></li>
+                    <li class="{% if this.page.id=='blog' %}current{% endif %}"><a href="{{ 'blog'|page({page:1}) }}">Blog</a></li>
                 </ul>
                 <div id="bxdynamic_LkGdQn_end" style="display:none"></div>
                 <div id="headerSearchField">
@@ -1188,24 +1189,26 @@ curl_close($ch);
         <div class="bottom">
             <div class="content">
                 <div id="main-shortcut">
-                    <a href="{{ 'companies'|page }}">Companies</a>
-                    <a href="{{ 'banks'|page }}">Banks</a>
-                    <a href="{{ 'licensing'|page }}">Licensing</a>
-                    <a href="{{ 'accounting'|page }}">Accounting</a>
-                    <a href="{{ 'intellectualproperties'|page }}">Intellectual Property</a>
-                    <a href="{{ 'additional'|page }}">Additional</a>
+                    <a class="{% if this.page.id=='companies' %}act{% endif %}" href="{{ 'companies'|page }}">Companies</a>
+                    <a class="{% if this.page.id=='banks' %}act{% endif %}" href="{{ 'banks'|page }}">Banks</a>
+                    <a class="{% if this.page.id=='licensing' %}act{% endif %}" href="{{ 'licensing'|page }}">Licensing</a>
+                    <a class="{% if this.page.id=='accounting' %}act{% endif %}" href="{{ 'accounting'|page }}">Accounting</a>
+                    <a class="{% if this.page.id=='intellectualproperties' %}act{% endif %}" href="{{ 'intellectualproperties'|page }}">Intellectual Property</a>
+                    <a class="{% if this.page.id=='additional' %}act{% endif %}" href="{{ 'additional'|page }}">Additional</a>
                 </div>
             </div>
         </div>
         <div class="clear"></div>
         <div id="bxdynamic_XEVOpk_end" style="display:none"></div>
 
-        {% partial 'header' contactWidget = this.page.contact_widget %}
+        {% partial 'header'
+            pageId=this.page.id
+            contactWidget = this.page.contact_widget %}
     </header>
-    s
     {% page %}
     <!-- // .body -->
 </div>
+
 <footer>
     <div class="top">
         <div class="left_color"></div>

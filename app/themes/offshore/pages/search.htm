@@ -25,20 +25,20 @@ function get_string_around($string, $start){
 
 
 function onStart() {
-    
+
     $q = trim(Request::get('q'));
     if (!$q)
         $q = $this->param('search');
-        
+
     $this["q"] = $q;
 
 if (strlen($q)<3){
     $this["searchResults"] = array();
     return;
 }
-    
+
     $rows = array();
-    
+
 
 
 
@@ -48,7 +48,7 @@ if (strlen($q)<3){
     ->where('title', 'like', '%'.$q.'%')
     ->orWhere('content', 'like', '%'.$q.'%')
    ->get();
-    
+
     foreach ($data as $row){
         $new = array();
         $new["name"] = $row->title;
@@ -60,11 +60,11 @@ if (strlen($q)<3){
         $new["url"] = "/blog/detail/".$row->slug;
         $rows[] = $new;
     }
-    
 
-    
-    
-    
+
+
+
+
     $data = Db::table('offshorelicense_offers_companies')
     ->where('info', 'like', '%'.$q.'%')
    ->orWhere('name', 'like', '%'.$q.'%')
@@ -73,9 +73,9 @@ if (strlen($q)<3){
    ->orWhere('tab_services', 'like', '%'.$q.'%')
    ->orWhere('tab_requirements', 'like', '%'.$q.'%')
    ->get();
-    
+
     foreach ($data as $row){
-        if ($row->disabled=='1') continue;        
+        if ($row->disabled=='1') continue;
         $new = array();
         $new["name"] = $row->name;
         $new["info"] = $row->info;
@@ -85,8 +85,8 @@ if (strlen($q)<3){
         $new["url"] = "/companies/".$row->slug;
         $rows[] = $new;
     }
-    
-    
+
+
 
 
    $data = Db::table('offshorelicense_offers_banks')
@@ -97,9 +97,9 @@ if (strlen($q)<3){
    ->orWhere('tab_services', 'like', '%'.$q.'%')
    ->orWhere('tab_requirements', 'like', '%'.$q.'%')
    ->get();
-    
+
     foreach ($data as $row){
-        if ($row->disabled=='1') continue;        
+        if ($row->disabled=='1') continue;
         $new = array();
         $new["name"] = $row->name;
         $new["info"] = $row->info;
@@ -112,9 +112,9 @@ if (strlen($q)<3){
         $new["url"] = "/banks/".$row->type."/".$row->slug;
         $rows[] = $new;
     }
-    
-    
-    
+
+
+
 
      $data = Db::table('offshorelicense_offers_licensing')
      ->where('info', 'like', '%'.$q.'%')
@@ -124,9 +124,9 @@ if (strlen($q)<3){
    ->orWhere('tab_procedure', 'like', '%'.$q.'%')
    ->orWhere('tab_documents', 'like', '%'.$q.'%')
    ->get();
-    
+
     foreach ($data as $row){
-        if ($row->disabled=='1') continue;        
+        if ($row->disabled=='1') continue;
         $new = array();
         $new["name"] = $row->name;
         $new["info"] = $row->info;
@@ -136,8 +136,8 @@ if (strlen($q)<3){
         $new["url"] = "/licensing/".$row->slug;
         $rows[] = $new;
     }
-    
-    
+
+
 
      $data = Db::table('offshorelicense_offers_intprop')
      ->where('info', 'like', '%'.$q.'%')
@@ -147,7 +147,7 @@ if (strlen($q)<3){
    ->orWhere('tab_procedure', 'like', '%'.$q.'%')
    ->orWhere('tab_documents', 'like', '%'.$q.'%')
    ->get();
-    
+
     foreach ($data as $row){
         $new = array();
         $new["name"] = $row->name;
@@ -158,8 +158,8 @@ if (strlen($q)<3){
         $new["url"] = "/licensing/".$row->slug;
         $rows[] = $new;
     }
-    
-    
+
+
      $data = Db::table('offshorelicense_offers_accounting')
      ->where('info', 'like', '%'.$q.'%')
    ->orWhere('name', 'like', '%'.$q.'%')
@@ -168,9 +168,9 @@ if (strlen($q)<3){
    ->orWhere('tab_services', 'like', '%'.$q.'%')
    ->orWhere('tab_requirements', 'like', '%'.$q.'%')
    ->get();
-    
+
     foreach ($data as $row){
-        if ($row->disabled=='1') continue;        
+        if ($row->disabled=='1') continue;
         $new = array();
         $new["name"] = $row->name;
         $new["info"] = $row->info;
@@ -180,17 +180,17 @@ if (strlen($q)<3){
         $new["url"] = "/accounting/".$row->type."/".$row->slug;
         $rows[] = $new;
     }
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
     $row = Db::table('offshorelicense_offers_additional')
    ->Where('title', 'like', '%'.$q.'%')
    ->orWhere('body', 'like', '%'.$q.'%')
    ->first();
-    
+
     if ($row){
         $new = array();
         $new["name"] = $row->title;
@@ -201,53 +201,53 @@ if (strlen($q)<3){
         $new["url"] = "/additional";
         $rows[] = $new;
     }
-    
-    
- 
- 
+
+
+
+
     foreach ($rows as &$row){
         $row["relevance"] = 0;
-        
+
         if (stripos($row["name"],$q) !== false)
             $row["relevance"]+=3;
         if (stripos($row["info"],$q) !== false)
             $row["relevance"]+=2;
         if (stripos($row["description"],$q) !== false)
             $row["relevance"]+=1;
-        
+
         $row["info"] = $this->get_string_around( strip_tags($row["info"].$row["description"]),$q);
 
         $row["name"] = str_ireplace($q,"<b>".$q."</b>",$row["name"]);
         $row["info"] = str_ireplace($q,"<b>".$q."</b>",$row["info"]);
     }
-    
+
 
 
     usort($rows,  function ($a, $b) {
         return $b['relevance'] - $a['relevance'];
     });
-    
-    
+
+
     $this["searchResults"] = $rows;
-    
-    
+
+
 }
 ?>
 ==
-<div class="page searchpage">
-		
+<div class="page page-short searchpage">
+
 <div class="page-top default">
-	<div style="padding-bottom: 0;" class="content mainPage-list">
+	<div class="content mainPage-list">
 		<div class="text center">
-			<h2>Search</h2>
+			<h1 class="main-offer__heading">Search</h1>
 		</div>
 	</div>
 </div>
+<div class="content">
+    <div class="search-page">
 
-<div class="search-page">
 
-
-<!--
+        <!--
 <form action="" method="get">
 	<input type="text" name="q" value="{{this.param.search}}" size="40">
 	&nbsp;<input type="submit" value="Search">
@@ -259,56 +259,58 @@ if (strlen($q)<3){
 
 
 
-<form action="{{ searchInput.searchPage | page }}?q={{ query | url_encode(true) }}" method="get">
-    <div class="ss-search-form">
-        <div class="ss-search-form__input">
-            <input name="q" value="{{q}}" type="text" placeholder="What are you looking for?" style="width:290px">
-            <input class="ss-search-form__submit" type="submit" value="Search">
-        </div>
-    </div>
-</form>
+        <form action="{{ searchInput.searchPage | page }}?q={{ query | url_encode(true) }}" method="get">
+            <div class="ss-search-form">
+                <div class="ss-search-form__input">
+                    <input name="q" value="{{q}}" type="text" placeholder="What are you looking for?">
+                    <input class="ss-search-form__submit" type="submit" value="Search">
+                </div>
+            </div>
+        </form>
 
 
-{% for searchResult in searchResults %}
-        <hr/>
-        <a href="{{searchResult.url}}">{{ searchResult.name |raw }}</a>
-        <p>{{ searchResult.info |raw}}</p>
-        <small>Path:&nbsp;<a href="{{searchResult.url}}">{{searchResult.category}}</a></small>
-        
-{% endfor %}
+        {% for searchResult in searchResults %}
+            <hr/>
+            <a href="{{searchResult.url}}">{{ searchResult.name |raw }}</a>
+            <p>{{ searchResult.info |raw}}</p>
+            <small>Path:&nbsp;<a href="{{searchResult.url}}">{{searchResult.category}}</a></small>
+
+        {% endfor %}
 
 
-{% if searchResults|length == 0 %}
-    <p>Unfortunately, your search did not match any documents.</p>
-{% endif %}
+        {% if searchResults|length == 0 %}
+            <p>Unfortunately, your search did not match any documents.</p>
+        {% endif %}
 
-<!--
-		<hr>
-			<a href="/blog/detail/xi_jinping_s_vision_of_new_era_includes_forex_industry_to_focus_on_china?sphrase_id=16511">Xi Jinping’s vision of “New Era” includes <b>Forex</b> Industry to focus on China</a>
-		<p> ... world. The “New Era” includes building country determinately governed by the party, being open to the rest of the world and being proudly Chinese. 
+        <!--
+                <hr>
+                    <a href="/blog/detail/xi_jinping_s_vision_of_new_era_includes_forex_industry_to_focus_on_china?sphrase_id=16511">Xi Jinping’s vision of “New Era” includes <b>Forex</b> Industry to focus on China</a>
+                <p> ... world. The “New Era” includes building country determinately governed by the party, being open to the rest of the world and being proudly Chinese.
 
-Due to the enormous trading volumes, currently, China stands out as the forthcoming homeland for 
-<b>retail</b> <b>Forex</b>
-. Introducing brokers operate the vast managed accounts, therefore, a very definitive format now is conduction of business between Western service and brokerage providers on one side and the key introducing partners and brokers in China on the other ... </p>
-				<small>Modified: 10/26/2017</small><br>			<small>Path:&nbsp;<a href="/blog/">Blog</a></small><hr>
-				-->
-				
-				
-				<!--
-			<font class="line-navigation">
-			<span class="first">&lt;&lt;</span>
-		<span class="back">&lt;</span>
-								<b>1</b>
-					
-						<span class="next">&gt;</span>
-		<span class="last">&gt;&gt;</span>
-	
+        Due to the enormous trading volumes, currently, China stands out as the forthcoming homeland for
+        <b>retail</b> <b>Forex</b>
+        . Introducing brokers operate the vast managed accounts, therefore, a very definitive format now is conduction of business between Western service and brokerage providers on one side and the key introducing partners and brokers in China on the other ... </p>
+                        <small>Modified: 10/26/2017</small><br>			<small>Path:&nbsp;<a href="/blog/">Blog</a></small><hr>
+                        -->
+
+
+        <!--
+    <font class="line-navigation">
+    <span class="first">&lt;&lt;</span>
+<span class="back">&lt;</span>
+                        <b>1</b>
+
+                <span class="next">&gt;</span>
+<span class="last">&gt;&gt;</span>
+
 
 
 </font>	<br>
-	<p>
-			<b>Sorted by relevance</b>&nbsp;|&nbsp;<a href="/search/?q=Retail+Forex&amp;where=&amp;how=d">Sort by date</a>
-		</p
-		>-->
+<p>
+    <b>Sorted by relevance</b>&nbsp;|&nbsp;<a href="/search/?q=Retail+Forex&amp;where=&amp;how=d">Sort by date</a>
+</p
+>-->
+    </div>
 </div>
+
 </div>
