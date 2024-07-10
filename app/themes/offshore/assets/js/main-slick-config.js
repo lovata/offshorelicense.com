@@ -10,18 +10,15 @@ class MainSlider {
     document.addEventListener("DOMContentLoaded", () => {
       this.initSlider();
     });
-
-    window.addEventListener("resize", () => {
-      this.setScreen();
-    });
-
-
   }
 
   initSlider () {
     this.slideNode = $(".js-main-shortcut");
     if (!this.slideNode) return false;
     this.setScreen();
+    window.addEventListener("resize", () => {
+      this.setScreen();
+    });
 
   }
 

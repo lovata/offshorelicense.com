@@ -2295,14 +2295,6 @@ tab {
 }
 
 
-/*.merchant tab section,*/
-/*.technical tab section,*/
-/*.licensing tab section,*/
-/*.banks tab section,*/
-/*.companies tab section {*/
-/*  width: calc(33% + 1.261px);*/
-/*}*/
-
 .merchant tab section:nth-child(3n),
 .technical tab section:nth-child(3n),
 .licensing tab section:nth-child(3n),
@@ -4357,7 +4349,6 @@ font.notetext {
   #pjAcceptCookieBar tbody > tr  > td {
     width: 80%;
   }
-
 
 
   #pjAcceptCookieBar table  td:nth-child(2) span {
