@@ -1759,11 +1759,6 @@ script + #page .page {
   text-decoration: underline;
 }
 
-.content.blog-news-list .but {
-  margin: 25px auto 0;
-  display: inline-block;
-}
-
 .but {
   padding: 15px;
   border-radius: 5px;
@@ -4387,3 +4382,8 @@ font.notetext {
 .slick-next {
   right: 0;
 }
+/*.jspScrollable,*/
+/*.jspContainer,*/
+/*.jspPane {*/
+/*  width: 100% !important;*/
+/*}*/

@@ -81,14 +81,21 @@
 @media screen and (min-width: 768px) {
   .content.blog-news-list {
     padding-top: 60px;
-    padding-bottom: 40px;
+    padding-bottom: 60px;
   }
 }
 
-
+#main-shortcut .slick-prev,
+#main-shortcut .slick-next {
+  top: 40%;
+}
 .blog-news-list .inline-3 {
   padding-bottom: 45px;
   position: relative;
+}
+
+#main-shortcut .slick-next {
+  top: 40%;
 }
 
 .content.blog-news-list .inline-warp .inline-3:nth-child(3n) {
@@ -157,7 +164,7 @@
 }
 
 .content.blog-news-list .but {
-  margin: 25px auto 0;
+  margin: 40px auto 0;
   display: inline-block;
 }
 
@@ -3618,7 +3625,20 @@ font.notetext {
 
 
 .slick-dots li button:before {
-  content: '⬤';
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  border: 3px solid #ffffff;
+  background: black;
+  border-radius: 6px;
+}
+.slick-dots {
+  margin-top: 16px;
+}
+.slick-dots li button {
+  width: auto;
+  height: auto;
 }
 
 .white-bg {
