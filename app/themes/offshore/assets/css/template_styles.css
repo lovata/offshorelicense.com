@@ -1,4 +1,3 @@
-
 /*-------------------------------------------------->
 <!----------------START Latest news----------------->
 <!-------------------------------------------------*/
@@ -1452,11 +1451,40 @@ font.notetext {
   padding-top: 50px;
 }
 
-#companyDetailBody.company table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 768px;
+@media screen and (max-width: 768px) {
+  #companyDetailBody.company thead {
+    display: none;
+  }
+  #companyDetailBody table {
+    width: 100%;
+    border-collapse: collapse;
+    /*min-width: 768px;*/
+  }
+
+  #companyDetailBody.company table tr {
+    display: block;
+  }
+
+  #companyDetailBody.company table td {
+    display: block;
+    border: 1px solid #ebebeb!important;
+  }
+
+  #companyDetailBody.company table {
+    table-layout: fixed;
+  }
+
+  #companyDetailBody.company table td::before {
+    padding: 0 16px;
+    content: attr(data-label);
+    float: left;
+    text-transform: uppercase;
+    width: 50%;
+    text-align: left;
+    font-size: 14px;
+  }
 }
+
 
 #companyDetailBody.company table tr.moreBlock td,
 #companyDetailBody.company table tr.moreBlock td * {
@@ -1474,6 +1502,17 @@ font.notetext {
   text-align: left;
 }
 
+
+.mobile-back {
+  margin-bottom: 16px;
+  display: block;
+}
+@media screen and (min-width: 768px) {
+  .mobile-back {
+    display: none;
+  }
+}
+.mobile-back,
 #companyDetailBody.company table thead > tr > th a {
   color: #374d5c;
   font-size: 16px;
@@ -1486,7 +1525,7 @@ font.notetext {
 #companyDetailBody.company table thead > tr > th a:hover {
   background-position: 8px center;
 }
-
+.mobile-back,
 #companyDetailBody.company table thead > tr > th.bronze {
   background-color: #965a38;
   width: 145px;
@@ -1502,19 +1541,49 @@ font.notetext {
   width: 145px;
 }
 
+#companyDetailBody.company table {
+  width: 100%;
+}
 #companyDetailBody.company table tr > td {
   border: solid 1px #c8c8c8;
   min-height: 35px;
   line-height: 53px;
   background-color: #fff;
-  text-align: center;
+
 }
+
+
+
 
 #companyDetailBody.company table tr > td:first-child {
   border-left: none;
-  padding-left: 30px;
-  text-align: left;
+  padding-left: 16px;
   position: relative;
+  font-weight: 600;
+}
+
+
+@media screen and (max-width: 767px) {
+  #companyDetailBody.company table tfoot > tr > td.price,
+  #companyDetailBody.company table tr > td {
+    padding: 0 16px;
+    text-align: right;
+  }
+
+  #companyDetailBody.company table tr > td:first-child {
+    padding-right: 16px;
+    text-align: left;
+  }
+}
+@media screen and (min-width: 768px) {
+  #companyDetailBody.company table tr > td:first-child {
+    padding-left: 30px;
+    font-weight: 400;
+    text-align: left;
+  }
+  #companyDetailBody.company table tr > td {
+    text-align: center;
+  }
 }
 
 #companyDetailBody.company table tr > td:last-child {
@@ -1535,9 +1604,16 @@ font.notetext {
   vertical-align: middle;
   width: 22px;
   height: 22px;
-  margin-top: 16px;
-  margin-right: 35px;
+  margin: 16px 0 0 0;
   cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  #companyDetailBody.company table tr > td div.more {
+    margin-top: 16px;
+    margin-right: 20px;
+    margin-left: 16px;
+  }
 }
 
 #companyDetailBody.company table tr > td div.more img {
@@ -1606,6 +1682,7 @@ font.notetext {
 
 #companyDetailBody.company table tfoot > tr > td:first-child {
   text-align: right;
+  font-weight: 600;
 }
 
 #companyDetailBody.company table tfoot > tr > td.addToCart {
@@ -1630,7 +1707,8 @@ font.notetext {
 
 #companyDetailBody.company table tfoot > tr > td.price {
   line-height: normal;
-  padding: 14px 0 15px;
+  padding-top: 14px;
+  padding-bottom: 15px;
 }
 
 #companyDetailBody.company table tfoot > tr > td > label.disc {
@@ -1774,7 +1852,7 @@ font.notetext {
 #companyDetailBody.bank table thead > tr > th:first-child {
   text-align: left;
 }
-
+.mobile-back,
 #companyDetailBody.bank table thead > tr > th a {
   color: #374d5c;
   font-size: 16px;
@@ -1783,7 +1861,7 @@ font.notetext {
   padding-left: 28px;
   transition: all 0.5s ease 0s;
 }
-
+.mobile-back,
 #companyDetailBody.bank table thead > tr > th a:hover {
   background-position: 8px center;
 }
@@ -3175,7 +3253,8 @@ font.notetext {
 .row .crm-webform-block .crm-webform-body {
   margin: 0 50px 0;
 }
- .row .crm-webform-fieldset {
+
+.row .crm-webform-fieldset {
   overflow: visible;
   border: 0;
 }
@@ -3216,6 +3295,7 @@ font.notetext {
   text-align: right;
   white-space: nowrap;
 }
+
 .crm-tooltip {
   /*position: absolute;*/
   position: relative;
@@ -3514,7 +3594,7 @@ font.notetext {
 }
 
 #companyDetailBody li {
-  display: block!important;
+  display: block !important;
   text-align: -webkit-match-parent;
   position: relative;
   margin-left: 10px;

@@ -72,6 +72,8 @@ function onEnd() {
 </div>
 
 <div id="companyDetailBody" class="content company">
+
+	<a class="mobile-back" href="{{'companies'|page}}">Back to list</a>
 	<div class="color-table">
 		<table cellspacing="0" cellpadding="0">
 			<thead>
@@ -84,69 +86,81 @@ function onEnd() {
 			</thead>
 			<tbody>
 			<tr>
-				<td>Name check</td>
-				<td>{% if record.checks|slice(0, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
-				<td>{% if record.checks|slice(1, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
-				<td>{% if record.checks|slice(2, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
-			</tr><tr>
-				<td>Company incorporation					<div data-id="company-inc" class="more">
+				<td data-label="">Name check</td>
+				<td data-label="Bronze">{% if record.checks|slice(0, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td data-label="Silver">{% if record.checks|slice(1, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td data-label="Gold">{% if record.checks|slice(2, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+			</tr>
+			<tr>
+				<td data-label="">Company incorporation
+					<div data-id="company-inc" class="more">
 						<img src="{{ 'assets/img/minusGrean.png'|theme }}" border="0">
 						<img class="plus" src="{{ 'assets/img/plusGrean.png'|theme }}" border="0">
 					</div>
 				</td>
-				<td>{% if record.checks|slice(5, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
-				<td>{% if record.checks|slice(6, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
-				<td>{% if record.checks|slice(7, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
-			</tr><tr class="moreBlock" data-bid="company-inc">
+				<td data-label="Bronze">{% if record.checks|slice(5, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td data-label="Silver">{% if record.checks|slice(6, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td data-label="Gold">{% if record.checks|slice(7, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+			</tr>
+			<tr class="moreBlock" data-bid="company-inc">
 				<td colspan="4">{{ attribute(record, "company_incorporation") | raw }}</td>
+			</tr>
+			<tr>
+				<td data-label="">Local secretary</td>
+				<td data-label="Bronze">{% if record.checks|slice(10, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td data-label="Silver">{% if record.checks|slice(11, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td data-label="Gold">{% if record.checks|slice(12, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
 			</tr><tr>
-				<td>Local secretary</td>
-				<td>{% if record.checks|slice(10, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
-				<td>{% if record.checks|slice(11, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
-				<td>{% if record.checks|slice(12, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td data-label="">Government fees</td>
+				<td data-label="Bronze">{% if record.checks|slice(15, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td data-label="Silver">{% if record.checks|slice(16, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td data-label="Gold">{% if record.checks|slice(17, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
 			</tr><tr>
-				<td>Government fees</td>
-				<td>{% if record.checks|slice(15, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
-				<td>{% if record.checks|slice(16, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
-				<td>{% if record.checks|slice(17, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
-			</tr><tr>
-				<td>Registered office for 1 year</td>
-				<td>{% if record.checks|slice(20, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
-				<td>{% if record.checks|slice(21, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
-				<td>{% if record.checks|slice(22, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
-			</tr><tr>
-				<td>Delivery of original documents</td>
-				<td>{% if record.checks|slice(25, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
-				<td>{% if record.checks|slice(26, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
-				<td>{% if record.checks|slice(27, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
-			</tr><tr>
-				<td>Apostilled documents 					<div data-id="appostilled" class="more">
+				<td data-label="">Registered office for 1 year</td>
+				<td data-label="Bronze">{% if record.checks|slice(20, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td data-label="Silver">{% if record.checks|slice(21, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td data-label="Gold">{% if record.checks|slice(22, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+			</tr>
+			<tr>
+				<td data-label="">Delivery of original documents</td>
+				<td data-label="Bronze">{% if record.checks|slice(25, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td data-label="Silver">{% if record.checks|slice(26, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td data-label="Gold">{% if record.checks|slice(27, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+			</tr>
+			<tr>
+				<td data-label="">Apostilled documents
+					<div data-id="appostilled" class="more">
 						<img src="{{ 'assets/img/minusGrean.png'|theme }}" border="0">
 						<img class="plus" src="{{ 'assets/img/plusGrean.png'|theme }}" border="0">
 					</div>
 				</td>
-				<td>{% if record.checks|slice(30, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
-				<td>{% if record.checks|slice(31, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
-				<td>{% if record.checks|slice(32, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
-			</tr><tr class="moreBlock" data-bid="appostilled">
+				<td data-label="Bronze">{% if record.checks|slice(30, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td data-label="Silver">{% if record.checks|slice(31, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td data-label="Gold">{% if record.checks|slice(32, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+			</tr>
+			<tr class="moreBlock" data-bid="appostilled">
 				<td colspan="4">{{ attribute(record, "apostilled_documents") | raw }}</td>
-			</tr><tr>
-				<td>Nominee director and shareholder					<div data-id="nominee" class="more">
+			</tr>
+			<tr>
+				<td data-label="">Nominee director and shareholder
+					<div data-id="nominee" class="more">
 						<img src="{{ 'assets/img/minusGrean.png'|theme }}" border="0">
 						<img class="plus" src="{{ 'assets/img/plusGrean.png'|theme }}" border="0">
 					</div>
 				</td>
-				<td>{% if record.checks|slice(35, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
-				<td>{% if record.checks|slice(36, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
-				<td>{% if record.checks|slice(37, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
-			</tr><tr class="moreBlock" data-bid="nominee">
+				<td data-label="Bronze">{% if record.checks|slice(35, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td data-label="Silver">{% if record.checks|slice(36, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+				<td data-label="Gold">{% if record.checks|slice(37, 1) == '1' %} <img src="{{ 'assets/img/checkDarkBlue.png'|theme }}" border="0" alt="+"> {% else %}-{% endif %}</td>
+			</tr>
+			<tr class="moreBlock" data-bid="nominee">
 				<td colspan="4">{{ attribute(record, "nominee_director_and_shareholder") | raw }}</td>
 			</tr><tr>
-			</tr></tbody>
+			</tr>
+			</tbody>
 			<tfoot>
 			<tr>
-				<td>Total amount:</td>
-				<td class="price">
+				<td data-label="">Total amount:</td>
+				<td data-label="Bronze" class="price">
 					{% if attribute(record, "bronze_discount") > 0 %}
 						<label class="disc">€{{ attribute(record, "bronze_discount") | number_format(0, '.', ',') }}</label><br/>
 						<span>€{{ attribute(record, "bronze_price") | number_format(0, '.', ',') }}</span>
@@ -158,7 +172,7 @@ function onEnd() {
 						{% endif %}
 					{% endif %}
 				</td>
-				<td class="price">
+				<td data-label="Silver" class="price">
 					{% if attribute(record, "silver_discount") > 0 %}
 						<label class="disc">€{{ attribute(record, "silver_discount") | number_format(0, '.', ',') }}</label><br/>
 						<span>€{{ attribute(record, "silver_price") | number_format(0, '.', ',') }}</span>
@@ -170,7 +184,7 @@ function onEnd() {
 						{% endif %}
 					{% endif %}
 				</td>
-				<td class="price">
+				<td data-label="Gold" class="price">
 					{% if attribute(record, "gold_discount") > 0 %}
 						<label class="disc">€{{ attribute(record, "gold_discount") | number_format(0, '.', ',') }}</label><br/>
 						<span>€{{ attribute(record, "gold_price") | number_format(0, '.', ',') }}</span>
