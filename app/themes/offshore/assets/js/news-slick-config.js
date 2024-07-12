@@ -18,6 +18,7 @@ class NewsSlider {
   initSlickSlider() {
     this.slides.slick({
       infinite: true,
+      adaptiveHeight: true,
       slidesToShow: 3,
       slidesToScroll: 3,
       loop: true,
