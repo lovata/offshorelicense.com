@@ -1406,11 +1406,13 @@ font.notetext {
   background-repeat: no-repeat;
   background-size: contain;
   height: 83px;
+  display: none;
 }
 
 @media screen and (min-width: 768px) {
   #page .page .description-page div.cont .logo {
     width: 110px;
+    display: block;
   }
 }
 
@@ -1559,15 +1561,28 @@ font.notetext {
   padding: 25px;
 }
 
-#companyDetailBody.company table tr.moreBlock td > ul {
-  margin-left: 16px;
+
+@media screen and (max-width: 767px) {
+  .form-group {
+    width: 100% !important;
+  }
+
+  .form-group > div {
+    width: 100% !important;
+  }
 }
 
 #companyDetailBody.company table tr.moreBlock td > ul > li {
   list-style: none;
   line-height: 33px;
-  padding-left: 16px;
   font-weight: 300;
+}
+
+
+@media screen and (min-width: 768px) {
+  #companyDetailBody.company table tr.moreBlock td > ul > li {
+    padding-left: 16px;
+  }
 }
 
 #companyDetailBody.company table tr.moreBlock td > ul > li:before {
@@ -1575,10 +1590,10 @@ font.notetext {
   width: 6px;
   height: 6px;
   background-color: #adbe4f;
-  position: absolute;
   margin-top: 13px;
-  margin-left: -16px;
+  display: block;
 }
+
 
 #companyDetailBody.company table tfoot > tr > td {
   border: none;
@@ -3499,7 +3514,7 @@ font.notetext {
 }
 
 #companyDetailBody li {
-  display: list-item;
+  display: block!important;
   text-align: -webkit-match-parent;
   position: relative;
   margin-left: 10px;
@@ -3507,50 +3522,23 @@ font.notetext {
   list-style-type: none;
 }
 
+
 #companyDetailBody li:before {
   content: '';
-  position: absolute;
-  left: -12px;
-  top: 7px;
+  /*position: absolute;*/
+  /*left: -12px;*/
+  /*top: 7px;*/
+  display: block;
+  float: left;
   width: 6px;
   height: 6px;
+  margin-right: 12px;
   background-color: #adbe4f;
 }
 
 
 .slick-dots li button:before {
   content: '⬤';
-}
-
-.breadscrumbs {
-  list-style: none;
-  padding: 10px 0 10px 0;
-  margin: 0;
-}
-
-.breadscrumbs li {
-  display: inline;
-  padding-left: 0.5em;
-  text-indent: -1em;
-  color: #adbe4f;
-  font-size: 14px;
-}
-
-.breadscrumbs li a {
-  color: #000;
-  font-size: 14px;
-}
-
-.breadscrumbs li:before {
-  content: ">";
-  padding-right: 5px;
-  color: black;
-}
-
-
-.breadscrumbs li:first-child:before {
-  content: "";
-  padding-right: 0;
 }
 
 .white-bg {

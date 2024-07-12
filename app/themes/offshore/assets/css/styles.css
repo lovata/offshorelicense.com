@@ -685,7 +685,7 @@ footer .top .content .left {
 
 
 footer .top .content .right {
-  padding: 16px 0 16px 0;
+  padding: 26px 0 16px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2026,9 +2026,12 @@ script + #page .page {
   margin-left: -50px;
 }
 
-.tab-files .text.center,
-.page-content .text.center {
-  text-align: center;
+
+@media screen and (max-width: 767px) {
+  .tab-files .text.center,
+  .page-content .text.center {
+    text-align: left;
+  }
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------*/
@@ -2063,7 +2066,6 @@ script + #page .page {
 
 .breadscrumbs li {
   display: inline;
-  padding-left: 0.5em;
   text-indent: -1em;
   color: #adbe4f;
   font-size: 14px;
@@ -2236,9 +2238,15 @@ script + #page .page {
 
 
 .page-content.accord .content > ul > li.act > ul {
-  max-height: 3000px;
+  max-height: 6000px;
 }
 
+
+@media screen and (min-width: 768px) {
+  .page-content.accord .content > ul > li.act > ul {
+    max-height: 3000px;
+  }
+}
 
 
 tab.smallBanks + tabContent {
@@ -4255,10 +4263,18 @@ font.notetext {
 }
 
 .offer-card__price {
-  font-size: 18px;
+
   font-weight: 700;
   display: block;
   color: #1e2b34;
+}
+
+
+@media screen and (min-width: 768px) {
+  .offer-card__price {
+    font-size: 18px;
+  }
+
 }
 
 .offer-card__cost {
@@ -4361,4 +4377,13 @@ font.notetext {
 
 .ss-search-form__input {
   display: flex;
+}
+
+.main-shortcut__inner {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.slick-next {
+  right: 0;
 }

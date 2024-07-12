@@ -41,7 +41,7 @@ class MainSlider {
   initSlickSlider () {
 
     this.slide = $(".js-main-shortcut").slick({
-      arrows: false,
+      arrows: true,
       infinite: true,
       slidesToShow: 2,
       slidesToScroll: 2,
