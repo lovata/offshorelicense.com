@@ -924,10 +924,10 @@ curl_close($ch);
         'assets/css/top_main_menu.css',
         'assets/css/faq.css',
         'assets/css/styles.css',
-        'assets/css/template_styles.css',
         'assets/js/slick/slick.css',
         'assets/js/slick/slick-theme.css',
         'assets/css/styles.css',
+        'assets/css/template_styles.css',
     ]|theme }}" rel="stylesheet">
 
 
@@ -1000,8 +1000,9 @@ curl_close($ch);
         'assets/js/jquery.validate.min.js',
         'assets/js/cookie-policy.js',
         'assets/js/slick/slick.min.js',
+        'assets/js/accordion.js',
         'assets/js/main-offer-slick-config.js',
-        'assets/js/header.js'
+        'assets/js/header.js',
     ]|theme }}"></script>
 
     <script type="text/javascript" src="{{ 'assets/js/jquery-ui-1.12.0.custom/jquery-ui.min.js'|theme }}"></script>
@@ -1078,7 +1079,7 @@ curl_close($ch);
 {% endif %}
 
 
-<div id="log" style="position:absolute;top:0p;left:0px;z-index:999;"></div>
+<div id="log" style="position:absolute;top:0;left:0;z-index:999;"></div>
 
 
 <div id="page">
@@ -1156,11 +1157,12 @@ curl_close($ch);
             <div class="content">
                 <div id="bxdynamic_LkGdQn_start" style="display:none"></div>
                 <ul>
-                    <li class=""><a href="{{ 'about'|page }}">About us</a></li>
-                    <li class=""><a href="{{ 'about'|page }}/#aboutFormTop">Contact us</a></li>
-                    <li><a href="{{ 'faq'|page }}">FAQ</a></li>
-                    <li><a href="{{ 'ready-made-products'|page }}">Ready-made products</a></li>
-                    <li><a href="{{ 'blog'|page({page:1}) }}">Blog</a></li>
+                    <li class="js-menu-about-us {% if this.page.id=='about' %}current{% endif %}"><a href="{{ 'about'|page }}">About us</a></li>
+                    <li class="js-menu-contact-us"><a href="{{ 'about'|page }}/#aboutFormTop">Contact us</a></li>
+
+                    <li class="{% if this.page.id=='faq' %}current{% endif %}"><a href="{{ 'faq'|page }}">FAQ</a></li>
+                    <li class="{% if this.page.id=='ready-made-products' %}current{% endif %}"><a href="{{ 'ready-made-products'|page }}">Ready-made products</a></li>
+                    <li class="{% if this.page.id=='blog' %}current{% endif %}"><a href="{{ 'blog'|page({page:1}) }}">Blog</a></li>
                 </ul>
                 <div id="bxdynamic_LkGdQn_end" style="display:none"></div>
                 <div id="headerSearchField">
@@ -1188,24 +1190,26 @@ curl_close($ch);
         <div class="bottom">
             <div class="content">
                 <div id="main-shortcut">
-                    <a href="{{ 'companies'|page }}">Companies</a>
-                    <a href="{{ 'banks'|page }}">Banks</a>
-                    <a href="{{ 'licensing'|page }}">Licensing</a>
-                    <a href="{{ 'accounting'|page }}">Accounting</a>
-                    <a href="{{ 'intellectualproperties'|page }}">Intellectual Property</a>
-                    <a href="{{ 'additional'|page }}">Additional</a>
+                    <a class="{% if this.page.id=='companies' %}act{% endif %}" href="{{ 'companies'|page }}">Companies</a>
+                    <a class="{% if this.page.id=='banks' %}act{% endif %}" href="{{ 'banks'|page }}">Banks</a>
+                    <a class="{% if this.page.id=='licensing' %}act{% endif %}" href="{{ 'licensing'|page }}">Licensing</a>
+                    <a class="{% if this.page.id=='accounting' %}act{% endif %}" href="{{ 'accounting'|page }}">Accounting</a>
+                    <a class="{% if this.page.id=='intellectualproperties' %}act{% endif %}" href="{{ 'intellectualproperties'|page }}">Intellectual Property</a>
+                    <a class="{% if this.page.id=='additional' %}act{% endif %}" href="{{ 'additional'|page }}">Additional</a>
                 </div>
             </div>
         </div>
         <div class="clear"></div>
         <div id="bxdynamic_XEVOpk_end" style="display:none"></div>
 
-        {% partial 'header' contactWidget = this.page.contact_widget %}
+        {% partial 'header'
+            pageId=this.page.id
+            contactWidget = this.page.contact_widget %}
     </header>
-
     {% page %}
     <!-- // .body -->
 </div>
+
 <footer>
     <div class="top">
         <div class="left_color"></div>
@@ -1232,7 +1236,6 @@ curl_close($ch);
                 <h3>Services</h3>
                 <div id="bxdynamic_rIpOz9_start" style="display:none"></div>
                 <ul>
-
                     <li class="current"><a href="{{ 'companies'|page }}">Companies</a></li>
 
                     <li class=""><a href="{{ 'banks'|page }}">Banks</a></li>

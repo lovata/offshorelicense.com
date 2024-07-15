@@ -9,295 +9,300 @@ contentType = "html"
 <?php
 function onStart()
 {
-     
+
      $this->page['breadscrumbs'] = array('Home'=>$this->page['site_link'],'Licensing'=>"/licensing",'Compare Gambling licenses'=>"");
 }
 ?>
 ==
-<div class="page licensing">
-		
-<div class="page-top" style="height: 360px;background-image:url({{'assets/img/original/first-class-services-for-your-business.jpg'|theme}});background-position-y: -277px;">
-	<div class="content mainPage-list">
-		<div class="text center" style="margin-top: 65px;">
-			<h1>Compare products</h1>
-			<h2>Gambling Licenses</h2>
-		</div>
-		
-	</div>
+<div class="page page-short licensing">
+
+    <div class="page-top"
+         style="background-repeat: no-repeat; background-size: cover; background-image:url({{ 'assets/img/original/first-class-services-for-your-business.jpg'|theme }});">
+        <div class="content mainPage-list">
+            <div class="text center">
+                <h1 class="main-offer__heading">Compare products</h1>
+                <h2 class="main-offer__subheading">Gambling Licenses</h2>
+            </div>
+        </div>
+    </div>
+
+    {% if this.page["breadscrumbs"] %}
+        <div class="content">
+            <ul class='breadscrumbs'>
+                {% for item,url in this.page["breadscrumbs"] %}
+                    <li>
+                        {% if url!="" %}
+                            <a href="{{ url }}">{{ item }}</a>
+                        {% else %}
+                            {{ item }}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+
+    <div class="page-content ">
+        <div class="content">
+            <div class="comparasion-table__overflow">
+                <table class='comparasion-table'>
+                    <tr class="bottomline">
+                        <th>Type of License</th>
+                        <th><a target=_blank href='/licensing/alderney-gambling-license'>Alderney
+                                island eGambling license</a></th>
+                        <th><a target=_blank target=_blank
+                               href='/licensing/costa-rica-gambling-license'>Costa
+                                Rica</a></th>
+                        <th><a target=_blank href='/licensing/curacao-gambling-license'>Curacao
+                                <br/>e-gaming license</a></th>
+                        <th><a target=_blank
+                               href='/licensing/gibraltar-gambling-license'>Gibraltar</a>
+                        </th>
+                        <th><a target=_blank href='/licensing/isle-man-gambling-license'>Isle
+                                of Man</a></th>
+                        <th><a target=_blank href='/licensing/malta-gambling-license'>Malta</a>
+                        </th>
+                        <th><a target=_blank href='/information-will-be-available-soon'>Latvia</a>
+                        </th>
+                        <th><a target=_blank href='/information-will-be-available-soon'>Kahnawake</a>
+                        </th>
+                    </tr>
+                    <tr class="bottomline">
+                        <th>Capital Requirements for the Company</th>
+                        <th>From GBP 2,00</th>
+                        <th>From USD 1,00</th>
+                        <th>From USD 1,00</th>
+                        <th>Available on request from authorities</th>
+                        <th>From EUR 100 000</th>
+                        <th>From EUR <br/>40 000 - <br/>EUR 100 000</th>
+                        <th>EUR 1 400 000</th>
+                        <th> Available on request from authorities</th>
+                    </tr>
+                    <tr class="bottomline">
+                        <th>Local Office</th>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td>&horbar;</td>
+                    </tr>
+
+                    <tr class="bold">
+                        <th>License</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="">
+                        <th>Full License (all games)</th>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td>&horbar;</td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td>&horbar;</td>
+                        <td>&horbar;</td>
+                        <td>&horbar;</td>
+                    </tr>
+                    <tr class="bottomline">
+                        <th>Separate License (each game)</th>
+                        <td>&horbar;</td>
+                        <td>&horbar;</td>
+                        <td>&horbar;</td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td>&horbar;</td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                    </tr>
+                    <tr class="bold bottomline">
+                        <th>Physical presence (office)</th>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td>&horbar;</td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td>&horbar;</td>
+                    </tr>
+                    <tr class="bold bottomline">
+                        <th>Timeframe</th>
+                        <td>3-5 months</td>
+                        <td>3-5 months</td>
+                        <td>2-4 weeks</td>
+                        <td>3-4 months</td>
+                        <td>3-4 months</td>
+                        <td>4-6 months</td>
+                        <td>1-2 months</td>
+                        <td>Up to 6 months</td>
+                    </tr>
+                    <tr class="bold">
+                        <th>Taxation</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="">
+                        <th>Corporate tax</th>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td>&horbar;</td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td>&horbar;</td>
+                        <td>&horbar;</td>
+                        <td>&horbar;</td>
+                    </tr>
+                    <tr class="bottomline">
+                        <th>Gaming tax</th>
+                        <td>&horbar;</td>
+                        <td>&horbar;</td>
+                        <td>&horbar;</td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td>&horbar;</td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                    </tr>
+                    <tr class="bold bottomline">
+                        <th>Physical presence (office)</th>
+                        <td>&horbar;</td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td>&horbar;</td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td>&horbar;</td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td>&horbar;</td>
+                    </tr>
+                    <tr class="bold">
+                        <th>Complexity to obtain the license</th>
+                        <td class="orange">Medium</td>
+                        <td class="orange">Medium</td>
+                        <td class="red">Hard</td>
+                        <td class="orange">Medium</td>
+                        <td class="red">Hard</td>
+                        <td class="red">Hard</td>
+                        <td class="red">Hard</td>
+                        <td class="orange">Medium</td>
+                    </tr>
+
+
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
-
-
-
-
-{% if this.page["breadscrumbs"] %}
- <div class="content">
-    <ul class='breadscrumbs'>
-        {%for item,url in this.page["breadscrumbs"]%}
-        <li>
-            {% if url!="" %}
-                <a href="{{url}}">{{item}}</a>
-            {% else %}
-                {{item}}
-            {% endif %}
-        </li>
-        {% endfor %}
-    </ul>
-</div>
-{% endif %}
-
-
-
-<div class="page-content ">
-	<div class="content">
-
-		<table class='comparasion-table'>
-		<tr class="bottomline">
-		    <th>Type of License</th>
-		    <th><a target=_blank href='https://www.offshorelicense.com/licensing/alderney-gambling-license'>Alderney island eGambling license</a></th>
-		    <th><a target=_blank target=_blank href='https://www.offshorelicense.com/licensing/costa-rica-gambling-license'>Costa Rica</a></th>
-		    <th><a target=_blank href='https://www.offshorelicense.com/licensing/curacao-gambling-license'>Curacao <br/>e-gaming license</a></th>
-		    <th><a target=_blank href='https://www.offshorelicense.com/licensing/gibraltar-gambling-license'>Gibraltar</a></th>
-		    <th><a target=_blank href='https://www.offshorelicense.com/licensing/isle-man-gambling-license'>Isle of Man</a></th>
-		    <th><a target=_blank href='https://www.offshorelicense.com/licensing/malta-gambling-license'>Malta</a></th>
-		    <th><a target=_blank href='https://www.offshorelicense.com/information-will-be-available-soon'>Latvia</a></th>
-		    <th><a target=_blank href='https://www.offshorelicense.com/information-will-be-available-soon'>Kahnawake</a></th>
-		</tr>
-		<tr class="bottomline">
-		    <th>Capital Requirements for the Company</th>
-		    <th>From GBP 2,00</th>
-		    <th>From USD 1,00</th>
-		    <th>From USD 1,00</th>
-		    <th>Available on request from authorities</th>
-		    <th>From EUR 100 000</th>
-		    <th>From EUR <br/>40 000 - <br/>EUR 100 000</th>
-		    <th>EUR  1 400 000</th>
-		    <th> Available on request from authorities</th>
-		</tr>
-		<tr class="bottomline">
-		    <th>Local Office</th>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td>&horbar;</td>
-		</tr>
-		
-		<tr class="bold">
-		    <th>License</th>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		</tr>	
-		<tr class="">
-		    <th>Full License (all games)</th>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td>&horbar;</td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td>&horbar;</td>
-		    <td>&horbar;</td>
-		    <td>&horbar;</td>
-		</tr>	
-		<tr class="bottomline">
-		    <th>Separate License (each game) </th>
-		    <td>&horbar;</td>
-		    <td>&horbar;</td>
-		    <td>&horbar;</td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td>&horbar;</td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		</tr>	
-		<tr class="bold bottomline">
-		    <th>Physical presence (office) </th>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td>&horbar;</td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td>&horbar;</td>
-		</tr>	
-		<tr class="bold bottomline">
-		    <th>Timeframe</th>
-		    <td>3-5 months</td>
-		    <td>3-5 months</td>
-		    <td>2-4 weeks</td>
-		    <td>3-4 months</td>
-		    <td>3-4 months</td>
-		    <td>4-6 months</td>
-		    <td>1-2 months</td>
-		    <td>Up to 6 months</td>
-		</tr>	
-		<tr class="bold">
-		    <th>Taxation</th>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		</tr>	
-		<tr class="">
-		    <th>Corporate tax</th>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td>&horbar;</td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td>&horbar;</td>
-		    <td>&horbar;</td>
-		    <td>&horbar;</td>
-		</tr>	
-		<tr class="bottomline">
-		    <th>Gaming tax</th>
-		    <td>&horbar;</td>
-		    <td>&horbar;</td>
-		    <td>&horbar;</td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td>&horbar;</td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		</tr>	
-		<tr class="bold bottomline">
-		    <th>Physical presence (office)</th>
-		    <td>&horbar;</td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td>&horbar;</td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td>&horbar;</td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td>&horbar;</td>
-		</tr>	
-		<tr class="bold">
-		    <th>Complexity to obtain the license</th>
-		    <td class="orange">Medium</td>
-		    <td class="orange">Medium</td>
-		    <td class="red">Hard</td>
-		    <td class="orange">Medium</td>
-		    <td class="red">Hard</td>
-		    <td class="red">Hard</td>
-		    <td class="red">Hard</td>
-		    <td class="orange">Medium</td>
-		</tr>	
-
-		
-			
-		
-		</table>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
-	</div>
-</div>
-
-
-</div>
-
-
-
 
 <style>
-.comparasion-table{
-    width:100%;
-    font-size:13px;
-    margin-bottom:100px;
-}
+  .comparasion-table__overflow {
+    width: 100%;
+    overflow-x: auto;
+  }
 
-.comparasion-table tr th,.comparasion-table tr td{
-    background-color:#fff;
-    width:11%;
-    text-align:center;
-}
+  .comparasion-table {
+    width: 100%;
+    font-size: 13px;
+    margin-bottom: 60px;
+    min-width: 1024px;
+  }
 
-.comparasion-table a{
+  @media screen and (min-width: 768px) {
+    .comparasion-table {
+      margin-bottom: 100px;
+    }
+  }
+
+  .comparasion-table tr th, .comparasion-table tr td {
+    background-color: #fff;
+    width: 11%;
+    text-align: center;
+  }
+
+  .comparasion-table a {
     /*color:#1e2b34;*/
-    text-decoration:underline;
-}
-.comparasion-table a:hover{
-    color:#000;
-}
+    text-decoration: underline;
+  }
 
-.comparasion-table tr th:first-child{
-    background-color:transparent;
-    width:12%;
-}
+  .comparasion-table a:hover {
+    color: #000;
+  }
 
-.comparasion-table tr:first-child th{
-    font-weight:800;
-}
+  .comparasion-table tr th:first-child {
+    background-color: transparent;
+    width: 12%;
+  }
 
-.comparasion-table tr td{
-    font-weight:600;
-}
-.comparasion-table tr.bold th{
-    font-weight:800;
-}
-.comparasion-table tr.bold td{
-    font-weight:600;
-}
+  .comparasion-table tr:first-child th {
+    font-weight: 800;
+  }
 
+  .comparasion-table tr td {
+    font-weight: 600;
+  }
 
+  .comparasion-table tr.bold th {
+    font-weight: 800;
+  }
 
-.comparasion-table tr.bottomline{
-    border-bottom:1px solid #d9d9d9;
-}
-
-.comparasion-table tr th,.comparasion-table tr td {
-    padding:20px 15px 20px 15px;
-}
+  .comparasion-table tr.bold td {
+    font-weight: 600;
+  }
 
 
-.comparasion-table tr td.red{
-    color:#d00000;
-    
-}
-.comparasion-table tr td.orange{
-    color:#fba140;
-}
+  .comparasion-table tr.bottomline {
+    border-bottom: 1px solid #d9d9d9;
+  }
+
+  .comparasion-table tr th, .comparasion-table tr td {
+    padding: 20px 15px 20px 15px;
+  }
 
 
+  .comparasion-table tr td.red {
+    color: #d00000;
+
+  }
+
+  .comparasion-table tr td.orange {
+    color: #fba140;
+  }
 
 
-.comparasion-table tr td:nth-child(2), .comparasion-table tr th:nth-child(2) {
-    border-left:1px solid #e3e3e3;
-}
-.comparasion-table tr td:last-child, .comparasion-table tr th:last-child{
-    border-right:1px solid #e3e3e3;
-}
+  .comparasion-table tr td:nth-child(2), .comparasion-table tr th:nth-child(2) {
+    border-left: 1px solid #e3e3e3;
+  }
 
-.comparasion-table tr:first-child th {
-    border-top:1px solid #e3e3e3;
-}
-.comparasion-table tr th:first-child {
-    border-top:0px;
-}
-.comparasion-table tr:last-child td {
-    border-bottom:1px solid #e3e3e3;
-}
+  .comparasion-table tr td:last-child, .comparasion-table tr th:last-child {
+    border-right: 1px solid #e3e3e3;
+  }
+
+  .comparasion-table tr:first-child th {
+    border-top: 1px solid #e3e3e3;
+  }
+
+  .comparasion-table tr th:first-child {
+    border-top: 0px;
+  }
+
+  .comparasion-table tr:last-child td {
+    border-bottom: 1px solid #e3e3e3;
+  }
 
 
 </style>

@@ -1,4 +1,4 @@
-function detectmob() { 
+function detectmob() {
  if( navigator.userAgent.match(/Android/i)
  || navigator.userAgent.match(/webOS/i)
  || navigator.userAgent.match(/iPhone/i)
@@ -16,9 +16,9 @@ function detectmob() {
 
 (function (window, undefined){
 	"use strict";
-	
+
 	var document = window.document;
-	
+
 	function log() {
 		if (window.console && window.console.log) {
 			for (var x in arguments) {
@@ -28,28 +28,28 @@ function detectmob() {
 			}
 		}
 	}
-	
+
 	function AcceptCookie() {
 		if (!(this instanceof AcceptCookie)) {
 			return new AcceptCookie();
 		}
-				
+
 		this.init.call(this);
-		
+
 		return this;
 	}
-	
+
 	AcceptCookie.prototype = {
-		
+
 		init: function () {
 			var self = this;
-			
+
 			if(self.readCookie('pjAcceptCookie') == null)
 			{
 				self.appendCss();
 				self.addCookieBar();
 			}
-			
+
 			var clear_cookie_arr = self.getElementsByClass("pjClearCookie", null, "a");
 			if(clear_cookie_arr.length > 0)
 			{
@@ -137,7 +137,7 @@ function detectmob() {
 			    link.media = 'all';
 			    head.appendChild(link);
 			}
-			
+
 			var cssCode = "";
 			cssCode += "#pjAcceptCookieBar .pjAcceptCookieBarBtn,";
 			cssCode += "#pjAcceptCookieBar .pjAcceptCookieBarBtn:after { -webkit-transition: all .5s ease-in-out; -moz-transition: all .5s ease-in-out; -ms-transition: all .5s ease-in-out; -o-transition: all .5s ease-in-out; transition: all .5s ease-in-out; }";
@@ -160,7 +160,7 @@ function detectmob() {
 			cssCode += "#pjAcceptCookieBar .pjAcceptCookieBarShell { width: 96%; }";
 			cssCode += "#pjAcceptCookieBar p { font-size: 12px; }";
 			cssCode += "}";
-			
+
 			var styleElement = document.createElement("style");
 			styleElement.type = "text/css";
 			if (styleElement.styleSheet) {
@@ -170,19 +170,19 @@ function detectmob() {
 			}
 			document.getElementsByTagName("head")[0].appendChild(styleElement);
 		},
-		
-		
 
-		
+
+
+
 		addCookieBar: function(){
 			var self = this;
 			var htmlBar = '';
-			
+
 			htmlBar += '<div class="pjAcceptCookieBarShell">';
 			htmlBar += '<form action="#" method="post">';
-			
-			
-			
+
+
+
 			if (detectmob()){
 			    htmlBar += '<table style="margin-right:500px;">'; // for chat
 			} else {
@@ -190,15 +190,15 @@ function detectmob() {
 			}
 			htmlBar += '<tr>';
 			htmlBar += '<td style="text-align:left;"><p>This website uses cookies to improve your experience. By clicking "Agree and Proceed" you accept our use of cookies. You can also click <a href="/terms/privacy" style="text-decoration:underline">here</a> to see the revised and detailed description of the types of cookies we use.</p></td>';
-			htmlBar += '<td rowspan=2 valign=center style="width:250px;"><button type="button" class="pjAcceptCookieBarBtn">Agree and Proceed</button></td>';
-			htmlBar += '</tr>'; 
+			htmlBar += '<td rowspan=2 valign=center style="width:250px;"><button type="button" class="pjAcceptCookieBarBtn">Agree <span>and Proceed</span></button></td>';
+			htmlBar += '</tr>';
 			htmlBar += '<tr>';
 			htmlBar += '<td style="text-align:left;"><a href="/terms/cookie" style="margin-right:10px;color:#fff;font-size: 12px;">Cookie policy</a> <a href="/terms/use"  style="color:#fff;font-size: 12px;">Terms of use</a> </td>';
-			htmlBar += '</tr>'; 
+			htmlBar += '</tr>';
 			htmlBar += '</table>'; //row
-				
-			
-			
+
+
+
 			/*
 			htmlBar += '<div style="float:left;display:inline;"><p>This website uses cookies to improve your experience. By clicking “Agree and Proceed” you accept our use of cookies. You can also click on “More information” to see detailed description of the types of cookies we use.</p></div>';
 			htmlBar += '<div class="pjAcceptCookieBarActions" style="float:right;display:inline;">';
@@ -208,16 +208,16 @@ function detectmob() {
 			htmlBar += '<a href="/privacy-policy" style="margin-right:10px;">Cookie policy</a>';
 			htmlBar += '<a href="/cookie-policy">Terms of use</a>';
 			htmlBar += '</div>';*/
-			
-			
+
+
 			htmlBar += '</form>';
 			htmlBar += '</div>';
-			
+
 			var barDiv = document.createElement('div');
 			barDiv.id = "pjAcceptCookieBar";
 			document.body.appendChild(barDiv);
 			barDiv.innerHTML = htmlBar;
-			
+
 			self.bindCookieBar();
 		},
 		bindCookieBar: function(){
@@ -230,15 +230,15 @@ function detectmob() {
 						e.preventDefault();
 					}
 					self.createCookie('pjAcceptCookie', 'YES', 365);
-					
+
 					document.getElementById("pjAcceptCookieBar").remove();
 					return false;
 				});
 			}
 		}
 	};
-	
-	window.AcceptCookie = AcceptCookie;	
+
+	window.AcceptCookie = AcceptCookie;
 })(window);
 
 window.onload = function() {
