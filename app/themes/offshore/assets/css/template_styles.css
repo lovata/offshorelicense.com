@@ -87,15 +87,12 @@
 
 #main-shortcut .slick-prev,
 #main-shortcut .slick-next {
-  top: 40%;
+  top: 53%;
 }
+
 .blog-news-list .inline-3 {
   padding-bottom: 45px;
   position: relative;
-}
-
-#main-shortcut .slick-next {
-  top: 40%;
 }
 
 .content.blog-news-list .inline-warp .inline-3:nth-child(3n) {
@@ -164,9 +161,16 @@
 }
 
 .content.blog-news-list .but {
-  margin: 40px auto 0;
   display: inline-block;
 }
+
+
+@media screen and (min-width: 768px) {
+  .content.blog-news-list .but {
+    margin: 40px auto 0;
+  }
+}
+
 
 .but {
   padding: 15px;
@@ -316,9 +320,15 @@
   margin-left: -50px;
 }
 
-.page-content .text.center {
-  text-align: center;
+
+
+@media screen and (min-width: 768px) {
+  .page-content .text.center {
+    text-align: center;
+  }
+
 }
+
 
 tab.smallBanks + tabContent {
   padding: 0;
@@ -542,12 +552,22 @@ font.line-navigation span {
 
 
 .about-text {
-  padding: 80px 0;
+  padding-top: 30px;
+  padding-bottom: 30px;
   font-size: 16px;
   color: #374d5c;
   line-height: 22px;
   max-width: 890px;
 }
+
+
+@media screen and (min-width: 768px) {
+  .about-text {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
 
 .about-text h3 {
   font-size: 18px;
@@ -1462,6 +1482,7 @@ font.notetext {
   #companyDetailBody.company thead {
     display: none;
   }
+
   #companyDetailBody table {
     width: 100%;
     border-collapse: collapse;
@@ -1474,7 +1495,7 @@ font.notetext {
 
   #companyDetailBody.company table td {
     display: block;
-    border: 1px solid #ebebeb!important;
+    border: 1px solid #ebebeb !important;
   }
 
   #companyDetailBody.company table {
@@ -1514,11 +1535,13 @@ font.notetext {
   margin-bottom: 16px;
   display: block;
 }
+
 @media screen and (min-width: 768px) {
   .mobile-back {
     display: none;
   }
 }
+
 .mobile-back,
 #companyDetailBody.company table thead > tr > th a {
   color: #374d5c;
@@ -1532,6 +1555,7 @@ font.notetext {
 #companyDetailBody.company table thead > tr > th a:hover {
   background-position: 8px center;
 }
+
 .mobile-back,
 #companyDetailBody.company table thead > tr > th.bronze {
   background-color: #965a38;
@@ -1551,6 +1575,7 @@ font.notetext {
 #companyDetailBody.company table {
   width: 100%;
 }
+
 #companyDetailBody.company table tr > td {
   border: solid 1px #c8c8c8;
   min-height: 35px;
@@ -1558,8 +1583,6 @@ font.notetext {
   background-color: #fff;
 
 }
-
-
 
 
 #companyDetailBody.company table tr > td:first-child {
@@ -1582,12 +1605,14 @@ font.notetext {
     text-align: left;
   }
 }
+
 @media screen and (min-width: 768px) {
   #companyDetailBody.company table tr > td:first-child {
     padding-left: 30px;
     font-weight: 400;
     text-align: left;
   }
+
   #companyDetailBody.company table tr > td {
     text-align: center;
   }
@@ -1859,6 +1884,7 @@ font.notetext {
 #companyDetailBody.bank table thead > tr > th:first-child {
   text-align: left;
 }
+
 .mobile-back,
 #companyDetailBody.bank table thead > tr > th a {
   color: #374d5c;
@@ -1868,6 +1894,7 @@ font.notetext {
   padding-left: 28px;
   transition: all 0.5s ease 0s;
 }
+
 .mobile-back,
 #companyDetailBody.bank table thead > tr > th a:hover {
   background-position: 8px center;
@@ -3185,6 +3212,13 @@ font.notetext {
   border: 0;
 }
 
+
+@media screen and (min-width: 768px) {
+  .page-content {
+    margin: 60px 0;
+  }
+}
+
 .row .crm-webform-input {
   border-radius: 3px;
   font-size: 16px;
@@ -3610,35 +3644,44 @@ font.notetext {
 }
 
 
-#companyDetailBody li:before {
-  content: '';
-  /*position: absolute;*/
-  /*left: -12px;*/
-  /*top: 7px;*/
-  display: block;
-  float: left;
-  width: 6px;
-  height: 6px;
-  margin-right: 12px;
-  background-color: #adbe4f;
+.slick-dots li button:before {
+  content: none;
 }
 
-
-.slick-dots li button:before {
-  content: '';
+.slick-dots li button {
   display: block;
   width: 6px;
   height: 6px;
-  border: 3px solid #ffffff;
   background: black;
   border-radius: 6px;
+  opacity: .25;
+  flex-shrink: 0;
 }
+
+.slick-dots li:hover button,
+.slick-dots li.slick-active button {
+  opacity: 1;
+}
+
 .slick-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 16px;
 }
+
+.slick-dots li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 4px;
+}
+
+
+.slick-dots li,
 .slick-dots li button {
-  width: auto;
-  height: auto;
+  padding: 0;
+
 }
 
 .white-bg {

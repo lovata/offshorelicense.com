@@ -46,7 +46,7 @@ class MainSlider {
       slidesToShow: 2,
       slidesToScroll: 2,
       loop: true,
-      dots: true
+      dots: false
     });
   }
 }

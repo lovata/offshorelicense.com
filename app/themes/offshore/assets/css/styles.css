@@ -1079,15 +1079,15 @@ script + #page .page {
 /* TODO TEMP block place */
 
 
-#page .page .page-top.main #main-shortcut {
-  margin-right: -30px;
+#main-shortcut .slick-list {
+  margin-right: -20px;
 }
 
 #page .page .page-top.main #main-shortcut a {
   cursor: pointer;
   overflow: hidden;
   height: 14vh;
-  margin-right: 30px;
+  margin-right: 20px;
 }
 
 @media screen and (min-width: 768px) {
@@ -1122,13 +1122,32 @@ script + #page .page {
   overflow: hidden;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  line-height: 28px;
+  line-height: 1.3;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: end;
+  text-align: center;
 }
+
+
+
+@media screen and (max-width: 767px) {
+  #page .page .page-top.main #main-shortcut a > label {
+    background-position: 50% 25%;
+  }
+  #page .page .page-top.main #main-shortcut a > label span {
+    padding: 6px 0;
+
+  }
+}
+@media screen and (min-width: 768px) {
+  #page .page .page-top.main #main-shortcut a > label {
+    line-height: 2;
+  }
+}
+
 
 #page .page .page-top.main #main-shortcut a > div {
   display: block;
@@ -3702,9 +3721,8 @@ font.notetext {
   position: relative;
 }
 
-#page.title .page .page-top.main #main-shortcut .slick-dots {
+ .slick-dots {
   position: static;
-  margin-left: -30px;
 }
 
 
@@ -4380,10 +4398,5 @@ font.notetext {
 }
 
 .slick-next {
-  right: 0;
+  right: -25px;
 }
-/*.jspScrollable,*/
-/*.jspContainer,*/
-/*.jspPane {*/
-/*  width: 100% !important;*/
-/*}*/
