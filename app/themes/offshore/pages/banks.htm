@@ -215,14 +215,19 @@ function onStart()
 					</label>
                     <ul>
     					{%for item in region%}
-    						<li><a href="{{'bank'|page({'type':item.type, 'slug':item.slug})}}"><div class="logo" style="background-image: url('{{item.logo|media}}');"><br></div></a>
-    							<span><a href="{{'bank'|page({'type':item.type, 'slug':item.slug})}}"><label>{{item.name}}</label></a> <span>{{item.country}}</span></span>
-    							<a class="button" href="{{'bank'|page({'type':item.type, 'slug':item.slug})}}">Learn more</a>
-        						<div class="cost">
-        						<span>Starting from</span><br>
-        						    <h5>€{{item.price| number_format(0, '.', ',') }}</h5>
-        						</div>
-    						</li>
+                            <li>
+                                {% partial 'recommended-card'
+                                    href='bank'|page({'type':item.type, 'slug':item.slug})
+                                    img=item.logo|media
+                                    title=item.name
+                                    text=item.country
+                                    priceTitle="Starting from"
+                                    actionText="Learn more"
+                                    price='€' ~item.price| number_format(0, '.', ',')
+
+                                %}
+                            </li>
+
     					{% endfor %}
 				    </ul>
 				</li>
