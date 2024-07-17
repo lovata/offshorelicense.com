@@ -13,110 +13,86 @@ function onEnd() {
      $this["record"] = Db::table('offshorelicense_offers_licensing')->where('slug',$this->param('slug'))->where('disabled','<>','1')->first();
     if (! $this["record"])
         return Redirect::to('/404');
-        
+
     $this->page['breadscrumbs'] = array(
         'Home'=>$this->page['site_link'],
-        'Licensing'=>"/licensing", 
+        'Licensing'=>"/licensing",
         ucfirst($this["record"]->type).""=>"/licensing#".str_replace(' ','',$this["record"]->type),
         $this["record"]->name=>"",
-    );        
-    
+    );
+
     $this->SeoCmsPage->seo_title = $this["record"]->meta_title;
     $this->SeoCmsPage->seo_keywords = $this["record"]->meta_keywords;
     $this->SeoCmsPage->seo_description = $this["record"]->meta_description;
-    
+
     $this->SeoCmsPage->seo_title =  $this["record"]->name." - Offshorelicense";
     //$this->SeoCmsPage->seo_description =  $this["record"]->name." licensing solution with Offshorelicense";
-    //$this->SeoCmsPage->seo_keywords =  $this["record"]->name." with Offshorelicense";    
+    //$this->SeoCmsPage->seo_keywords =  $this["record"]->name." with Offshorelicense";
 }
 ?>
 ==
+
 <div class="page license">
    <div class="bx_item_detail bx_blue" id="bx_117848907_598">
       <div id="licDetailTop" class="page-top bank">
-         <div style="padding-bottom: 0;" class="content mainPage-list">
+         <div class="content mainPage-list">
             <div class="text center">
-		{% if attribute(record, "title")%}
-		    <h1>{{attribute(record, "title")}}</h1>
-		{% else %}
-			<h1>Licensing</h1>
-		{% endif %}
-               <div class="licInfo">
-                  <div class="logo" style="background-image: url('{{ attribute(record, "logo")|media }}');"></div>
-                  <span>
-                  <h2>{% if record %}
-                            {{ attribute(record, "name") }}
-                        {% else %}
-                            Not Found
-                        {% endif %}</h2>
-                  <span> {{ attribute(record, "license_name") }}</span>
-                  </span>
-                  <div class="cost">
-                     <h5></h5>
-                  </div>
+                {% if attribute(record, "title")%}
+                    <h1 class="main-offer__heading">{{attribute(record, "title")}}</h1>
+                {% else %}
+                    <h1 class="main-offer__heading">Licensing</h1>
+                {% endif %}
+               <div class="licInfo main-offer__list">
+                   {% partial 'recommended-card'
+                       img=attribute(record, "logo")|media
+                       title= attribute(record, "name")
+                       text=attribute(record, "info")
+                   %}
                </div>
             </div>
          </div>
       </div>
-  
-      
-
 
 
 {% if this.page["breadscrumbs"] %}
  <div class="white-bg">
- <div class="content">
-    <ul class='breadscrumbs'>
-        {%for item,url in this.page["breadscrumbs"]%}
-        <li>
-            {% if url!="" %}
-                <a href="{{url}}">{{item}}</a>
-            {% else %}
-                {{item}}
-            {% endif %}
-        </li>
-        {% endfor %}
-    </ul>
-</div>
+     <div class="content">
+        <ul class='breadscrumbs'>
+            {%for item,url in this.page["breadscrumbs"]%}
+            <li>
+                {% if url!="" %}
+                    <a href="{{url}}">{{item}}</a>
+                {% else %}
+                    {{item}}
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
 {% endif %}
-
-
-      
-      
-      <div id="licDetailInfo">
-         <div class="cont">
+      <div id="licenseDetailInfo" class="company description-page ">
+         <div class="cont content">
             <div class="logo"></div>
             <span>{{ attribute(record, "info") | raw }}</span>
          </div>
       </div>
-      
 
+      <div id="licDetailBody" class="content detail-body-table">
+          <div class="detail-body-table__wrap">
+              <a class="detail-body-table__back" href="{{'licensing'|page}}">Back to list</a>
+              <p class="detail-body-table__title">Licensing Services</p>
+          </div>
 
-      <div id="licDetailBody">
-         <table cellspacing="0" cellpadding="0">
-            <thead>
-               <tr>
-                  <th><a href="{{'licensing'|page}}">Back to list</a></th>
-                  <th></th>
-                  <th></th>
-                  <th class="white">Licensing Services</th>
-               </tr>
-            </thead>
-            <tbody>
-               <tr>
-                  <td></td>
-               </tr>
-            </tbody>
-            <tfoot></tfoot>
-         </table>
          <div class="std-style ol-style" style="background-color: #FFF; padding: 24px;">
             {{ attribute(record, "description") | raw }}
          </div>
          {{partial('licensing-contact-form')}}
       </div>
    </div>
-   <div class="page-content EverythingYouNeedToKnow">
+
+
+   <div class="page-content tab-files EverythingYouNeedToKnow">
       <div class="content">
          <div class="text center">
 		{% if attribute(record, "tabs_title")%}
@@ -124,9 +100,9 @@ function onEnd() {
 		    <h1></h1>
 		{% else %}
 			<h3>Facts &amp; Info for {{ attribute(record, "name") }}</h3>
-		{% endif %}    
+		{% endif %}
          </div>
-         <tab class="section-width-repair init">
+         <tab class="section-width-repair init tab--col-3">
             <section data-icon="profile" data-id="1" class="act"><a>Notable features</a></section>
             <section data-icon="service" data-id="2"><a>Procedure</a></section>
             <section data-icon="document" data-id="3"><a>Documents Required</a></section>

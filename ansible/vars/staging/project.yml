@@ -1,5 +1,7 @@
 APP_ENV: staging
 APP_DEBUG: true
+DEBUGBAR_ENABLED: false
+FORCE_MAIL_SETTING: true
 APP_URL: 'http://offshorelicense.com.lovata.tech'
 BROADCAST_DRIVER: log
 CACHE_DRIVER: file

@@ -9,325 +9,342 @@ contentType = "html"
 <?php
 function onStart()
 {
-     
+
      $this->page['breadscrumbs'] = array('Home'=>$this->page['site_link'],'Licensing'=>"/licensing",'Compare Forex & Securities Dealers licenses'=>"");
 }
 ?>
 ==
-<div class="page licensing">
-		
-<div class="page-top" style="height: 360px;background-image:url({{'assets/img/original/first-class-services-for-your-business.jpg'|theme}});background-position-y: -277px;">
-	<div class="content mainPage-list">
-		<div class="text center" style="margin-top: 65px;">
-			<h1>Compare products</h1>
-			<h2>Forex & Securities Dealers licenses</h2>
-		</div>
-		
-	</div>
+<div class="page page-short licensing">
+
+    <div class="page-top"
+         style="background-repeat: no-repeat; background-size: cover; background-image:url({{ 'assets/img/original/first-class-services-for-your-business.jpg'|theme }});">
+        <div class="content mainPage-list">
+            <div class="text center">
+                <h1 class="main-offer__heading">Compare products</h1>
+                <h2 class="main-offer__subheading">Forex & Securities Dealers licenses</h2>
+            </div>
+
+        </div>
+    </div>
+
+
+    {% if this.page["breadscrumbs"] %}
+        <div class="content">
+            <ul class='breadscrumbs'>
+                {% for item,url in this.page["breadscrumbs"] %}
+                    <li>
+                        {% if url!="" %}
+                            <a href="{{ url }}">{{ item }}</a>
+                        {% else %}
+                            {{ item }}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+
+    <div class="page-content ">
+        <div class="content">
+            <div class="comparasion-table__overflow">
+                <table class='comparasion-table'>
+                    <tr class="bottomline">
+                        <th style="width:15%">Type of License</th>
+                        <th style="width:9%"><a target=_blank
+                                                href='/licensing/maurtius-global-business-licence'>Mauritius</a>
+                        </th>
+                        <th style="width:9%"><a target=_blank
+                                                href='/licensing/labuan-money-broking-license'>Labuan</a>
+                        </th>
+                        <th style="width:9%"><a target=_blank
+                                                href='/licensing/cyprus-forex-license'>Cyprus</a>
+                        </th>
+                        <th style="width:9%"><a target=_blank
+                                                href='/licensing/vanuatu-dealers-in-securities-license'>Vanuatu</a>
+                        </th>
+                        <th style="width:9%"><a target=_blank
+                                                href='/licensing/belize-forex-license'>Belize</a>
+                        </th>
+                        <th style="width:11%"><a target=_blank
+                                                 href='/licensing/british-virgin-islands-forex-license'>British
+                                Virgin islands</a></th>
+                        <th style="width:9%"><a target=_blank
+                                                href='/licensing/cayman-islands-securities-investment-business-license'>Cayman
+                                islands</a></th>
+                        <th style="width:9%"><a target=_blank
+                                                href='/information-will-be-available-soon'>Seychelles</a>
+                        </th>
+                        <th style="width:11%"><a target=_blank
+                                                 href='/licensing/saint-vincent-and-the-grenadines-forex-company-formation'>St
+                                Vincent and<br>the Grenadines<br/>(no license)</a></th>
+                    </tr>
+                    <tr class="bottomline">
+                        <th>Capital Requirements for the Company</th>
+                        <th>Approx.<br/> EUR 25 500</th>
+                        <th>Approx.<br/>EUR 108 500</th>
+                        <th>EUR 500 000</th>
+                        <th>USD 50 000</th>
+                        <th>USD 500 000</th>
+                        <th>From USD<br/> 100 000 till USD<br/>250 000</th>
+                        <th>Approx.<br/>EUR 108 500</th>
+                        <th>USD 50 000</th>
+                        <th>From<br/>USD 1,00</th>
+                    </tr>
+                    <tr class="bottomline">
+                        <th>Local Office</th>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td>&horbar;</td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td>&horbar;</td>
+                    </tr>
+
+                    <tr class="bottomline">
+                        <th>Local Employees</th>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td>&horbar;</td>
+                    </tr>
+
+                    <tr class="bold bottomline">
+                        <th>Timeframe</th>
+                        <td>Approx.<br/>5-7 months</td>
+                        <td>Approx.<br/>3-4 months</td>
+                        <td>Approx.<br/>5-9 months</td>
+                        <td>Approx.<br/>4-6 months</td>
+                        <td>Approx.<br/>3-5 months</td>
+                        <td>Up to<br/>4 months</td>
+                        <td>Approx.<br/>4-5 months</td>
+                        <td>Approx.<br/>3-5 months</td>
+                        <td>1 week</td>
+                    </tr>
+
+                    <tr class="bold">
+                        <th>Confidentiality (with details being apart from the public records)</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr class="">
+                        <th>Benificial owner</th>
+                        <td>&horbar;</td>
+                        <td>&horbar;</td>
+                        <td>&horbar;</td>
+                        <td>&horbar;</td>
+                        <td>&horbar;</td>
+                        <td>&horbar;</td>
+                        <td>&horbar;</td>
+                        <td>&horbar;</td>
+                        <td>&horbar;</td>
+                    </tr>
+                    <tr class="bottomline">
+                        <th>Shareholders</th>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td>&horbar;</td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td>&horbar;</td>
+                        <td>&horbar;</td>
+                    </tr>
+                    <tr class="bold bottomline">
+                        <th>Director</th>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td>&horbar;</td>
+                        <td>&horbar;</td>
+                    </tr>
+
+                    <tr class="bold">
+                        <th>Corporate tax rate</th>
+                        <td>3%</td>
+                        <td>3%</td>
+                        <td>12.5%</td>
+                        <td>0%</td>
+                        <td>0%</td>
+                        <td>0%</td>
+                        <td>0%</td>
+                        <td>1.5%</td>
+                        <td>0%</td>
+                    </tr>
+                    <tr class="">
+                        <th>Audited Annual Reports</th>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td>&horbar;</td>
+                        <td>&horbar;</td>
+                    </tr>
+                    <tr class="bottomline">
+                        <th>Bank account in local bank</th>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td>&horbar;</td>
+                    </tr>
+                    <tr class="bottomline">
+                        <th>Reporting to authorities</th>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
+                        <td>&horbar;</td>
+                    </tr>
+                    <tr class="bold">
+                        <th>Complexity to obtain the license</th>
+                        <td class="orange">Medium</td>
+                        <td class="orange">Medium</td>
+                        <td class="red">Hard</td>
+                        <td class="orange">Medium</td>
+                        <td class="red">Hard</td>
+                        <td class="red">Hard</td>
+                        <td class="red">Hard</td>
+                        <td class="orange">Medium</td>
+                        <td class="green">Easy</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
-
-
-
-
-{% if this.page["breadscrumbs"] %}
- <div class="content">
-    <ul class='breadscrumbs'>
-        {%for item,url in this.page["breadscrumbs"]%}
-        <li>
-            {% if url!="" %}
-                <a href="{{url}}">{{item}}</a>
-            {% else %}
-                {{item}}
-            {% endif %}
-        </li>
-        {% endfor %}
-    </ul>
-</div>
-{% endif %}
-
-
-
-<div class="page-content ">
-	<div class="content">
-
-		<table class='comparasion-table'>
-		<tr class="bottomline">
-		    <th style="width:15%">Type of License</th>
-		    <th style="width:9%"><a target=_blank href='https://www.offshorelicense.com/licensing/maurtius-global-business-licence'>Mauritius</a></th>
-		    <th style="width:9%"><a target=_blank href='https://www.offshorelicense.com/licensing/labuan-money-broking-license'>Labuan</a></th>
-		    <th style="width:9%"><a target=_blank href='https://www.offshorelicense.com/licensing/cyprus-forex-license'>Cyprus</th>
-		    <th style="width:9%"><a target=_blank href='https://www.offshorelicense.com/licensing/vanuatu-dealers-in-securities-license'>Vanuatu</a></th>
-		    <th style="width:9%"><a target=_blank href='https://www.offshorelicense.com/licensing/belize-forex-license'>Belize</a></th>
-		    <th style="width:11%"><a target=_blank href='https://www.offshorelicense.com/licensing/british-virgin-islands-forex-license'>British Virgin islands</a></th>
-		    <th style="width:9%"><a target=_blank href='https://www.offshorelicense.com/licensing/cayman-islands-securities-investment-business-license'>Cayman islands</a></th>
-		    <th style="width:9%"><a target=_blank href='https://www.offshorelicense.com/information-will-be-available-soon'>Seychelles</a></th>
-		    <th style="width:11%"><a target=_blank href='https://www.offshorelicense.com/licensing/saint-vincent-and-the-grenadines-forex-company-formation'>St Vincent and<br>the Grenadines<br/>(no license)</a></th>
-		</tr>
-		<tr class="bottomline">
-		    <th>Capital Requirements for the Company</th>
-		    <th>Approx.<br/> EUR 25 500</th>
-		    <th>Approx.<br/>EUR 108 500</th>
-		    <th>EUR 500 000</th>
-		    <th>USD 50 000</th>
-		    <th>USD 500 000</th>
-		    <th>From USD<br/> 100 000 till USD<br/>250 000</th>
-		    <th>Approx.<br/>EUR 108 500</th>
-		    <th>USD 50 000</th>
-		    <th>From<br/>USD 1,00</th>
-		</tr>
-		<tr class="bottomline">
-		    <th>Local Office</th>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td>&horbar;</td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td>&horbar;</td>
-		</tr>
-		
-		<tr class="bottomline">
-		    <th>Local Employees</th>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td>&horbar;</td>
-		</tr>
-
-		<tr class="bold bottomline">
-		    <th>Timeframe</th>
-		    <td>Approx.<br/>5-7 months</td>
-		    <td>Approx.<br/>3-4 months</td>
-		    <td>Approx.<br/>5-9 months</td>
-		    <td>Approx.<br/>4-6 months</td>
-		    <td>Approx.<br/>3-5 months</td>
-		    <td>Up to<br/>4 months</td>
-            <td>Approx.<br/>4-5 months</td>
-		    <td>Approx.<br/>3-5 months</td>
-		    <td>1 week</td>
-		</tr>
-		
-		<tr class="bold">
-		    <th>Confidentiality (with details being apart from the public records)</th>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		    <td></td>
-		</tr>
-		
-		<tr class="">
-		    <th>Benificial owner</th>
-		    <td>&horbar;</td>
-		    <td>&horbar;</td>
-		    <td>&horbar;</td>
-		    <td>&horbar;</td>
-		    <td>&horbar;</td>
-		    <td>&horbar;</td>
-		    <td>&horbar;</td>
-		    <td>&horbar;</td>
-		    <td>&horbar;</td>
-		</tr>	
-		<tr class="bottomline">
-		    <th>Shareholders</th>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td>&horbar;</td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td>&horbar;</td>
-		    <td>&horbar;</td>
-		</tr>	
-		<tr class="bold bottomline">
-		    <th>Director</th>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td>&horbar;</td>
-		    <td>&horbar;</td>
-		</tr>	
-	
-		<tr class="bold">
-		    <th>Corporate tax rate</th>
-		    <td>3%</td>
-		    <td>3%</td>
-		    <td>12.5%</td>
-		    <td>0%</td>
-		    <td>0%</td>
-		    <td>0%</td>
-		    <td>0%</td>
-		    <td>1.5%</td>
-		    <td>0%</td>
-		</tr>	
-		<tr class="">
-		    <th>Audited Annual Reports</th>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td>&horbar;</td>
-		    <td>&horbar;</td>
-		</tr>	
-		<tr class="bottomline">
-		    <th>Bank account in local bank</th>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td>&horbar;</td>
-		</tr>	
-		<tr class="bottomline">
-		    <th>Reporting to authorities</th>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td><img src="{{ 'assets/img/checkGreen.png'|theme }}" border="0" alt="+"></td>
-		    <td>&horbar;</td>
-		</tr>	
-		<tr class="bold">
-		    <th>Complexity to obtain the license</th>
-		    <td class="orange">Medium</td>
-		    <td class="orange">Medium</td>
-		    <td class="red">Hard</td>
-		    <td class="orange">Medium</td>
-		    <td class="red">Hard</td>
-		    <td class="red">Hard</td>
-		    <td class="red">Hard</td>
-		    <td class="orange">Medium</td>
-		    <td class="green">Easy</td>
-		</tr>	
-
-		
-			
-		
-		</table>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
-	</div>
-</div>
-
-
-</div>
-
-
 
 
 <style>
-.comparasion-table{
-    width:100%;
-    font-size:13px;
-    margin-bottom:100px;
-}
+  .comparasion-table__overflow {
+    width: 100%;
+    overflow-x: auto;
+  }
 
-.comparasion-table tr th,.comparasion-table tr td{
-    background-color:#fff;
+  .comparasion-table {
+    width: 100%;
+    font-size: 13px;
+    margin-bottom: 60px;
+    min-width: 1024px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .comparasion-table {
+      margin-bottom: 100px;
+    }
+  }
+
+
+  .comparasion-table tr th, .comparasion-table tr td {
+    background-color: #fff;
     /*width:10%;*/
-    text-align:center;
-}
+    text-align: center;
+  }
 
-.comparasion-table a{
+  .comparasion-table a {
     /*color:#1e2b34;*/
-    text-decoration:underline;
-}
-.comparasion-table a:hover{
-    color:#000;fba140
-}
+    text-decoration: underline;
+  }
 
-.comparasion-table tr th:first-child{
-    background-color:transparent;
+  .comparasion-table a:hover {
+    color: #000;
+  }
+
+  .comparasion-table tr th:first-child {
+    background-color: transparent;
     /*width:10%;*/
-}
+  }
 
-.comparasion-table tr:first-child th{
-    font-weight:800;
-}
+  .comparasion-table tr:first-child th {
+    font-weight: 800;
+  }
 
-.comparasion-table tr td{
-    font-weight:600;
-}
-.comparasion-table tr.bold th{
-    font-weight:800;
-}
-.comparasion-table tr.bold td{
-    font-weight:600;
-}
+  .comparasion-table tr td {
+    font-weight: 600;
+  }
 
-.comparasion-table tr.bottomline{
-    border-bottom:1px solid #d9d9d9;
-}
+  .comparasion-table tr.bold th {
+    font-weight: 800;
+  }
 
-.comparasion-table tr th,.comparasion-table tr td {
-    padding:20px 11px 20px 11px;
-}
+  .comparasion-table tr.bold td {
+    font-weight: 600;
+  }
 
+  .comparasion-table tr.bottomline {
+    border-bottom: 1px solid #d9d9d9;
+  }
 
-.comparasion-table tr td.red{
-    color:#d00000;
-    
-}
-.comparasion-table tr td.orange{
-    color:#fba140;
-}
-.comparasion-table tr td.green{
-    color:#6ca700;
-}
+  .comparasion-table tr th, .comparasion-table tr td {
+    padding: 20px 11px 20px 11px;
+  }
 
 
+  .comparasion-table tr td.red {
+    color: #d00000;
+
+  }
+
+  .comparasion-table tr td.orange {
+    color: #fba140;
+  }
+
+  .comparasion-table tr td.green {
+    color: #6ca700;
+  }
 
 
-.comparasion-table tr td:nth-child(2), .comparasion-table tr th:nth-child(2) {
-    border-left:1px solid #e3e3e3;
-}
-.comparasion-table tr td:last-child, .comparasion-table tr th:last-child{
-    border-right:1px solid #e3e3e3;
-}
+  .comparasion-table tr td:nth-child(2), .comparasion-table tr th:nth-child(2) {
+    border-left: 1px solid #e3e3e3;
+  }
 
-.comparasion-table tr:first-child th {
-    border-top:1px solid #e3e3e3;
-}
-.comparasion-table tr th:first-child {
-    border-top:0px;
-}
-.comparasion-table tr:last-child td {
-    border-bottom:1px solid #e3e3e3;
-}
+  .comparasion-table tr td:last-child, .comparasion-table tr th:last-child {
+    border-right: 1px solid #e3e3e3;
+  }
+
+  .comparasion-table tr:first-child th {
+    border-top: 1px solid #e3e3e3;
+  }
+
+  .comparasion-table tr th:first-child {
+    border-top: 0px;
+  }
+
+  .comparasion-table tr:last-child td {
+    border-bottom: 1px solid #e3e3e3;
+  }
 
 
 </style>

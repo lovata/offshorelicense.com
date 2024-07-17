@@ -14,7 +14,7 @@ function onStart()
     $this["record"] = Db::table('offshorelicense_offers_banks')->where('type',$this->param('type'))->where('slug',$this->param('slug'))->where('disabled','<>','1')->first();
     $this->page['breadscrumbs'] = array(
         'Home'=>$this->page['site_link'],
-        'Banks'=>"/banks", 
+        'Banks'=>"/banks",
         ucfirst($this["record"]->type)." bank account"=>"/banks/#".$this["record"]->type,
         ucfirst($this["record"]->region)=>"/banks/#".$this["record"]->type.str_replace(' ','',$this["record"]->region),
         $this["record"]->name=>"",
@@ -23,14 +23,14 @@ function onStart()
 
 function onEnd() {
     if (!$this["record"])
-        return Redirect::to('/404');    
+        return Redirect::to('/404');
     $this->SeoCmsPage->seo_title = $this["record"]->meta_title." - Offshorelicense";
     $this->SeoCmsPage->seo_keywords = $this["record"]->meta_keywords;
     $this->SeoCmsPage->seo_description = $this["record"]->meta_description;
-    
+
     //$this->SeoCmsPage->seo_title = $this["bank"]->name." ".$this["bank"]->type." account opening with Offshorelicense";
     //$this->SeoCmsPage->seo_description = $this["record"]->name." ".$this["record"]->type." bank";
-    //$this->SeoCmsPage->seo_keywords = $this["record"]->name." ".$this["record"]->type." account opening with Offshorelicense";    
+    //$this->SeoCmsPage->seo_keywords = $this["record"]->name." ".$this["record"]->type." account opening with Offshorelicense";
 }
 ?>
 ==
@@ -44,119 +44,106 @@ function onEnd() {
 
 
 
-<div class="page bank">
-		
+<div class="page page-short bank">
+
 <div class="bx_item_detail bx_blue" id="bx_117848907_586">
 
 <div id="companyDetailTop" class="page-top">
-	<div style="padding-bottom: 0;" class="content mainPage-list">
+	<div class="content mainPage-list">
 		<div class="text center">
 		{% if attribute(record, "title")%}
-		    <h1>{{attribute(record, "title")}}</h1>
+		    <h1 class="main-offer__heading">{{attribute(record, "title")}}</h1>
 		{% else %}
 			<h1>Banks</h1>
 		{% endif %}
-			<div class="companyInfo">
-				<div class="logo" style="background-image: url('{{ attribute(record, "logo")|media }}');"></div>
-				<span>
-					<h2>{% if record %}
-                            {{ attribute(record, "name") }}
-                        {% else %}
-                            Not found
-                        {% endif %}</h2>
-					<span>{{ attribute(record, "country") }}</span>
-				</span>
-				<div class="cost">
-					<span>Starting from</span><br>
-					<h5>€{{ attribute(record, "price") | number_format(0, '.', ',') }}</h5>
-				</div>
+			<div class="companyInfo main-offer__list">
+				{% partial 'recommended-card'
+					img=attribute(record, "logo")|media
+					title= attribute(record, "name")
+					text=attribute(record, "country")
+					priceTitle="Starting from"
+					price="€" ~ attribute(record, "price") | number_format(0, '.', ',')
+				%}
 			</div>
 		</div>
 	</div>
 </div>
 
-
-
-
-
 {% if this.page["breadscrumbs"] %}
  <div class="white-bg">
- <div class="content">
-    <ul class='breadscrumbs'>
-        {%for item,url in this.page["breadscrumbs"]%}
-        <li>
-            {% if url!="" %}
-                <a href="{{url}}">{{item}}</a>
-            {% else %}
-                {{item}}
-            {% endif %}
-        </li>
-        {% endfor %}
-    </ul>
-</div>
+     <div class="content">
+        <ul class='breadscrumbs'>
+            {%for item,url in this.page["breadscrumbs"]%}
+            <li>
+                {% if url!="" %}
+                    <a href="{{url}}">{{item}}</a>
+                {% else %}
+                    {{item}}
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
 {% endif %}
-
-
-
-
-
-<div id="companyDetailInfo" class="bank">
-	<div class="cont">
+<div id="bankDetailInfo" class="company description-page">
+	<div class="cont content">
 		<div class="logo"></div>
 		<span><p>{{ attribute(record, "info") | raw }}</p></span>
 	</div>
 </div>
 
 
-
-<div id="companyDetailBody" class="bank">
-	<table cellspacing="0" cellpadding="0">
-		<thead>
-			<tr>
-				<th><a href="{{'banks'|page}}">Back to list</a></th>
-				<th>{{ attribute(record, "type") | capitalize }} bank account</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td colspan="2" class="detailText">
-					{{ attribute(record, "description") | raw }}
-				</td>
-			</tr>
-		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="2">Starting from:&nbsp;<span style="font-size: 18px;text-decoration: none;display:inline;float:none;font-weight:bold;padding:0px 30px 0px 20px;">€{{ attribute(record, "price") | number_format(0, '.', ',') }}</span></td>
-			</tr>
-		</tfoot>
-	</table>
-		{{partial('bank-contact-form')}}
+<div id="licDetailBody" class="content bank detail-body-table">
+    <div class="detail-body-table__wrap">
+        <a href="{{'banks'|page}}" class="detail-body-table__back">Back to list</a>
+        <p class="detail-body-table__title">
+            <img src="{{ 'assets/img/menuCompanyVerySmallGrean.png'|theme }}" border="0">
+            <span class="">
+                {{ attribute(record, "type") | capitalize }} bank account
+            </span>
+        </p>
+    </div>
+    <div class="color-table">
+        <table cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+                <td colspan="2" class="detailText std-style">
+                    {{ attribute(record, "description") | raw }}
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="2">Starting from:&nbsp;<span style="font-size: 18px;text-decoration: none;display:inline;float:none;font-weight:bold;padding:0px 30px 0px 20px;">€{{ attribute(record, "price") | number_format(0, '.', ',') }}</span></td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="color-table company-contact-form">
+        {{partial('bank-contact-form')}}
+    </div>
 </div>
 
 
-
 </div>
-    <div class="page-content EverythingYouNeedToKnow">
+    <div class="page-content tab-files EverythingYouNeedToKnow">
         <div class="content">
             <div class="text center">
-            
-		{% if attribute(record, "tabs_title")%}
-		    <h3>{{attribute(record, "tabs_title")}}</h3>
-		    <h1></h1>
-		{% else %}
-			<h3>Facts &amp; Info for {{ attribute(record, "name") }}</h3>
-		{% endif %}    
-		
+                {% if attribute(record, "tabs_title")%}
+                    <h3>{{attribute(record, "tabs_title")}}</h3>
+                    <h1></h1>
+                {% else %}
+                    <h3>Facts &amp; Info for {{ attribute(record, "name") }}</h3>
+                {% endif %}
             </div>
-            <tab class="section-width-repair init">
+            <tab class="section-width-repair init tab--col-3">
                 <section data-icon="profile" data-id="1" class="act"><a>Rates and Charges</a></section>
                 <section data-icon="service" data-id="2"><a>Services</a></section>
                 <section data-icon="document" data-id="3"><a>Requirements</a></section>
             </tab>
             <tabcontent>
-                <section data-id="1" class="text act">{{ attribute(record, "tab_rates") | raw }}
-</section>
+                <section data-id="1" class="text act">{{ attribute(record, "tab_rates") | raw }}</section>
                 <section data-id="2" class="text">{{ attribute(record, "tab_services") | raw }}
 </section>
                 <section data-id="3" class="text">{{ attribute(record, "tab_requirements") | raw }}</section>

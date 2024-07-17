@@ -1295,181 +1295,6 @@ script + #page .page {
 
 
 
-/*-------------------------------------------------->
-<!----------------START Latest news----------------->
-<!-------------------------------------------------*/
-
-.page .mainPage-ourApproach {
-    background-color: #adbe4f;
-    padding: 80px 0 120px;
-}
-
-.page .mainPage-ourApproach .inline-warp {
-    margin-top: 80px;
-    padding: 0 40px;
-}
-
-.inline-warp .inline-3 {
-    width: 33.3333%;
-    display: inline-block;
-    vertical-align: top;
-}
-
-.page .mainPage-ourApproach .inline-warp .inline-3 {
-    width: calc(33.3333% - 50px);
-    height: 90px;
-    margin: 0 25px;
-}
-
-.page .mainPage-ourApproach .inline-warp .inline-3 > span {
-    width: 95px;
-    height: 100%;
-    display: inline-block;
-    vertical-align: top;
-    background: url('../img/menuCompanyBigDarkBlue.png') right 25px center no-repeat;
-}
-
-.page .mainPage-ourApproach .inline-warp span.licenses {
-    background: url('../img/menuLicensingBigDarkBlue.png') right 25px center no-repeat;
-}
-
-.page .mainPage-ourApproach .inline-warp span.bank {
-    background: url('../img/menuBankBigDarkBlue.png') right 25px center no-repeat;
-}
-
-.page .mainPage-ourApproach .inline-warp .inline-3 > label {
-    width: 190px;
-    display: inline-block;
-    vertical-align: top;
-    height: 100%;
-    padding-left: 20px;
-    border-left: 3px solid #bbd433;
-}
-
-.page .mainPage-ourApproach .inline-warp .inline-3 > label h1 {
-    font-size: 60px;
-    line-height: 58px;
-    font-weight: 900;
-    color: #fff;
-}
-
-.page .mainPage-ourApproach .inline-warp .inline-3 > label h5 {
-    font-size: 24px;
-    line-height: 26px;
-    font-weight: 400;
-    color: #fff;
-}
-
-.content.blog-news-list {
-    padding: 60px 0 40px;
-}
-
-.content.blog-news-list .inline-warp .inline-3 {
-    width: calc(33.3333% - 30px);
-    margin-right: 45px;
-    margin-top: 40px;
-    margin-bottom: 5px;
-    padding-bottom: 45px;
-    position: relative;
-}
-
-.content.blog-news-list .inline-warp .inline-3:nth-child(3n) {
-    margin-right: 0;
-}
-
-.content.blog-news-list .inline-warp .inline-3 .logo {
-    width: 100%;
-    height: 240px;
-    display: block;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-	cursor: pointer;
-}
-
-.content.blog-news-list .inline-warp .inline-3 label {
-    min-height: 60px;
-    font-size: 16px;
-    margin-top: 20px;
-    display: block;
-    padding: 0 10px 0 10px;
-    border-left: 3px solid #bbd433;
-}
-
-.content.blog-news-list .inline-warp .inline-3 label h1 {
-    font-size: 18px;
-    color: #1e2b34;
-    font-weight: 700;
-    line-height: 22px;
-	cursor: pointer;
-}
-
-.content.blog-news-list .inline-warp .inline-3 label h5 {
-    font-size: 14px;
-    font-weight: 400;
-    color: #b4b4b4;
-    line-height: 14px;
-    margin-top: 10px;
-}
-
-.content.blog-news-list .inline-warp .inline-3 .text {
-    display: block;
-    padding: 12px 10px 0 14px;
-    font-size: 16px;
-    font-weight: 300;
-    color:  #374d5c;
-}
-
-.content.blog-news-list .inline-warp .inline-3 a {
-    position: absolute;
-    bottom: 10px;
-    font-weight: 500;
-    font-size: 16px;
-    color: #8aa203;
-    left: 14px;
-}
-
-.content.blog-news-list .inline-warp .inline-3 a:hover {
-    text-decoration: underline;
-}
-
-.content.blog-news-list .but {
-    margin: 25px auto 0;
-    display: inline-block;
-}
-
-.but {
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: none;
-    border: none;
-    font-size: 14px;
-    font-weight: 700;
-    color: #4d5e6b;
-    background: #fff;
-    display: block;
-    cursor: pointer;
-    display: inline-block;
-	text-transform: uppercase;
-}
-
-.but.but-green {
-    color: #ffffff;
-    background: #8aa203;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-}
-
-.but.but-green:hover {
-    color: #ffffff;
-    background: #bbd433;
-}
-
-/*-------------------------------------------------->
-<!------------------END Latest news----------------->
-<!-------------------------------------------------*/
-
-
 
 .title-page-background section {
 	display: block;
@@ -1521,7 +1346,7 @@ script + #page .page {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-image: url('../img/original/company.jpg');
-	
+
 }
 
 .about-team-image {
@@ -1530,7 +1355,7 @@ script + #page .page {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-image: url('../img/original/company.jpg');
-	
+
 }
 
 
@@ -1626,7 +1451,6 @@ script + #page .page {
     font-size: 36px;
     font-weight: 400;
     color: #fff;
-    text-transform: uppercase;
     line-height: 60px;
     margin-bottom: 20px;
 	margin-top: 10px;
@@ -1663,7 +1487,7 @@ script + #page .page {
 .std-style.business li { display: block;
 	padding: 5px 0;
 }
-.std-style.business li:before { 
+.std-style.business li:before {
 	background-color: transparent;
 	content: counters(item, ".", decimal) ". ";
 	counter-increment: item;
@@ -1673,11 +1497,11 @@ script + #page .page {
 	top: unset !important;
 }
 
-.std-style.business ol:nth-child(2n+1) li:before { 
+.std-style.business ol:nth-child(2n+1) li:before {
 	margin-left: -45px;
 }
 
-.std-style.business ol:nth-child(3n+1) li:before { 
+.std-style.business ol:nth-child(3n+1) li:before {
 	margin-left: -50px;
 }
 
@@ -2259,7 +2083,7 @@ tab section a {
 	color: #1e2b34;
 	text-align: left;
 	padding: 15px 0px;
-	padding-left: 65px; 
+	padding-left: 65px;
 	background-repeat: no-repeat;
     background-position: left center;
 }
@@ -3177,7 +3001,7 @@ background-color: transparent!important;
 	width: 2px;
 	background-color: #dedede;
 }
- 
+
 ::-webkit-scrollbar-thumb {
 	width: 6px;
 	margin: 0 -5px;
@@ -3398,7 +3222,7 @@ background-color: transparent!important;
 	display: none;
 }
 #licDetailBody table thead > tr > th {
-	border-bottom: solid 2px #374d5c; 
+	border-bottom: solid 2px #374d5c;
 	color: #fff;
 	height: 50px;
 	line-height: 50px;
@@ -3566,7 +3390,7 @@ background-color: transparent!important;
     left: 0;
 }
 
-#page .page .page-top .content .text h1 {
+#page .page .page-top .main h1 {
     font-size: 55px;
     font-weight: 400;
     color: #fff;
@@ -3629,7 +3453,7 @@ background-color: transparent!important;
 }
 @media screen and (max-height: 1200px) {
 
-	#page .page .page-top.main #main-shortcut > a:hover>div,	
+	#page .page .page-top.main #main-shortcut > a:hover>div,
 	#page .page .page-top.main #main-shortcut > a,
 	#page .page .page-top.main #main-shortcut > a > label {
 		height: 130px !important;

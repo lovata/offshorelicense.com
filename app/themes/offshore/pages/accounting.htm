@@ -14,299 +14,243 @@ contentType = "html"
 <?php
 function onStart()
 {
-    
+
      $array = $array2 = array();
-    
+
     $regions = DB::table('offshorelicense_offers_accounting')
             ->select('region')
-            ->where('type','accounting')
-            ->where('disabled','<>','Yes')
-            ->groupBy('region')
-            ->get();
-     
-     foreach ($regions as $region){
-          $array[$region->region] = Db::table('offshorelicense_offers_accounting')->where('region',$region->region)->where('type','accounting')->where('disabled','<>','1')->orderby('name')->get();
-     }
-     /*
-     //noob sorting:)
-     if(isset ($array["Eastern Europe"]))  $array2["Eastern Europe"] = $array["Eastern Europe"];
-     if(isset ($array["Western Europe"])) $array2["Western Europe"] = $array["Western Europe"];
-     if(isset ($array["Asia"])) $array2["Asia"] = $array["Asia"];
-     if(isset ($array["Africa"])) $array2["Africa"] = $array["Africa"];
-     if(isset ($array["Pacific"])) $array2["Pacific"] = $array["Pacific"];
-     if(isset ($array["Caribbean Region"])) $array2["Caribbean Region"] = $array["Caribbean Region"];
-     */
-     $this->page["List"] =$array;
-     
-     
-     
-     $array = $array2 = array();
-     
-     
-     
-    $regions = DB::table('offshorelicense_offers_accounting')
-            ->select('region')
-            ->where('type','audit')
-            ->where('disabled','<>','Yes')
-            ->groupBy('region')
-            ->get();
-     
-     foreach ($regions as $region){
-          $array[$region->region] = Db::table('offshorelicense_offers_accounting')->where('region',$region->region)->where('type','audit')->where('disabled','<>','1')->orderby('name')->get();
-     }
-     /*
-     //noob sorting:)
-     if(isset ($array["Eastern Europe"]))  $array2["Eastern Europe"] = $array["Eastern Europe"];
-     if(isset ($array["Western Europe"])) $array2["Western Europe"] = $array["Western Europe"];
-     if(isset ($array["Asia"])) $array2["Asia"] = $array["Asia"];
-     if(isset ($array["Africa"])) $array2["Africa"] = $array["Africa"];
-     if(isset ($array["Pacific"])) $array2["Pacific"] = $array["Pacific"];
-     if(isset ($array["Caribbean Region"])) $array2["Caribbean Region"] = $array["Caribbean Region"];
-     */
-     $this->page["List2"] =$array;    
-     
-     
-     $array = Db::table('offshorelicense_offers_accounting')->where('type','accounting')->where('featured','1')->where('disabled','<>','1')->orderby('order_id')->get();
-     $this->page["featured_accounting"] =$array;    
-     
-          
-     $array = Db::table('offshorelicense_offers_accounting')->where('type','audit')->where('featured','1')->where('disabled','<>','1')->orderby('order_id')->get();
-     $this->page["featured_audit"] =$array;    
-     
-     $this->page['breadscrumbs'] = array('Home'=>$this->page['site_link'],'Accounting'=>"");
+->where('type','accounting')
+->where('disabled','<>','Yes')
+->groupBy('region')
+->get();
+
+foreach ($regions as $region){
+$array[$region->region] = Db::table('offshorelicense_offers_accounting')->where('region',$region->region)->where('type','accounting')->where('disabled','<>','1')->orderby('name')->get();
+}
+/*
+//noob sorting:)
+if(isset ($array["Eastern Europe"]))  $array2["Eastern Europe"] = $array["Eastern Europe"];
+if(isset ($array["Western Europe"])) $array2["Western Europe"] = $array["Western Europe"];
+if(isset ($array["Asia"])) $array2["Asia"] = $array["Asia"];
+if(isset ($array["Africa"])) $array2["Africa"] = $array["Africa"];
+if(isset ($array["Pacific"])) $array2["Pacific"] = $array["Pacific"];
+if(isset ($array["Caribbean Region"])) $array2["Caribbean Region"] = $array["Caribbean Region"];
+*/
+$this->page["List"] =$array;
+
+
+$array = $array2 = array();
+
+
+$regions = DB::table('offshorelicense_offers_accounting')
+->select('region')
+->where('type','audit')
+->where('disabled','<>','Yes')
+->groupBy('region')
+->get();
+
+foreach ($regions as $region){
+$array[$region->region] = Db::table('offshorelicense_offers_accounting')->where('region',$region->region)->where('type','audit')->where('disabled','<>','1')->orderby('name')->get();
+}
+/*
+//noob sorting:)
+if(isset ($array["Eastern Europe"]))  $array2["Eastern Europe"] = $array["Eastern Europe"];
+if(isset ($array["Western Europe"])) $array2["Western Europe"] = $array["Western Europe"];
+if(isset ($array["Asia"])) $array2["Asia"] = $array["Asia"];
+if(isset ($array["Africa"])) $array2["Africa"] = $array["Africa"];
+if(isset ($array["Pacific"])) $array2["Pacific"] = $array["Pacific"];
+if(isset ($array["Caribbean Region"])) $array2["Caribbean Region"] = $array["Caribbean Region"];
+*/
+$this->page["List2"] =$array;
+
+
+$array = Db::table('offshorelicense_offers_accounting')->where('type','accounting')->where('featured','1')->where('disabled','<>','1')->orderby('order_id')->get();
+$this->page["featured_accounting"] =$array;
+
+
+$array = Db::table('offshorelicense_offers_accounting')->where('type','audit')->where('featured','1')->where('disabled','<>','1')->orderby('order_id')->get();
+$this->page["featured_audit"] =$array;
+
+$this->page['breadscrumbs'] = array('Home'=>$this->page['site_link'],'Accounting'=>"");
 }
 ?>
 ==
-<div class="page">
-		
-<div class="page-top" style="height: 460px;">
-    <div class="content mainPage-list" style="padding-bottom: 0;">
-        <div class="text center">
-            <h1>Outsorced Accounting and Audit Services</h1>
-            <div class="inline-warp" style="margin-top: 15px;">
-                <div class="inline-2" style="width: 38%">
-                    <h2 style="margin-left:-52px;">Best Accounting Services</h2>
-                </div>
-                <div class="inline-2">
-                    <h2 style="margin-left:-103px;">Best Audit Services</h2>
+<div class="page page-short">
+
+    <div class="page-top main-offer">
+        <div class="content mainPage-list">
+            <div class="text center ">
+                <h1 class="main-offer__heading">Outsorced Accounting and Audit Services</h1>
+                <div class="main-offer__wrap">
+                    <div class="">
+                        <h3 class="main-offer__title">Best Accounting Services</h3>
+                    </div>
+                    <div class="">
+                        <h3 class="main-offer__title">Best Audit Services</h3>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="companies_recomended">
-            <div class="inline-warp">
-            
-                <div class="inline-2 inline-2left bank">
-                    <ul style="background-color: transparent;">
-                        <div id="bxdynamic_9POZg9_start" style="display:none"></div>
-    
-    
-    {%for item in this.page["featured_accounting"]%}
+            <div class="main-offer__wrap js-main-offer-slider">
+                <ul>
+                    {% for item in this.page["featured_accounting"] %}
+                        <li class="main-offer__list">
+                            {% partial 'recommended-card'
+                                href='accountingdetails'|page({'type':item.type, 'slug':item.slug})
+                                img=item.logo|media
+                                title=item.name
+                                text=item.type|title
+                                priceTitle="Starting from"
+                                isArrow=true
+                                price='€' ~item.price| number_format(0, '.', ',') %}
+                        </li>
+                    {% endfor %}
+                </ul>
+                <ul>
+                    {% for item in this.page["featured_audit"] %}
 
-        <li class="margin-left" style="">
-           <a href="{{'accountingdetails'|page({'type':item.type, 'slug':item.slug})}}">
-              <div class="logo" style="background-image: url('{{item.logo|media}}');"></div>
-              <span>
-              <h3>{{item.name}}</h3>
-              <span>{{item.type|title }} services</span>
-              </span>
-              <div class="cost">
-                 <span>Starting from</span><br>
-                 <h5>€{{item.price| number_format(0, '.', ',') }}*</h5>
-              </div>
-           </a>
-        </li>
-	{%endfor%}
-	
-	
-	
-<div id="bxdynamic_9POZg9_end" style="display:none"></div>                    </ul>
-
-
-                    <ul style="background-color: transparent;">
-                        <div id="bxdynamic_HPJQZ6_start" style="display:none"></div>
-                        
-                        
-                        
-                        
-                        
-   {%for item in this.page["featured_audit"]%}
-
-        <li class="margin-left" style="">
-           <a href="{{'accountingdetails'|page({'type':item.type, 'slug':item.slug})}}">
-              <div class="logo" style="background-image: url('{{item.logo|media}}');"></div>
-              <span>
-              <h3>{{item.name}}</h3>
-              <span>{{item.type|title }} services</span>
-              </span>
-              <div class="cost">
-                 <span>Starting from</span><br>
-                 <h5>€{{item.price| number_format(0, '.', ',') }}</h5>
-              </div>
-           </a>
-        </li>
-	{%endfor%}
-       
-	
-	
-	
-<div id="bxdynamic_HPJQZ6_end" style="display:none"></div>                    </ul>
-
-                </div>
-                
+                        <li class="main-offer__list">
+                            {% partial 'recommended-card'
+                                href='accountingdetails'|page({'type':item.type, 'slug':item.slug})
+                                img=item.logo|media
+                                title=item.name
+                                text=item.type|title
+                                priceTitle="Starting from"
+                                isArrow=true
+                                price='€' ~item.price| number_format(0, '.', ',') %}
+                        </li>
+                    {% endfor %}
+                </ul>
             </div>
-            
+
+
         </div>
-        
-        
-        
     </div>
-</div>
-<!-------------------------------------------------->
-<!-----------END Recommended companies-------------->
-<!-------------------------------------------------->
+    <!-------------------------------------------------->
+    <!-----------END Recommended companies-------------->
+    <!-------------------------------------------------->
 
 
-
-{% if this.page["breadscrumbs"] %}
- <div class="content">
-    <ul class='breadscrumbs'>
-        {%for item,url in this.page["breadscrumbs"]%}
-        <li>
-            {% if url!="" %}
-                <a href="{{url}}">{{item}}</a>
-            {% else %}
-                {{item}}
-            {% endif %}
-        </li>
-        {% endfor %}
-    </ul>
-</div>
-{% endif %}
-
-
-
- <div class="page-content BrowseBanksByRegion">
-    <div class="content">
-        <div class="text center">
-            <h3>Browse Accounting and Audit Services by Region and Type</h3>
+    {% if this.page["breadscrumbs"] %}
+        <div class="content">
+            <ul class='breadscrumbs'>
+                {% for item,url in this.page["breadscrumbs"] %}
+                    <li>
+                        {% if url!="" %}
+                            <a href="{{ url }}">{{ item }}</a>
+                        {% else %}
+                            {{ item }}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
-        <tab class="smallBanks init">
-            <section class="act" data-icon="accountingSmall" data-id="1"><a>Accounting&Report</a></section>
-            <section data-icon="auditSmall" data-id="2"><a>Audit</a></section>
-        </tab>
-        <tabcontent>
-            <section class="act" data-id="1">
-                <div class="content">
-                    <div class="BrowseCompaniesByRegion">
-	<div class="content">
-	
-	
-	
-	
-	<ul>
-			{%for region_name,region in this.page["List"]%}
-			
-			
-				<li id="accordion_accounting{{region_name|replace({' ':''}) }}">
-					<label onclick="$(this).parent('li').toggleClass('act')">  
-						<div class="logo"><br></div>
-						<span><label>{{region_name}}</label> <span>{{region|length}} services available</span></span>
-					</label>
-                    <ul>
-    					{%for item in region%}
-    						<li><a href="{{'accountingdetails'|page({'type':item.type, 'slug':item.slug})}}"><div class="logo" style="background-image: url('{{item.logo|media}}');"><br></div></a>
-    							<span><a href="{{'accountingdetails'|page({'type':item.type, 'slug':item.slug})}}"><label>{{item.name}}</label></a> <span>{{item.country}}</span></span>
-    							<a class="button" href="{{'accountingdetails'|page({'type':item.type, 'slug':item.slug})}}">Learn more</a>
-        						<div class="cost">
-        						<span>Starting from</span><br>
-        						    <h5>€{{item.price| number_format(0, '.', ',') }}*</h5>
-        						</div>
-    						</li>					
-    					{% endfor %}
-				    </ul>
-				</li>
-					
-	        {% endfor %}
-	</ul>
-	
-	
-	</div>
-</div>
-                </div>
-            </section>
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            <section data-id="2">
-                <div class="content">
-                    <div class="BrowseCompaniesByRegion">
-	<div class="content">
-	
-	
-	
-	
-	<ul>
-			{%for region_name,region in this.page["List2"]%}
-			
-			
-				<li id="accordion_audit{{region_name|replace({' ':''}) }}">
-					<label onclick="$(this).parent('li').toggleClass('act')">  
-						<div class="logo"><br></div>
-						<span><label>{{region_name}}</label> <span>{{region|length}} services available</span></span>
-					</label>
-                    <ul>
-    					{%for item in region%}
-    						<li><a href="{{'accountingdetails'|page({'type':item.type, 'slug':item.slug})}}"><div class="logo" style="background-image: url('{{item.logo|media}}');"><br></div></a>
-    							<span><a href="{{'accountingdetails'|page({'type':item.type, 'slug':item.slug})}}"><label>{{item.name}}</label></a> <span>{{item.country}}</span></span>
-    							<a class="button" href="{{'accountingdetails'|page({'type':item.type, 'slug':item.slug})}}">Learn more</a>
-        						<div class="cost">
-        						<span>Starting from</span><br>
-        						    <h5>€{{item.price| number_format(0, '.', ',') }}</h5>
-        						</div>
-    						</li>					
-    					{% endfor %}
-				    </ul>
-				</li>
-					
-	        {% endfor %}
-	</ul>
-	
-
-	</div>
-
-</div>
+    {% endif %}
 
 
+    <div class="page-content accord BrowseBanksByRegion">
+        <div class="content">
+            <div class="text center">
+                <h3>Browse Accounting and Audit Services by Region and Type</h3>
+            </div>
+            <tab class="smallBanks init">
+                <section class="act" data-icon="accountingSmall" data-id="1"><a>Accounting&Report</a></section>
+                <section data-icon="auditSmall" data-id="2"><a>Audit</a></section>
+            </tab>
+            <tabcontent>
+                <section class="act" data-id="1">
+                    <div class="">
+                        <div class="BrowseCompaniesByRegion">
+                            <div class="content">
+                                <ul>
+                                    {% for region_name,region in this.page["List"] %}
+                                        <li id="accordion_accounting{{ region_name|replace({' ':''}) }}">
+                                            <label onclick="$(this).parent('li').toggleClass('act')">
+                                                <div class="logo"><br></div>
+                                                <span><label>{{ region_name }}</label> <span>{{ region|length }} services available</span></span>
+                                            </label>
+                                            <ul>
+                                                {% for item in region %}
+                                                    <li>
+                                                        {% partial 'recommended-card'
+                                                            href='accountingdetails'|page({'type':item.type, 'slug':item.slug})
+                                                            img=item.logo|media
+                                                            title=item.name
+                                                            text=item.country
+                                                            priceTitle="Starting from"
+                                                            actionText="Learn more"
+                                                            price='€' ~item.price| number_format(0, '.', ',') ~ '*'
 
-                </div>
-            </section>
-        </tabcontent>
+                                                        %}
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section data-id="2">
+                    <div class="content">
+                        <div class="BrowseCompaniesByRegion">
+                            <div class="content">
+                                <ul>
+                                    {% for region_name,region in this.page["List2"] %}
+
+
+                                        <li id="accordion_audit{{ region_name|replace({' ':''}) }}">
+                                            <label onclick="$(this).parent('li').toggleClass('act')">
+                                                <div class="logo"><br></div>
+                                                <span><label>{{ region_name }}</label> <span>{{ region|length }} services available</span></span>
+                                            </label>
+                                            <ul>
+                                                {% for item in region %}
+                                                <li>
+                                                    {% partial 'recommended-card'
+                                                        href='accountingdetails'|page({'type':item.type, 'slug':item.slug})
+                                                        img=item.logo|media
+                                                        title=item.name
+                                                        text=item.country
+                                                        priceTitle="Starting from"
+                                                        actionText="Learn more"
+                                                        price='€' ~item.price| number_format(0, '.', ',') ~ '*'
+
+                                                    %}
+                                                </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </tabcontent>
+        </div>
+
+
+        <div class="content">
+            <div class="bank" id="companyDetailBody">
+                {% partial 'accounting-contact-form' %}
+            </div>
+        </div>
+
+
     </div>
-    
-    
-<div class="bank customServiceCont" id="companyDetailBody" style="padding: 0px; */
-    width: 0px; 
-    margin: 0px auto; 
-    margin-bottom: 0px;">
-{% partial 'accounting-contact-form' %}
-</div>    
-    
-</div>
-
 
 
 </div>
+
+<link href="{{ [
+    'assets/js/slick/slick.css',
+    'assets/js/slick/slick-theme.css',
+    'assets/css/styles.css',
+]|theme }}" rel="stylesheet">
+<script src="{{ [
+    'assets/js/slick/slick.min.js',
+    'assets/js/main-offer-slick-config.js',
+    'assets/js/header.js',
+
+]|theme }}"></script>

@@ -13,106 +13,80 @@ function onEnd() {
      $this["record"] = Db::table('offshorelicense_offers_intprop')->where('slug',$this->param('slug'))->where('disabled','<>','1')->first();
     if (! $this["record"])
         return Redirect::to('/404');
-        
+
     $this->page['breadscrumbs'] = array(
         'Home'=>$this->page['site_link'],
-        'Intellectual Property'=>"/intellectualproperty", 
+        'Intellectual Property'=>"/intellectualproperty",
         ucfirst($this["record"]->type).""=>"/intellectualproperty#".str_replace(' ','',$this["record"]->type),
         $this["record"]->name=>"",
     );
-    
+
     $this->SeoCmsPage->seo_title = $this["record"]->meta_title." - Offshorelicense";
     $this->SeoCmsPage->seo_keywords = $this["record"]->meta_keywords;
     $this->SeoCmsPage->seo_description = $this["record"]->meta_description;
-    
+
     //$this->SeoCmsPage->seo_title = $this["record"]->name." with Offshorelicense";
-    //$this->SeoCmsPage->seo_description = $this["record"]->name." licensing solution with Offshorelicense";  
-    //$this->SeoCmsPage->seo_keywords = $this["record"]->name." with Offshorelicense";    
-    
+    //$this->SeoCmsPage->seo_description = $this["record"]->name." licensing solution with Offshorelicense";
+    //$this->SeoCmsPage->seo_keywords = $this["record"]->name." with Offshorelicense";
+
 }
 ?>
 ==
 <div class="page license">
    <div class="bx_item_detail bx_blue" id="bx_117848907_598">
       <div id="licDetailTop" class="page-top bank">
-         <div style="padding-bottom: 0;" class="content mainPage-list">
+         <div class="content mainPage-list">
             <div class="text center">
 		{% if attribute(record, "title")%}
-		    <h1>{{attribute(record, "title")}}</h1>
+		    <h1 class="main-offer__heading">{{attribute(record, "title")}}</h1>
 		{% else %}
-			<h1>INTELLECTUAL PROPERTY</h1>
-		{% endif %}            
+			<h1 class="main-offer__heading">INTELLECTUAL PROPERTY</h1>
+		{% endif %}
 
-               <div class="licInfo">
-                  <div class="logo" style="background-image: url('{{ attribute(record, "logo")|media }}');"></div>
-                  <span>
-                  <h2>{% if record %}
-                            {{ attribute(record, "name") }}
-                        {% else %}
-                            Not found
-                        {% endif %}</h2>
-                  <span> {{ attribute(record, "type") }}</span>
-                  </span>
-                  <div class="cost">
-                     <h5></h5>
-                  </div>
+                <div class="licInfo main-offer__list">
+                   {% partial 'recommended-card'
+                       img=attribute(record, "logo")|media
+                       title= attribute(record, "name")
+                       text=attribute(record, "info")
+                   %}
                </div>
             </div>
          </div>
       </div>
-      
-      
-      
+
+
+
 
 
 
 {% if this.page["breadscrumbs"] %}
  <div class="white-bg">
- <div class="content">
-    <ul class='breadscrumbs'>
-        {%for item,url in this.page["breadscrumbs"]%}
-        <li>
-            {% if url!="" %}
-                <a href="{{url}}">{{item}}</a>
-            {% else %}
-                {{item}}
-            {% endif %}
-        </li>
-        {% endfor %}
-    </ul>
-</div>
+     <div class="content">
+        <ul class='breadscrumbs'>
+            {%for item,url in this.page["breadscrumbs"]%}
+            <li>
+                {% if url!="" %}
+                    <a href="{{url}}">{{item}}</a>
+                {% else %}
+                    {{item}}
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
 {% endif %}
-
-
-      
-      <div id="licDetailInfo">
-         <div class="cont">
-            <div class="logo"  style="background-image: url('{{ 'assets/img/menuIntBigGreen.png'|theme }}');"></div>
-            <span>{{ attribute(record, "info") | raw }}</span>
-         </div>
-      </div>
-      
-      
-
-
-      <div id="licDetailBody">
-         <table cellspacing="0" cellpadding="0">
-            <thead>
-               <tr>
-                  <th><a href="{{'intprop'|page}}">Back to list</a></th>
-                  <th></th>
-                  <th></th>
-                  <th class="white">{{ attribute(record, "type") | raw }}</th>
-               </tr>
-            </thead>
-            <tbody>
-               <tr>
-                  <td></td>
-               </tr>
-            </tbody>
-            <tfoot></tfoot>
-         </table>
+       <div id="licenseDetailInfo" class="company description-page ">
+           <div class="cont content">
+               <div class="logo"  style="background-image: url('{{ 'assets/img/menuIntBigGreen.png'|theme }}');"></div>
+               <span>{{ attribute(record, "info") | raw }}</span>
+           </div>
+       </div>
+      <div id="licDetailBody" class="content detail-body-table">
+          <div class="detail-body-table__wrap">
+              <a class="detail-body-table__back" href="{{'intprop'|page}}">Back to list</a>
+              <p class="detail-body-table__title">{{ attribute(record, "type") | raw }}</p>
+          </div>
          <div class="std-style ol-style" style="background-color: #FFF; padding: 24px;">
             {{ attribute(record, "description") | raw }}
          </div>
