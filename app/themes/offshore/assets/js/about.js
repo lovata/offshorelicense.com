@@ -1,4 +1,4 @@
-class MainSlider {
+class aboutLogoSlider {
   constructor () {
     this.slideNode = null;
     this.slide = null;
@@ -10,20 +10,21 @@ class MainSlider {
     document.addEventListener("DOMContentLoaded", () => {
       this.initSlider();
     });
-  }
 
-  initSlider () {
-    this.slideNode = $(".js-main-shortcut");
-    if (!this.slideNode) return false;
-    this.setScreen();
     window.addEventListener("resize", () => {
       this.setScreen();
     });
+  }
+
+  initSlider () {
+    this.slideNode = $(".js-main-offer-slider");
+    if (!this.slideNode) return false;
+    this.setScreen();
 
   }
 
   setScreen () {
-    let screenWidth = document.documentElement.clientWidth >= 768 ? "desktop" : "mobile";
+    let screenWidth = document.documentElement.clientWidth >= 1024 ? "desktop" : "mobile";
     if (this.screen == null || (screenWidth !== this.screen)) {
       this.screen = screenWidth;
       if (this.screen == "mobile") {
@@ -32,7 +33,7 @@ class MainSlider {
       if (this.screen == "desktop") {
         if(this.slide !== null) {
           this.slide = null;
-          $(".js-main-shortcut").slick("unslick");
+          $(".js-main-offer-slider").slick("unslick");
         }
       }
     }
@@ -40,15 +41,19 @@ class MainSlider {
 
   initSlickSlider () {
 
-    this.slide = $(".js-main-shortcut").slick({
-      arrows: true,
+    this.slide = $(".js-logo-slider").slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 0,
+      speed: 3000,
+      pauseOnHover: true,
+      cssEase: 'linear',
       infinite: true,
-      slidesToShow: 2,
-      slidesToScroll: 2,
-      loop: true,
-      dots: false
+      centerMode: true,
+      variableWidth: true
     });
   }
 }
 
-new MainSlider();
+new aboutLogoSlider();

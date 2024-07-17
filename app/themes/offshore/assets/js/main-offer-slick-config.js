@@ -10,17 +10,15 @@ class MainOfferSlider {
     document.addEventListener("DOMContentLoaded", () => {
       this.initSlider();
     });
-
-    window.addEventListener("resize", () => {
-      this.setScreen();
-    });
   }
 
   initSlider () {
-    this.slideNode = $(".js-main-offer-slider");
+    this.slideNode = $(".js-main-offer-slider").length;
     if (!this.slideNode) return false;
     this.setScreen();
-
+    window.addEventListener("resize", () => {
+      this.setScreen();
+    });
   }
 
   setScreen () {
@@ -40,7 +38,6 @@ class MainOfferSlider {
   }
 
   initSlickSlider () {
-
     this.slide = $(".js-main-offer-slider").slick({
       arrows: false,
       infinite: true,

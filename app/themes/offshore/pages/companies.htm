@@ -63,30 +63,30 @@ function onStart()
 						<li class="main-offer__list">
 							{% if item.bronze_discount > 0 %}
 								{% partial 'recommended-card'
-									href='accountingdetails'|page({'type':item.type, 'slug':item.slug})
+									href='company'|page({'slug':item.slug})
 									img=item.logo|media
 									title=item.name
 									text=item.type|title
 									priceTitle="Starting from"
+									isArrow=true
 									oldPrice=item.bronze_price | number_format(0, '.', ',')
 									oldSale=item.bronze_discount | number_format(0, '.', ',')
 								%}
-
 							{% else %}
 								{% partial 'recommended-card'
-									href='accountingdetails'|page({'type':item.type, 'slug':item.slug})
+									href='company'|page({'slug':item.slug})
 									img=item.logo|media
 									title=item.name
 									text=item.type|title
 									priceTitle="Starting from"
 									price=item.bronze_price | number_format(0, '.', ',')
-
+									isArrow=true
 								%}
 							{% endif %}
-
 						</li>
 					{% endfor %}
 				</ul>
+				{% if this.page["featured_audit"] %}
 				<ul>
 					{% for item in this.page["featured_audit"] %}
 
@@ -101,6 +101,7 @@ function onStart()
 						</li>
 					{% endfor %}
 				</ul>
+				{% endif %}
 			</div>
 
 
@@ -127,7 +128,8 @@ function onStart()
         </ul>
     </div>
     {% endif %}
-	<div class="page-content BrowseBanksByRegion ">
+
+	<div class="page-content accord BrowseBanksByRegion ">
 		<div class="content">
 			<div class="text center">
 				<h3>Browse Companies by Region</h3>

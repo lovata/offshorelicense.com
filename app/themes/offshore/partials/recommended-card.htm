@@ -1,4 +1,6 @@
-<a class="offer-card" href="{{ href }}">
+
+
+<{% if href %}a href="{{ href }}"{% else %}div{% endif %} class="offer-card">
     <span class="offer-card__icon">
         <img class="offer-card__img" src="{{ img }}" alt="">
     </span>
@@ -9,21 +11,21 @@
     </span>
     {% if oldPrice or oldSale or price or priceTitle or actionText %}
         <div class="offer-card__cost">
-          <div class="">
+            <div class="">
                 {% if priceTitle %}
                     <p class="offer-card__old">{{ priceTitle }}</p>
                 {% endif %}
-              {% if oldPrice %}
+                {% if oldPrice %}
                   <s class="offer-card__old">{{ oldPrice | raw }}</s>
-              {% endif %}
-              {% if oldSale %}
+                {% endif %}
+                {% if oldSale %}
                   <p class="offer-card__sale">{{oldSale | raw }}</p>
-              {% endif %}
+                {% endif %}
 
-              {% if price %}
-                  <p class="offer-card__price">{{price}}</p>
-              {% endif %}
-          </div>
+                {% if price %}
+                  <p class="offer-card__price">{{price | raw}}</p>
+                {% endif %}
+            </div>
             {% if actionText %}
               <p class="offer-card__action">{{ actionText }}</p>
             {% endif %}
@@ -33,6 +35,6 @@
             <span class="offer-card__arrow"></span>
         {% endif %}
     </span>
-</a>
+</{% if href %}a{% else %}div{% endif %}>
 
 

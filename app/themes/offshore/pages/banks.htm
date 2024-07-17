@@ -81,7 +81,6 @@ function onStart()
 ?>
 ==
 <div class="page page-short">
-
 <div class="page-top main-offer">
     <div class="content mainPage-list">
         <div class="text center">
@@ -101,12 +100,14 @@ function onStart()
 
                     <li class="main-offer__list">
                         {% partial 'recommended-card'
-                            href='accountingdetails'|page({'type':item.type, 'slug':item.slug})
+                            href='bank'|page({'type':item.type, 'slug':item.slug})
                             img=item.logo|media
                             title=item.name
                             text=item.type|title
                             priceTitle="Starting from"
-                            price='€' ~item.price| number_format(0, '.', ',') %}
+                            price='€' ~item.price| number_format(0, '.', ',')
+                            isArrow=true
+                        %}
                     </li>
                 {% endfor %}
             </ul>
@@ -114,12 +115,14 @@ function onStart()
                 {% for item in this.page["FeaturedPersonal"] %}
                     <li class="main-offer__list">
                         {% partial 'recommended-card'
-                            href='accountingdetails'|page({'type':item.type, 'slug':item.slug})
+                            href='bank'|page({'type':item.type, 'slug':item.slug})
                             img=item.logo|media
                             title=item.name
                             text=item.type|title
                             priceTitle="Starting from"
-                            price='€' ~item.price| number_format(0, '.', ',') %}
+                            price='€' ~item.price| number_format(0, '.', ',')
+                            isArrow=true
+                        %}
                     </li>
                 {% endfor %}
             </ul>
@@ -152,7 +155,7 @@ function onStart()
 
 
 
- <div class="page-content BrowseBanksByRegion">
+ <div class="page-content accord BrowseBanksByRegion">
     <div class="content">
         <div class="text center">
             <h3>Browse Banks by Region</h3>
@@ -192,7 +195,7 @@ function onStart()
                                     </li>
                                 {% endfor %}
                             </ul>
-                        </div
+                        </div>
                     </div>
                 </div>
             </section>
@@ -212,14 +215,19 @@ function onStart()
 					</label>
                     <ul>
     					{%for item in region%}
-    						<li><a href="{{'bank'|page({'type':item.type, 'slug':item.slug})}}"><div class="logo" style="background-image: url('{{item.logo|media}}');"><br></div></a>
-    							<span><a href="{{'bank'|page({'type':item.type, 'slug':item.slug})}}"><label>{{item.name}}</label></a> <span>{{item.country}}</span></span>
-    							<a class="button" href="{{'bank'|page({'type':item.type, 'slug':item.slug})}}">Learn more</a>
-        						<div class="cost">
-        						<span>Starting from</span><br>
-        						    <h5>€{{item.price| number_format(0, '.', ',') }}</h5>
-        						</div>
-    						</li>
+                            <li>
+                                {% partial 'recommended-card'
+                                    href='bank'|page({'type':item.type, 'slug':item.slug})
+                                    img=item.logo|media
+                                    title=item.name
+                                    text=item.country
+                                    priceTitle="Starting from"
+                                    actionText="Learn more"
+                                    price='€' ~item.price| number_format(0, '.', ',')
+
+                                %}
+                            </li>
+
     					{% endfor %}
 				    </ul>
 				</li>

@@ -20,468 +20,430 @@ function onStart(){
 }
 ?>
 ==
-<div class="page">
-   <div class="page-top about-us-title">
-      <div class="content mainPage-list">
-         <div class="text center">
-            <h1 class="_about-us-title">About Offshorelicense company</h1>
-         </div>
-      </div>
-   </div>
-   
-   
-   
-   
-
-
-{% if this.page["breadscrumbs"] %}
- <div class="white-bg">
- <div class="content">
-    <ul class='breadscrumbs'>
-        {%for item,url in this.page["breadscrumbs"]%}
-        <li>
-            {% if url!="" %}
-                <a href="{{url}}">{{item}}</a>
-            {% else %}
-                {{item}}
-            {% endif %}
-        </li>
-        {% endfor %}
-    </ul>
-</div>
-</div>
-{% endif %}
-
-
-
-   {% content "about.htm" %}
-   
-   <div class="whiteBackground">
-	<div class="our-partners content">
-
-		<h2>Our clients and partners</h2>
-		<hr>
-		<div class="logosBlock">
-			<a href="http://advancedmarketsfx.com/" target="_blank"><img src="/themes/offshore/assets/logos/logoAdvancedMarkets.png" width="204" height="99" alt="Advanced Markets" class="fr-fic fr-dii"></a>
-			<a href="https://www.skrill.com/en/" target="_blank"><img src="/themes/offshore/assets/logos/logoSkrill.png" width="196" height="99" alt="Skrill" class="fr-fic fr-dii"></a>
-			<a href="http://www.visa.com/globalgateway/gg_selectcountry.jsp" target="_blank"><img src="/themes/offshore/assets/logos/logoVisa.png" width="166" height="99" alt="Visa" class="fr-fic fr-dii"></a>
-			<a href="https://www.mastercard.us/en-us.html" target="_blank"><img src="/themes/offshore/assets/logos/logoMasterCard.png" width="149" height="99" alt="MasterCard" class="fr-fic fr-dii"></a>
-			<a href="https://www.neteller.com/en" target="_blank"><img src="/themes/offshore/assets/logos/logoNeteller.png" width="216" height="99" alt="Neteller" class="fr-fic fr-dii"></a>
-			<a href="https://home.kpmg.com/us/en/home.html" target="_blank"><img src="/themes/offshore/assets/logos/logoKPMG.png" width="204" height="107" alt="KPMG" class="fr-fic fr-dii"></a>
-			<a href="https://cex.io/" target="_blank"><img src="/themes/offshore/assets/logos/logoCexIO.png" width="196" height="107" alt="CEX.IO" class="fr-fic fr-dii"></a>
-			<a href="https://paxforex.com/" target="_blank"><img src="/themes/offshore/assets/logos/logoPaxForex.png" width="166" height="107" alt="PaxForec" class="fr-fic fr-dii"></a>
-			<a href="http://www.cfhclearing.com/" target="_blank"><img src="/themes/offshore/assets/logos/logoCfhClearing.png" width="149" height="107" alt="CFH Clearing" class="fr-fic fr-dii"></a>
-			<a href="https://www.ortegacapitalmarkets.com/" target="_blank"><img src="/themes/offshore/assets/logos/logoOrtegaCapitalMarkets.png" width="216" height="107" alt="Ortega Capital Markets" class="fr-fic fr-dii"></a>
-			<a href="https://www.finpari.com/" target="_blank"><img src="/themes/offshore/assets/logos/logoFinpari.png" width="204" height="111" alt="Finpari" class="fr-fic fr-dii"></a>
-			<a href="https://fxpig.com/" target="_blank"><img src="/themes/offshore/assets/logos/logoFxPig.png" width="196" height="111" alt="FXPIG" class="fr-fic fr-dii"></a>
-			<a href="https://b2broker.net/en/" target="_blank"><img src="/themes/offshore/assets/logos/logoB2Broker.png" width="314" height="111" alt="B2Broker" class="fr-fic fr-dii"></a>
-			<a target="_blank"><img src="/themes/offshore/assets/logos/logoCoinFloor.png" width="216" height="111" alt="Coinfloor" class="fr-fic fr-dii"></a>
-			<a href="http://www.zulutrade.com/" target="_blank"><img src="/themes/offshore/assets/logos/logoZuluTrade.png" width="204" height="104" alt="ZuluTrade" class="fr-fic fr-dii"></a>
-			<a href="http://www.weltrade.com/" target="_blank"><img src="/themes/offshore/assets/logos/logoWelTrade.png" width="196" height="104" alt="Weltrade" class="fr-fic fr-dii"></a>
-			<a href="http://www.pheasantech.com/" target="_blank"><img src="/themes/offshore/assets/logos/logoPheasanTech.png" width="314" height="104" alt="PheasanTech" class="fr-fic fr-dii"></a>
-			<a href="https://gerchikco.com/" target="_blank"><img src="/themes/offshore/assets/logos/logoGerchikCo.png" width="216" height="104" alt="Gerchik &amp; Co" class="fr-fic fr-dii"></a>
-			<a href="http://www.divisacapital.com/" target="_blank"><img src="/themes/offshore/assets/logos/logoDivisaCapital.png" width="204" height="117" alt="Divisa Capital" class="fr-fic fr-dii"></a>
-			<a href="https://tickmill.com/" target="_blank"><img src="/themes/offshore/assets/logos/logoTickMill.png" width="196" height="117" alt="Tickmill" class="fr-fic fr-dii"></a>
-			<a href="http://www.ice-fx.com/" target="_blank"><img src="/themes/offshore/assets/logos/logoIceFx.png" width="166" height="117" alt="Ice FX" class="fr-fic fr-dii"></a>
-			<a href="https://redbullfx.com/" target="_blank"><img src="/themes/offshore/assets/logos/logoRedBullFx.png" width="149" height="117" alt="Redbullfx" class="fr-fic fr-dii"></a>
-			<a href="https://www.fxopen.com/" target="_blank"><img src="/themes/offshore/assets/logos/logoFxOpen.png" width="216" height="117" alt="FXOpen" class="fr-fic fr-dii"></a>
-		</div>
-	</div>
+<div class="page page-short">
+    <div class="page-top about-us-title">
+        <div class="content mainPage-list">
+            <div class="text center">
+                <h1 class="_about-us-title main-offer__heading ">About Offshorelicense company</h1>
+            </div>
+        </div>
     </div>
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   <div class="contact-map whiteBackground">
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   <script>
-   $(function(){
-       
-       
-			var latlng = new google.maps.LatLng(50.7894449,54.0486299);
-
-				var styles = [
-				{
-						"featureType": "all",
-						"stylers": [
-						{ "visibility": "off" }
-						]
-					},{
-						"featureType": "water",
-						"elementType": "geometry",
-						"stylers": [
-						{ "visibility": "on" },
-						{ "color": "#adbe4f" }
-						]
-					},{
-						"featureType": "administrative.country",
-						"elementType": "geometry.stroke",
-						"stylers": [
-						{ "visibility": "on" },
-						{ "color": "#09273b" }
-						]
-					},{
-						"featureType": "landscape.natural",
-						"elementType": "geometry.fill",
-						"stylers": [
-						{ "visibility": "on" },
-						{ "color": "#ffffff" }
-						]
-					}
-			];
 
 
-			var myOptions = {
-
-				center: latlng,
-				mapTypeId: google.maps.MapTypeId.ROADMAP,
-				disableDefaultUI: true,
-				styles: styles,
-      			zoom: 3,
-      			maxZoom: 5,
-      			minZoom: 2,
-      			scrollwheel: false,
-      			navigationControl: false,
-      			mapTypeControl: false,
-      			scaleControl: false,
-      			draggable: true,				
-			};
+    {% if this.page["breadscrumbs"] %}
+        <div class="white-bg">
+            <div class="content">
+                <ul class='breadscrumbs'>
+                    {% for item,url in this.page["breadscrumbs"] %}
+                        <li>
+                            {% if url!="" %}
+                                <a href="{{ url }}">{{ item }}</a>
+                            {% else %}
+                                {{ item }}
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
 
 
 
+    {% content "about.htm" %}
+
+    <div class="whiteBackground">
+        <div class="our-partners content">
+
+            <h2>Our clients and partners</h2>
+            <hr>
+            <div class="logosBlock js-logo-slider">
+                <a href="http://advancedmarketsfx.com/" target="_blank"><img
+                            src="/themes/offshore/assets/logos/logoAdvancedMarkets.png" width="204" height="99"
+                            alt="Advanced Markets" class="fr-fic fr-dii"></a>
+                <a href="https://www.skrill.com/en/" target="_blank"><img
+                            src="/themes/offshore/assets/logos/logoSkrill.png" width="196" height="99" alt="Skrill"
+                            class="fr-fic fr-dii"></a>
+                <a href="http://www.visa.com/globalgateway/gg_selectcountry.jsp" target="_blank"><img
+                            src="/themes/offshore/assets/logos/logoVisa.png" width="166" height="99" alt="Visa"
+                            class="fr-fic fr-dii"></a>
+                <a href="https://www.mastercard.us/en-us.html" target="_blank"><img
+                            src="/themes/offshore/assets/logos/logoMasterCard.png" width="149" height="99"
+                            alt="MasterCard" class="fr-fic fr-dii"></a>
+                <a href="https://www.neteller.com/en" target="_blank"><img
+                            src="/themes/offshore/assets/logos/logoNeteller.png" width="216" height="99" alt="Neteller"
+                            class="fr-fic fr-dii"></a>
+                <a href="https://home.kpmg.com/us/en/home.html" target="_blank"><img
+                            src="/themes/offshore/assets/logos/logoKPMG.png" width="204" height="107" alt="KPMG"
+                            class="fr-fic fr-dii"></a>
+                <a href="https://cex.io/" target="_blank"><img src="/themes/offshore/assets/logos/logoCexIO.png"
+                                                               width="196" height="107" alt="CEX.IO"
+                                                               class="fr-fic fr-dii"></a>
+                <a href="https://paxforex.com/" target="_blank"><img
+                            src="/themes/offshore/assets/logos/logoPaxForex.png" width="166" height="107" alt="PaxForec"
+                            class="fr-fic fr-dii"></a>
+                <a href="http://www.cfhclearing.com/" target="_blank"><img
+                            src="/themes/offshore/assets/logos/logoCfhClearing.png" width="149" height="107"
+                            alt="CFH Clearing" class="fr-fic fr-dii"></a>
+                <a href="https://www.ortegacapitalmarkets.com/" target="_blank"><img
+                            src="/themes/offshore/assets/logos/logoOrtegaCapitalMarkets.png" width="216" height="107"
+                            alt="Ortega Capital Markets" class="fr-fic fr-dii"></a>
+                <a href="https://www.finpari.com/" target="_blank"><img
+                            src="/themes/offshore/assets/logos/logoFinpari.png" width="204" height="111" alt="Finpari"
+                            class="fr-fic fr-dii"></a>
+                <a href="https://fxpig.com/" target="_blank"><img src="/themes/offshore/assets/logos/logoFxPig.png"
+                                                                  width="196" height="111" alt="FXPIG"
+                                                                  class="fr-fic fr-dii"></a>
+                <a href="https://b2broker.net/en/" target="_blank"><img
+                            src="/themes/offshore/assets/logos/logoB2Broker.png" width="314" height="111" alt="B2Broker"
+                            class="fr-fic fr-dii"></a>
+                <a target="_blank"><img src="/themes/offshore/assets/logos/logoCoinFloor.png" width="216" height="111"
+                                        alt="Coinfloor" class="fr-fic fr-dii"></a>
+                <a href="http://www.zulutrade.com/" target="_blank"><img
+                            src="/themes/offshore/assets/logos/logoZuluTrade.png" width="204" height="104"
+                            alt="ZuluTrade" class="fr-fic fr-dii"></a>
+                <a href="http://www.weltrade.com/" target="_blank"><img
+                            src="/themes/offshore/assets/logos/logoWelTrade.png" width="196" height="104" alt="Weltrade"
+                            class="fr-fic fr-dii"></a>
+                <a href="http://www.pheasantech.com/" target="_blank"><img
+                            src="/themes/offshore/assets/logos/logoPheasanTech.png" width="314" height="104"
+                            alt="PheasanTech" class="fr-fic fr-dii"></a>
+                <a href="https://gerchikco.com/" target="_blank"><img
+                            src="/themes/offshore/assets/logos/logoGerchikCo.png" width="216" height="104"
+                            alt="Gerchik &amp; Co" class="fr-fic fr-dii"></a>
+                <a href="http://www.divisacapital.com/" target="_blank"><img
+                            src="/themes/offshore/assets/logos/logoDivisaCapital.png" width="204" height="117"
+                            alt="Divisa Capital" class="fr-fic fr-dii"></a>
+                <a href="https://tickmill.com/" target="_blank"><img
+                            src="/themes/offshore/assets/logos/logoTickMill.png" width="196" height="117" alt="Tickmill"
+                            class="fr-fic fr-dii"></a>
+                <a href="http://www.ice-fx.com/" target="_blank"><img src="/themes/offshore/assets/logos/logoIceFx.png"
+                                                                      width="166" height="117" alt="Ice FX"
+                                                                      class="fr-fic fr-dii"></a>
+                <a href="https://redbullfx.com/" target="_blank"><img
+                            src="/themes/offshore/assets/logos/logoRedBullFx.png" width="149" height="117"
+                            alt="Redbullfx" class="fr-fic fr-dii"></a>
+                <a href="https://www.fxopen.com/" target="_blank"><img
+                            src="/themes/offshore/assets/logos/logoFxOpen.png" width="216" height="117" alt="FXOpen"
+                            class="fr-fic fr-dii"></a>
+            </div>
+        </div>
+    </div>
 
 
+    <div class="contact-map whiteBackground">
 
+        <script>
+          $(function () {
 
-			map = new google.maps.Map(document.getElementById('map'), myOptions);
-			
-          var marker1 = new google.maps.Marker({
-            position: new google.maps.LatLng(53.40988999207,-2.9924998278148),
-            map: map,
-            title: 'United Kingdom',
-            icon:"\/themes\/offshore\/assets\/img\/pointerGrey.png",
-            html:"<div class='map-tooltip'><span><img class='country' src='\/themes\/offshore\/assets\/img\/flags\/4x3\/gb.svg' \/><\/span><span class='text'>United Kingdom<\/span><\/div>"
+            var latlng = new google.maps.LatLng(50.7894449, 54.0486299);
+
+            var styles = [
+              {
+                "featureType": "all",
+                "stylers": [
+                  { "visibility": "off" }
+                ]
+              }, {
+                "featureType": "water",
+                "elementType": "geometry",
+                "stylers": [
+                  { "visibility": "on" },
+                  { "color": "#adbe4f" }
+                ]
+              }, {
+                "featureType": "administrative.country",
+                "elementType": "geometry.stroke",
+                "stylers": [
+                  { "visibility": "on" },
+                  { "color": "#09273b" }
+                ]
+              }, {
+                "featureType": "landscape.natural",
+                "elementType": "geometry.fill",
+                "stylers": [
+                  { "visibility": "on" },
+                  { "color": "#ffffff" }
+                ]
+              }
+            ];
+            var myOptions = {
+
+              center: latlng,
+              mapTypeId: google.maps.MapTypeId.ROADMAP,
+              disableDefaultUI: true,
+              styles: styles,
+              zoom:  document.documentElement.clientWidth >= 768 ? 3 : 1,
+              maxZoom: 5,
+              minZoom: 2,
+              scrollwheel: false,
+              navigationControl: false,
+              mapTypeControl: false,
+              scaleControl: false,
+              draggable: true
+            };
+
+            map = new google.maps.Map(document.getElementById("map"), myOptions);
+
+            var marker1 = new google.maps.Marker({
+              position: new google.maps.LatLng(53.40988999207, -2.9924998278148),
+              map: map,
+              title: "United Kingdom",
+              icon: "\/themes\/offshore\/assets\/img\/pointerGrey.png",
+              html: "<div class='map-tooltip'><span><img class='country' src='\/themes\/offshore\/assets\/img\/flags\/4x3\/gb.svg' \/><\/span><span class='text'>United Kingdom<\/span><\/div>"
+            });
+
+            var marker2 = new google.maps.Marker({
+              position: new google.maps.LatLng(22.285165193053, 114.15089321163),
+              map: map,
+              title: "Hong Kong",
+              icon: "\/themes\/offshore\/assets\/img\/pointerGrey.png",
+              html: "<div class='map-tooltip'><span><img class='country' src='\/themes\/offshore\/assets\/img\/flags\/4x3\/hk.svg' \/><\/span><span class='text'>Hong Kong<\/span><\/div>"
+            });
+
+            var marker3 = new google.maps.Marker({
+              position: new google.maps.LatLng(56.958817399024, 24.100471973943),
+              map: map,
+              title: "Latvia",
+              icon: "\/themes\/offshore\/assets\/img\/pointerGrey.png",
+              html: "<div class='map-tooltip'><span><img class='country' src='\/themes\/offshore\/assets\/img\/flags\/4x3\/lv.svg' \/><\/span><span class='text'>Latvia<\/span><\/div>"
+            });
+
+            var marker4 = new google.maps.Marker({
+              position: new google.maps.LatLng(34.691759432391, 33.022492647433),
+              map: map,
+              title: "Cyprus",
+              icon: "\/themes\/offshore\/assets\/img\/pointerGrey.png",
+              html: "<div class='map-tooltip'><span><img class='country' src='\/themes\/offshore\/assets\/img\/flags\/4x3\/cy.svg' \/><\/span><span class='text'>Cyprus<\/span><\/div>"
+            });
+
+            var infowindow = new google.maps.InfoWindow();
+
+            marker1.addListener("click", function () {
+              map.panTo(this.position);
+              if (infowindow) infowindow.close();
+              infowindow.setContent(this.html);
+              infowindow.open(map, this);
+            });
+
+            marker2.addListener("click", function () {
+              map.panTo(this.position);
+              if (infowindow) infowindow.close();
+              infowindow.setContent(this.html);
+              infowindow.open(map, this);
+            });
+
+            marker3.addListener("click", function () {
+              map.panTo(this.position);
+              if (infowindow) infowindow.close();
+              infowindow.setContent(this.html);
+              infowindow.open(map, this);
+            });
+
+            marker4.addListener("click", function () {
+              map.panTo(this.position);
+              if (infowindow) infowindow.close();
+              infowindow.setContent(this.html);
+              infowindow.open(map, this);
+            });
+
           });
-          
-          var marker2 = new google.maps.Marker({
-            position: new google.maps.LatLng(22.285165193053,114.15089321163),
-            map: map,
-            title: 'Hong Kong',
-            icon:"\/themes\/offshore\/assets\/img\/pointerGrey.png",
-            html:"<div class='map-tooltip'><span><img class='country' src='\/themes\/offshore\/assets\/img\/flags\/4x3\/hk.svg' \/><\/span><span class='text'>Hong Kong<\/span><\/div>"
-          });
-          
-          var marker3 = new google.maps.Marker({
-            position: new google.maps.LatLng(56.958817399024,24.100471973943),
-            map: map,
-            title: 'Latvia',
-            icon:"\/themes\/offshore\/assets\/img\/pointerGrey.png",
-            html:"<div class='map-tooltip'><span><img class='country' src='\/themes\/offshore\/assets\/img\/flags\/4x3\/lv.svg' \/><\/span><span class='text'>Latvia<\/span><\/div>"
-          });
-          
-          var marker4 = new google.maps.Marker({
-            position: new google.maps.LatLng(34.691759432391,33.022492647433),
-            map: map,
-            title: 'Cyprus',
-            icon:"\/themes\/offshore\/assets\/img\/pointerGrey.png",
-            html:"<div class='map-tooltip'><span><img class='country' src='\/themes\/offshore\/assets\/img\/flags\/4x3\/cy.svg' \/><\/span><span class='text'>Cyprus<\/span><\/div>"
-          });
-          
-        var infowindow = new google.maps.InfoWindow();
-          
-        marker1.addListener('click', function() {
-            map.panTo(this.position);
-            if (infowindow) infowindow.close();
-            infowindow.setContent(this.html);
-            infowindow.open(map, this);
-        });			
-			
-        marker2.addListener('click', function() {
-            map.panTo(this.position);
-            if (infowindow) infowindow.close();
-            infowindow.setContent(this.html);
-            infowindow.open(map, this);
-        });			
-			
-		
-	   marker3.addListener('click', function() {
-            map.panTo(this.position);
-            if (infowindow) infowindow.close();
-            infowindow.setContent(this.html);
-            infowindow.open(map, this);
-        });			
-			
-		
-	   marker4.addListener('click', function() {
-            map.panTo(this.position);
-            if (infowindow) infowindow.close();
-            infowindow.setContent(this.html);
-            infowindow.open(map, this);
-        });			
-			
-		
-		
-       })
-   
-// window.onload = function () {
-//}
-		
-		
-		
 
-		
-		</script>
-   
-   <style>
-   	#map {
-			width: 100%;
-			height: 460px;
-			position: relative;
-			overflow: hidden;
-		}
-   </style>
-   
-   	<div id="map"></div>
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
+          // window.onload = function () {
+          //}
 
-  
-  	<div class="content contacts-blocks">
 
-		<h1>Contacts and office locations</h1>
-		<section><img src="/themes/offshore/assets/img/flags/4x3/gb.svg" class="fr-fic fr-dii">
-			<label>United Kingdom</label>
+        </script>
 
-			<p>Suite 312a, Cotton Exchange, Bixteth Street,
-				<br>Liverpool, L3 9LQ,
-				<br>United Kingdom</p><a class="phone" href="tel:+44%2020%2038%2007%2015%2007">+44 20 38 07 15 07</a><a class="email" href="mail%3Ainfo@offshorelicense.com">info@offshorelicense.com</a></section>
-		<section><img src="/themes/offshore/assets/img/flags/4x3/hk.svg" class="fr-fic fr-dii">
-			<label>Hong Kong</label>
+        <style>
+          #map {
+            width: 100%;
 
-			<p>19H Maxgrand Plaza, No.3 Tai Yau Street,
-				<br> San Po Kong, Kowloon,
-				<br>Hong Kong
-				<br>
-			</p><a class="phone" href="tel:+44%2020%2038%2007%2015%2007">+44 20 38 07 15 07</a><a class="email" href="mail%3Ainfo@offshorelicense.com">info@offshorelicense.com</a></section>
-		<section><img src="/themes/offshore/assets/img/flags/4x3/cy.svg" class="fr-fic fr-dii">
-			<label>Cyprus</label>
+            position: relative;
+            overflow: hidden;
+          }
+          @media screen and (max-width: 767px) {
+            #map {
+                aspect-ratio: 500 / 460;
+                height: 280px;
+              }
+          }
+          @media screen and (min-width: 768px) {
+            #map {
+              height: 460px;
 
-			<p>Offshorelicense Ltd,
-				<br>P.O. Box 56616,
-				<br>Limassol,
-				<br>Cyprus</p><a class="email" href="mail%3Ainfo@offshorelicense.com">info@offshorelicense.com</a></section>
-		<section><img src="/themes/offshore/assets/img/flags/4x3/lv.svg" class="fr-fic fr-dii">
-			<label>Latvia</label>
+            }
+          }
+        </style>
 
-			<p>Kronvalda boulevard 10
-				<br>Riga, LV-1010
-				<br>Latvia</p><a class="phone" href="tel:+371%2067%2066%2006%2066">+371 67 66 06 66</a><a class="email" href="mail%3Ainfo@offshorelicense.com">info@offshorelicense.com</a></section>
-	</div>
-  
-</div>
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
+        <div id="map"></div>
+
+        <div class="content contacts-blocks">
+
+            <h1 class="contacts-blocks__title">Contacts and office locations</h1>
+            <div class="contacts-blocks__wrap">
+                <section><img src="/themes/offshore/assets/img/flags/4x3/gb.svg" class="fr-fic fr-dii">
+                    <label>United Kingdom</label>
+
+                    <p>Suite 312a, Cotton Exchange, Bixteth Street,
+                        <br>Liverpool, L3 9LQ,
+                        <br>United Kingdom</p><a class="phone" href="tel:+44%2020%2038%2007%2015%2007">+44 20 38 07 15
+                        07</a><a class="email" href="mail%3Ainfo@offshorelicense.com">info@offshorelicense.com</a>
+                </section>
+                <section><img src="/themes/offshore/assets/img/flags/4x3/hk.svg" class="fr-fic fr-dii">
+                    <label>Hong Kong</label>
+
+                    <p>19H Maxgrand Plaza, No.3 Tai Yau Street,
+                        <br> San Po Kong, Kowloon,
+                        <br>Hong Kong
+                        <br>
+                    </p><a class="phone" href="tel:+44%2020%2038%2007%2015%2007">+44 20 38 07 15 07</a><a class="email"
+                                                                                                          href="mail%3Ainfo@offshorelicense.com">info@offshorelicense.com</a>
+                </section>
+                <section><img src="/themes/offshore/assets/img/flags/4x3/cy.svg" class="fr-fic fr-dii">
+                    <label>Cyprus</label>
+
+                    <p>Offshorelicense Ltd,
+                        <br>P.O. Box 56616,
+                        <br>Limassol,
+                        <br>Cyprus</p><a class="email"
+                                         href="mail%3Ainfo@offshorelicense.com">info@offshorelicense.com</a></section>
+                <section><img src="/themes/offshore/assets/img/flags/4x3/lv.svg" class="fr-fic fr-dii">
+                    <label>Latvia</label>
+
+                    <p>Kronvalda boulevard 10
+                        <br>Riga, LV-1010
+                        <br>Latvia</p><a class="phone" href="tel:+371%2067%2066%2006%2066">+371 67 66 06 66</a><a
+                            class="email" href="mail%3Ainfo@offshorelicense.com">info@offshorelicense.com</a></section>
+            </div>
+        </div>
+
+    </div>
+
     <!-- Result container -->
     <div id="myDiv"></div>
 
-   <div id="mainForm1" class="about-form-outer">
-      <a name="aboutFormTop" style="margin-top: -215px; position: absolute;"></a>
-      <div id="bxdynamic_fW13iv_start" style="display:none"></div>
-      
-
-<form
-    id="contact_form" name="SIMPLE_FORM_1"
-    data-request="onSendUniversalForm"
-    data-request-success="$('#dialog-thankyou').dialog('open')"
-    data-request-update="'ajax-response': '.thankyou-dialog .ui-dialog-title'"
-    data-request-validate
-    data-request-error = "grecaptcha.reset()"
-    data-request-flash
-    >
-    
-    <input type="hidden" name='url' value="{{ ''| page }}">
-         <table class="about-form-table" style="border-collapse: collapse;">
-            <tbody class="form-header-tbody">
-               <tr>
-                  <td colspan="3">
-                     <div class="form-header">Have a question?</div>
-                  </td>
-               </tr>
-               <tr>
-                  <td colspan="3">
-                     <div class="form-desc">Please do not hesitate to submit our contact form regarding all your business, partnership and HR questions below.<br>
-                        A member of our team will contact you directly, to offer a best possible solution to your inquiry.
-                     </div>
-                     <br>
-                  </td>
-               </tr>
-               <tr>
-                  <td>
-
-                     <input type="text" class="about-form-class" ,="" placeholder="Name*" name="firstname" value="" size="0"> 
-     <span data-validate-for="firstname" class="crm-tooltip" style="margin-right: 88px;">The firstname field is required.</span>
-                    
-                     <input type="hidden" name="lastname" value="_" > 
-                     <br>
-                     <input type="text" class="about-form-class" ,="" placeholder="E-mail*" name="email" value="" size="0">
-     <span data-validate-for="email" class="crm-tooltip" style="margin-right: 88px;">The email field is required.</span>
-                     <br>
-                     
-                        <input type="text" class="about-form-class" ,="" placeholder="Phone*" name="phone" value="" size="0" autocomplete="off">
-                        <span data-validate-for="phone" class="crm-tooltip" style="margin-right: 88px;margin-top: -62px;">The phone field is required.</span>
-                     </div>
-   <div style="text-align:left;padding-left:10px;padding-top:15px;">
-	<label class="crm-webform-checkbox-container crm-webform-checkbox-checkbox">
-    	<input class="crm-webform-checkbox crm-webform-input-checkbox crm-webform-input" type="checkbox" name="LEAD_UF_CRM_1528363121" id="LEAD_UF_CRM_1528363121" value="Y"> 
-
-    	<span class="crm-webform-checkbox-name highlight-when-not-checked">I agree to receive emails about Offshorelicense products and services (You can unsubscribe at any time)</span>
-	</label>
-	</div>
-                  </td>
-                  <td>
-                     <textarea name="message" cols="0" rows="0" class="about-form-comment-class" ,="" placeholder="Your comment..."></textarea>
-                     <table cellspacing="0" cellpadding="0" border="0" align="right">
-                        <tbody>
-                           <tr>
-                              <td> 
-                                 <br>
-                              </td>
-                              <td colspan=2>
-                                 {% component 'captcha' %}
-                                 <div id="g-recaptcha-response_label" data-validate-for="captcha" class="crm-tooltip" style="margin-top: -105px;">Please complete Captcha</div>
-                                 
-                              </td>
-                           </tr>
-                        </tbody>
-                     </table>
-                  </td>
-               </tr>
-            </tbody>
-         </table>
-         
-         <script>
-$(document).on('ajaxSetup', function(event, context) {
-    // Handle Error Messages with a custom handler
-    context.options.handleErrorMessage = function(message) {
-        // do stuff
-        $("#g-recaptcha-response_label").show();
-    }
-
-})        
-         </script>
-
-    <!--
-    <div id="warning" class="error alert alert-danger" style="text-align: left;" data-validate-error>
-    <p data-message></p>
-    </div>
-    -->
-     <!--<div id="warning" class="error alert alert-danger" style="text-align: left;" data-validate-error>
-    <p data-message style="display:none;"></p>
-        <p>The following required fields are left blank:</p>
-    </div>
-    <div class="error alert alert-danger" style="text-align: left;">
-    <div data-validate-for="firstname" class="xcrm-tooltip" style="color:#F00">» "Name"</div>
-     <div data-validate-for="email" class="xcrm-tooltip" style="color:#F00">» "E-mail"</div>
-     <div id="g-recaptcha-response_label" class="xcrm-tooltip" style="color:#F00;display:none;">» Please complete Captcha</div>
-    </div>
-    
-    
-         <table style="width: 100%;" cellspacing="0" cellpadding="0" border="0">
-            <tbody>
-               <tr>
-                  <td align="left"><span id="warning" class="error"></span> </td>
-                  <td valign="top" align="right"> 		<span>* - Required fields</span> 	</td>
-               </tr>
-            </tbody>
-         </table>-->
-         <button type=button  onclick="processform2()" class="about-button">
-             Send Inquiry
-         </button>  
-         <button style="display:none;" id="dialog-submit"  name="web_form_submit" class="about-button" value="Send Inquiry">Send Inquiry</button>
-         
-      </form>
-      
-      <div id="bxdynamic_fW13iv_end" style="display:none"></div>
+    <div id="mainForm1" class="about-form-outer">
+        <a name="aboutFormTop" style="margin-top: -215px; position: absolute;"></a>
+        <div id="bxdynamic_fW13iv_start" style="display:none"></div>
 
 
+        <form
+                id="contact_form" name="SIMPLE_FORM_1"
+                data-request="onSendUniversalForm"
+                data-request-success="$('#dialog-thankyou').dialog('open')"
+                data-request-update="'ajax-response': '.thankyou-dialog .ui-dialog-title'"
+                data-request-validate
+                data-request-error="grecaptcha.reset()"
+                data-request-flash
+                class="about-form-table content"
+        >
 
-<script>
-    function processform2(){
-        if ($(".highlight-when-not-checked").hasClass("highlighted-when-not-checked"))
-            {
-             $("#dialog-submit").click();
-             return
+            <input type="hidden" name='url' value="{{ ''| page }}">
+
+            <h2 class="about-form-table__title">Have a question?</h2>
+            <p class="about-form-table__subtitle">Please do not hesitate to submit our contact form regarding all your
+                business, partnership and HR questions below.<br> A member of our team will contact you directly, to
+                offer a best possible solution to your inquiry.</p>
+
+            <div class="about-form-table__wrap">
+                <div class="about-form-table__col">
+                    <input type="text" class="about-form-class" ,="" placeholder="Name*" name="firstname" value=""
+                           size="0">
+                    <span data-validate-for="firstname" class="crm-tooltip" style="margin-right: 88px;">The firstname field is required.</span>
+
+                    <input type="hidden" name="lastname" value="_">
+                    <br>
+                    <input type="text" class="about-form-class" ,="" placeholder="E-mail*" name="email" value=""
+                           size="0">
+                    <span data-validate-for="email" class="crm-tooltip" style="margin-right: 88px;">The email field is required.</span>
+                    <br>
+
+                    <input type="text" class="about-form-class" ,="" placeholder="Phone*" name="phone" value="" size="0"
+                           autocomplete="off">
+                    <span data-validate-for="phone" class="crm-tooltip" style="margin-right: 88px;margin-top: -62px;">The phone field is required.</span>
+                    <div>
+                        <label class="crm-webform-checkbox-container crm-webform-checkbox-checkbox">
+                            <input class="crm-webform-checkbox crm-webform-input-checkbox crm-webform-input"
+                                   type="checkbox" name="LEAD_UF_CRM_1528363121" id="LEAD_UF_CRM_1528363121" value="Y">
+                            <span class="crm-webform-checkbox-name highlight-when-not-checked">I agree to receive emails about Offshorelicense products and services (You can unsubscribe at any time)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="about-form-table__col about-form-table__col--end">
+                    <textarea name="message" cols="0" rows="0" class="about-form-comment-class"
+                              placeholder="Your comment..."></textarea>
+                    {% component 'captcha' %}
+                    <div id="g-recaptcha-response_label" data-validate-for="captcha" class="crm-tooltip"
+                         style="margin-top: -105px;">Please complete Captcha
+                    </div>
+                </div>
+            </div>
+
+
+            <script>
+              $(document).on("ajaxSetup", function (event, context) {
+                // Handle Error Messages with a custom handler
+                context.options.handleErrorMessage = function (message) {
+                  // do stuff
+                  $("#g-recaptcha-response_label").show();
+                };
+
+              });
+            </script>
+
+            <!--
+            <div id="warning" class="error alert alert-danger" style="text-align: left;" data-validate-error>
+            <p data-message></p>
+            </div>
+            -->
+            <!--<div id="warning" class="error alert alert-danger" style="text-align: left;" data-validate-error>
+           <p data-message style="display:none;"></p>
+               <p>The following required fields are left blank:</p>
+           </div>
+           <div class="error alert alert-danger" style="text-align: left;">
+           <div data-validate-for="firstname" class="xcrm-tooltip" style="color:#F00">» "Name"</div>
+            <div data-validate-for="email" class="xcrm-tooltip" style="color:#F00">» "E-mail"</div>
+            <div id="g-recaptcha-response_label" class="xcrm-tooltip" style="color:#F00;display:none;">» Please complete Captcha</div>
+           </div>
+
+
+                <table style="width: 100%;" cellspacing="0" cellpadding="0" border="0">
+                   <tbody>
+                      <tr>
+                         <td align="left"><span id="warning" class="error"></span> </td>
+                         <td valign="top" align="right"> 		<span>* - Required fields</span> 	</td>
+                      </tr>
+                   </tbody>
+                </table>-->
+            <button type=button onclick="processform2()" class="about-button">
+                Send Inquiry
+            </button>
+            <button style="display:none;" id="dialog-submit" name="web_form_submit" class="about-button"
+                    value="Send Inquiry">Send Inquiry
+            </button>
+
+        </form>
+
+        <div id="bxdynamic_fW13iv_end" style="display:none"></div>
+
+
+        <script>
+          function processform2 () {
+            if ($(".highlight-when-not-checked").hasClass("highlighted-when-not-checked")) {
+              $("#dialog-submit").click();
+              return;
             }
-        if ($("#LEAD_UF_CRM_1528724976:checked").val()==undefined)
-         $(".highlight-when-not-checked").addClass("highlighted-when-not-checked");
-         else
-         $("#dialog-submit").click();
-    }
-</script>
+            if ($("#LEAD_UF_CRM_1528724976:checked").val() == undefined)
+              $(".highlight-when-not-checked").addClass("highlighted-when-not-checked");
+            else
+              $("#dialog-submit").click();
+          }
+        </script>
 
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-</div>
+
+        <script src="{{ [
+            'assets/js/about.js'
+        ]|theme }}"></script>
+    </div>

@@ -19,24 +19,24 @@ function onStart()
             ->select('group')
             ->groupBy('group')
             ->get();
-     
+
      foreach ($groups as $group){
           $array[$group->group] = Db::table('offshorelicense_offers_faq')->where('group',$group->group)->orderby('order_id')->get();
      }
-     
+
      $this->page["faq"] =$array;
-     
+
 
      $this->page['breadscrumbs'] = array('Home'=>$this->page['site_link'],'FAQ'=>"");
 
 }
 ?>
 ==
-<div class="page">
-		<div class="page-top" style="height: 180px;">javascript:;
-	<div class="content mainPage-list" style="padding-top: 0;">
+<div class="page page-short">
+		<div class="page-top">
+	<div class="content mainPage-list">
 		<div class="text center">
-			<h1>F.A.Q.</h1>
+			<h1 class="main-offer__heading">F.A.Q.</h1>
 		</div>
 	</div>
 </div>
@@ -63,9 +63,9 @@ function onStart()
 
 
 <div class="faq-list content">
-		
-		
-		
+
+
+
 {%for group,faq in this.page["faq"]%}
 <section>
    <label onclick="openTab($(this))" id="{{ group|replace({' ':''}) }}">
@@ -107,10 +107,10 @@ function onStart()
    </div>
 </section>
 {% endfor %}
-		
-		
-		
-		
+
+
+
+
 	<!--	<div class="customServiceCont">
 		<script>
 			 b24form({"id":"4","lang":"en","sec":"dlzltv","type":"button","click":""});
