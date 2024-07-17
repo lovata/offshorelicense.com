@@ -1722,6 +1722,9 @@ script + #page .page {
   margin-right: 0;
 }
 
+.blog-news-list__warp .slick-dots {
+  margin-bottom: 30px;
+}
 .blog-news-list__warp .blog-news-list__item .logo {
   width: 100%;
   height: 240px;
@@ -1889,8 +1892,19 @@ script + #page .page {
 <!-------------------------------------------------*/
 
 .content.mainpage-team {
-  padding-top: 40px;
-  padding-bottom: 60px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .content.mainpage-team {
+    padding-top: 40px;
+    padding-bottom: 60px;
+  }
+}
+
+.mainpage-team .slick-dots {
+  margin-top: 30px;
 }
 
 @media screen and (width: 1024px) {
@@ -4129,7 +4143,6 @@ font.notetext {
 .offer-card {
   display: flex;
   padding: 14px 12px;
-  /*grid-template-columns: 60px 1fr;*/
 }
 
 .offer-card__icon {
@@ -4196,7 +4209,6 @@ font.notetext {
     flex-grow: 1;
     align-items: center;
     padding-left: 27px;
-
   }
 }
 
@@ -4205,7 +4217,6 @@ font.notetext {
     padding-right: 18px;
   }
 }
-
 
 .offer-card__action {
   line-height: 35px;
@@ -4229,7 +4240,6 @@ font.notetext {
   transition: 0.3s;
   flex-shrink: 0;
 }
-
 
 .offer-card__arrow:before {
   content: '';
@@ -4276,7 +4286,6 @@ font.notetext {
 }
 
 .offer-card__price {
-
   font-weight: 700;
   display: block;
   color: #1e2b34;
@@ -4287,7 +4296,6 @@ font.notetext {
   .offer-card__price {
     font-size: 18px;
   }
-
 }
 
 .offer-card__cost {
@@ -4301,18 +4309,10 @@ font.notetext {
 @media screen and (max-width: 559px) {
   .offer-card__cost {
     padding-top: 12px;
-
   }
 }
 
-
-
-
 @media screen and (min-width: 1024px) {
-
-  /*.main-offer {*/
-  /*  height: 460px;*/
-  /*}*/
 
   .main-offer__wrap {
     display: grid;
@@ -4331,8 +4331,6 @@ font.notetext {
 .main-offer__list:last-child {
   margin-bottom: 0;
 }
-
-
 
 .compare-licenses-btn .crm-webform-submit-button {
   display: block;
@@ -4399,4 +4397,7 @@ font.notetext {
 
 .slick-next {
   right: -25px;
+}
+.slick-dotted.slick-slider {
+  margin-bottom: 0;
 }
