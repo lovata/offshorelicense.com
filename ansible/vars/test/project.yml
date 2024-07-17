@@ -1,0 +1,17 @@
+APP_ENV: production
+APP_DEBUG: false
+DEBUGBAR_ENABLED: false
+FORCE_MAIL_SETTING: true
+APP_URL: 'https://test.offshorelicense.com'
+BROADCAST_DRIVER: log
+CACHE_DRIVER: file
+QUEUE_CONNECTION: sync
+SESSION_DRIVER: file
+
+RESTART_POLICY: "no"
+
+ENABLE_REDIS: false
+ENABLE_QUEUE: false
+ENABLE_MAILPIT: false
+
+SAIL_XDEBUG_MODE: 'off'
