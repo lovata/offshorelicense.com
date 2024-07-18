@@ -113,7 +113,7 @@ function onStart()
     					{%for item in type%}
 							<li>
 								{% partial 'recommended-card'
-									href='company'|page({'slug':item.slug})
+									href='license'|page({'slug':item.slug})
 									img=item.logo|media
 									title=item.name
 									text=item.info

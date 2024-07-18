@@ -32,7 +32,7 @@ staging-init:
 	ansible-playbook --vault-id .vault-password-staging ansible/playbooks/init/init-app.yml -i ansible/staging-hosts.yml
 
 # Test commands
-staging-init:
+test-init:
 	ansible-playbook --vault-id .vault-password-test ansible/playbooks/init/init-app.yml -i ansible/test-hosts.yml
 
 # Docker commands
